@@ -7,18 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
 <header class="header">
     <div class="container">
 
-        <!-- Logo -->
         <div class="logo">
             <img src="logo.png" alt="CyraShift Logo">
         </div>
 
-        <!-- Navigation -->
         <nav class="nav">
             <a href="#">Home</a>
             <a href="#">About</a>
@@ -29,6 +26,7 @@
     </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
 
     <div class="hero-container">
@@ -45,119 +43,70 @@
 
         </div>
 
-    </div>
+        <!-- STEP FLOW -->
+        <div class="steps-flow">
 
-</section>
-    <!-- STEP FLOW (BOOK JOURNEY IDEA) -->
-     <div class="steps-flow">
+            <div class="step-group">
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+            </div>
 
-    <div class="steps-group">
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-    </div>
+            <div class="step-end">Build</div>
 
-    <div class="step-end">
-        Build
-    </div>
+            <div class="step-group">
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+            </div>
 
-        <div class="steps-group">
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-    </div>
+            <div class="step-end">Govern</div>
 
-    <div class="step-end">
-        Govern
-    </div>
+            <div class="step-group">
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+            </div>
 
-        <div class="steps-group">
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-    </div>
+            <div class="step-end">Scale</div>
 
-    <div class="step-end">
-        Scale
-    </div>
-</div>
+        </div>
 
     </div>
 
 </section>
 
+<!-- BANNER -->
 <div class="blankline">
-
-
-        <h2>
-            Build <span>Powerful</span> Digital Experiences
-        </h2>
-
+    <h2>Build <span>Powerful</span> Digital Experiences</h2>
 </div>
-    
 
-
-<!-- CONTACT SECTION -->
+<!-- CONTACT -->
 <section class="contact-section">
 
     <div class="contact-container">
 
         <h2>Contact <span>Us</span></h2>
 
-        <p>
-            Let’s discuss your next digital experience.
-        </p>
+        <p>Let’s discuss your next digital experience.</p>
 
-        <form 
-            action="https://api.web3forms.com/submit" 
-            method="POST"
-            class="contact-form"
-        >
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
 
-            <!-- Replace with your Web3Forms key -->
-            <input 
-                type="hidden" 
-                name="access_key" 
-                value="YOUR_ACCESS_KEY"
-            >
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
 
-            <input 
-                type="text" 
-                name="name" 
-                placeholder="Your Name"
-                required
-            >
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="company" placeholder="Company Name">
 
-            <input 
-                type="email" 
-                name="email" 
-                placeholder="Your Email"
-                required
-            >
+            <textarea name="message" rows="6" placeholder="Tell us about your project..." required></textarea>
 
-            <input 
-                type="text" 
-                name="company" 
-                placeholder="Company Name"
-            >
-
-            <textarea 
-                name="message" 
-                rows="6"
-                placeholder="Tell us about your project..."
-                required
-            ></textarea>
-
-            <button type="submit">
-                Send Message
-            </button>
+            <button type="submit">Send Message</button>
 
         </form>
 
     </div>
 
 </section>
-    
 
 <footer class="footer">
     <div class="footer-container">
@@ -183,32 +132,26 @@
 <script>
 
 const heroContent = [
-
 {
     title: 'Build <span>Powerful</span> Digital Experiences',
     subtitle: 'We design modern, fast, and scalable web solutions that bring ideas to life.'
 },
-
 {
     title: 'Create <span>Elegant</span> Web Platforms',
     subtitle: 'Crafting premium digital products focused on performance, design, and user experience.'
 },
-
 {
     title: 'Scale <span>Modern</span> Enterprise Systems',
     subtitle: 'Helping businesses launch secure, intelligent, and future-ready technology solutions.'
 },
-
 {
     title: 'Transform <span>Ideas</span> Into Innovation',
     subtitle: 'Turning ambitious concepts into impactful digital experiences for modern brands.'
 },
-
 {
     title: 'Design <span>Fast</span> Intelligent Solutions',
     subtitle: 'We build responsive websites and scalable systems engineered for growth and speed.'
 }
-
 ];
 
 let index = 0;
@@ -233,11 +176,8 @@ function animateHero(content) {
 }
 
 function nextSlide() {
-
     animateHero(heroContent[index]);
-
     index = (index + 1) % heroContent.length;
-
 }
 
 heroBox.classList.add('hero-animate');
