@@ -210,7 +210,7 @@ let currentIndex = 0;
 const heroTitle = document.getElementById('hero-title');
 const heroSubtitle = document.getElementById('hero-subtitle');
 
-setInterval(() => {
+function changeHero() {
 
     heroTitle.classList.add('fade-out');
     heroSubtitle.classList.add('fade-out');
@@ -225,9 +225,11 @@ setInterval(() => {
         heroTitle.classList.remove('fade-out');
         heroSubtitle.classList.remove('fade-out');
 
-    }, 500);
+    }, 800); // slower fade
 
-}, 4000);
+}
+
+setInterval(changeHero, 6000); // slower rotation (6 seconds)
 
 </script>
 
