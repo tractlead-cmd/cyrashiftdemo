@@ -33,15 +33,21 @@
 
     <div class="hero-container">
 
-        <h1 id="hero-title">
-            Build <span>Powerful</span> Digital Experiences
-        </h1>
+        <div id="hero-box" class="hero-animate show">
 
-        <p id="hero-subtitle">
-            We design modern, fast, and scalable web solutions that bring ideas to life.
-        </p>
-       
+            <h1 id="hero-title">
+                Build <span>Powerful</span> Digital Experiences
+            </h1>
 
+            <p id="hero-subtitle">
+                We design modern, fast, and scalable web solutions that bring ideas to life.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
     <!-- STEP FLOW (BOOK JOURNEY IDEA) -->
      <div class="steps-flow">
 
@@ -207,49 +213,35 @@ const heroContent = [
 
 let index = 0;
 
+const heroBox = document.getElementById('hero-box');
 const heroTitle = document.getElementById('hero-title');
 const heroSubtitle = document.getElementById('hero-subtitle');
 
-const directions = [
-    '',             // first stays static
-    'from-top',
-    'from-left',
-    'from-right',
-    'from-bottom'
-];
+function animateHero(content) {
 
-function applyAnimation(dir) {
-
-    heroTitle.className = '';
-    heroSubtitle.className = '';
-
-    heroTitle.classList.add(dir, 'hero-hidden');
-    heroSubtitle.classList.add(dir, 'hero-hidden');
+    heroBox.classList.remove('show');
 
     setTimeout(() => {
 
-        heroTitle.innerHTML = heroContent[index].title;
-        heroSubtitle.innerHTML = heroContent[index].subtitle;
+        heroTitle.innerHTML = content.title;
+        heroSubtitle.innerHTML = content.subtitle;
 
-        heroTitle.classList.remove('hero-hidden');
-        heroSubtitle.classList.remove('hero-hidden');
+        heroBox.classList.add('show');
 
-        heroTitle.classList.add('hero-visible');
-        heroSubtitle.classList.add('hero-visible');
-
-    }, 200);
+    }, 300);
 
 }
 
 function nextSlide() {
 
-    applyAnimation(directions[index]);
+    animateHero(heroContent[index]);
 
     index = (index + 1) % heroContent.length;
 
 }
 
-nextSlide(); // first load
+heroBox.classList.add('hero-animate');
+heroBox.classList.add('show');
 
 setInterval(nextSlide, 5000);
 
