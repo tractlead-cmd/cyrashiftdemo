@@ -7,62 +7,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 
-<script>
 
-const heroContent = [
-
-{
-    title: 'Build <span>Powerful</span> Digital Experiences',
-    subtitle: 'We design modern, fast, and scalable web solutions that bring ideas to life.'
-},
-
-{
-    title: 'Create <span>Elegant</span> Web Platforms',
-    subtitle: 'Crafting premium digital products focused on performance, design, and user experience.'
-},
-
-{
-    title: 'Scale <span>Modern</span> Enterprise Systems',
-    subtitle: 'Helping businesses launch secure, intelligent, and future-ready technology solutions.'
-},
-
-{
-    title: 'Transform <span>Ideas</span> Into Innovation',
-    subtitle: 'Turning ambitious concepts into impactful digital experiences for modern brands.'
-},
-
-{
-    title: 'Design <span>Fast</span> Intelligent Solutions',
-    subtitle: 'We build responsive websites and scalable systems engineered for growth and speed.'
-}
-
-];
-
-let currentIndex = 0;
-
-const heroTitle = document.getElementById('hero-title');
-const heroSubtitle = document.getElementById('hero-subtitle');
-
-setInterval(() => {
-
-    heroTitle.classList.add('fade-out');
-    heroSubtitle.classList.add('fade-out');
-
-    setTimeout(() => {
-
-        currentIndex = (currentIndex + 1) % heroContent.length;
-
-        heroTitle.innerHTML = heroContent[currentIndex].title;
-        heroSubtitle.innerHTML = heroContent[currentIndex].subtitle;
-
-        heroTitle.classList.remove('fade-out');
-        heroSubtitle.classList.remove('fade-out');
-
-    }, 500);
-
-}, 4000);
-
-</script>
 <body>
 
 <header class="header">
@@ -228,6 +173,63 @@ setInterval(() => {
 
     </div>
 </footer>
+
+<script>
+
+const heroContent = [
+
+{
+    title: 'Build <span>Powerful</span> Digital Experiences',
+    subtitle: 'We design modern, fast, and scalable web solutions that bring ideas to life.'
+},
+
+{
+    title: 'Create <span>Elegant</span> Web Platforms',
+    subtitle: 'Crafting premium digital products focused on performance, design, and user experience.'
+},
+
+{
+    title: 'Scale <span>Modern</span> Enterprise Systems',
+    subtitle: 'Helping businesses launch secure, intelligent, and future-ready technology solutions.'
+},
+
+{
+    title: 'Transform <span>Ideas</span> Into Innovation',
+    subtitle: 'Turning ambitious concepts into impactful digital experiences for modern brands.'
+},
+
+{
+    title: 'Design <span>Fast</span> Intelligent Solutions',
+    subtitle: 'We build responsive websites and scalable systems engineered for growth and speed.'
+}
+
+];
+
+let currentIndex = 0;
+
+const heroTitle = document.getElementById('hero-title');
+const heroSubtitle = document.getElementById('hero-subtitle');
+
+setInterval(() => {
+
+    heroTitle.classList.add('fade-out');
+    heroSubtitle.classList.add('fade-out');
+
+    setTimeout(() => {
+
+        currentIndex = (currentIndex + 1) % heroContent.length;
+
+        heroTitle.innerHTML = heroContent[currentIndex].title;
+        heroSubtitle.innerHTML = heroContent[currentIndex].subtitle;
+
+        heroTitle.classList.remove('fade-out');
+        heroSubtitle.classList.remove('fade-out');
+
+    }, 500);
+
+}, 4000);
+
+</script>
 
 </body>
 </html>
