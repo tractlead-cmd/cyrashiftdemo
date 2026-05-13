@@ -205,31 +205,53 @@ const heroContent = [
 
 ];
 
-let currentIndex = 0;
+let index = 0;
 
 const heroTitle = document.getElementById('hero-title');
 const heroSubtitle = document.getElementById('hero-subtitle');
 
-function changeHero() {
+const directions = [
+    '',             // first stays static
+    'from-top',
+    'from-left',
+    'from-right',
+    'from-bottom'
+];
 
-    heroTitle.classList.add('fade-out');
-    heroSubtitle.classList.add('fade-out');
+function applyAnimation(dir) {
+
+    heroTitle.className = '';
+    heroSubtitle.className = '';
+
+    heroTitle.classList.add(dir, 'hero-hidden');
+    heroSubtitle.classList.add(dir, 'hero-hidden');
 
     setTimeout(() => {
 
-        currentIndex = (currentIndex + 1) % heroContent.length;
+        heroTitle.innerHTML = heroContent[index].title;
+        heroSubtitle.innerHTML = heroContent[index].subtitle;
 
-        heroTitle.innerHTML = heroContent[currentIndex].title;
-        heroSubtitle.innerHTML = heroContent[currentIndex].subtitle;
+        heroTitle.classList.remove('hero-hidden');
+        heroSubtitle.classList.remove('hero-hidden');
 
-        heroTitle.classList.remove('fade-out');
-        heroSubtitle.classList.remove('fade-out');
+        heroTitle.classList.add('hero-visible');
+        heroSubtitle.classList.add('hero-visible');
 
-    }, 800); // slower fade
+    }, 200);
 
 }
 
-setInterval(changeHero, 6000); // slower rotation (6 seconds)
+function nextSlide() {
+
+    applyAnimation(directions[index]);
+
+    index = (index + 1) % heroContent.length;
+
+}
+
+nextSlide(); // first load
+
+setInterval(nextSlide, 5000);
 
 </script>
 
