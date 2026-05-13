@@ -1,159 +1,57 @@
-
-/* ================= RESET ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0d0d0d;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0d0d0d;
     color: #ddd;
-    letter-spacing: 0.3px;
-    line-height: 1.6;
-
-    position: relative;
     overflow-x: hidden;
 }
 
-/* ================= OPEN BOOK EFFECT ================= */
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: -80px;
-    width: 200px;
-    height: 100vh;
-
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.05),
-        rgba(0, 0, 0, 0)
-    );
-
-    transform: skewY(-5deg);
-    filter: blur(1px);
-    pointer-events: none;
-    z-index: 0;
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    right: -80px;
-    width: 200px;
-    height: 100vh;
-
-    background: linear-gradient(
-        to left,
-        rgba(255, 255, 255, 0.05),
-        rgba(0, 0, 0, 0)
-    );
-
-    transform: skewY(5deg);
-    filter: blur(1px);
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* ================= HEADER ================= */
-
+/* HEADER */
 .header {
     position: sticky;
     top: 0;
-    background: rgba(20, 20, 20, 0.75);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    background: rgba(20,20,20,0.8);
     z-index: 100;
 }
 
 .container {
     width: 90%;
-    max-width: 1200px;
     margin: auto;
     height: 80px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* LOGO */
 .logo img {
-    height: 111px;
-    margin-top: 20px;
-    width: auto;
-    transition: transform 0.3s ease;
+    height: 70px;
 }
 
-.logo img:hover {
-    transform: scale(1.45);
-}
-
-/* NAV */
 .nav a {
-    color: #ddd;
+    color: white;
+    margin-left: 20px;
     text-decoration: none;
-    margin-left: 30px;
-    font-size: 16px;
-    font-weight: 500;
-    position: relative;
-    transition: 0.3s;
 }
 
-.nav a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    left: 0;
-    bottom: -6px;
-    background: gold;
-    transition: 0.3s;
-}
-
-.nav a:hover::after {
-    width: 100%;
-}
-
-.nav a:hover {
-    color: gold;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-}
-
-/* ================= HERO ================= */
-
+/* HERO */
 .hero {
-    height: 90vh;
+    min-height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
-
-    padding: 0 20px;
-
-    background: radial-gradient(circle at top, #1f1f1f, #0d0d0d 70%);
-    position: relative;
-    z-index: 1;
-}
-
-.hero-container {
-    max-width: 800px;
-    animation: fadeUp 1s ease-out;
+    padding: 100px 20px;
+    background: radial-gradient(circle at top, #1f1f1f, #0d0d0d);
 }
 
 .hero h1 {
     font-size: 48px;
-    color: #fff;
-    margin-bottom: 20px;
-    line-height: 1.2;
 }
 
 .hero h1 span {
@@ -161,272 +59,11 @@ body::after {
 }
 
 .hero p {
-    font-size: 18px;
+    margin-top: 10px;
     color: #aaa;
-    margin-bottom: 30px;
 }
 
-/* BUTTONS */
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.btn {
-    padding: 12px 22px;
-    text-decoration: none;
-    font-size: 14px;
-    border-radius: 6px;
-    transition: 0.3s;
-}
-
-.btn.primary {
-    background: gold;
-    color: #111;
-    font-weight: bold;
-}
-
-.btn.primary:hover {
-    background: #e6c200;
-    transform: translateY(-2px);
-}
-
-.btn.secondary {
-    border: 1px solid gold;
-    color: gold;
-}
-
-.btn.secondary:hover {
-    background: gold;
-    color: #111;
-    transform: translateY(-2px);
-}
-
-/* ================= STEPS (NEW FEATURE) ================= */
-
-.steps-flow {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 5px;
-
-    width: 100%;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.step {
-    width: 10px;
-    height: 10px;
-    background: white;
-    border-radius: 50%;
-    opacity: 0.4;
-    position: relative;
-}
-
-/*
-.step::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 14px;
-    background: linear-gradient(gold, transparent);
-}
-    */
-
-/* step intensity */
-.step:nth-child(1) { opacity: 0.3; }
-.step:nth-child(2) { opacity: 0.6; }
-.step:nth-child(3) { opacity: 0.9; }
-
-/* final node */
-.step-end {
-    background: gold;
-    color: #111;
-    padding: 8px 18px;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-    transition: 0.3s;
-}
-
-.step-end:hover {
-    transform: translateY(-2px);
-}
-
-
-.blankline {
-    background-color: #e6c200;
-    padding-top: -20px;
-    text-align: center;
-
-}
-/* ================= FOOTER ================= */
-
-.footer {
-    background: rgba(15, 15, 15, 0.95);
-    margin-top: 60px;
-    padding: 40px 0 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    position: relative;
-    z-index: 1;
-}
-
-.footer-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    text-align: center;
-}
-
-.footer-left h3 {
-    color: gold;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.footer-left p {
-    color: #aaa;
-    font-size: 14px;
-}
-
-.footer-links {
-    margin: 20px 0;
-}
-
-.footer-links a {
-    color: #ddd;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.footer-links a:hover {
-    color: gold;
-}
-
-.footer-bottom {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #666;
-}
-
-/* ================= ANIMATION ================= */
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* ================= CONTACT SECTION ================= */
-
-.contact-section {
-    padding: 100px 20px;
-    background: radial-gradient(circle at center, #1a1a1a, #0d0d0d);
-    position: relative;
-    z-index: 1;
-}
-
-.contact-container {
-    max-width: 700px;
-    margin: auto;
-    text-align: center;
-}
-
-.contact-container h2 {
-    font-size: 42px;
-    color: #fff;
-    margin-bottom: 15px;
-}
-
-.contact-container h2 span {
-    color: gold;
-}
-
-.contact-container p {
-    color: #aaa;
-    margin-bottom: 40px;
-    font-size: 17px;
-}
-
-/* FORM */
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* INPUTS */
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 16px;
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    background: rgba(255, 255, 255, 0.03);
-    color: #fff;
-    font-size: 15px;
-    border-radius: 10px;
-    outline: none;
-    transition: 0.3s;
-    backdrop-filter: blur(6px);
-}
-
-/* PLACEHOLDER */
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: #777;
-}
-
-/* FOCUS EFFECT */
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: gold;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
-}
-
-/* BUTTON */
-
-.contact-form button {
-    background: gold;
-    color: #111;
-    border: none;
-    padding: 16px;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.contact-form button:hover {
-    background: #e6c200;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
-}
-
-
-/* ================= HERO TEXT ROTATION ================= */
-
+/* HERO ANIMATION */
 .hero-animate {
     opacity: 0;
     transform: translateX(-80px);
@@ -436,4 +73,70 @@ body::after {
 .hero-animate.show {
     opacity: 1;
     transform: translateX(0);
+}
+
+/* STEPS */
+.steps-flow {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.step {
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+}
+
+.step-end {
+    background: gold;
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: black;
+}
+
+/* BANNER */
+.blankline {
+    background: gold;
+    color: black;
+    text-align: center;
+    padding: 15px;
+}
+
+/* CONTACT */
+.contact-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+}
+
+.contact-form button {
+    background: gold;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
 }
