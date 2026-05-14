@@ -178,20 +178,24 @@ body::after {
 
 /* ================= SLIDER ================= */
 
+/* ================= SLIDER ================= */
+
 .slider {
     position: relative;
-
     width: 100%;
     height: 260px;
-
     overflow: hidden;
 }
 
-/* ALL SLIDES */
+/* SLIDES */
 
 .slide {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
@@ -199,22 +203,20 @@ body::after {
     align-items: center;
 
     opacity: 0;
-    visibility: hidden;
 
-    transform: translateX(-120px);
+    transform: translateX(-200px);
 
     transition:
-        opacity 0.8s ease,
-        transform 0.8s ease,
-        visibility 0.8s ease;
+        opacity 1s ease,
+        transform 1s ease;
+
+    pointer-events: none;
 }
 
-/* ACTIVE SLIDE */
+/* ACTIVE */
 
 .slide.active {
     opacity: 1;
-    visibility: visible;
-
     transform: translateX(0);
 }
 
@@ -223,10 +225,8 @@ body::after {
 .slide h1 {
     font-size: 58px;
     color: white;
-
     margin-bottom: 24px;
-
-    line-height: 1.15;
+    line-height: 1.1;
 }
 
 .slide h1 span {
@@ -239,155 +239,28 @@ body::after {
     font-size: 22px;
     color: #aaa;
 
-    overflow: hidden;
-    white-space: nowrap;
-
     border-right: 2px solid gold;
 
+    overflow: hidden;
+
+    white-space: nowrap;
+
     width: 0;
+
+    opacity: 0;
 }
 
-/* TYPEWRITER EFFECT */
+/* TYPEWRITER */
 
 .slide.active p {
-    animation:
-        typing 2.5s steps(50, end) forwards,
-        blink 0.7s step-end infinite;
-}
-
-/* ================= STEPS FLOW ================= */
-
-.steps-flow {
-    margin-top: 60px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    gap: 18px;
-
-    width: 100%;
-
-    overflow-x: auto;
-    padding-bottom: 10px;
-}
-
-.steps-group {
-    display: flex;
-    align-items: center;
-
-    gap: 6px;
-
-    flex-shrink: 0;
-}
-
-.step {
-    width: 10px;
-    height: 10px;
-
-    background: white;
-
-    border-radius: 50%;
-}
-
-/* OPACITY LEVELS */
-
-.steps-group .step:nth-child(1) {
-    opacity: 0.3;
-}
-
-.steps-group .step:nth-child(2) {
-    opacity: 0.6;
-}
-
-.steps-group .step:nth-child(3) {
     opacity: 1;
+
+    animation:
+        typing 2.5s steps(60, end) forwards,
+        blink 0.7s infinite;
 }
 
-/* LABELS */
-
-.step-end {
-    width: 110px;
-    height: 42px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: gold;
-    color: #111;
-
-    border-radius: 999px;
-
-    font-size: 14px;
-    font-weight: 700;
-
-    flex-shrink: 0;
-
-    transition: 0.3s;
-}
-
-.step-end:hover {
-    transform: translateY(-2px);
-}
-
-/* ================= FOOTER ================= */
-
-.footer {
-    margin-top: 60px;
-
-    padding: 40px 0 20px;
-
-    background: rgba(15,15,15,0.95);
-
-    border-top: 1px solid rgba(255,255,255,0.05);
-
-    position: relative;
-    z-index: 1;
-}
-
-.footer-container {
-    width: 90%;
-    max-width: 1200px;
-
-    margin: auto;
-
-    text-align: center;
-}
-
-.footer-left h3 {
-    color: gold;
-
-    font-size: 24px;
-
-    margin-bottom: 10px;
-}
-
-.footer-links {
-    margin: 20px 0;
-}
-
-.footer-links a {
-    color: #ddd;
-    text-decoration: none;
-
-    margin: 0 15px;
-
-    transition: 0.3s;
-}
-
-.footer-links a:hover {
-    color: gold;
-}
-
-.footer-bottom {
-    margin-top: 20px;
-
-    font-size: 12px;
-    color: #666;
-}
-
-/* ================= ANIMATIONS ================= */
+/* ANIMATION */
 
 @keyframes typing {
     from {
@@ -395,38 +268,12 @@ body::after {
     }
 
     to {
-        width: 100%;
+        width: 850px;
     }
 }
 
 @keyframes blink {
     50% {
         border-color: transparent;
-    }
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 768px) {
-
-    .slide h1 {
-        font-size: 38px;
-    }
-
-    .slide p {
-        font-size: 16px;
-    }
-
-    .nav a {
-        margin-left: 18px;
-        font-size: 14px;
-    }
-
-    .logo img {
-        height: 85px;
-    }
-
-    .slider {
-        height: 300px;
     }
 }
