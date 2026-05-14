@@ -520,121 +520,131 @@ body::after {
 
 /* ================= CONTACT SECTION ================= */
 
+/* ================= CONTACT SECTION ================= */
+
 .contact-section {
-    padding: 120px 20px;
+    padding: 140px 20px;
 
     position: relative;
     z-index: 1;
 }
 
-/* CONTAINER */
+/* WRAPPER */
 
-.contact-container {
-    width: 90%;
-    max-width: 1200px;
+.contact-wrapper {
+    width: 100%;
+    max-width: 900px;
 
     margin: auto;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    gap: 60px;
-
-    align-items: center;
+    text-align: center;
 }
 
-/* LEFT SIDE */
+/* MINI TEXT */
 
-.contact-tag {
+.contact-mini {
     color: gold;
 
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 
-    margin-bottom: 18px;
+    margin-bottom: 22px;
 }
 
-.contact-info h2 {
-    font-size: 52px;
+/* TITLE */
+
+.contact-wrapper h2 {
+    font-size: 58px;
 
     line-height: 1.1;
 
     color: white;
 
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
-.contact-info h2 span {
+.contact-wrapper h2 span {
     color: gold;
 }
 
-.contact-text {
-    color: #9a9a9a;
+/* SUBTEXT */
+
+.contact-subtext {
+    color: #8e8e8e;
 
     font-size: 18px;
 
-    max-width: 500px;
+    margin-bottom: 60px;
 }
 
 /* CARD */
 
 .contact-card {
-    background: rgba(255,255,255,0.03);
-
-    border: 1px solid rgba(255,255,255,0.06);
-
-    border-radius: 28px;
-
-    padding: 40px;
-
-    backdrop-filter: blur(12px);
-
-    box-shadow:
-        0 10px 40px rgba(0,0,0,0.4);
-
     position: relative;
 
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.02)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 32px;
+
+    padding: 50px;
+
+    backdrop-filter: blur(18px);
+
     overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.45);
 }
 
-/* GLOW EFFECT */
+/* GOLD GLOW */
 
 .contact-card::before {
     content: "";
 
     position: absolute;
 
-    top: -100px;
-    right: -100px;
+    top: -120px;
+    right: -120px;
 
-    width: 220px;
-    height: 220px;
+    width: 260px;
+    height: 260px;
 
     background: rgba(255,215,0,0.08);
 
     border-radius: 50%;
 
-    filter: blur(40px);
+    filter: blur(50px);
 }
 
 /* FORM */
 
 .contact-form {
+    position: relative;
+    z-index: 2;
+
     display: flex;
     flex-direction: column;
 
-    gap: 20px;
-
-    position: relative;
-    z-index: 2;
+    gap: 22px;
 }
 
-/* INPUT GROUP */
+/* TWO INPUTS */
 
-.input-group {
-    width: 100%;
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
 }
 
 /* INPUTS */
@@ -645,11 +655,12 @@ body::after {
 
     background: rgba(255,255,255,0.04);
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border:
+        1px solid rgba(255,255,255,0.08);
 
-    border-radius: 14px;
+    border-radius: 16px;
 
-    padding: 16px 18px;
+    padding: 18px 20px;
 
     color: white;
 
@@ -663,7 +674,7 @@ body::after {
 /* TEXTAREA */
 
 .contact-form textarea {
-    min-height: 140px;
+    min-height: 180px;
 
     resize: none;
 }
@@ -675,7 +686,7 @@ body::after {
     color: #777;
 }
 
-/* FOCUS EFFECT */
+/* FOCUS */
 
 .contact-form input:focus,
 .contact-form textarea:focus {
@@ -688,11 +699,11 @@ body::after {
 /* BUTTON */
 
 .contact-form button {
-    height: 56px;
+    height: 58px;
 
     border: none;
 
-    border-radius: 14px;
+    border-radius: 16px;
 
     background: gold;
 
@@ -711,47 +722,27 @@ body::after {
 .contact-form button:hover {
     transform: translateY(-2px);
 
-    background: #f0cc00;
-
     box-shadow:
-        0 10px 24px rgba(255,215,0,0.25);
+        0 15px 35px rgba(255,215,0,0.25);
 }
 
 /* ================= MOBILE ================= */
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
 
-    .contact-container {
-        grid-template-columns: 1fr;
-
-        gap: 50px;
-    }
-
-    .contact-info h2 {
+    .contact-wrapper h2 {
         font-size: 40px;
     }
 
-    .contact-card {
-        padding: 28px;
-    }
-}
-
-@media (max-width: 600px) {
-
-    .contact-section {
-        padding: 90px 20px;
-    }
-
-    .contact-info h2 {
-        font-size: 34px;
-    }
-
-    .contact-text {
+    .contact-subtext {
         font-size: 16px;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-        padding: 14px 16px;
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        padding: 30px;
     }
 }
