@@ -295,14 +295,42 @@
 
     </script>
 
-
     <!-- SCROLL TO TOP BUTTON -->
 
-<button id="scrollTopBtn">
+    <button id="scrollTopBtn">
 
-    ↑
+        ↑
 
-</button>
+    </button>
+
+    <!-- SCROLL BUTTON SCRIPT -->
+
+    <script>
+
+        const scrollBtn = document.getElementById("scrollTopBtn");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 300) {
+
+                scrollBtn.classList.add("show");
+
+            } else {
+
+                scrollBtn.classList.remove("show");
+            }
+        });
+
+        scrollBtn.addEventListener("click", () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+    </script>
 
 </body>
 
