@@ -205,56 +205,73 @@ body::after {
 
 /* ================= STEPS (NEW FEATURE) ================= */
 
+/* ================= STEPS ================= */
+
 .steps-flow {
     margin-top: 40px;
+
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 18px;
+
+    flex-wrap: nowrap;
 
     width: 100%;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+.steps-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    flex-shrink: 0;
 }
 
 .step {
     width: 10px;
     height: 10px;
+
     background: white;
     border-radius: 50%;
-    opacity: 0.4;
-    position: relative;
+
+    flex-shrink: 0;
 }
 
-/*
-.step::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 14px;
-    background: linear-gradient(gold, transparent);
+/* opacity levels */
+.steps-group .step:nth-child(1) {
+    opacity: 0.3;
 }
-    */
 
-/* step intensity */
-.step:nth-child(1) { opacity: 0.3; }
-.step:nth-child(2) { opacity: 0.6; }
-.step:nth-child(3) { opacity: 0.9; }
+.steps-group .step:nth-child(2) {
+    opacity: 0.6;
+}
 
-/* final node */
+.steps-group .step:nth-child(3) {
+    opacity: 1;
+}
+
+/* FIXED SIZE LABEL */
 .step-end {
+    width: 110px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background: gold;
     color: #111;
-    padding: 8px 18px;
+
+    border-radius: 999px;
+
     font-size: 14px;
-    font-weight: bold;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    flex-shrink: 0;
+
     transition: 0.3s;
 }
 
