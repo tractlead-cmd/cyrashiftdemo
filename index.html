@@ -160,6 +160,32 @@ const heroBox = document.getElementById('hero-box');
 const heroTitle = document.getElementById('hero-title');
 const heroSubtitle = document.getElementById('hero-subtitle');
 
+let typingSpeed = 40;
+let currentTimeout;
+
+function typeSubtitle(text, element, callback) {
+
+    element.innerHTML = "";
+    let i = 0;
+
+    function type() {
+
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, typingSpeed);
+        } else {
+
+            setTimeout(callback, 2000);
+
+        }
+
+    }
+
+    type();
+
+}
+
 function animateHero(content) {
 
     heroBox.classList.remove('show');
@@ -167,23 +193,25 @@ function animateHero(content) {
     setTimeout(() => {
 
         heroTitle.innerHTML = content.title;
-        heroSubtitle.innerHTML = content.subtitle;
 
         heroBox.classList.add('show');
 
-    }, 300);
+        typeSubtitle(content.subtitle, heroSubtitle, () => {
 
-}
+            index = (index + 1) % heroContent.length;
 
-function nextSlide() {
-    animateHero(heroContent[index]);
-    index = (index + 1) % heroContent.length;
+            animateHero(heroContent[index]);
+
+        });
+
+    }, 400);
+
 }
 
 heroBox.classList.add('hero-animate');
 heroBox.classList.add('show');
 
-setInterval(nextSlide, 5000);
+animateHero(heroContent[index]);
 
 </script>
 
