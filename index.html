@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyraShift</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -12,10 +12,12 @@
 <header class="header">
     <div class="container">
 
+        <!-- Logo -->
         <div class="logo">
             <img src="logo.png" alt="CyraShift Logo">
         </div>
 
+        <!-- Navigation -->
         <nav class="nav">
             <a href="#">Home</a>
             <a href="#">About</a>
@@ -26,87 +28,66 @@
     </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
 
     <div class="hero-container">
 
-        <div id="hero-box" class="hero-box animate-1">
+        <h1>
+            Build <span>Powerful</span> Digital Experiences
+        </h1>
 
-             <h1 id="hero-title">
-                Build <span>Powerful</span> Digital Experiences
-             </h1>
+        <p>
+            We design modern, fast, and scalable web solutions that bring ideas to life.
+        </p>
 
-             <p id="hero-subtitle">
-                 We design modern, fast, and scalable web solutions that bring ideas to life.
-            </p>
+    <!-- STEP FLOW (BOOK JOURNEY IDEA) -->
+     <div class="steps-flow">
 
-       </div>
-
-        <!-- STEP FLOW -->
-        <div class="steps-flow">
-
-            <div class="step-group">
-                <div class="step"></div>
-                <div class="step"></div>
-                <div class="step"></div>
-            </div>
-
-            <div class="step-end">Build</div>
-
-            <div class="step-group">
-                <div class="step"></div>
-                <div class="step"></div>
-                <div class="step"></div>
-            </div>
-
-            <div class="step-end">Govern</div>
-
-            <div class="step-group">
-                <div class="step"></div>
-                <div class="step"></div>
-                <div class="step"></div>
-            </div>
-
-            <div class="step-end">Scale</div>
-
-        </div>
-
+    <div class="steps-group">
+        <div class="step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
     </div>
 
-</section>
+    <div class="step-end">
+        Build
+    </div>
 
-<!-- BANNER -->
-<div class="blankline">
-    <h2>Build <span>Powerful</span> Digital Experiences</h2>
+        <div class="steps-group">
+        <div class="step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+    </div>
+
+    <div class="step-end">
+        Govern
+    </div>
+
+        <div class="steps-group">
+        <div class="step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+    </div>
+
+    <div class="step-end">
+        Scale
+    </div>
 </div>
 
-<!-- CONTACT -->
-<section class="contact-section">
-
-    <div class="contact-container">
-
-        <h2>Contact <span>Us</span></h2>
-
-        <p>Let’s discuss your next digital experience.</p>
-
-        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
-
-            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
-
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <input type="text" name="company" placeholder="Company Name">
-
-            <textarea name="message" rows="6" placeholder="Tell us about your project..." required></textarea>
-
-            <button type="submit">Send Message</button>
-
-        </form>
-
     </div>
 
 </section>
+
+<div class="blankline">
+
+
+        <h2>
+            Build <span>Powerful</span> Digital Experiences
+        </h2>
+
+</div>
+    
+
 
 <footer class="footer">
     <div class="footer-container">
@@ -128,92 +109,6 @@
 
     </div>
 </footer>
-
-<script>
-
-const heroContent = [
-{
-    title: 'Build <span>Powerful</span> Digital Experiences',
-    subtitle: 'We design modern, fast, and scalable web solutions that bring ideas to life.'
-},
-{
-    title: 'Create <span>Elegant</span> Web Platforms',
-    subtitle: 'Crafting premium digital products focused on performance, design, and user experience.'
-},
-{
-    title: 'Scale <span>Modern</span> Enterprise Systems',
-    subtitle: 'Helping businesses launch secure, intelligent, and future-ready technology solutions.'
-},
-{
-    title: 'Transform <span>Ideas</span> Into Innovation',
-    subtitle: 'Turning ambitious concepts into impactful digital experiences for modern brands.'
-},
-{
-    title: 'Design <span>Fast</span> Intelligent Solutions',
-    subtitle: 'We build responsive websites and scalable systems engineered for growth and speed.'
-}
-];
-
-let index = 0;
-
-const heroBox = document.getElementById('hero-box');
-const heroTitle = document.getElementById('hero-title');
-const heroSubtitle = document.getElementById('hero-subtitle');
-
-let typingSpeed = 40;
-let currentTimeout;
-
-function typeSubtitle(text, element, callback) {
-
-    element.innerHTML = "";
-    let i = 0;
-
-    function type() {
-
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, typingSpeed);
-        } else {
-
-            setTimeout(callback, 2000);
-
-        }
-
-    }
-
-    type();
-
-}
-
-function animateHero(content) {
-
-    heroBox.classList.remove('show');
-
-    setTimeout(() => {
-
-        heroTitle.innerHTML = content.title;
-
-        heroBox.classList.add('show');
-
-        typeSubtitle(content.subtitle, heroSubtitle, () => {
-
-            index = (index + 1) % heroContent.length;
-
-            animateHero(heroContent[index]);
-
-        });
-
-    }, 400);
-
-}
-
-heroBox.classList.add('hero-animate');
-heroBox.classList.add('show');
-
-animateHero(heroContent[index]);
-
-</script>
 
 </body>
 </html>
