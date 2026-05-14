@@ -69,6 +69,7 @@ body {
 /* HERO */
 .hero {
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +81,7 @@ body {
 }
 
 .hero h1 {
-    font-size: 64px;
+    font-size: 56px;
     line-height: 1.1;
     max-width: 900px;
     font-weight: 700;
