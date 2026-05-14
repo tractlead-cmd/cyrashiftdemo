@@ -747,3 +747,64 @@ body::after {
         padding: 30px;
     }
 }
+
+
+/* ================= SCROLL TOP BUTTON ================= */
+
+#scrollTopBtn {
+    position: fixed;
+
+    bottom: 30px;
+    right: 30px;
+
+    width: 52px;
+    height: 52px;
+
+    border: 1px solid rgba(255, 215, 0, 0.35);
+
+    background: rgba(20,20,20,0.7);
+
+    backdrop-filter: blur(10px);
+
+    color: gold;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(20px);
+
+    transition: 0.3s ease;
+
+    z-index: 999;
+}
+
+/* SHOW BUTTON */
+
+#scrollTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+/* HOVER */
+
+#scrollTopBtn:hover {
+    transform: translateY(-4px);
+
+    border-color: gold;
+
+    box-shadow:
+        0 10px 30px rgba(255,215,0,0.15);
+}
