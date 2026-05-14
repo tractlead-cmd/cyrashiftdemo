@@ -10,12 +10,16 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ================= BODY ================= */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     background-color: #0d0d0d;
     color: #ddd;
-    letter-spacing: 0.3px;
+
     line-height: 1.6;
+    letter-spacing: 0.3px;
 
     overflow-x: hidden;
     position: relative;
@@ -25,6 +29,7 @@ body {
 
 body::before {
     content: "";
+
     position: fixed;
 
     top: 0;
@@ -47,6 +52,7 @@ body::before {
 
 body::after {
     content: "";
+
     position: fixed;
 
     top: 0;
@@ -73,12 +79,13 @@ body::after {
     position: sticky;
     top: 0;
 
-    background: rgba(20,20,20,0.75);
-    backdrop-filter: blur(12px);
-
     z-index: 100;
 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    background: rgba(20,20,20,0.75);
+
+    backdrop-filter: blur(12px);
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .container {
@@ -97,7 +104,8 @@ body::after {
 /* ================= LOGO ================= */
 
 .logo img {
-    height: 110px;
+    height: 105px;
+
     margin-top: 18px;
 
     transition: transform 0.3s ease;
@@ -107,7 +115,7 @@ body::after {
     transform: scale(1.08);
 }
 
-/* ================= NAVIGATION ================= */
+/* ================= NAV ================= */
 
 .nav {
     display: flex;
@@ -116,6 +124,7 @@ body::after {
 
 .nav a {
     color: #ddd;
+
     text-decoration: none;
 
     margin-left: 30px;
@@ -125,7 +134,7 @@ body::after {
 
     position: relative;
 
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .nav a::after {
@@ -141,7 +150,7 @@ body::after {
 
     background: gold;
 
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .nav a:hover::after {
@@ -155,7 +164,9 @@ body::after {
 /* ================= HERO ================= */
 
 .hero {
-    height: 90vh;
+    min-height: 90vh;
+
+    padding: 120px 20px 80px;
 
     display: flex;
     justify-content: center;
@@ -163,9 +174,11 @@ body::after {
 
     text-align: center;
 
-    padding: 0 20px;
-
-    background: radial-gradient(circle at top, #1f1f1f, #0d0d0d 70%);
+    background: radial-gradient(
+        circle at top,
+        #1f1f1f,
+        #0d0d0d 70%
+    );
 
     position: relative;
     z-index: 1;
@@ -173,26 +186,27 @@ body::after {
 
 .hero-container {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1100px;
 }
-
-/* ================= SLIDER ================= */
 
 /* ================= SLIDER ================= */
 
 .slider {
     position: relative;
+
     width: 100%;
-    height: 260px;
+    height: 280px;
+
     overflow: hidden;
 
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
-/* SLIDES */
+/* ================= SLIDES ================= */
 
 .slide {
     position: absolute;
+
     top: 0;
     left: 0;
 
@@ -212,47 +226,56 @@ body::after {
         opacity 1s ease,
         transform 1s ease;
 
+    will-change: transform, opacity;
+
     pointer-events: none;
 }
 
-/* ACTIVE */
+/* ACTIVE SLIDE */
 
 .slide.active {
     opacity: 1;
+
     transform: translateX(0);
 }
 
-/* HEADING */
+/* ================= HEADINGS ================= */
 
 .slide h1 {
-    font-size: 58px;
-    color: white;
-    margin-bottom: 24px;
+    font-size: 60px;
+
     line-height: 1.1;
+
+    color: white;
+
+    margin-bottom: 24px;
 }
 
 .slide h1 span {
     color: gold;
 }
 
-/* PARAGRAPH */
+/* ================= PARAGRAPH ================= */
 
 .slide p {
     font-size: 22px;
-    color: #aaa;
 
-    border-right: 2px solid gold;
+    color: #aaa;
 
     overflow: hidden;
 
     white-space: nowrap;
 
-    width: 0;
+    border-right: 2px solid gold;
+
+    display: inline-block;
+
+    max-width: 0;
 
     opacity: 0;
 }
 
-/* TYPEWRITER */
+/* ACTIVE TYPEWRITER */
 
 .slide.active p {
     opacity: 1;
@@ -262,25 +285,232 @@ body::after {
         blink 0.7s infinite;
 }
 
-/* ANIMATION */
+/* ================= TYPEWRITER ANIMATION ================= */
 
 @keyframes typing {
+
     from {
-        width: 0;
+        max-width: 0;
     }
 
     to {
-        width: 850px;
+        max-width: 1000px;
     }
 }
 
 @keyframes blink {
+
     50% {
         border-color: transparent;
     }
 }
 
+/* ================= STEPS FLOW ================= */
+
 .steps-flow {
     position: relative;
     z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    padding-bottom: 10px;
+}
+
+/* STEP GROUP */
+
+.steps-group {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    flex-shrink: 0;
+}
+
+/* STEP DOT */
+
+.step {
+    width: 10px;
+    height: 10px;
+
+    background: white;
+
+    border-radius: 50%;
+}
+
+/* DOT INTENSITY */
+
+.steps-group .step:nth-child(1) {
+    opacity: 0.3;
+}
+
+.steps-group .step:nth-child(2) {
+    opacity: 0.6;
+}
+
+.steps-group .step:nth-child(3) {
+    opacity: 1;
+}
+
+/* STEP LABEL */
+
+.step-end {
+    width: 110px;
+    height: 42px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: gold;
+    color: #111;
+
+    border-radius: 999px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+
+    box-shadow:
+        0 0 18px rgba(255,215,0,0.35);
+
+    transition: 0.3s ease;
+}
+
+.step-end:hover {
+    transform: translateY(-2px);
+}
+
+/* ================= BLANK SECTION ================= */
+
+.blankline {
+    padding: 60px 20px;
+
+    text-align: center;
+}
+
+.blankline h2 {
+    font-size: 42px;
+    color: white;
+}
+
+.blankline span {
+    color: gold;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+    margin-top: 60px;
+
+    padding: 40px 0 20px;
+
+    background: rgba(15,15,15,0.95);
+
+    border-top: 1px solid rgba(255,255,255,0.05);
+
+    position: relative;
+    z-index: 1;
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.footer-left h3 {
+    font-size: 24px;
+
+    color: gold;
+
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    margin: 20px 0;
+}
+
+.footer-links a {
+    color: #ddd;
+
+    text-decoration: none;
+
+    margin: 0 15px;
+
+    transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: gold;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+
+    font-size: 12px;
+
+    color: #666;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        height: 70px;
+    }
+
+    .logo img {
+        height: 80px;
+    }
+
+    .nav a {
+        margin-left: 18px;
+
+        font-size: 14px;
+    }
+
+    .slider {
+        height: 360px;
+    }
+
+    .slide h1 {
+        font-size: 40px;
+    }
+
+    .slide p {
+        font-size: 16px;
+
+        white-space: normal;
+
+        border-right: none;
+    }
+
+    .steps-flow {
+        gap: 10px;
+    }
+
+    .step-end {
+        width: 90px;
+        height: 38px;
+
+        font-size: 12px;
+    }
+
+    .blankline h2 {
+        font-size: 32px;
+    }
 }
