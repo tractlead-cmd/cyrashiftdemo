@@ -277,3 +277,8 @@ body::after {
         border-color: transparent;
     }
 }
+
+.steps-flow {
+    position: relative;
+    z-index: 10;
+}
