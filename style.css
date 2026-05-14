@@ -101,23 +101,17 @@ body {
     max-width: 1000px;
 }
 
-
 .hero-box {
-    width: 100%;
-    max-width: 1400px;
-    min-height: 320px;
+    width: 1400px;
+    height: 320px;
 
-    padding: 60px 80px;
-
-    border-radius: 24px;
+    padding: 60px 70px;
 
     background: rgba(255,255,255,0.02);
 
-    backdrop-filter: blur(20px);
+    border-radius: 24px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    backdrop-filter: blur(20px);
 
     overflow: hidden;
 }
