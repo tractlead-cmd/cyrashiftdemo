@@ -259,6 +259,7 @@ body::after {
 
 .slide p {
     font-size: 22px;
+    margin-top: 20px;
 
     color: #aaa;
 
