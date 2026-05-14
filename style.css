@@ -749,44 +749,44 @@ body::after {
 }
 
 
-/* ================= SCROLL TOP BUTTON ================= */
+/* ================= SCROLL TO TOP BUTTON ================= */
 
 #scrollTopBtn {
     position: fixed;
 
-    bottom: 30px;
     right: 30px;
+    bottom: 30px;
 
     width: 52px;
     height: 52px;
 
-    border: 1px solid rgba(255, 215, 0, 0.35);
-
-    background: rgba(20,20,20,0.7);
-
-    backdrop-filter: blur(10px);
-
-    color: gold;
-
-    font-size: 22px;
-    font-weight: bold;
-
-    border-radius: 14px;
-
-    cursor: pointer;
-
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background: rgba(20,20,20,0.75);
+
+    color: gold;
+
+    border: 1px solid rgba(255,215,0,0.35);
+
+    border-radius: 14px;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    z-index: 9999;
 
     opacity: 0;
     visibility: hidden;
 
     transform: translateY(20px);
 
-    transition: 0.3s ease;
-
-    z-index: 999;
+    transition: all 0.3s ease;
 }
 
 /* SHOW BUTTON */
@@ -798,7 +798,7 @@ body::after {
     transform: translateY(0);
 }
 
-/* HOVER */
+/* HOVER EFFECT */
 
 #scrollTopBtn:hover {
     transform: translateY(-4px);
@@ -806,5 +806,5 @@ body::after {
     border-color: gold;
 
     box-shadow:
-        0 10px 30px rgba(255,215,0,0.15);
+        0 10px 30px rgba(255,215,0,0.18);
 }
