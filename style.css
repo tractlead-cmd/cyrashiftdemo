@@ -282,7 +282,7 @@ body::after {
 
 .blankline {
     background-color: #e6c200;
-    padding-top: -20px;
+    padding-top: 20px;
     text-align: center;
 
 }
