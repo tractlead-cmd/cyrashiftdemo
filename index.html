@@ -126,5 +126,42 @@
     </div>
 </footer>
 
+    <script>
+
+const slides = document.querySelectorAll(".slide");
+
+let current = 0;
+
+function showSlide(index) {
+
+    slides.forEach(slide => {
+        slide.classList.remove("active");
+
+        const p = slide.querySelector("p");
+
+        p.style.animation = "none";
+        p.offsetHeight;
+        p.style.animation = null;
+    });
+
+    slides[index].classList.add("active");
+}
+
+showSlide(current);
+
+setInterval(() => {
+
+    current++;
+
+    if (current >= slides.length) {
+        current = 0;
+    }
+
+    showSlide(current);
+
+}, 5000);
+
+</script>
+    
 </body>
 </html>
