@@ -812,25 +812,29 @@ body::after {
 /* ================= PREMIUM ABOUT SECTION ================= */
 
 .about-section {
-    padding: 140px 20px 100px;
+    padding: 130px 20px 100px;
 
     position: relative;
     z-index: 1;
 }
 
-/* CONTAINER */
-
 .about-container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1250px;
 
     margin: auto;
 }
 
-/* PREMIUM CARD */
+/* MAIN CARD */
 
-.about-text {
-    position: relative;
+.about-card {
+    display: grid;
+
+    grid-template-columns: 1fr 1.1fr;
+
+    gap: 60px;
+
+    align-items: center;
 
     background:
         linear-gradient(
@@ -840,27 +844,25 @@ body::after {
         );
 
     border:
-        1px solid rgba(255,255,255,0.08);
+        1px solid rgba(255,255,255,0.07);
 
     border-radius: 36px;
 
-    padding: 70px;
+    padding: 60px;
 
     overflow: hidden;
 
-    backdrop-filter: blur(18px);
+    position: relative;
+
+    backdrop-filter: blur(16px);
 
     box-shadow:
         0 25px 60px rgba(0,0,0,0.45);
-
-    text-align: center;
-
-    transition: 0.35s ease;
 }
 
 /* GOLD GLOW */
 
-.about-text::before {
+.about-card::before {
     content: "";
 
     position: absolute;
@@ -875,92 +877,169 @@ body::after {
 
     border-radius: 50%;
 
-    filter: blur(50px);
+    filter: blur(55px);
 }
 
-/* EXTRA LIGHT */
+/* IMAGE SIDE */
 
-.about-text::after {
-    content: "";
+.about-image {
+    position: relative;
+    z-index: 2;
+}
+
+.about-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 28px;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.45);
+}
+
+/* TEXT SIDE */
+
+.about-content {
+    position: relative;
+    z-index: 2;
+}
+
+.about-content h2 {
+    font-size: 58px;
+
+    line-height: 1.1;
+
+    color: white;
+
+    margin-bottom: 30px;
+}
+
+.about-content h2 span {
+    color: gold;
+}
+
+.about-content p {
+    color: #a5a5a5;
+
+    font-size: 17px;
+
+    line-height: 2;
+
+    margin-bottom: 22px;
+}
+
+/* WHY CHOOSE US */
+
+.why-choose {
+    margin-top: 45px;
+}
+
+.why-choose h3 {
+    font-size: 32px;
+
+    color: white;
+
+    margin-bottom: 24px;
+}
+
+.why-choose h3 span {
+    color: gold;
+}
+
+/* LIST */
+
+.why-choose ul {
+    list-style: none;
+}
+
+.why-choose li {
+    position: relative;
+
+    padding-left: 34px;
+
+    margin-bottom: 18px;
+
+    color: #b7b7b7;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+/* GOLD BULLET */
+
+.why-choose li::before {
+    content: "•";
 
     position: absolute;
 
-    bottom: -100px;
-    left: -100px;
+    left: 0;
+    top: -2px;
 
-    width: 220px;
-    height: 220px;
+    color: gold;
 
-    background: rgba(255,255,255,0.03);
-
-    border-radius: 50%;
-
-    filter: blur(45px);
+    font-size: 28px;
 }
 
 /* HOVER */
 
-.about-text:hover {
+.about-card:hover {
     transform: translateY(-5px);
 
-    border-color: rgba(255,215,0,0.18);
-}
+    transition: 0.35s ease;
 
-/* TITLE */
-
-.about-text h2 {
-    position: relative;
-    z-index: 2;
-
-    font-size: 58px;
-
-    color: white;
-
-    margin-bottom: 35px;
-
-    line-height: 1.1;
-}
-
-.about-text h2 span {
-    color: gold;
-}
-
-/* TEXT */
-
-.about-text p {
-    position: relative;
-    z-index: 2;
-
-    color: #a8a8a8;
-
-    font-size: 18px;
-
-    line-height: 2;
-
-    max-width: 850px;
-
-    margin:
-        0 auto 28px;
+    border-color: rgba(255,215,0,0.2);
 }
 
 /* MOBILE */
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
 
-    .about-text {
-        padding: 45px 28px;
+    .about-card {
+        grid-template-columns: 1fr;
+
+        padding: 40px;
     }
 
-    .about-text h2 {
-        font-size: 40px;
-    }
-
-    .about-text p {
-        font-size: 16px;
-
-        line-height: 1.9;
+    .about-content h2 {
+        font-size: 42px;
     }
 }
+
+@media (max-width: 768px) {
+
+    .about-section {
+        padding: 90px 20px;
+    }
+
+    .about-card {
+        padding: 28px;
+    }
+
+    .about-content h2 {
+        font-size: 34px;
+    }
+
+    .about-content p {
+        font-size: 15px;
+    }
+
+    .why-choose h3 {
+        font-size: 26px;
+    }
+
+    .why-choose li {
+        font-size: 15px;
+    }
+}
+
+
 
 /* ================= SERVICES SECTION ================= */
 
