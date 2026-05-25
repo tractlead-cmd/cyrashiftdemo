@@ -1044,7 +1044,7 @@ body::after {
 /* ================= SERVICES SECTION ================= */
 
 .services-section {
-    padding: 40px 20px 120px;
+    padding: 60px 20px;
 
     position: relative;
     z-index: 1;
