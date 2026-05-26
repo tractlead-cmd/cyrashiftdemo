@@ -1432,3 +1432,105 @@ body::after {
 
     transform: translateY(0) !important;
 }
+
+
+/* ================= PREMIUM STATS SECTION ================= */
+
+.stats-section {
+
+    padding: 40px 20px 70px;
+
+    position: relative;
+}
+
+.stats-container {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+}
+
+.stat-card {
+
+    background: rgba(255,255,255,0.03);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 20px;
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.4s ease;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* GOLD SHINE EFFECT */
+
+.stat-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+    linear-gradient(
+        135deg,
+        transparent,
+        rgba(255,215,0,0.08),
+        transparent
+    );
+
+    opacity: 0;
+
+    transition: 0.4s ease;
+}
+
+.stat-card:hover::before {
+
+    opacity: 1;
+}
+
+.stat-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: rgba(255,215,0,0.25);
+
+    box-shadow:
+    0 0 25px rgba(255,215,0,0.08);
+}
+
+.stat-card h2 {
+
+    font-size: 42px;
+
+    color: #FFD700;
+
+    margin-bottom: 10px;
+
+    font-weight: 700;
+}
+
+.stat-card p {
+
+    color: #bbb;
+
+    font-size: 16px;
+
+    letter-spacing: 0.5px;
+}
