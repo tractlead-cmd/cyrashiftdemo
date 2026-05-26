@@ -211,7 +211,7 @@ body::after {
 
     overflow: hidden;
 
-    margin-bottom: 30;
+    margin-bottom: 30px;
 }
 
 /* ================= SLIDES ================= */
@@ -1422,9 +1422,9 @@ body::after {
 .contact-section,
 .service-card {
 
-    opacity: 0;
+    opacity: 0.2;
 
-    transform: translateY(60px);
+    transform: translateY(40px);
 
     transition:
         opacity 0.8s ease,
