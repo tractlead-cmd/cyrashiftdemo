@@ -1397,3 +1397,26 @@ body::after {
 
     opacity: 0.8;
 }
+
+/* ================= SCROLL REVEAL Animation ================= */
+
+.about-section,
+.services-section,
+.contact-section,
+.service-card {
+
+    opacity: 0;
+
+    transform: translateY(60px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.active-reveal {
+
+    opacity: 1 !important;
+
+    transform: translateY(0) !important;
+}
