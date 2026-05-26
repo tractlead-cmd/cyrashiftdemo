@@ -712,6 +712,7 @@ body::after {
 /* BUTTON */
 
 .contact-form button {
+
     height: 58px;
 
     border: none;
@@ -723,13 +724,17 @@ body::after {
     color: #111;
 
     font-size: 15px;
+
     font-weight: 700;
 
     cursor: pointer;
 
     transition: 0.3s ease;
-}
 
+    position: relative;
+
+    overflow: hidden;
+}
 /* BUTTON HOVER */
 
 .contact-form button:hover {
@@ -1533,4 +1538,36 @@ body::after {
     font-size: 16px;
 
     letter-spacing: 0.5px;
+}
+
+/* BUTTON SHINE EFFECT */
+
+.contact-form button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -100%;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+
+    transition: 0.6s;
+}
+
+.contact-form button:hover::before {
+
+    left: 100%;
 }
