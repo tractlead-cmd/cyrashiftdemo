@@ -1443,12 +1443,94 @@ body::after {
 
 .stats-section {
 
-    padding: 40px 20px 70px;
-
     position: relative;
+
+    padding: 80px 20px;
+
+    overflow: hidden;
 }
 
+/* ================= GRAPH BACKGROUND ================= */
+
+.graph-bg {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-end;
+
+    gap: 10px;
+
+    padding: 0 20px;
+
+    z-index: 1;
+
+    opacity: 0.45;
+}
+
+/* BARS */
+
+.bar {
+
+    flex: 1;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(255,215,0,0.15),
+            rgba(255,215,0,0.8)
+        );
+
+    border-radius: 10px 10px 0 0;
+
+    min-width: 12px;
+
+    animation: barFloat 4s ease-in-out infinite alternate;
+
+    box-shadow:
+        0 0 20px rgba(255,215,0,0.15);
+}
+
+/* RANDOM DELAY */
+
+.bar:nth-child(2n) {
+    animation-delay: 1s;
+}
+
+.bar:nth-child(3n) {
+    animation-delay: 2s;
+}
+
+.bar:nth-child(4n) {
+    animation-delay: 0.5s;
+}
+
+/* FLOAT EFFECT */
+
+@keyframes barFloat {
+
+    from {
+        transform: scaleY(0.92);
+    }
+
+    to {
+        transform: scaleY(1.05);
+    }
+}
+
+/* ================= STATS CONTAINER ================= */
+
 .stats-container {
+
+    position: relative;
+
+    z-index: 5;
 
     max-width: 1200px;
 
@@ -1456,33 +1538,44 @@ body::after {
 
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 
-    gap: 25px;
+    gap: 28px;
 }
+
+/* ================= CARD ================= */
 
 .stat-card {
 
-    background: rgba(255,255,255,0.03);
+    position: relative;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,15,15,0.92),
+            rgba(10,10,10,0.88)
+        );
 
-    border-radius: 20px;
+    border:
+        1px solid rgba(255,215,0,0.08);
 
-    padding: 40px 25px;
+    border-radius: 28px;
+
+    padding: 50px 30px;
 
     text-align: center;
 
-    backdrop-filter: blur(10px);
-
-    transition: 0.4s ease;
-
-    position: relative;
-
     overflow: hidden;
+
+    backdrop-filter: blur(14px);
+
+    transition: 0.35s ease;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.4);
 }
 
-/* GOLD SHINE EFFECT */
+/* GOLD GLOW */
 
 .stat-card::before {
 
@@ -1493,22 +1586,18 @@ body::after {
     inset: 0;
 
     background:
-    linear-gradient(
-        135deg,
-        transparent,
-        rgba(255,215,0,0.08),
-        transparent
-    );
+        radial-gradient(
+            circle at top,
+            rgba(255,215,0,0.12),
+            transparent 70%
+        );
 
     opacity: 0;
 
-    transition: 0.4s ease;
+    transition: 0.35s ease;
 }
 
-.stat-card:hover::before {
-
-    opacity: 1;
-}
+/* HOVER */
 
 .stat-card:hover {
 
@@ -1517,27 +1606,73 @@ body::after {
     border-color: rgba(255,215,0,0.25);
 
     box-shadow:
-    0 0 25px rgba(255,215,0,0.08);
+        0 0 35px rgba(255,215,0,0.12);
 }
+
+.stat-card:hover::before {
+
+    opacity: 1;
+}
+
+/* NUMBERS */
 
 .stat-card h2 {
 
-    font-size: 42px;
+    font-size: 58px;
 
-    color: #FFD700;
+    color: gold;
 
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 
     font-weight: 700;
+
+    position: relative;
+
+    z-index: 2;
 }
+
+/* TEXT */
 
 .stat-card p {
 
-    color: #bbb;
+    color: #b8b8b8;
 
-    font-size: 16px;
+    font-size: 18px;
 
     letter-spacing: 0.5px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+    .stats-section {
+        padding: 60px 16px;
+    }
+
+    .stats-container {
+        gap: 18px;
+    }
+
+    .stat-card {
+        padding: 40px 20px;
+    }
+
+    .stat-card h2 {
+        font-size: 44px;
+    }
+
+    .stat-card p {
+        font-size: 15px;
+    }
+
+    .graph-bg {
+        gap: 5px;
+    }
 }
 
 /* BUTTON SHINE EFFECT */
