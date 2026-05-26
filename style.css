@@ -1647,16 +1647,21 @@ button:hover ~ .custom-cursor {
     color:gold;
 }
 
-/* ================= HORIZONTAL SLIDER ================= */
+/* ================= HORIZONTAL ROW FIX ================= */
 
 .trust-logos{
+
     display:flex;
+
+    flex-direction:row;
+
+    flex-wrap:nowrap;
+
     justify-content:flex-start;
+
     align-items:center;
 
     gap:24px;
-
-    flex-wrap:nowrap;
 
     overflow-x:auto;
 
@@ -1679,11 +1684,17 @@ button:hover ~ .custom-cursor {
 /* ================= LOGO CARDS ================= */
 
 .trust-logo{
+
     min-width:180px;
+
     height:85px;
 
+    flex:0 0 auto;   /* VERY IMPORTANT FIX */
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     background:rgba(255,255,255,0.04);
@@ -1695,16 +1706,16 @@ button:hover ~ .custom-cursor {
     color:rgba(255,255,255,0.45);
 
     font-size:20px;
+
     font-weight:700;
 
     letter-spacing:2px;
 
     transition:0.35s ease;
-
-    flex-shrink:0;
 }
 
 .trust-logo:hover{
+
     transform:translateY(-5px);
 
     color:gold;
