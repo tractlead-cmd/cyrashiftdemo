@@ -1623,110 +1623,67 @@ button:hover ~ .custom-cursor {
 
 /* ================= TRUST SECTION ================= */
 
-.trust-section {
-    padding: 40px 20px 90px;
-
-    position: relative;
-    z-index: 1;
+.trust-section{
+    padding:40px 20px 90px;
+    position:relative;
+    z-index:1;
 }
 
-.trust-container {
-    width: 90%;
-    max-width: 1200px;
-
-    margin: auto;
-
-    text-align: center;
+.trust-container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    text-align:center;
 }
 
-/* TITLE */
-
-.trust-container h2 {
-    font-size: 44px;
-
-    color: white;
-
-    margin-bottom: 50px;
+.trust-container h2{
+    font-size:44px;
+    color:white;
+    margin-bottom:50px;
 }
 
-.trust-container h2 span {
-    color: gold;
+.trust-container h2 span{
+    color:gold;
 }
 
-/* LOGOS */
-
-.trust-logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 24px;
+.trust-logos{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:24px;
 }
 
-/* LOGO BOX */
+.trust-logo{
+    min-width:180px;
+    height:85px;
 
-.trust-logo {
-    min-width: 180px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    height: 85px;
+    background:rgba(255,255,255,0.04);
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border:1px solid rgba(255,255,255,0.06);
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.04),
-            rgba(255,255,255,0.02)
-        );
+    border-radius:22px;
 
-    border:
-        1px solid rgba(255,255,255,0.06);
+    color:rgba(255,255,255,0.45);
 
-    border-radius: 22px;
+    font-size:20px;
+    font-weight:700;
 
-    color: rgba(255,255,255,0.45);
+    letter-spacing:2px;
 
-    font-size: 20px;
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    backdrop-filter: blur(10px);
-
-    transition: 0.35s ease;
+    transition:0.35s ease;
 }
 
-/* HOVER */
+.trust-logo:hover{
+    transform:translateY(-5px);
 
-.trust-logo:hover {
+    color:gold;
 
-    transform: translateY(-5px);
+    border-color:rgba(255,215,0,0.25);
 
-    border-color: rgba(255,215,0,0.25);
-
-    color: gold;
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,0.35);
-}
-
-/* MOBILE */
-
-@media (max-width: 768px) {
-
-    .trust-container h2 {
-        font-size: 34px;
-    }
-
-    .trust-logo {
-        min-width: 140px;
-
-        height: 75px;
-
-        font-size: 16px;
-    }
+    box-shadow:0 15px 35px rgba(0,0,0,0.35);
 }
