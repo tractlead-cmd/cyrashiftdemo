@@ -617,24 +617,47 @@
     });
 
     </script>
-
-    <!-- CUSTOM CURSOR -->
-
-    <div class="custom-cursor"></div>
-
     <script>
 
-    const cursor = document.querySelector(".custom-cursor");
+const cursor = document.querySelector(".custom-cursor");
 
-    document.addEventListener("mousemove", (e) => {
+document.addEventListener("mousemove", (e) => {
 
-        cursor.style.left = e.clientX + "px";
+    cursor.style.left = e.clientX + "px";
 
-        cursor.style.top = e.clientY + "px";
+    cursor.style.top = e.clientY + "px";
+
+});
+
+/* EXPAND ON BUTTONS + LINKS */
+
+const hoverItems = document.querySelectorAll("a, button");
+
+hoverItems.forEach((item) => {
+
+    item.addEventListener("mouseenter", () => {
+
+        cursor.style.width = "55px";
+
+        cursor.style.height = "55px";
+
+        cursor.style.background = "rgba(255,215,0,0.18)";
 
     });
 
-    </script>
+    item.addEventListener("mouseleave", () => {
+
+        cursor.style.width = "30px";
+
+        cursor.style.height = "30px";
+
+        cursor.style.background = "rgba(255,215,0,0.12)";
+
+    });
+
+});
+
+</script>
 
 </body>
 
