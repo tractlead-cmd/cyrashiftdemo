@@ -1622,6 +1622,7 @@ button:hover ~ .custom-cursor {
 }
 
 /* ================= TRUST SECTION ================= */
+/* ================= TRUST SECTION ================= */
 
 .trust-section{
     padding:40px 20px 90px;
@@ -1646,13 +1647,36 @@ button:hover ~ .custom-cursor {
     color:gold;
 }
 
+/* ================= HORIZONTAL SLIDER ================= */
+
 .trust-logos{
     display:flex;
-    justify-content:center;
+    justify-content:flex-start;
     align-items:center;
-    flex-wrap:wrap;
+
     gap:24px;
+
+    flex-wrap:nowrap;
+
+    overflow-x:auto;
+
+    padding-bottom:10px;
+
+    scroll-behavior:smooth;
 }
+
+/* HIDE SCROLLBAR */
+
+.trust-logos::-webkit-scrollbar {
+    display: none;
+}
+
+.trust-logos {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* ================= LOGO CARDS ================= */
 
 .trust-logo{
     min-width:180px;
@@ -1676,6 +1700,8 @@ button:hover ~ .custom-cursor {
     letter-spacing:2px;
 
     transition:0.35s ease;
+
+    flex-shrink:0;
 }
 
 .trust-logo:hover{
