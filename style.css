@@ -1375,3 +1375,25 @@ body::after {
         font-size: 16px;
     }
 }
+
+/* ================= PREMIUM SECTION DIVIDER ================= */
+
+.section-divider {
+
+    width: 100%;
+    max-width: 1200px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(255,215,0,0.35),
+            transparent
+        );
+
+    margin: 20px auto 50px;
+
+    opacity: 0.8;
+}
