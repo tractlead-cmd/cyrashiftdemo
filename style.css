@@ -1627,7 +1627,7 @@ button:hover ~ .custom-cursor {
 .trust-section{
     padding:40px 20px 90px;
     position:relative;
-    z-index:1;
+    overflow:hidden;
 }
 
 .trust-container{
@@ -1647,80 +1647,62 @@ button:hover ~ .custom-cursor {
     color:gold;
 }
 
-/* ================= HORIZONTAL ROW FIX ================= */
+/* ================= SCROLL WRAPPER ================= */
 
 .trust-logos{
+    overflow:hidden;
+    white-space:nowrap;
+}
 
+/* MOVING TRACK */
+
+.trust-track{
     display:flex;
-
-    flex-direction:row;
-
-    flex-wrap:nowrap;
-
-    justify-content:flex-start;
-
-    align-items:center;
-
     gap:24px;
+    width:max-content;
 
-    overflow-x:auto;
-
-    padding-bottom:10px;
-
-    scroll-behavior:smooth;
+    animation: scroll-left 18s linear infinite;
 }
 
-/* HIDE SCROLLBAR */
+/* ANIMATION */
 
-.trust-logos::-webkit-scrollbar {
-    display: none;
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
-.trust-logos {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-/* ================= LOGO CARDS ================= */
+/* ================= LOGO CARD ================= */
 
 .trust-logo{
-
     min-width:180px;
-
     height:85px;
 
-    flex:0 0 auto;   /* VERY IMPORTANT FIX */
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     background:rgba(255,255,255,0.04);
-
     border:1px solid rgba(255,255,255,0.06);
-
     border-radius:22px;
 
     color:rgba(255,255,255,0.45);
 
     font-size:20px;
-
     font-weight:700;
 
     letter-spacing:2px;
 
-    transition:0.35s ease;
+    flex-shrink:0;
+
+    transition:0.3s ease;
 }
 
 .trust-logo:hover{
-
     transform:translateY(-5px);
-
     color:gold;
-
     border-color:rgba(255,215,0,0.25);
-
-    box-shadow:0 15px 35px rgba(0,0,0,0.35);
 }
