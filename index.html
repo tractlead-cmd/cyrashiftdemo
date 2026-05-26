@@ -15,6 +15,9 @@
 
 <body>
 
+    <!-- CUSTOM CURSOR (ADD THIS LINE) -->
+    <div class="custom-cursor"></div>
+
     <!-- ================= HEADER ================= -->
 
     <header class="header">
@@ -251,8 +254,6 @@
 
     </section>
 
-    </section>
-
 <!-- SECTION DIVIDER -->
 <div class="section-divider"></div>
 
@@ -308,14 +309,6 @@
 
 <!-- SECTION DIVIDER -->
 <div class="section-divider"></div>
-
-<!-- ================= SERVICES SECTION ================= -->
-
-<section class="services-section">
-
-    <div class="services-container">
-
-        <div class="services-title">
 
     <!-- ================= SERVICES SECTION ================= -->
 
@@ -471,7 +464,7 @@
     </div>
 
     </div>
-</div>
+    </div>
 
 </section>
 
@@ -555,48 +548,57 @@
 
     </footer>
 
-    <!-- ================= SLIDER SCRIPT ================= -->
+   <!-- ================= SLIDER SCRIPT ================= -->
 
-    <script>
+<script>
+    const slides = document.querySelectorAll(".slide");
 
-        const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
 
-        let currentSlide = 0;
+    function showSlide(index) {
 
-        function showSlide(index) {
+        slides.forEach((slide) => {
 
-            slides.forEach((slide) => {
+            // remove active class from all slides
+            slide.classList.remove("active");
 
-                slide.classList.remove("active");
+            // reset paragraph animation safely
+            const p = slide.querySelector("p");
 
-                const p = slide.querySelector("p");
-
+            if (p) {
                 p.style.animation = "none";
 
+                // force reflow (restart animation trick)
                 void p.offsetWidth;
 
                 p.style.animation = "";
+            }
 
-            });
+        });
 
-            slides[index].classList.add("active");
+        // activate current slide
+        slides[index].classList.add("active");
+    }
+
+    // initialize first slide
+    if (slides.length > 0) {
+        showSlide(currentSlide);
+    }
+
+    // auto slider
+    setInterval(() => {
+
+        currentSlide++;
+
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
         }
 
         showSlide(currentSlide);
 
-        setInterval(() => {
-
-            currentSlide++;
-
-            if (currentSlide >= slides.length) {
-                currentSlide = 0;
-            }
-
-            showSlide(currentSlide);
-
-        }, 6500);
-
-    </script>
+    }, 6500);
+    
+</script>
 
     <!-- SCROLL TO TOP BUTTON -->
 
@@ -606,24 +608,56 @@
 
     </button>
 
-    <!-- SCROLL BUTTON SCRIPT -->
+ <!-- SCROLL SCRIPT (OPTIMIZED) -->
 
-    <script>
+<script>
+    const scrollBtn = document.getElementById("scrollTopBtn");
 
-        const scrollBtn = document.getElementById("scrollTopBtn");
+    const reveals = document.querySelectorAll(
+        ".about-section, .services-section, .contact-section, .service-card"
+    );
 
-        window.addEventListener("scroll", () => {
+    let ticking = false;
 
-            if (window.scrollY > 300) {
+    window.addEventListener("scroll", () => {
 
-                scrollBtn.classList.add("show");
+        if (!ticking) {
 
-            } else {
+            window.requestAnimationFrame(() => {
 
-                scrollBtn.classList.remove("show");
-            }
-        });
+                const scrollY = window.scrollY;
+                const windowHeight = window.innerHeight;
 
+                // ================= SCROLL TO TOP BUTTON =================
+                if (scrollBtn) {
+                    if (scrollY > 300) {
+                        scrollBtn.classList.add("show");
+                    } else {
+                        scrollBtn.classList.remove("show");
+                    }
+                }
+
+                // ================= SCROLL REVEAL =================
+                reveals.forEach((el) => {
+
+                    const revealTop = el.getBoundingClientRect().top;
+
+                    if (revealTop < windowHeight - 80) {
+                        el.classList.add("active-reveal");
+                    }
+
+                });
+
+                ticking = false;
+            });
+
+            ticking = true;
+        }
+    });
+
+    // ================= CLICK TO SCROLL TOP =================
+
+    if (scrollBtn) {
         scrollBtn.addEventListener("click", () => {
 
             window.scrollTo({
@@ -632,8 +666,8 @@
             });
 
         });
-
-    </script>
+    }
+</script>
 
         <!-- SCROLL REVEAL ANIMATION -->
 
