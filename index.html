@@ -527,6 +527,34 @@
 
     </script>
 
+        <!-- SCROLL REVEAL ANIMATION -->
+
+    <script>
+
+    const reveals = document.querySelectorAll(
+    ".about-section, .services-section, .contact-section, .service-card"
+    );
+
+    window.addEventListener("scroll", () => {
+
+        reveals.forEach((el) => {
+
+            const windowHeight = window.innerHeight;
+
+            const revealTop = el.getBoundingClientRect().top;
+
+            if(revealTop < windowHeight - 80){
+
+                el.classList.add("active-reveal");
+
+            }
+
+        });
+
+    });
+
+    </script>
+    
 </body>
 
 </html>
