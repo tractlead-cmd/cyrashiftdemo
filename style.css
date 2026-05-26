@@ -1636,13 +1636,6 @@ body::after {
 
     inset: 0;
 
-    background:
-        radial-gradient(
-            circle at top,
-            rgba(255,215,0,0.12),
-            transparent 70%
-        );
-
     opacity: 0;
 
     transition: 0.35s ease;
