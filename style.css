@@ -1486,17 +1486,19 @@ body::after {
 
 /* ================= PREMIUM STATS SECTION ================= */
 
+/* ================= PREMIUM STATS SECTION ================= */
+
 .stats-section {
 
     position: relative;
 
-    padding: 80px 20px;
+    padding: 55px 20px;
 
     overflow: hidden;
 
     background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
 
     background-size: 40px 40px;
 }
@@ -1516,50 +1518,33 @@ body::after {
     display: flex;
     align-items: flex-end;
 
-    gap: 10px;
+    gap: 4px;
 
-    padding: 0 20px;
+    padding: 0 30px;
 
     z-index: 1;
 
-    opacity: 0.45;
+    opacity: 0.22;
 }
 
-/* BARS */
+/* THIN BARS */
 
 .bar {
 
     flex: 1;
 
+    max-width: 12px;
+
     background:
         linear-gradient(
             to top,
-            rgba(255,215,0,0.15),
-            rgba(255,215,0,0.8)
+            rgba(255,215,0,0.08),
+            rgba(255,215,0,0.55)
         );
 
     border-radius: 10px 10px 0 0;
 
-    min-width: 12px;
-
     animation: barFloat 4s ease-in-out infinite alternate;
-
-    box-shadow:
-        0 0 20px rgba(255,215,0,0.15);
-}
-
-/* RANDOM DELAY */
-
-.bar:nth-child(2n) {
-    animation-delay: 1s;
-}
-
-.bar:nth-child(3n) {
-    animation-delay: 2s;
-}
-
-.bar:nth-child(4n) {
-    animation-delay: 0.5s;
 }
 
 /* FLOAT EFFECT */
@@ -1567,11 +1552,11 @@ body::after {
 @keyframes barFloat {
 
     from {
-        transform: scaleY(0.92);
+        transform: scaleY(0.96);
     }
 
     to {
-        transform: scaleY(1.05);
+        transform: scaleY(1.03);
     }
 }
 
@@ -1583,15 +1568,15 @@ body::after {
 
     z-index: 5;
 
-    max-width: 1200px;
+    max-width: 1000px;
 
     margin: auto;
 
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
 
-    gap: 28px;
+    gap: 18px;
 }
 
 /* ================= CARD ================= */
@@ -1603,76 +1588,49 @@ body::after {
     background:
         linear-gradient(
             145deg,
-            rgba(15,15,15,0.92),
+            rgba(18,18,18,0.92),
             rgba(10,10,10,0.88)
         );
 
     border:
-        1px solid rgba(255,215,0,0.08);
+        1px solid rgba(255,215,0,0.06);
 
-    border-radius: 28px;
+    border-radius: 22px;
 
-    padding: 50px 30px;
+    padding: 28px 20px;
 
     text-align: center;
 
     overflow: hidden;
 
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(10px);
 
-    transition: 0.35s ease;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.4);
-}
-
-/* GOLD GLOW */
-
-.stat-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    opacity: 0;
-
-    transition: 0.35s ease;
+    transition: 0.3s ease;
 }
 
 /* HOVER */
 
 .stat-card:hover {
 
-    transform: translateY(-8px);
+    transform: translateY(-4px);
 
-    border-color: rgba(255,215,0,0.25);
+    border-color: rgba(255,215,0,0.18);
 
     box-shadow:
-        0 0 35px rgba(255,215,0,0.12);
-}
-
-.stat-card:hover::before {
-
-    opacity: 1;
+        0 0 20px rgba(255,215,0,0.08);
 }
 
 /* NUMBERS */
 
 .stat-card h2 {
 
-    font-size: 58px;
+    font-size: 36px;
 
     color: gold;
 
-    margin-bottom: 14px;
+    margin-bottom: 8px;
 
     font-weight: 700;
-
-    position: relative;
-
-    z-index: 2;
 }
 
 /* TEXT */
@@ -1681,41 +1639,45 @@ body::after {
 
     color: #b8b8b8;
 
-    font-size: 18px;
+    font-size: 14px;
 
-    letter-spacing: 0.5px;
-
-    position: relative;
-
-    z-index: 2;
+    letter-spacing: 0.3px;
 }
 
 /* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
 
-    .stats-section {
-        padding: 60px 16px;
-    }
-
     .stats-container {
-        gap: 18px;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 14px;
     }
 
     .stat-card {
-        padding: 40px 20px;
+
+        padding: 24px 16px;
     }
 
     .stat-card h2 {
-        font-size: 44px;
+
+        font-size: 28px;
     }
 
     .stat-card p {
-        font-size: 15px;
+
+        font-size: 13px;
     }
 
     .graph-bg {
-        gap: 5px;
+
+        gap: 3px;
+    }
+
+    .bar {
+
+        max-width: 8px;
     }
 }
 
