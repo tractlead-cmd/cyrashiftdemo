@@ -764,6 +764,46 @@ hoverItems.forEach((item) => {
 
 </script>
 
+<!-- ================= HERO IMAGE SLIDER SCRIPT ================= -->
+
+<script>
+
+const dashboards = document.querySelectorAll(".hero-dashboard");
+
+let currentDashboard = 0;
+
+function showDashboard(index){
+
+    dashboards.forEach((img)=>{
+
+        img.classList.remove("active-dashboard");
+
+    });
+
+    dashboards[index].classList.add("active-dashboard");
+}
+
+/* AUTO SLIDE */
+
+setInterval(()=>{
+
+    currentDashboard++;
+
+    if(currentDashboard >= dashboards.length){
+
+        currentDashboard = 0;
+    }
+
+    showDashboard(currentDashboard);
+
+}, 5000);
+
+</script>
+
+</body>
+
+</html>
+
 </body>
 
 </html>
