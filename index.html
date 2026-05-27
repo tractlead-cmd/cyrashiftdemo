@@ -577,58 +577,76 @@
 
     </footer>
 
-   <!-- ================= SLIDER SCRIPT ================= -->
+<!-- ================= SLIDER SCRIPT ================= -->
 
 <script>
-    const slides = document.querySelectorAll(".slide");
 
-    let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
 
-    function showSlide(index) {
+const dashboards = document.querySelectorAll(".hero-dashboard");
 
-        slides.forEach((slide) => {
+let currentSlide = 0;
 
-            // remove active class from all slides
-            slide.classList.remove("active");
+function showSlide(index) {
 
-            // reset paragraph animation safely
-            const p = slide.querySelector("p");
+    /* REMOVE ACTIVE */
 
-            if (p) {
-                p.style.animation = "none";
+    slides.forEach((slide) => {
 
-                // force reflow (restart animation trick)
-                void p.offsetWidth;
+        slide.classList.remove("active");
 
-                p.style.animation = "";
-            }
+    });
 
-        });
+    dashboards.forEach((img) => {
 
-        // activate current slide
-        slides[index].classList.add("active");
-    }
+        img.classList.remove("active-dashboard");
 
-    // initialize first slide
-    if (slides.length > 0) {
-        showSlide(currentSlide);
-    }
+    });
 
-    // auto slider
-    setInterval(() => {
+    /* SHOW TEXT IMMEDIATELY */
+
+    slides[index].classList.add("active");
+
+    /* WAIT FOR TYPEWRITER TO FINISH */
+
+    setTimeout(() => {
+
+        dashboards[index].classList.add("active-dashboard");
+
+    }, 2200);
+
+}
+
+/* INITIAL */
+
+showSlide(currentSlide);
+
+/* AUTO SLIDER */
+
+setInterval(() => {
+
+    /* REMOVE IMAGE EARLY */
+
+    dashboards[currentSlide].classList.remove("active-dashboard");
+
+    /* WAIT BEFORE NEXT TEXT */
+
+    setTimeout(() => {
 
         currentSlide++;
 
-        if (currentSlide >= slides.length) {
+        if(currentSlide >= slides.length){
+
             currentSlide = 0;
         }
 
         showSlide(currentSlide);
 
-    }, 6500);
-    
-</script>
+    }, 500);
 
+}, 6500);
+
+</script>
     <!-- SCROLL TO TOP BUTTON -->
 
     <button id="scrollTopBtn">
@@ -768,45 +786,6 @@ hoverItems.forEach((item) => {
 
 </script>
 
-<!-- ================= HERO IMAGE SLIDER SCRIPT ================= -->
-
-<script>
-
-const dashboards = document.querySelectorAll(".hero-dashboard");
-
-let currentDashboard = 0;
-
-function showDashboard(index){
-
-    dashboards.forEach((img)=>{
-
-        img.classList.remove("active-dashboard");
-
-    });
-
-    dashboards[index].classList.add("active-dashboard");
-}
-
-/* AUTO SLIDE */
-
-setInterval(()=>{
-
-    currentDashboard++;
-
-    if(currentDashboard >= dashboards.length){
-
-        currentDashboard = 0;
-    }
-
-    showDashboard(currentDashboard);
-
-}, 6500);
-
-</script>
-
-</body>
-
-</html>
 
 </body>
 
