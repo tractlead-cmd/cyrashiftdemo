@@ -352,9 +352,9 @@ body::after {
 
     opacity: 1;
 
-    animation:
-        typing 2s ease,
-        blink 0.7s infinite;
+animation:
+    typing 2.5s steps(60, end) forwards,
+    blink 0.7s infinite;
 }
 
 /* ================= TYPEWRITER ANIMATION ================= */
