@@ -470,8 +470,9 @@ body::after {
 
 .footer{
     background:#050505;
-    padding:28px 0 12px;
+    padding:24px 0 10px;
     border-top:1px solid rgba(255,215,0,0.08);
+    position:relative;
 }
 
 /* MAIN LAYOUT */
@@ -484,7 +485,8 @@ body::after {
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    gap:30px;
+
+    gap:20px;
 }
 
 /* ================= LEFT ================= */
@@ -494,21 +496,28 @@ body::after {
 
     display:flex;
     flex-direction:column;
-    justify-content:center;
+
+    align-items:flex-start;
 }
+
+/* LOGO */
 
 .footer-logo{
-    width:145px;
+    width:135px;
+
     display:block;
 
-    margin-bottom:35px;
+    margin-bottom:14px;
 }
 
+/* DMCA */
+
 .dmca-badge{
-    width:78px;
+    width:72px;
+
     display:block;
 
-    margin-left:18px;
+    margin-left:28px;
 }
 
 /* ================= CENTER ================= */
@@ -518,20 +527,25 @@ body::after {
 
     display:flex;
     flex-direction:column;
+
     align-items:center;
 
-    padding-top:28px;
+    padding-top:38px;
 }
+
+/* LINKS */
 
 .footer-links{
     display:flex;
-    gap:26px;
 
-    margin-bottom:14px;
+    gap:24px;
+
+    margin-bottom:10px;
 }
 
 .footer-links a{
     color:#fff;
+
     text-decoration:none;
 
     font-size:15px;
@@ -544,6 +558,8 @@ body::after {
 .footer-links a:hover{
     color:gold;
 }
+
+/* HOVER LINE */
 
 .footer-links a::after{
     content:'';
@@ -565,13 +581,14 @@ body::after {
     width:100%;
 }
 
+/* EMAIL */
+
 .footer-email{
-    font-size:13px;
-    color:#b8b8b8;
+    font-size:12px;
 
-    margin-top:4px;
+    color:#9d9d9d;
 
-    letter-spacing:0.5px;
+    letter-spacing:0.4px;
 }
 
 /* ================= RIGHT ================= */
@@ -581,38 +598,40 @@ body::after {
 
     text-align:right;
 
-    padding-top:10px;
+    padding-top:32px;
 }
 
 .footer-contact p{
-    margin-bottom:10px;
-
-    color:#ddd;
+    color:#d2d2d2;
 
     font-size:13px;
 
     line-height:1.5;
+
+    margin-bottom:8px;
 }
 
 .footer-contact span{
     color:gold;
+
     font-weight:600;
 }
 
 /* ================= BOTTOM ================= */
 
 .footer-bottom{
-    margin-top:18px;
 
-    padding-top:14px;
+    margin-top:16px;
+
+    padding-top:12px;
+
+    border-top:1px solid rgba(255,255,255,0.05);
 
     text-align:center;
 
     color:#666;
 
-    font-size:12px;
-
-    border-top:1px solid rgba(255,255,255,0.05);
+    font-size:11px;
 }
 
 /* ================= MOBILE ================= */
@@ -626,7 +645,7 @@ body::after {
 
         text-align:center;
 
-        gap:25px;
+        gap:24px;
     }
 
     .footer-brand,
@@ -634,18 +653,20 @@ body::after {
         width:100%;
 
         text-align:center;
+
+        align-items:center;
     }
 
     .footer-logo{
-        width:130px;
+        width:120px;
 
-        margin:auto auto 18px;
+        margin-bottom:12px;
     }
 
     .dmca-badge{
-        width:75px;
+        width:68px;
 
-        margin:auto;
+        margin-left:0;
     }
 
     .footer-center{
@@ -666,6 +687,10 @@ body::after {
 
     .footer-email{
         font-size:12px;
+    }
+
+    .footer-contact{
+        padding-top:0;
     }
 
     .footer-contact p{
