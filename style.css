@@ -1894,3 +1894,219 @@ button:hover ~ .custom-cursor {
 
 <!-- SECTION DIVIDER -->
 <div class="section-divider"></div>
+
+/* ================= CAMPAIGN SECTION ================= */
+
+.campaign-section{
+    padding:80px 20px;
+    position:relative;
+    z-index:1;
+}
+
+.campaign-container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ================= TOP CONTENT ================= */
+
+.campaign-top-content{
+    max-width:1050px;
+    margin:0 auto 70px;
+    text-align:center;
+}
+
+.campaign-top-content h2{
+    font-size:54px;
+    color:white;
+    line-height:1.2;
+    margin-bottom:28px;
+}
+
+.campaign-top-content h2 span{
+    color:gold;
+}
+
+.campaign-top-content p{
+    color:#9b9b9b;
+    font-size:17px;
+    line-height:2;
+    margin-bottom:22px;
+}
+
+/* ================= TITLE ================= */
+
+.campaign-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.campaign-title h2{
+    font-size:50px;
+    color:white;
+    margin-bottom:16px;
+}
+
+.campaign-title h2 span{
+    color:gold;
+}
+
+.campaign-title p{
+    color:#8f8f8f;
+    font-size:18px;
+}
+
+/* ================= GRID ================= */
+
+.campaign-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+}
+
+/* ================= CARD ================= */
+
+.campaign-card{
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,0.04),
+        rgba(255,255,255,0.02)
+    );
+
+    border:1px solid rgba(255,255,255,0.07);
+
+    border-radius:28px;
+
+    padding:40px 32px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(14px);
+
+    transition:0.35s ease;
+
+    min-height:260px;
+}
+
+/* GOLD GLOW */
+
+.campaign-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-60px;
+    right:-60px;
+
+    width:170px;
+    height:170px;
+
+    background:rgba(255,215,0,0.07);
+
+    border-radius:50%;
+
+    filter:blur(40px);
+}
+
+/* HOVER */
+
+.campaign-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(255,215,0,0.22);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.45);
+}
+
+/* ================= ICON ================= */
+
+.campaign-icon{
+
+    width:78px;
+    height:78px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:34px;
+
+    background:rgba(255,215,0,0.08);
+
+    border:1px solid rgba(255,215,0,0.15);
+
+    border-radius:22px;
+
+    margin-bottom:26px;
+
+    color:gold;
+
+    box-shadow:
+    0 0 20px rgba(255,215,0,0.08);
+}
+
+/* ================= CARD TITLE ================= */
+
+.campaign-card h3{
+
+    font-size:24px;
+
+    color:white;
+
+    margin-bottom:18px;
+}
+
+/* ================= CARD TEXT ================= */
+
+.campaign-card p{
+
+    color:#9d9d9d;
+
+    font-size:16px;
+
+    line-height:1.9;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:992px){
+
+    .campaign-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .campaign-top-content h2{
+        font-size:42px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .campaign-grid{
+        grid-template-columns:1fr;
+    }
+
+    .campaign-title h2,
+    .campaign-top-content h2{
+        font-size:34px;
+    }
+
+    .campaign-title p,
+    .campaign-top-content p{
+        font-size:15px;
+    }
+
+    .campaign-card{
+        min-height:auto;
+    }
+
+}
