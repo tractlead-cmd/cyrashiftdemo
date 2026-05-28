@@ -352,31 +352,27 @@ body::after {
 
     opacity: 1;
 
-animation:
-    typing 2.5s steps(60, end) forwards,
-    blink 0.7s infinite;
+    animation:
+        typing 2.5s steps(60, end) forwards,
+        blink 0.7s infinite;
 }
 
 /* ================= TYPEWRITER ANIMATION ================= */
 
 @keyframes typing {
-
     from {
-        max-width: 0;
+        width: 0;
     }
-
     to {
-        max-width: 1000px;
+        width: 100%;
     }
 }
 
 @keyframes blink {
-
     50% {
         border-color: transparent;
     }
 }
-
 /* ================= STEPS FLOW ================= */
 
 .steps-flow {
