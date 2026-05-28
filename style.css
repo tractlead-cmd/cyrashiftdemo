@@ -468,138 +468,168 @@ body::after {
 
 /* ================= FOOTER ================= */
 
-.footer {
-    margin-top: 1200px;
-    padding: 40px 0 20px;
-    background: rgba(15,15,15,0.95);
-    border-top: 1px solid rgba(255,255,255,0.05);
-    position: relative;
-    z-index: 1;
+.footer{
+    background:#050505;
+    padding:70px 0 25px;
+    border-top:1px solid rgba(255,215,0,0.08);
+    position:relative;
+    overflow:hidden;
 }
 
-.footer-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-}
+.footer-container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
 
-/* NEW TOP SECTION */
-
-.footer-top{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    gap:30px;
+    align-items:flex-start;
+    gap:60px;
     flex-wrap:wrap;
 }
 
 /* LEFT */
 
-.footer-left img{
-    width:170px;
+.footer-brand{
+    flex:1;
+    min-width:250px;
+}
+
+.footer-logo{
+    width:260px;
+    margin-bottom:25px;
+}
+
+.dmca-badge{
+    width:160px;
+}
+
+/* CENTER */
+
+.footer-center{
+    flex:1;
+    min-width:250px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    padding-top:35px;
+}
+
+.footer-links{
+    display:flex;
+    gap:40px;
+    margin-bottom:35px;
+}
+
+.footer-links a{
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+    transition:0.3s;
+    position:relative;
+}
+
+.footer-links a:hover{
+    color:gold;
+}
+
+.footer-links a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0%;
+    height:1px;
+    background:gold;
+    transition:0.3s;
+}
+
+.footer-links a:hover::after{
+    width:100%;
+}
+
+.footer-email{
+    color:#d4af37;
+    font-size:18px;
+    letter-spacing:1px;
 }
 
 /* RIGHT */
 
-.footer-right{
+.footer-contact{
+    flex:1;
+    min-width:300px;
+
     text-align:right;
-    color:#ddd;
-    line-height:1.8;
-    font-size:15px;
+
+    padding-top:20px;
 }
 
-.footer-right span{
+.footer-contact p{
+    color:#ddd;
+    margin-bottom:22px;
+    line-height:1.8;
+    font-size:16px;
+}
+
+.footer-contact span{
     color:gold;
     font-weight:600;
 }
 
-/* LINKS */
-
-.footer-links {
-    margin: 25px 0 15px;
-    text-align:center;
-}
-
-.footer-links a {
-    color: #ddd;
-    text-decoration: none;
-    margin: 0 15px;
-    transition: 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: gold;
-}
-
 /* BOTTOM */
 
-.footer-bottom {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #666;
+.footer-bottom{
+    margin-top:55px;
     text-align:center;
+    color:#666;
+    font-size:14px;
+
+    border-top:1px solid rgba(255,255,255,0.05);
+
+    padding-top:20px;
 }
 
 /* ================= MOBILE ================= */
 
-@media (max-width:768px){
+@media(max-width:900px){
 
-    .footer-top{
+    .footer-container{
         flex-direction:column;
+        align-items:center;
         text-align:center;
     }
 
-    .footer-right{
-        text-align:center;
-        font-size:14px;
+    .footer-brand,
+    .footer-center,
+    .footer-contact{
+        width:100%;
     }
 
-    .footer-left img{
+    .footer-contact{
+        text-align:center;
+    }
+
+    .footer-links{
+        gap:20px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .footer-links a{
+        font-size:18px;
+    }
+
+    .footer-logo{
+        width:220px;
+    }
+
+    .dmca-badge{
         width:140px;
     }
-
-    .container {
-        height: 70px;
-    }
-
-    .logo img {
-        height: 80px;
-    }
-
-    .nav a {
-        margin-left: 18px;
-        font-size: 14px;
-    }
-
-    .slider {
-        height: 360px;
-    }
-
-    .slide h1 {
-        font-size: 40px;
-    }
-
-    .slide p {
-        font-size: 16px;
-        white-space: normal;
-        border-right: none;
-    }
-
-    .steps-flow {
-        gap: 10px;
-    }
-
-    .step-end {
-        width: 90px;
-        height: 38px;
-        font-size: 12px;
-    }
-
-    .blankline h2 {
-        font-size: 32px;
-    }
 }
-
 
 /* ================= CONTACT SECTION ================= */
 
