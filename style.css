@@ -2339,13 +2339,11 @@ AND replace this:
 WITH THIS:
 
 @keyframes typing {
-
     from {
-        clip-path: inset(0 100% 0 0);
+        width: 0;
     }
-
     to {
-        clip-path: inset(0 0 0 0);
+        width: 100%;
     }
 }
 
