@@ -315,33 +315,22 @@ body::after {
 /* ================= PARAGRAPH ================= */
 
 .slide p {
-
-    font-size: 21px;
-
+    font-size: 22px;
     margin-top: 20px;
 
-    color: #b5b5b5;
-
-    line-height: 1.9;
-
-    max-width: 850px;
-
-    width: 100%;
-
-    margin-left: auto;
-    margin-right: auto;
+    color: #aaa;
 
     overflow: hidden;
 
-    white-space: normal;
+    white-space: nowrap;
 
     border-right: 2px solid gold;
 
-    display: block;
+    display: inline-block;
+
+    max-width: 0;
 
     opacity: 0;
-
-    padding: 0 10px;
 }
 
 /* ACTIVE TYPEWRITER */
@@ -2117,4 +2106,118 @@ button:hover ~ .custom-cursor {
         min-height:auto;
     }
 
+}
+
+Your CSS is actually very good overall.
+The problem is mainly coming from this part:
+
+.slide p {
+    white-space: nowrap;
+    max-width: 0;
+}
+
+That is forcing the paragraph into ONE SINGLE LINE.
+
+So your text stretches too wide and looks broken/unbalanced.
+
+Also your hero text area is too wide for huge paragraphs.
+
+Replace ONLY this section:
+
+.slide p {
+    font-size: 22px;
+    margin-top: 20px;
+
+    color: #aaa;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    border-right: 2px solid gold;
+
+    display: inline-block;
+
+    max-width: 0;
+
+    opacity: 0;
+}
+
+WITH THIS:
+
+.slide p {
+
+    font-size: 21px;
+
+    margin-top: 20px;
+
+    color: #b5b5b5;
+
+    line-height: 1.9;
+
+    max-width: 850px;
+
+    width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    overflow: hidden;
+
+    white-space: normal;
+
+    border-right: 2px solid gold;
+
+    display: block;
+
+    opacity: 0;
+
+    padding: 0 10px;
+}
+
+AND replace this:
+
+@keyframes typing {
+
+    from {
+        max-width: 0;
+    }
+
+    to {
+        max-width: 1000px;
+    }
+}
+
+WITH THIS:
+
+@keyframes typing {
+
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+Then replace this:
+
+.slide.active p {
+    opacity: 1;
+
+    animation:
+        typing 2.5s steps(60, end) forwards,
+        blink 0.7s infinite;
+}
+
+WITH:
+
+.slide.active p {
+
+    opacity: 1;
+
+    animation:
+        typing 2s ease forwards,
+        blink 0.7s infinite;
 }
