@@ -491,17 +491,24 @@ body::after {
 
 .footer-brand{
     width:220px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
 .footer-logo{
-    width:108px;
+    width:145px;
     display:block;
-    margin-bottom:10px;
+
+    margin-bottom:35px;
 }
 
 .dmca-badge{
-    width:140px;
+    width:78px;
     display:block;
+
+    margin-left:18px;
 }
 
 /* ================= CENTER ================= */
@@ -513,42 +520,77 @@ body::after {
     flex-direction:column;
     align-items:center;
 
-    padding-top:12px;
+    padding-top:28px;
 }
 
 .footer-links{
     display:flex;
     gap:26px;
-    margin-bottom:10px;
+
+    margin-bottom:14px;
 }
 
 .footer-links a{
     color:#fff;
     text-decoration:none;
+
     font-size:15px;
-    transition:0.3s;
+
+    transition:0.3s ease;
+
+    position:relative;
 }
 
 .footer-links a:hover{
     color:gold;
 }
 
+.footer-links a::after{
+    content:'';
+
+    position:absolute;
+
+    left:0;
+    bottom:-4px;
+
+    width:0%;
+    height:1px;
+
+    background:gold;
+
+    transition:0.3s ease;
+}
+
+.footer-links a:hover::after{
+    width:100%;
+}
+
 .footer-email{
     font-size:13px;
     color:#b8b8b8;
+
+    margin-top:4px;
+
+    letter-spacing:0.5px;
 }
 
 /* ================= RIGHT ================= */
 
 .footer-contact{
     width:320px;
+
     text-align:right;
+
+    padding-top:10px;
 }
 
 .footer-contact p{
     margin-bottom:10px;
+
     color:#ddd;
+
     font-size:13px;
+
     line-height:1.5;
 }
 
@@ -561,11 +603,13 @@ body::after {
 
 .footer-bottom{
     margin-top:18px;
+
     padding-top:14px;
 
     text-align:center;
 
     color:#666;
+
     font-size:12px;
 
     border-top:1px solid rgba(255,255,255,0.05);
@@ -577,95 +621,55 @@ body::after {
 
     .footer-container{
         flex-direction:column;
+
         align-items:center;
+
         text-align:center;
+
         gap:25px;
     }
 
     .footer-brand,
     .footer-contact{
         width:100%;
+
         text-align:center;
     }
 
     .footer-logo{
-        margin:auto auto 10px;
+        width:130px;
+
+        margin:auto auto 18px;
     }
 
     .dmca-badge{
+        width:75px;
+
         margin:auto;
+    }
+
+    .footer-center{
+        padding-top:0;
     }
 
     .footer-links{
         flex-wrap:wrap;
+
         justify-content:center;
+
         gap:16px;
     }
 
-    .footer-contact p{
-        font-size:13px;
-    }
-}
-/* ================= BOTTOM ================= */
-
-.footer-bottom{
-    margin-top:35px;
-    padding-top:18px;
-
-    text-align:center;
-
-    color:#666;
-    font-size:13px;
-
-    border-top:1px solid rgba(255,255,255,0.05);
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:900px){
-
-    .footer-container{
-        flex-direction:column;
-        align-items:center;
-        text-align:center;
-    }
-
-    .footer-brand,
-    .footer-center,
-    .footer-contact{
-        width:100%;
-    }
-
-    .footer-contact{
-        text-align:center;
-    }
-
-    .footer-links{
-        gap:18px;
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
     .footer-links a{
-        font-size:15px;
-    }
-
-    .footer-logo{
-        width:150px;
-        margin:auto auto 12px;
-    }
-
-    .dmca-badge{
-        width:85px;
-        margin:auto;
+        font-size:14px;
     }
 
     .footer-email{
-        font-size:13px;
+        font-size:12px;
     }
 
     .footer-contact p{
-        font-size:13px;
+        font-size:12px;
     }
 }
 
