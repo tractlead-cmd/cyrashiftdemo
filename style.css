@@ -470,13 +470,9 @@ body::after {
 
 .footer {
     margin-top: 1200px;
-
     padding: 40px 0 20px;
-
     background: rgba(15,15,15,0.95);
-
     border-top: 1px solid rgba(255,255,255,0.05);
-
     position: relative;
     z-index: 1;
 }
@@ -484,31 +480,50 @@ body::after {
 .footer-container {
     width: 90%;
     max-width: 1200px;
-
     margin: auto;
-
-    text-align: center;
 }
 
-.footer-left h3 {
-    font-size: 24px;
+/* NEW TOP SECTION */
 
-    color: gold;
-
-    margin-bottom: 10px;
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
 }
+
+/* LEFT */
+
+.footer-left img{
+    width:170px;
+}
+
+/* RIGHT */
+
+.footer-right{
+    text-align:right;
+    color:#ddd;
+    line-height:1.8;
+    font-size:15px;
+}
+
+.footer-right span{
+    color:gold;
+    font-weight:600;
+}
+
+/* LINKS */
 
 .footer-links {
-    margin: 20px 0;
+    margin: 25px 0 15px;
+    text-align:center;
 }
 
 .footer-links a {
     color: #ddd;
-
     text-decoration: none;
-
     margin: 0 15px;
-
     transition: 0.3s ease;
 }
 
@@ -516,17 +531,32 @@ body::after {
     color: gold;
 }
 
+/* BOTTOM */
+
 .footer-bottom {
     margin-top: 20px;
-
     font-size: 12px;
-
     color: #666;
+    text-align:center;
 }
 
 /* ================= MOBILE ================= */
 
-@media (max-width: 768px) {
+@media (max-width:768px){
+
+    .footer-top{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .footer-right{
+        text-align:center;
+        font-size:14px;
+    }
+
+    .footer-left img{
+        width:140px;
+    }
 
     .container {
         height: 70px;
@@ -538,7 +568,6 @@ body::after {
 
     .nav a {
         margin-left: 18px;
-
         font-size: 14px;
     }
 
@@ -552,9 +581,7 @@ body::after {
 
     .slide p {
         font-size: 16px;
-
         white-space: normal;
-
         border-right: none;
     }
 
@@ -565,7 +592,6 @@ body::after {
     .step-end {
         width: 90px;
         height: 38px;
-
         font-size: 12px;
     }
 
@@ -573,7 +599,6 @@ body::after {
         font-size: 32px;
     }
 }
-
 
 
 /* ================= CONTACT SECTION ================= */
