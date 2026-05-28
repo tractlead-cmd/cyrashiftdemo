@@ -315,22 +315,33 @@ body::after {
 /* ================= PARAGRAPH ================= */
 
 .slide p {
-    font-size: 22px;
+
+    font-size: 21px;
+
     margin-top: 20px;
 
-    color: #aaa;
+    color: #b5b5b5;
+
+    line-height: 1.9;
+
+    max-width: 850px;
+
+    width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
 
     overflow: hidden;
 
-    white-space: nowrap;
+    white-space: normal;
 
     border-right: 2px solid gold;
 
-    display: inline-block;
-
-    max-width: 0;
+    display: block;
 
     opacity: 0;
+
+    padding: 0 10px;
 }
 
 /* ACTIVE TYPEWRITER */
