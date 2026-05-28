@@ -470,39 +470,37 @@ body::after {
 
 .footer{
     background:#050505;
-    padding:45px 0 18px;
+    padding:28px 0 12px;
     border-top:1px solid rgba(255,215,0,0.08);
-    position:relative;
-    overflow:hidden;
 }
 
+/* MAIN LAYOUT */
+
 .footer-container{
-    width:90%;
-    max-width:1300px;
+    width:92%;
+    max-width:1250px;
     margin:auto;
 
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    gap:40px;
-    flex-wrap:wrap;
+    gap:30px;
 }
 
 /* ================= LEFT ================= */
 
 .footer-brand{
-    flex:1;
-    min-width:220px;
+    width:220px;
 }
 
 .footer-logo{
-    width:170px;
-    margin-bottom:14px;
+    width:145px;
     display:block;
+    margin-bottom:10px;
 }
 
 .dmca-badge{
-    width:95px;
+    width:78px;
     display:block;
 }
 
@@ -510,67 +508,48 @@ body::after {
 
 .footer-center{
     flex:1;
-    min-width:250px;
 
     display:flex;
     flex-direction:column;
     align-items:center;
 
-    padding-top:10px;
+    padding-top:12px;
 }
 
 .footer-links{
     display:flex;
-    gap:28px;
-    margin-bottom:18px;
+    gap:26px;
+    margin-bottom:10px;
 }
 
 .footer-links a{
     color:#fff;
     text-decoration:none;
-    font-size:17px;
-    transition:0.3s ease;
-    position:relative;
+    font-size:15px;
+    transition:0.3s;
 }
 
 .footer-links a:hover{
     color:gold;
 }
 
-.footer-links a::after{
-    content:'';
-    position:absolute;
-    left:0;
-    bottom:-5px;
-    width:0%;
-    height:1px;
-    background:gold;
-    transition:0.3s ease;
-}
-
-.footer-links a:hover::after{
-    width:100%;
-}
-
 .footer-email{
-    font-size:14px;
-    color:#999;
-    letter-spacing:0.5px;
+    font-size:13px;
+    color:#b8b8b8;
 }
 
 /* ================= RIGHT ================= */
 
 .footer-contact{
-    flex:1;
-    min-width:260px;
+    width:320px;
     text-align:right;
 }
 
 .footer-contact p{
+    margin-bottom:10px;
     color:#ddd;
-    margin-bottom:12px;
-    line-height:1.6;
-    font-size:14px;
+    font-size:13px;
+    line-height:1.5;
 }
 
 .footer-contact span{
@@ -578,6 +557,55 @@ body::after {
     font-weight:600;
 }
 
+/* ================= BOTTOM ================= */
+
+.footer-bottom{
+    margin-top:18px;
+    padding-top:14px;
+
+    text-align:center;
+
+    color:#666;
+    font-size:12px;
+
+    border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .footer-container{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        gap:25px;
+    }
+
+    .footer-brand,
+    .footer-contact{
+        width:100%;
+        text-align:center;
+    }
+
+    .footer-logo{
+        margin:auto auto 10px;
+    }
+
+    .dmca-badge{
+        margin:auto;
+    }
+
+    .footer-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:16px;
+    }
+
+    .footer-contact p{
+        font-size:13px;
+    }
+}
 /* ================= BOTTOM ================= */
 
 .footer-bottom{
