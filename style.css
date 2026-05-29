@@ -391,6 +391,7 @@ body::after {
 }
 
 /* ================= MOBILE FIX ================= */
+/* ================= MOBILE FIX ================= */
 
 @media (max-width:768px){
 
@@ -405,6 +406,11 @@ body::after {
         border-right: none;
 
         opacity: 0;
+    }
+
+    /* ONLY ACTIVE SLIDE ANIMATES */
+
+    .slide.active p{
 
         animation:
         fadeText 1s ease forwards !important;
@@ -423,6 +429,7 @@ body::after {
         }
     }
 }
+
 
 /* ================= STEPS FLOW ================= */
 
