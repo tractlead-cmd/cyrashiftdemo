@@ -366,6 +366,8 @@ body::after {
     animation:
         typing 2.5s steps(60,end) forwards,
         blink .7s step-end infinite;
+
+    animation-fill-mode: forwards;
 }
 
 /* TYPEWRITER */
@@ -377,7 +379,7 @@ body::after {
     }
 
     to {
-        width: 850px;
+        width: 100%;
     }
 }
 
