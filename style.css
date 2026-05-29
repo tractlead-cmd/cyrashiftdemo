@@ -315,16 +315,16 @@ body::after {
 /* ================= PARAGRAPH ================= */
 
 .slide p {
+
     font-size: 21px;
     margin-top: 20px;
     color: #b5b5b5;
     line-height: 1.9;
 
     max-width: 850px;
-    margin-left: auto;
-    margin-right: auto;
 
     overflow: hidden;
+
     white-space: nowrap;
 
     border-right: 2px solid gold;
@@ -336,6 +336,8 @@ body::after {
     opacity: 0;
 }
 
+/* RESET */
+
 .slide:not(.active) p {
 
     animation: none;
@@ -343,27 +345,37 @@ body::after {
     width: 0;
 
     opacity: 0;
-
-    border-right: 2px solid gold;
 }
 
-/* ACTIVE TYPEWRITER */
+/* ACTIVE */
+
 .slide.active p {
+
     opacity: 1;
+
     animation:
-        typing 2.5s steps(60, end) forwards,
-        blink 0.7s step-end infinite;
+        typing 2.5s steps(60,end) forwards,
+        blink .7s step-end infinite;
 }
 
 /* TYPEWRITER */
+
 @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 850px;
+    }
 }
 
-/* BLINK */
 @keyframes blink {
-    50% { border-color: transparent; }
+
+    50% {
+        border-color: transparent;
+    }
 }
 
 /* ================= STEPS FLOW ================= */
