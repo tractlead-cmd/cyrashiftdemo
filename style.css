@@ -314,14 +314,22 @@ body::after {
 
 /* ================= PARAGRAPH ================= */
 
+/* ================= PARAGRAPH ================= */
+
 .slide p {
 
     font-size: 21px;
+
     margin-top: 20px;
+
     color: #b5b5b5;
+
     line-height: 1.9;
 
     max-width: 850px;
+
+    margin-left: auto;
+    margin-right: auto;
 
     overflow: hidden;
 
@@ -336,7 +344,7 @@ body::after {
     opacity: 0;
 }
 
-/* RESET */
+/* RESET NON ACTIVE */
 
 .slide:not(.active) p {
 
@@ -345,9 +353,11 @@ body::after {
     width: 0;
 
     opacity: 0;
+
+    border-right: 2px solid gold;
 }
 
-/* ACTIVE */
+/* ACTIVE TYPEWRITER */
 
 .slide.active p {
 
@@ -371,10 +381,46 @@ body::after {
     }
 }
 
+/* CURSOR BLINK */
+
 @keyframes blink {
 
     50% {
         border-color: transparent;
+    }
+}
+
+/* ================= MOBILE FIX ================= */
+
+@media (max-width:768px){
+
+    .slide p{
+
+        width: 100% !important;
+
+        white-space: normal;
+
+        overflow: visible;
+
+        border-right: none;
+
+        opacity: 0;
+
+        animation:
+        fadeText 1s ease forwards !important;
+    }
+
+    @keyframes fadeText{
+
+        from{
+            opacity:0;
+            transform:translateY(10px);
+        }
+
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
     }
 }
 
