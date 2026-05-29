@@ -336,6 +336,17 @@ body::after {
     opacity: 0;
 }
 
+.slide:not(.active) p {
+
+    animation: none;
+
+    width: 0;
+
+    opacity: 0;
+
+    border-right: 2px solid gold;
+}
+
 /* ACTIVE TYPEWRITER */
 .slide.active p {
     opacity: 1;
