@@ -314,6 +314,8 @@ body::after {
 
 /* ================= PARAGRAPH ================= */
 
+/* ================= PARAGRAPH ================= */
+
 .slide p {
 
     font-size: 21px;
@@ -337,7 +339,9 @@ body::after {
 
     display: inline-block;
 
-    width: 0;
+    width: auto;
+
+    max-width: 0;
 
     opacity: 0;
 }
@@ -348,7 +352,7 @@ body::after {
 
     animation: none;
 
-    width: 0;
+    max-width: 0;
 
     opacity: 0;
 
@@ -362,7 +366,7 @@ body::after {
     opacity: 1;
 
     animation:
-        typing 3s steps(80,end) forwards,
+        typing 2.5s steps(60,end) forwards,
         blink .7s step-end infinite;
 }
 
@@ -371,11 +375,20 @@ body::after {
 @keyframes typing {
 
     from {
-        width: 0;
+        max-width: 0;
     }
 
     to {
-        width: 850px;
+        max-width: 100%;
+    }
+}
+
+/* CURSOR BLINK */
+
+@keyframes blink {
+
+    50% {
+        border-color: transparent;
     }
 }
 
