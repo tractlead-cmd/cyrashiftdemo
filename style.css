@@ -2317,44 +2317,62 @@ button:hover ~ .custom-cursor {
 
 }
 
-/* ================= hero left button ================= */
-/* ================= hero left button ================= */
+/* ================= HERO BUTTON ================= */
+
+.hero-button-wrap {
+
+    margin-top: 40px;
+
+    display: flex;
+
+    justify-content: center;
+
+}
 
 .browse-db-btn {
 
-    position: relative;
+    display: inline-block;
 
-    overflow: hidden;
-
-}
-
-.browse-db-btn::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-
-    left: -120%;
-
-    width: 80%;
-
-    height: 100%;
+    padding: 16px 38px;
 
     background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.4),
-        transparent
+        135deg,
+        #ffd700,
+        #f5c400
     );
 
-    transition: 0.8s;
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 0 15px rgba(255,215,0,0.25),
+        0 0 35px rgba(255,215,0,0.10);
+
+    transition: all 0.35s ease;
 
 }
 
-.browse-db-btn:hover::before {
+.browse-db-btn:hover {
 
-    left: 140%;
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 25px rgba(255,215,0,0.45),
+        0 0 50px rgba(255,215,0,0.20);
+
+}
+
+.browse-db-btn:active {
+
+    transform: translateY(0);
 
 }
