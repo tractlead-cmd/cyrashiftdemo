@@ -116,11 +116,11 @@ body::after {
 /* ================= LOGO ================= */
 
 .logo img {
-    height: 105px;
+    height: 115px;
 
-    margin-top: 18px;
+    margin-top: 15px;
 
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .logo img:hover {
