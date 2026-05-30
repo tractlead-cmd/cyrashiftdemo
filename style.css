@@ -2100,9 +2100,9 @@ button:hover ~ .custom-cursor {
 
 .campaign-top-content h3{
     font-size: 56px;
-    color: white;
     line-height: 1.15;
     font-weight: 700;
+    color: white;
     margin-bottom: 30px;
     letter-spacing: -1px;
 }
