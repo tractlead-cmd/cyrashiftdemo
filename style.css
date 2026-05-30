@@ -1633,7 +1633,7 @@ body::after {
             transparent
         );
 
-    margin: 20px auto 50px;
+    margin: 10px auto 50px;
 
     opacity: 0.8;
 }
