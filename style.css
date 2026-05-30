@@ -314,8 +314,6 @@ body::after {
 
 /* ================= PARAGRAPH ================= */
 
-/* ================= PARAGRAPH ================= */
-
 .slide p {
 
     font-size: 21px;
@@ -364,10 +362,8 @@ body::after {
     opacity: 1;
 
     animation:
-        typing 2.5s steps(60,end) forwards,
+        typing 3s steps(80,end) forwards,
         blink .7s step-end infinite;
-
-    animation-fill-mode: forwards;
 }
 
 /* TYPEWRITER */
@@ -379,7 +375,7 @@ body::after {
     }
 
     to {
-        width: 100%;
+        width: 850px;
     }
 }
 
