@@ -2091,29 +2091,52 @@ button:hover ~ .custom-cursor {
 /* ================= TOP CONTENT ================= */
 
 .campaign-top-content{
-    max-width:1050px;
-    margin:0 auto 70px;
-    text-align:center;
+    max-width: 1050px;
+    margin: 0 auto 50px;
+    text-align: center;
 }
 
-.campaign-top-content h2{
-    font-size:54px;
-    color:white;
-    line-height:1.2;
-    margin-bottom:28px;
+/* HEADING */
+
+.campaign-top-content h3{
+    font-size: 56px;
+    color: white;
+    line-height: 1.15;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
 }
 
-.campaign-top-content h2 span{
-    color:gold;
+.campaign-top-content h3 span{
+    color: gold;
 }
+
+/* PARAGRAPHS */
 
 .campaign-top-content p{
-    color:#9b9b9b;
-    font-size:17px;
-    line-height:2;
-    margin-bottom:22px;
+    color: #9b9b9b;
+    font-size: 18px;
+    line-height: 1.9;
+    margin-bottom: 18px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+/* MOBILE */
+
+@media (max-width:768px){
+
+    .campaign-top-content h3{
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .campaign-top-content p{
+        font-size: 16px;
+        line-height: 1.8;
+    }
+}
 /* ================= TITLE ================= */
 
 .campaign-title{
