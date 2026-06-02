@@ -2320,59 +2320,51 @@ button:hover ~ .custom-cursor {
 /* ================= HERO BUTTON ================= */
 
 .hero-button-wrap {
-
-    margin-top: 40px;
-
-    display: flex;
-
-    justify-content: center;
-
+    /* STICKY BOTTOM LEFT FIXES */
+    position: fixed;         /* Keeps it locked on screen during scroll */
+    bottom: 25px;            /* Distance from the bottom window edge */
+    left: 25px;              /* Distance from the left window edge */
+    z-index: 9995;           /* Floats safely above your grids, images, and dividers */
 }
 
 .browse-db-btn {
-
     display: inline-block;
-
     padding: 16px 38px;
-
     background: linear-gradient(
         135deg,
         #ffd700,
         #f5c400
     );
-
     color: #111;
-
     text-decoration: none;
-
     font-size: 16px;
-
     font-weight: 700;
-
     letter-spacing: 0.5px;
-
     border-radius: 50px;
-
     box-shadow:
         0 0 15px rgba(255,215,0,0.25),
         0 0 35px rgba(255,215,0,0.10);
-
     transition: all 0.35s ease;
-
 }
 
 .browse-db-btn:hover {
-
     transform: translateY(-3px);
-
     box-shadow:
         0 0 25px rgba(255,215,0,0.45),
         0 0 50px rgba(255,215,0,0.20);
-
 }
 
 .browse-db-btn:active {
-
     transform: translateY(0);
+}
 
+@media (max-width: 480px) {
+    .hero-button-wrap {
+        bottom: 15px;
+        left: 15px;
+    }
+    .browse-db-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
 }
