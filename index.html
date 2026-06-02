@@ -801,71 +801,52 @@
 
 </footer>
 
-<!-- ================= SLIDER SCRIPT ================= -->
-
+<!-- ================= HERO SLIDER SCRIPT ================= -->
+    
 <script>
-
+    
 const slides = document.querySelectorAll(".slide");
-
 const dashboards = document.querySelectorAll(".hero-dashboard");
-
 let currentSlide = 0;
 
 function showSlide(index) {
-
-    /* REMOVE ACTIVE */
-
+    /* REMOVE ACTIVE CLASSES FROM ALL */
     slides.forEach((slide) => {
-
         slide.classList.remove("active");
-
     });
 
     dashboards.forEach((img) => {
-
         img.classList.remove("active-dashboard");
-
     });
 
     /* SHOW TEXT IMMEDIATELY */
-
     slides[index].classList.add("active");
 
-    /* WAIT FOR TYPEWRITER TO FINISH */
-
+    /* WAIT FOR TYPEWRITER TO FINISH, THEN SHOW DASHBOARD */
     setTimeout(() => {
-
         dashboards[index].classList.add("active-dashboard");
-
     }, 2200);
-
 }
 
-/* INITIAL */
-
+/* INITIAL RUN */
 showSlide(currentSlide);
 
 /* AUTO SLIDER */
-
 setInterval(() => {
-
-    /* REMOVE IMAGE EARLY */
-
+    // 1. Fade out the current dashboard image safely first
     dashboards[currentSlide].classList.remove("active-dashboard");
 
-    /* WAIT BEFORE NEXT TEXT */
-
+    // 2. Wait 500ms for the image fade-out transition, then switch slides
     setTimeout(() => {
-
+        // Increment the slide index
         currentSlide++;
 
-        if(currentSlide >= slides.length){
-
+        // PERFECT LOOP FIX: Reset to 0 if we exceed the total number of slides
+        if (currentSlide >= slides.length) {
             currentSlide = 0;
         }
 
         showSlide(currentSlide);
-
     }, 500);
 
 }, 6500);
