@@ -542,7 +542,7 @@
         });
     </script>
 
-    <script>
+<script>
 document.addEventListener("DOMContentLoaded", function() {
   const datasetPool = [
     {
@@ -646,7 +646,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 2. Clear old text content
     container.innerHTML = '';
 
-    // 3. Inject new matching structured card layout loops
+    // 3. Inject new matching structured card layout loops (Details div removed)
     selectedData.forEach(item => {
       let bulletsMarkup = item.bullets.map(b => `<li>${b}</li>`).join('');
       
@@ -655,7 +655,6 @@ document.addEventListener("DOMContentLoaded", function() {
           <h3>${item.title}</h3>
           <p>${item.desc}</p>
           <ul>${bulletsMarkup}</ul>
-          <div class="spotlight-details"><span>Details:</span> ${item.details}</div>
         </div>
       `;
     });
