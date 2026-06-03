@@ -1244,7 +1244,7 @@ button:hover ~ .custom-cursor {
 
 .browse-db-btn {
     display: inline-block;
-    padding: 14px 28px;
+    padding: 12px 24px;
     background: linear-gradient(135deg, #ffd700, #f5c400);
     color: #111;
     text-decoration: none;
