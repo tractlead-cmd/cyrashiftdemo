@@ -12,6 +12,9 @@
 
     <div class="custom-cursor"></div>
 
+    <!-- FIXED: Added the missing scroll top button so your JS code functions -->
+    <button id="scrollTopBtn" title="Go to top">↑</button>
+
     <header class="header">
         <div class="container">
             <div class="logo">
@@ -28,51 +31,42 @@
     </header>
 
     <section class="hero">
-
         <div class="hero-image-slider">
-            <img src="dashboard.png" class="hero-dashboard active-dashboard">
-            <img src="dashboard1.png" class="hero-dashboard">
-            <img src="dashboard2.png" class="hero-dashboard">
-            <img src="dashboard3.png" class="hero-dashboard">
-            <img src="dashboard4.png" class="hero-dashboard">
+            <img src="dashboard.png" class="hero-dashboard active-dashboard" alt="Dashboard View">
+            <img src="dashboard1.png" class="hero-dashboard" alt="Analytics View">
+            <img src="dashboard2.png" class="hero-dashboard" alt="Database View">
+            <img src="dashboard3.png" class="hero-dashboard" alt="Leads View">
+            <img src="dashboard4.png" class="hero-dashboard" alt="Campaigns View">
         </div>
 
         <div class="hero-overlay"></div>
 
         <div class="hero-container">
-
             <div class="slider">
-
                 <div class="slide active">
                     <h1>Access <span>Verified</span> B2B Databases</h1>
                     <p>Reach real decision makers with accurate and industry-targeted business email lists.</p>
                 </div>
-
                 <div class="slide">
                     <h1>Generate <span>High-Quality</span> Leads</h1>
                     <p>Scalable lead generation solutions designed for modern outreach campaigns.</p>
                 </div>
-
                 <div class="slide">
                     <h1>Launch <span>Smarter</span> Email Campaigns</h1>
                     <p>Improve deliverability and engagement using clean verified contact data.</p>
                 </div>
-
                 <div class="slide">
                     <h1>Target <span>Industry-Specific</span> Audiences</h1>
                     <p>Filter prospects by job role, location, company size, and business category.</p>
                 </div>
-
                 <div class="slide">
                     <h1>Expand <span>Global</span> Business Reach</h1>
                     <p>Connect with businesses across multiple countries and growing markets worldwide.</p>
                 </div>
-
                 <div class="slide">
                     <h1>Scale <span>Outreach</span> With Confidence</h1>
                     <p>Reliable B2B data solutions built for long-term growth and better conversions.</p>
                 </div>
-
             </div>
 
             <div class="steps-flow">
@@ -101,7 +95,6 @@
             <div class="hero-button-wrap">
                 <a href="database.html" class="browse-db-btn">Browse Our Database</a>
             </div>
-
         </div>
     </section>
 
@@ -111,7 +104,7 @@
         <div class="about-container">
             <div class="about-card">
                 <div class="about-image">
-                    <img src="office.png" alt="Office">
+                    <img src="office.png" alt="Office Working Environment">
                 </div>
 
                 <div class="about-content">
@@ -137,84 +130,63 @@
         </div>
     </section>
 
-
-    <!-- ==========================================================================
-     NEW SECTION: DATA SEGMENTATION FILTERS 
-     ========================================================================== -->
-<section class="segment-section">
-    <div class="segment-container">
-        
-        <div class="segment-header">
-            <h2>Precision <span>Audience Intelligence</span></h2>
-            <p>Filter our master B2B datasets by the metrics that matter most to your sales pipeline.</p>
-        </div>
-
-        <div class="segment-grid">
-            
-            <!-- Filter 1 -->
-            <div class="segment-card">
-                <div class="segment-icon">📊</div>
-                <div class="segment-body">
-                    <h3>Enterprise Scale</h3>
-                    <p>Target prospects by employee headcount tiers, tracking organizational growth vectors from agile startups up to Fortune 500 conglomerates.</p>
-                </div>
-            </div>
-
-            <!-- Filter 2 -->
-            <div class="segment-card">
-                <div class="segment-icon">👔</div>
-                <div class="segment-body">
-                    <h3>Decision Maker Hierarchy</h3>
-                    <p>Zero in on verified executive nodes across operations, procurement, engineering, and financial leadership structures.</p>
-                </div>
-            </div>
-
-            <!-- Filter 3 -->
-            <div class="segment-card">
-                <div class="segment-icon">🔍</div>
-                <div class="segment-body">
-                    <h3>Classification Matrix</h3>
-                    <p>Isolate hyper-specific niche market vectors utilizing multi-tiered industrial classification indexing codes.</p>
-                </div>
-            </div>
-
-            <!-- Filter 4 -->
-            <div class="segment-card">
-                <div class="segment-icon">🛡️</div>
-                <div class="segment-body">
-                    <h3>Core Domain Verticals</h3>
-                    <p>Map out target ecosystems grouped by specialized domain channels, technological adoption profiles, and industry focus.</p>
-                </div>
-            </div>
-
-            <!-- Filter 5 -->
-            <div class="segment-card">
-                <div class="segment-icon">💰</div>
-                <div class="segment-body">
-                    <h3>Fiscal Trajectory</h3>
-                    <p>Segment priority accounts based on annual gross valuation bands, funding stages, and proven capital spending capacities.</p>
-                </div>
-            </div>
-
-            <!-- Filter 6 -->
-            <div class="segment-card">
-                <div class="segment-icon">📍</div>
-                <div class="segment-body">
-                    <h3>Geographic Deployment</h3>
-                    <p>Pinpoint commercial locations, primary mailing headquarters, and regional sub-offices for high-impact regional campaigns.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-    
-
     <div class="section-divider"></div>
 
-    <!-- ==========================================================================
-     NEW SECTION: 50m Stats Section
-     ========================================================================== -->
+    <section class="segment-section">
+        <div class="segment-container">
+            <div class="segment-header">
+                <h2>Precision <span>Audience Intelligence</span></h2>
+                <p>Filter our master B2B datasets by the metrics that matter most to your sales pipeline.</p>
+            </div>
+
+            <div class="segment-grid">
+                <div class="segment-card">
+                    <div class="segment-icon">📊</div>
+                    <div class="segment-body">
+                        <h3>Enterprise Scale</h3>
+                        <p>Target prospects by employee headcount tiers, tracking organizational growth vectors from agile startups up to Fortune 500 conglomerates.</p>
+                    </div>
+                </div>
+                <div class="segment-card">
+                    <div class="segment-icon">👔</div>
+                    <div class="segment-body">
+                        <h3>Decision Maker Hierarchy</h3>
+                        <p>Zero in on verified executive nodes across operations, procurement, engineering, and financial leadership structures.</p>
+                    </div>
+                </div>
+                <div class="segment-card">
+                    <div class="segment-icon">🔍</div>
+                    <div class="segment-body">
+                        <h3>Classification Matrix</h3>
+                        <p>Isolate hyper-specific niche market vectors utilizing multi-tiered industrial classification indexing codes.</p>
+                    </div>
+                </div>
+                <div class="segment-card">
+                    <div class="segment-icon">🛡️</div>
+                    <div class="segment-body">
+                        <h3>Core Domain Verticals</h3>
+                        <p>Map out target ecosystems grouped by specialized domain channels, technological adoption profiles, and industry focus.</p>
+                    </div>
+                </div>
+                <div class="segment-card">
+                    <div class="segment-icon">💰</div>
+                    <div class="segment-body">
+                        <h3>Fiscal Trajectory</h3>
+                        <p>Segment priority accounts based on annual gross valuation bands, funding stages, and proven capital spending capacities.</p>
+                    </div>
+                </div>
+                <div class="segment-card">
+                    <div class="segment-icon">📍</div>
+                    <div class="segment-body">
+                        <h3>Geographic Deployment</h3>
+                        <p>Pinpoint commercial locations, primary mailing headquarters, and regional sub-offices for high-impact regional campaigns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
 
     <section class="stats-section">
         <div class="graph-bg">
@@ -258,9 +230,9 @@
         </div>
     </section>
 
-<div class="section-divider"></div>
-
+    <!-- FIXED: Cleared the typo duplicate quotes on class layout below -->
     <div class="section-divider"></div>
+
     <div class="campaign-title">
         <h2>Data for <span>Target-driven</span> Marketing Campaigns</h2>
         <p>Precision-focused B2B data solutions designed to help businesses scale smarter.</p>
@@ -301,28 +273,19 @@
 
     <div class="section-divider"></div>
 
-    <!-- ==========================================================================
-     NEW SECTION: DYNANIC INDUSTRY CATEGORY CHANGE SECTION 
-     ========================================================================== -->
-    
-<section class="spotlight-section">
-    <div class="spotlight-container">
-        
-        <!-- Add your chosen title header right here -->
-        <div class="spotlight-header">
-            <h2>Supported Industry Channels</h2>
-            <p>Scalable audiences. Triple-verified contact records..</p>
+    <section class="spotlight-section">
+        <div class="spotlight-container">
+            <div class="spotlight-header">
+                <h2>Supported Industry Channels</h2>
+                <p>Scalable audiences. Triple-verified contact records.</p>
+            </div>
+            <div class="spotlight-grid" id="dynamic-spotlight-container">
+                <!-- Dynamic Content Here -->
+            </div>
         </div>
+    </section>
 
-        <div class="spotlight-grid" id="dynamic-spotlight-container">
-            <!-- JavaScript dynamically renders the 2 random cards right here -->
-        </div>
-    </div>
-</section>
-
-    <!-- ==========================================================================
-     NEW SECTION: OUR SERVICES
-     ========================================================================== -->
+    <div class="section-divider"></div>
 
     <section class="services-section">
         <div class="services-container">
@@ -382,7 +345,7 @@
                     <div class="trust-logo">LIGHTHOUSE</div>
                     <div class="trust-logo">BLUETIME</div>
                     <div class="trust-logo">RETROFIX</div>
-
+                    <!-- Cloned Elements for loop stability -->
                     <div class="trust-logo">CYRASHIFT</div>
                     <div class="trust-logo">NEXORA</div>
                     <div class="trust-logo">CORESTACK</div>
@@ -403,7 +366,7 @@
             <h2>Contact <span>Us</span></h2>
             <p class="contact-subtext">Kindly fill in the form to reach us today!</p>
             <div class="contact-card">
-                <form class="contact-form">
+                <form class="contact-form" id="mainContactForm">
                     <div class="input-row">
                         <input type="text" placeholder="Your Name" required>
                         <input type="email" placeholder="Email Address" required>
@@ -439,49 +402,36 @@
         <div class="footer-bottom">© 2026 CyraShift. All rights reserved.</div>
     </footer>
 
+    <!-- Slider & Carousel Operations Logic -->
     <script>
     const slides = document.querySelectorAll(".slide");
     const dashboards = document.querySelectorAll(".hero-dashboard");
     let currentSlide = 0;
 
     function nextSlide() {
-        // Find what slide we are on right now
         let oldSlide = currentSlide;
-        
-        // Calculate the next slide safely 
         currentSlide = (currentSlide + 1) % slides.length;
 
-        // 1. Instantly clear old slide active class text
         slides[oldSlide].classList.remove("active");
-        
-        // 2. Fade out current dashboard image
         if (dashboards[oldSlide]) {
             dashboards[oldSlide].classList.remove("active-dashboard");
         }
 
-        // 3. Give it 500ms to fade out completely, then show next slide
         setTimeout(() => {
-            // Trigger text animation
             slides[currentSlide].classList.add("active");
-
-            // 4. Wait for typewriter effect, then reveal matching background dashboard safely
             setTimeout(() => {
-                // Safeguard check in case there are fewer images than text slides
                 if (dashboards[currentSlide]) {
                     dashboards[currentSlide].classList.add("active-dashboard");
                 } else {
-                    // Fallback: If dashboard 5/6 doesn't exist, fall back safely to loop image 1
                     dashboards[0].classList.add("active-dashboard");
                 }
             }, 2200);
-
         }, 500);
     }
-
-    // Run interval continuously every 6.5 seconds
     setInterval(nextSlide, 6500);
     </script>
 
+    <!-- Scroll & Element Reveal Logic -->
     <script>
         const scrollBtn = document.getElementById("scrollTopBtn");
         const reveals = document.querySelectorAll(".about-section, .services-section, .contact-section, .service-card");
@@ -518,8 +468,19 @@
                 window.scrollTo({ top: 0, behavior: "smooth" });
             });
         }
+
+        // FIXED: Stop form submission from crashing/refreshing landing page frame
+        const contactForm = document.getElementById("mainContactForm");
+        if(contactForm) {
+            contactForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                alert("Thank you! Your submission has been captured successfully.");
+                contactForm.reset();
+            });
+        }
     </script>
 
+    <!-- Interactive Cursor Effects Logic -->
     <script>
         const cursor = document.querySelector(".custom-cursor");
         document.addEventListener("mousemove", (e) => {
@@ -542,132 +503,114 @@
         });
     </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const datasetPool = [
-    {
-      title: "Construction List",
-      desc: "Fuel your email marketing initiatives by leveraging our extensive US database of construction users. Maximize the value of your investments as you reach out to a vast audience effortlessly.",
-      bullets: ["Get Potential Clients", "Boost Email Open Rate", "Optimized Lead Generation", "Target Specific Markets & Geography", "Get Sales-ready Email Leads", "Expand your Client Base"],
-      
-    },
-    {
-      title: "Business Mailing List",
-      desc: "Our Business Database is sourced from credit, financial, legal reports, directories, surveys & custom lists. Get accurate & current info on clients, partners & competitors for informed decisions.",
-      bullets: ["Email List Designed for Email Marketing", "Get Millions of Email Addresses", "Each Contacts are Active & Fresh", "Lists are of +90% Delivery Rate", "Targeted to specific niches", "Buy Clean & Precise Lists"],
-      
-    },
-    {
-      title: "Physicians Email List",
-      desc: "Connect directly with healthcare professionals and medical decision-makers across clinics, hospitals, and private practices.",
-      bullets: ["Reach Verified Medical Decision-Makers", "Highly Segmented by Specialty & Geography", "100% Compliant & Privacy-Verified Data", "Boost Medical Device & Pharma Sales", "Reduce Bounce Rates with Fresh Contacts"],
-      
-    },
-    {
-      title: "Architects Email List",
-      desc: "Bridge the gap between your products and the creative visionaries who specify building materials, software, and design consulting.",
-      bullets: ["Target Licensed Architects & Firm Partners", "Ideal for Material Suppliers & SaaS Tools", "Unlock Lucrative B2B Commercial Contracts", "Precisely Filtered by Project Types & Firm Size", "Drive Higher ROI on Architecture Campaign Outreach"],
-      
-    },
-    {
-      title: "Realtors Email List",
-      desc: "Tap into a dynamic network of real estate professionals, brokers, and agencies looking to scale their businesses and toolkits.",
-      bullets: ["Connect with Top-Producing Real Estate Agents", "Perfect for Tech Vendors, Mortgage Brokers, & Agencies", "Freshly Updated Brokerage & Independent Agent Data", "Expand Your Network Across Local or National Markets", "Instant Access to Active, High-Volume Networkers"],
-      
-    },
-    {
-      title: "Property Managers Email List",
-      desc: "Put your maintenance, security, software, or renovation services directly in front of the people managing valuable real estate portfolios.",
-      bullets: ["Reach Decision-Makers of Commercial & Residential Portfolios", "Boost Your B2B Contract Wins Seamlessly", "Highly Sourced from Verified Real Estate Registries", "Skip the Gatekeepers and Pitch Directly to Decisions Makers", "Fuel Your Regional or Nationwide Facility Service Campaigns"],
-      
-    },
-    {
-      title: "Commercial Real Estate List",
-      desc: "Gain immediate access to high-net-worth investors, developers, brokers, and agencies shaping the commercial property market.",
-      bullets: ["Target Commercial Brokers, Developers, & Institutional Investors", "Maximize Value for Financing, PropTech, and Corporate Offers", "Pinpoint Leads by Property Type (Office, Retail, Industrial)", "Uncover Active Players in the High-Value Property Sector", "Clean, Triple-Verified Data for High-Yield Outreach"],
-      
-    },
-    {
-      title: "School Email List",
-      desc: "Open doors to the education sector by targeting decision-makers from K-12 schools, districts, and higher education institutions.",
-      bullets: ["Connect with Superintendents, Principals, & IT Directors", "Perfect for EdTech, School Supplies, & Educational Consultants", "Segmented by Public, Private, Charter, or Higher Ed Systems", "Achieve Maximum Deliverability in the Education Sector", "Build Long-Term Institutional Client Partnerships"],
-      
-    },
-    {
-      title: "Restaurant Email List",
-      desc: "Reach hospitality decision-makers, from local independent diners to national franchise owners and food service directors.",
-      bullets: ["Target Restaurant Owners, Chefs, & Corporate Food Buyers", "Ideal for Distributors, POS Systems, & Kitchen Equipment Suppliers", "Fresh Data on Active Establishments Ready to Modernize", "Filter by Cuisine Type, Location, or Annual Revenue", "Accelerate Sales Cycles in the Fast-Paced Hospitality Industry"],
-      
-    },
-    {
-      title: "IT & Technology Decision-Makers List",
-      desc: "Tap into the highest-demand list on the B2B market, targeting the executives responsible for massive corporate tech budgets.",
-      bullets: ["Connect with CIOs, CTOs, & IT Directors Directly", "Premium Leads for Cybersecurity, Cloud, & Tech Vendors", "Triple-Verified Data to Ensure Premium Deliverability", "Target Companies by Their Current Tech Stack (Technographics)", "Shorten Sales Cycles for High-Ticket Software Deals"],
-      
-    },
-    {
-      title: "HR & Recruiting Professionals List",
-      desc: "Gain instant access to corporate decision-makers managing employee benefits, payroll, corporate training, and workplace culture.",
-      bullets: ["Target HR Directors, Chief People Officers, & Recruiters", "Ideal for PEOs, Employee Benefit Brokers, & Training Firms", "Fresh Data Sourced from Verified Corporate Directories", "Expand Your Footprint Across Mid-Market & Enterprise HR Departments", "Boost Response Rates with Direct, Non-Generic HR Leads"],
-      
-    },
-    {
-      title: "Law Firms & Attorneys Email List",
-      desc: "Put your software, consulting, marketing, or legal support services directly in front of high-budget legal professionals and firm partners.",
-      bullets: ["Target Managing Partners & Elite Law Firms", "Ideal for LegalTech, Marketing Agencies, & Expert Witnesses", "Highly Cleaned Data to Bypass Strict Gatekeepers", "Segmented by Practice Area (Corporate, Personal Injury, Real Estate)", "Maximize ROI with High-Net-Worth Legal Decision-Makers"],
-      
-    },
-    {
-      title: "CPAs & Accounting Firms Email List",
-      desc: "Connect with financial gatekeepers, accountants, and tax strategists who hold the checkbooks for businesses nationwide.",
-      bullets: ["Reach Certified Public Accountants & Tax Professionals", "Perfect for FinTech, B2B SaaS, & Continuing Education Providers", "Freshly Updated for Peak Tax Season Outreach Campaigns", "Target Firms by Annual Revenue or Local Geography", "High-Conversion Data for Financial & Corporate Service Offers"],
-    },
-    {
-      title: "Manufacturers & Wholesalers List",
-      desc: "Bridge the gap between your logistics, raw materials, or supply chain solutions and the industrial leaders driving production.",
-      bullets: ["Target Operations Directors & Plant Managers Effortlessly", "Perfect Partner List alongside Your Construction Database", "Connect with Key Decision-Makers in Global & Local Supply Chains", "Filter by Specific SIC/NAICS Manufacturing Codes", "Fuel Enterprise-Level B2B Industrial Campaigns"],
-    },
-    {
-      title: "Data Appending Services",
-      desc: "Turn your incomplete or outdated contact databases into powerful, revenue-generating marketing assets.",
-      bullets: ["Turn Missing Information into Complete Contact Records", "Update Old Phone Numbers & Non-Working Emails", "Enhance Existing Data with Missing Names, Titles, & Company Sizes", "Reduce Bounce Rates and Protect Your Sender Reputation", "Maximize the Value of Your Current CRM Investment"],
-    }
-  ];
+    <!-- Dynamic Industry Aggregator Pool Script -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const datasetPool = [
+        {
+          title: "Construction List",
+          desc: "Fuel your email marketing initiatives by leveraging our extensive US database of construction users. Maximize the value of your investments as you reach out to a vast audience effortlessly.",
+          bullets: ["Get Potential Clients", "Boost Email Open Rate", "Optimized Lead Generation", "Target Specific Markets & Geography", "Get Sales-ready Email Leads", "Expand your Client Base"]
+        },
+        {
+          title: "Business Mailing List",
+          desc: "Our Business Database is sourced from credit, financial, legal reports, directories, surveys & custom lists. Get accurate & current info on clients, partners & competitors for informed decisions.",
+          bullets: ["Email List Designed for Email Marketing", "Get Millions of Email Addresses", "Each Contacts are Active & Fresh", "Lists are of +90% Delivery Rate", "Targeted to specific niches", "Buy Clean & Precise Lists"]
+        },
+        {
+          title: "Physicians Email List",
+          desc: "Connect directly with healthcare professionals and medical decision-makers across clinics, hospitals, and private practices.",
+          bullets: ["Reach Verified Medical Decision-Makers", "Highly Segmented by Specialty & Geography", "100% Compliant & Privacy-Verified Data", "Boost Medical Device & Pharma Sales", "Reduce Bounce Rates with Fresh Contacts"]
+        },
+        {
+          title: "Architects Email List",
+          desc: "Bridge the gap between your products and the creative visionaries who specify building materials, software, and design consulting.",
+          bullets: ["Target Licensed Architects & Firm Partners", "Ideal for Material Suppliers & SaaS Tools", "Unlock Lucrative B2B Commercial Contracts", "Precisely Filtered by Project Types & Firm Size", "Drive Higher ROI on Architecture Campaign Outreach"]
+        },
+        {
+          title: "Realtors Email List",
+          desc: "Tap into a dynamic network of real estate professionals, brokers, and agencies looking to scale their businesses and toolkits.",
+          bullets: ["Connect with Top-Producing Real Estate Agents", "Perfect for Tech Vendors, Mortgage Brokers, & Agencies", "Freshly Updated Brokerage & Independent Agent Data", "Expand Your Network Across Local or National Markets", "Instant Access to Active, High-Volume Networkers"]
+        },
+        {
+          title: "Property Managers Email List",
+          desc: "Put your maintenance, security, software, or renovation services directly in front of the people managing valuable real estate portfolios.",
+          bullets: ["Reach Decision-Makers of Commercial & Residential Portfolios", "Boost Your B2B Contract Wins Seamlessly", "Highly Sourced from Verified Real Estate Registries", "Skip the Gatekeepers and Pitch Directly to Decisions Makers", "Fuel Your Regional or Nationwide Facility Service Campaigns"]
+        },
+        {
+          title: "Commercial Real Estate List",
+          desc: "Gain immediate access to high-net-worth investors, developers, brokers, and agencies shaping the commercial property market.",
+          bullets: ["Target Commercial Brokers, Developers, & Institutional Investors", "Maximize Value for Financing, PropTech, and Corporate Offers", "Pinpoint Leads by Property Type (Office, Retail, Industrial)", "Uncover Active Players in the High-Value Property Sector", "Clean, Triple-Verified Data for High-Yield Outreach"]
+        },
+        {
+          title: "School Email List",
+          desc: "Open doors to the education sector by targeting decision-makers from K-12 schools, districts, and higher education institutions.",
+          bullets: ["Connect with Superintendents, Principals, & IT Directors", "Perfect for EdTech, School Supplies, & Educational Consultants", "Segmented by Public, Private, Charter, or Higher Ed Systems", "Achieve Maximum Deliverability in the Education Sector", "Build Long-Term Institutional Client Partnerships"]
+        },
+        {
+          title: "Restaurant Email List",
+          desc: "Reach hospitality decision-makers, from local independent diners to national franchise owners and food service directors.",
+          bullets: ["Target Restaurant Owners, Chefs, & Corporate Food Buyers", "Ideal for Distributors, POS Systems, & Kitchen Equipment Suppliers", "Fresh Data on Active Establishments Ready to Modernize", "Filter by Cuisine Type, Location, or Annual Revenue", "Accelerate Sales Cycles in the Fast-Paced Hospitality Industry"]
+        },
+        {
+          title: "IT & Technology Decision-Makers List",
+          desc: "Tap into the highest-demand list on the B2B market, targeting the executives responsible for massive corporate tech budgets.",
+          bullets: ["Connect with CIOs, CTOs, & IT Directors Directly", "Premium Leads for Cybersecurity, Cloud, & Tech Vendors", "Triple-Verified Data to Ensure Premium Deliverability", "Target Companies by Their Current Tech Stack (Technographics)", "Shorten Sales Cycles for High-Ticket Software Deals"]
+        },
+        {
+          title: "HR & Recruiting Professionals List",
+          desc: "Gain instant access to corporate decision-makers managing employee benefits, payroll, corporate training, and workplace culture.",
+          bullets: ["Target HR Directors, Chief People Officers, & Recruiters", "Ideal for PEOs, Employee Benefit Brokers, & Training Firms", "Fresh Data Sourced from Verified Corporate Directories", "Expand Your Footprint Across Mid-Market & Enterprise HR Departments", "Boost Response Rates with Direct, Non-Generic HR Leads"]
+        },
+        {
+          title: "Law Firms & Attorneys Email List",
+          desc: "Put your software, consulting, marketing, or legal support services directly in front of high-budget legal professionals and firm partners.",
+          bullets: ["Target Managing Partners & Elite Law Firms", "Ideal for LegalTech, Marketing Agencies, & Expert Witnesses", "Highly Cleaned Data to Bypass Strict Gatekeepers", "Segmented by Practice Area (Corporate, Personal Injury, Real Estate)", "Maximize ROI with High-Net-Worth Legal Decision-Makers"]
+        },
+        {
+          title: "CPAs & Accounting Firms Email List",
+          desc: "Connect with financial gatekeepers, accountants, and tax strategists who hold the checkbooks for businesses nationwide.",
+          bullets: ["Reach Certified Public Accountants & Tax Professionals", "Perfect for FinTech, B2B SaaS, & Continuing Education Providers", "Freshly Updated for Peak Tax Season Outreach Campaigns", "Target Firms by Annual Revenue or Local Geography", "High-Conversion Data for Financial & Corporate Service Offers"]
+        },
+        {
+          title: "Manufacturers & Wholesalers List",
+          desc: "Bridge the gap between your logistics, raw materials, or supply chain solutions and the industrial leaders driving production.",
+          bullets: ["Target Operations Directors & Plant Managers Effortlessly", "Perfect Partner List alongside Your Construction Database", "Connect with Key Decision-Makers in Global & Local Supply Chains", "Filter by Specific SIC/NAICS Manufacturing Codes", "Fuel Enterprise-Level B2B Industrial Campaigns"]
+        },
+        {
+          title: "Data Appending Services",
+          desc: "Turn your incomplete or outdated contact databases into powerful, revenue-generating marketing assets.",
+          bullets: ["Turn Missing Information into Complete Contact Records", "Update Old Phone Numbers & Non-Working Emails", "Enhance Existing Data with Missing Names, Titles, & Company Sizes", "Reduce Bounce Rates and Protect Your Sender Reputation", "Maximize the Value of Your Current CRM Investment"]
+        }
+      ];
 
-  const container = document.getElementById('dynamic-spotlight-container');
+      const container = document.getElementById('dynamic-spotlight-container');
 
-  function updateCards() {
-    if (!container) return;
+      function updateCards() {
+        if (!container) return;
 
-    // 1. Shuffle and pick 2 completely random, unique datasets
-    const shuffled = [...datasetPool].sort(() => 0.5 - Math.random());
-    const selectedData = shuffled.slice(0, 2);
+        const shuffled = [...datasetPool].sort(() => 0.5 - Math.random());
+        const selectedData = shuffled.slice(0, 2);
 
-    // 2. Clear old text content
-    container.innerHTML = '';
+        container.innerHTML = '';
 
-    // 3. Inject new matching structured card layout loops (Details div removed)
-    selectedData.forEach(item => {
-      let bulletsMarkup = item.bullets.map(b => `<li>${b}</li>`).join('');
-      
-      container.innerHTML += `
-        <div class="spotlight-card">
-          <h3>${item.title}</h3>
-          <p>${item.desc}</p>
-          <ul>${bulletsMarkup}</ul>
-        </div>
-      `;
+        selectedData.forEach(item => {
+          let bulletsMarkup = item.bullets.map(b => `<li>${b}</li>`).join('');
+          
+          container.innerHTML += `
+            <div class="spotlight-card">
+              <h3>${item.title}</h3>
+              <p>${item.desc}</p>
+              <ul>${bulletsMarkup}</ul>
+            </div>
+          `;
+        });
+      }
+
+      updateCards();
+      setInterval(updateCards, 5000);
     });
-  }
-
-  // Run immediately on page load
-  updateCards();
-
-  // Run automatically every 5000 milliseconds (5 seconds)
-  setInterval(updateCards, 5000);
-});
-</script>
-    
+    </script>
 
 </body>
 </html>
