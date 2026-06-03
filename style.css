@@ -1366,8 +1366,9 @@ button:hover ~ .custom-cursor {
 }
 
 .segment-header {
-    text-align: center;
+    text-align: center; /* Centers inline text elements */
     margin-bottom: 50px;
+    width: 100%;       /* Ensures it uses the full container width */
 }
 
 .segment-header h2 {
@@ -1384,8 +1385,9 @@ button:hover ~ .custom-cursor {
     color: #8f8f8f;
     font-size: 18px;
     max-width: 700px;
+    margin: 0 auto;    /* FIX: Centers the paragraph block within the header area */
+    text-align: center; 
 }
-
 /* 2-Column Clean Split Matrix similar to sample grid layout architecture */
 .segment-grid {
     display: grid;
