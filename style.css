@@ -1109,6 +1109,37 @@ body::after {
 }
 
 /* ==========================================================================
+   NEW FOOTER LEGAL NAVIGATION STYLE
+   ========================================================================== */
+.footer-legal-links {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.footer-legal-links a {
+    color: #888888;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-legal-links a:hover {
+    color: gold; /* Subtle gold pop on hover matching the website design */
+}
+
+/* Ensure footer-bottom layout plays nice with the new row placement */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 15px;
+}
+
+/* ==========================================================================
    16. INTERACTIVE UTILITY ACTIONS (CURSOR & FLOATING BUTTONS)
    ========================================================================== */
 #scrollTopBtn {
