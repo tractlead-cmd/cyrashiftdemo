@@ -12,7 +12,6 @@
 
     <div class="custom-cursor"></div>
 
-    <!-- FIXED: Added the missing scroll top button so your JS code functions -->
     <button id="scrollTopBtn" title="Go to top">↑</button>
 
     <header class="header">
@@ -230,7 +229,6 @@
         </div>
     </section>
 
-    <!-- FIXED: Cleared the typo duplicate quotes on class layout below -->
     <div class="section-divider"></div>
 
     <div class="campaign-title">
@@ -275,8 +273,9 @@
 
     <section class="spotlight-section">
         <div class="spotlight-container">
+            <!-- FIXED: Added yellow theme highlight to the word Industry -->
             <div class="spotlight-header">
-                <h2>Supported Industry Channels</h2>
+                <h2>Supported <span>Industry</span> Channels</h2>
                 <p>Scalable audiences. Triple-verified contact records.</p>
             </div>
             <div class="spotlight-grid" id="dynamic-spotlight-container">
@@ -345,7 +344,7 @@
                     <div class="trust-logo">LIGHTHOUSE</div>
                     <div class="trust-logo">BLUETIME</div>
                     <div class="trust-logo">RETROFIX</div>
-                    <!-- Cloned Elements for loop stability -->
+                    
                     <div class="trust-logo">CYRASHIFT</div>
                     <div class="trust-logo">NEXORA</div>
                     <div class="trust-logo">CORESTACK</div>
@@ -402,7 +401,6 @@
         <div class="footer-bottom">© 2026 CyraShift. All rights reserved.</div>
     </footer>
 
-    <!-- Slider & Carousel Operations Logic -->
     <script>
     const slides = document.querySelectorAll(".slide");
     const dashboards = document.querySelectorAll(".hero-dashboard");
@@ -431,7 +429,6 @@
     setInterval(nextSlide, 6500);
     </script>
 
-    <!-- Scroll & Element Reveal Logic -->
     <script>
         const scrollBtn = document.getElementById("scrollTopBtn");
         const reveals = document.querySelectorAll(".about-section, .services-section, .contact-section, .service-card");
@@ -469,7 +466,6 @@
             });
         }
 
-        // FIXED: Stop form submission from crashing/refreshing landing page frame
         const contactForm = document.getElementById("mainContactForm");
         if(contactForm) {
             contactForm.addEventListener("submit", (e) => {
@@ -480,7 +476,6 @@
         }
     </script>
 
-    <!-- Interactive Cursor Effects Logic -->
     <script>
         const cursor = document.querySelector(".custom-cursor");
         document.addEventListener("mousemove", (e) => {
@@ -503,83 +498,67 @@
         });
     </script>
 
-    <!-- Dynamic Industry Aggregator Pool Script -->
     <script>
     document.addEventListener("DOMContentLoaded", function() {
       const datasetPool = [
         {
           title: "Construction List",
-          desc: "Fuel your email marketing initiatives by leveraging our extensive US database of construction users. Maximize the value of your investments as you reach out to a vast audience effortlessly.",
           bullets: ["Get Potential Clients", "Boost Email Open Rate", "Optimized Lead Generation", "Target Specific Markets & Geography", "Get Sales-ready Email Leads", "Expand your Client Base"]
         },
         {
           title: "Business Mailing List",
-          desc: "Our Business Database is sourced from credit, financial, legal reports, directories, surveys & custom lists. Get accurate & current info on clients, partners & competitors for informed decisions.",
           bullets: ["Email List Designed for Email Marketing", "Get Millions of Email Addresses", "Each Contacts are Active & Fresh", "Lists are of +90% Delivery Rate", "Targeted to specific niches", "Buy Clean & Precise Lists"]
         },
         {
           title: "Physicians Email List",
-          desc: "Connect directly with healthcare professionals and medical decision-makers across clinics, hospitals, and private practices.",
           bullets: ["Reach Verified Medical Decision-Makers", "Highly Segmented by Specialty & Geography", "100% Compliant & Privacy-Verified Data", "Boost Medical Device & Pharma Sales", "Reduce Bounce Rates with Fresh Contacts"]
         },
         {
           title: "Architects Email List",
-          desc: "Bridge the gap between your products and the creative visionaries who specify building materials, software, and design consulting.",
           bullets: ["Target Licensed Architects & Firm Partners", "Ideal for Material Suppliers & SaaS Tools", "Unlock Lucrative B2B Commercial Contracts", "Precisely Filtered by Project Types & Firm Size", "Drive Higher ROI on Architecture Campaign Outreach"]
         },
         {
           title: "Realtors Email List",
-          desc: "Tap into a dynamic network of real estate professionals, brokers, and agencies looking to scale their businesses and toolkits.",
           bullets: ["Connect with Top-Producing Real Estate Agents", "Perfect for Tech Vendors, Mortgage Brokers, & Agencies", "Freshly Updated Brokerage & Independent Agent Data", "Expand Your Network Across Local or National Markets", "Instant Access to Active, High-Volume Networkers"]
         },
         {
           title: "Property Managers Email List",
-          desc: "Put your maintenance, security, software, or renovation services directly in front of the people managing valuable real estate portfolios.",
           bullets: ["Reach Decision-Makers of Commercial & Residential Portfolios", "Boost Your B2B Contract Wins Seamlessly", "Highly Sourced from Verified Real Estate Registries", "Skip the Gatekeepers and Pitch Directly to Decisions Makers", "Fuel Your Regional or Nationwide Facility Service Campaigns"]
         },
         {
           title: "Commercial Real Estate List",
-          desc: "Gain immediate access to high-net-worth investors, developers, brokers, and agencies shaping the commercial property market.",
           bullets: ["Target Commercial Brokers, Developers, & Institutional Investors", "Maximize Value for Financing, PropTech, and Corporate Offers", "Pinpoint Leads by Property Type (Office, Retail, Industrial)", "Uncover Active Players in the High-Value Property Sector", "Clean, Triple-Verified Data for High-Yield Outreach"]
         },
         {
           title: "School Email List",
-          desc: "Open doors to the education sector by targeting decision-makers from K-12 schools, districts, and higher education institutions.",
           bullets: ["Connect with Superintendents, Principals, & IT Directors", "Perfect for EdTech, School Supplies, & Educational Consultants", "Segmented by Public, Private, Charter, or Higher Ed Systems", "Achieve Maximum Deliverability in the Education Sector", "Build Long-Term Institutional Client Partnerships"]
         },
         {
           title: "Restaurant Email List",
-          desc: "Reach hospitality decision-makers, from local independent diners to national franchise owners and food service directors.",
           bullets: ["Target Restaurant Owners, Chefs, & Corporate Food Buyers", "Ideal for Distributors, POS Systems, & Kitchen Equipment Suppliers", "Fresh Data on Active Establishments Ready to Modernize", "Filter by Cuisine Type, Location, or Annual Revenue", "Accelerate Sales Cycles in the Fast-Paced Hospitality Industry"]
         },
         {
           title: "IT & Technology Decision-Makers List",
-          desc: "Tap into the highest-demand list on the B2B market, targeting the executives responsible for massive corporate tech budgets.",
           bullets: ["Connect with CIOs, CTOs, & IT Directors Directly", "Premium Leads for Cybersecurity, Cloud, & Tech Vendors", "Triple-Verified Data to Ensure Premium Deliverability", "Target Companies by Their Current Tech Stack (Technographics)", "Shorten Sales Cycles for High-Ticket Software Deals"]
         },
         {
           title: "HR & Recruiting Professionals List",
-          desc: "Gain instant access to corporate decision-makers managing employee benefits, payroll, corporate training, and workplace culture.",
           bullets: ["Target HR Directors, Chief People Officers, & Recruiters", "Ideal for PEOs, Employee Benefit Brokers, & Training Firms", "Fresh Data Sourced from Verified Corporate Directories", "Expand Your Footprint Across Mid-Market & Enterprise HR Departments", "Boost Response Rates with Direct, Non-Generic HR Leads"]
         },
         {
           title: "Law Firms & Attorneys Email List",
-          desc: "Put your software, consulting, marketing, or legal support services directly in front of high-budget legal professionals and firm partners.",
           bullets: ["Target Managing Partners & Elite Law Firms", "Ideal for LegalTech, Marketing Agencies, & Expert Witnesses", "Highly Cleaned Data to Bypass Strict Gatekeepers", "Segmented by Practice Area (Corporate, Personal Injury, Real Estate)", "Maximize ROI with High-Net-Worth Legal Decision-Makers"]
         },
         {
           title: "CPAs & Accounting Firms Email List",
-          desc: "Connect with financial gatekeepers, accountants, and tax strategists who hold the checkbooks for businesses nationwide.",
           bullets: ["Reach Certified Public Accountants & Tax Professionals", "Perfect for FinTech, B2B SaaS, & Continuing Education Providers", "Freshly Updated for Peak Tax Season Outreach Campaigns", "Target Firms by Annual Revenue or Local Geography", "High-Conversion Data for Financial & Corporate Service Offers"]
         },
         {
           title: "Manufacturers & Wholesalers List",
-          desc: "Bridge the gap between your logistics, raw materials, or supply chain solutions and the industrial leaders driving production.",
           bullets: ["Target Operations Directors & Plant Managers Effortlessly", "Perfect Partner List alongside Your Construction Database", "Connect with Key Decision-Makers in Global & Local Supply Chains", "Filter by Specific SIC/NAICS Manufacturing Codes", "Fuel Enterprise-Level B2B Industrial Campaigns"]
         },
         {
           title: "Data Appending Services",
-          desc: "Turn your incomplete or outdated contact databases into powerful, revenue-generating marketing assets.",
           bullets: ["Turn Missing Information into Complete Contact Records", "Update Old Phone Numbers & Non-Working Emails", "Enhance Existing Data with Missing Names, Titles, & Company Sizes", "Reduce Bounce Rates and Protect Your Sender Reputation", "Maximize the Value of Your Current CRM Investment"]
         }
       ];
@@ -595,12 +574,14 @@
         container.innerHTML = '';
 
         selectedData.forEach(item => {
-          let bulletsMarkup = item.bullets.map(b => `<li>${b}</li>`).join('');
+          // FIXED: Forces a strict max limit of 5 bullet items per card layout 
+          const limitedBullets = item.bullets.slice(0, 5);
+          let bulletsMarkup = limitedBullets.map(b => `<li>${b}</li>`).join('');
           
+          // FIXED: Description section layout erased completely
           container.innerHTML += `
             <div class="spotlight-card">
               <h3>${item.title}</h3>
-              <p>${item.desc}</p>
               <ul>${bulletsMarkup}</ul>
             </div>
           `;
