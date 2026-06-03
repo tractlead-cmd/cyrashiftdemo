@@ -1413,3 +1413,89 @@ button:hover ~ .custom-cursor {
     .campaign-title p { font-size:15px; }
     .campaign-card { min-height:auto; }
 }
+
+/* ==========================================================================
+   NEW: DATA SEGMENTATION FILTERS SECTION
+   ========================================================================== */
+.segment-section {
+    padding: 60px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.segment-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.segment-header {
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.segment-header h2 {
+    font-size: 46px;
+    color: white;
+    margin-bottom: 14px;
+}
+
+.segment-header h2 span { 
+    color: gold; 
+}
+
+.segment-header p {
+    color: #8f8f8f;
+    font-size: 18px;
+    max-width: 700px;
+}
+
+/* 2-Column Clean Split Matrix similar to sample grid layout architecture */
+.segment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+/* Horizontal card alignment configuration */
+.segment-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    transition: 0.35s ease;
+}
+
+.segment-card:hover {
+    transform: translateX(6px);
+    border-color: rgba(255,215,0,0.2);
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+}
+
+.segment-icon {
+    font-size: 32px;
+    background: rgba(255,215,0,0.05);
+    border: 1px solid rgba(255,215,0,0.12);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    flex-shrink: 0;
+}
+
+.segment-body h3 {
+    font-size: 22px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.segment-body p {
+    color: #9c9c9c;
+    line-height: 1.7;
+    font-size: 15px;
+}
