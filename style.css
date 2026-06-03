@@ -1130,17 +1130,11 @@ body::after {
 }
 
 .footer-legal-links a:hover {
-    color: gold; /* Subtle gold pop on hover matching the website design */
-}
-
-/* Ensure footer-bottom layout plays nice with the new row placement */
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 15px;
+    color: gold; 
 }
 
 /* ==========================================================================
-   16. INTERACTIVE UTILITY ACTIONS (CURSOR & FLOATING BUTTONS)
+   18. INTERACTIVE UTILITY ACTIONS (CURSOR & FLOATING BUTTONS)
    ========================================================================== */
 #scrollTopBtn {
     position: fixed;
@@ -1235,7 +1229,6 @@ button:hover ~ .custom-cursor {
 /* ==========================================================================
    19. SCROLL REVEAL ANIMATION CONTROLLERS
    ========================================================================== */
-/* FIXED: Completely removed '.campaign-top-section' from here to prevent it from initializing transparent */
 .about-section,
 .services-section,
 .contact-section,
@@ -1260,7 +1253,8 @@ button:hover ~ .custom-cursor {
     }
     .about-content h2 { font-size: 42px; }
     .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .campaign-grid{ grid-template-columns:repeat(2,1fr); }
+    .campaign-grid { grid-template-columns: repeat(2, 1fr); }
+    .spotlight-grid { grid-template-columns: 1fr; gap: 24px; } /* Added spotlight control */
 }
 
 @media (max-width: 900px){
@@ -1334,55 +1328,44 @@ button:hover ~ .custom-cursor {
         }
     }
 
-    .campaign-top-card {
-        padding: 35px 25px;
-    }
-    .campaign-top-heading {
-        font-size: 28px;
-    }
-    .campaign-description {
-        font-size: 15px;
-    }
-
+    .campaign-top-card { padding: 35px 25px; }
+    .campaign-top-heading { font-size: 28px; }
+    .campaign-description { font-size: 15px; }
     .contact-wrapper h2 { font-size: 40px; }
     .contact-subtext { font-size: 16px; }
     .input-row { grid-template-columns: 1fr; }
     .contact-card { padding: 30px; }
-
     .about-section { padding: 90px 20px; }
     .about-card { padding: 28px; }
     .about-content h2 { font-size: 34px; }
     .about-content p { font-size: 15px; }
     .why-choose h3 { font-size: 26px; }
     .why-choose li { font-size: 15px; }
-
     .about-text h2, .services-title h2 { font-size: 38px; }
     .about-text p, .services-title p { font-size: 16px; }
     .services-grid { grid-template-columns: 1fr; }
     .service-card { min-height: auto; }
-
     .advantages-container { flex-direction: column; gap: 30px; }
     .advantages-left { width: 100%; }
     .advantages-line { width: 180px; height: 4px; }
     .advantages-content { padding: 40px 28px; }
     .advantages-content h2 { font-size: 36px; }
     .advantages-content li { font-size: 16px; }
-
     .stats-container { grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .stat-card { padding: 24px 16px; }
     .stat-card h2 { font-size: 28px; }
     .stat-card p { font-size: 13px; }
     .graph-bg { gap: 3px; }
     .bar { max-width: 8px; }
-
     .campaign-grid{ grid-template-columns:1fr; }
     .campaign-title h2 { font-size:34px; }
     .campaign-title p { font-size:15px; }
     .campaign-card { min-height:auto; }
+    .segment-grid { grid-template-columns: 1fr; gap: 20px; }
 }
 
 /* ==========================================================================
-   NEW: DATA SEGMENTATION FILTERS SECTION
+   21. DATA SEGMENTATION FILTERS SECTION
    ========================================================================== */
 .segment-section {
     padding: 40px;
@@ -1397,9 +1380,9 @@ button:hover ~ .custom-cursor {
 }
 
 .segment-header {
-    text-align: center; /* Centers inline text elements */
+    text-align: center;
     margin-bottom: 10px;
-    width: 100%;       /* Ensures it uses the full container width */
+    width: 100%;
 }
 
 .segment-header h2 {
@@ -1416,17 +1399,16 @@ button:hover ~ .custom-cursor {
     color: #8f8f8f;
     font-size: 18px;
     max-width: 700px;
-    margin: 0 auto;    /* FIX: Centers the paragraph block within the header area */
+    margin: 0 auto;
     text-align: center; 
 }
-/* 2-Column Clean Split Matrix similar to sample grid layout architecture */
+
 .segment-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
 }
 
-/* Horizontal card alignment configuration */
 .segment-card {
     display: flex;
     align-items: flex-start;
@@ -1470,10 +1452,8 @@ button:hover ~ .custom-cursor {
 }
 
 /* ==========================================================================
-   FIXED: SPOTLIGHT INVENTORY CARDS (RESTORED ALIGNMENT & COLOR)
+   22. FIXED: SPOTLIGHT INVENTORY CARDS (RESTORED ALIGNMENT & COLOR)
    ========================================================================== */
-
-/* 1. Center alignment fix for the section container */
 .spotlight-section {
     padding: 80px 0;
     position: relative;
@@ -1487,12 +1467,11 @@ button:hover ~ .custom-cursor {
 .spotlight-container {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto !important;
     padding: 0 20px;
     box-sizing: border-box;
 }
 
-/* 2. Grid layout fix */
 .spotlight-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1500,10 +1479,9 @@ button:hover ~ .custom-cursor {
     width: 100%;
 }
 
-/* 3. Premium Glass Card Layout Restored */
 .spotlight-card {
     position: relative;
-    background: rgba(18, 18, 18, 0.8); /* Dark glassmorphic base */
+    background: rgba(18, 18, 18, 0.85); 
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
     padding: 40px;
@@ -1513,51 +1491,25 @@ button:hover ~ .custom-cursor {
     -webkit-backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
-/* Hover glow effect restored */
 .spotlight-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 215, 0, 0.3); /* Premium gold border flash */
+    border-color: rgba(255, 215, 0, 0.3);
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.05);
 }
 
-/* 4. Dynamic Slide Visibility Fix (Prevents Layout Collapse) */
-.spotlight-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-/* By default, items maintain their layout structure */
-.spotlight-item {
-    display: none; 
-    flex-direction: column;
-    width: 100%;
-}
-
-/* Only the active card layout displays */
-.spotlight-item.active {
-    display: flex;
-    animation: fadeIn 0.5s ease forward;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* 5. Typography & Missing Colors Restored */
 .spotlight-card h3 {
     font-size: 26px;
     font-weight: 700;
-    color: #ffffff; /* Bright white title */
+    color: #ffffff;
     margin-bottom: 24px;
     line-height: 1.3;
 }
 
-/* List Formatting Fix */
 .spotlight-card ul {
-    list-style: none; /* Stripping the basic browser dots */
+    list-style: none;
     padding: 0;
     margin: 0;
 }
@@ -1565,16 +1517,15 @@ button:hover ~ .custom-cursor {
 .spotlight-card li {
     font-size: 15px;
     line-height: 1.6;
-    color: #cccccc; /* Clean slate light grey for readability */
+    color: #cccccc;
     margin-bottom: 14px;
     position: relative;
     padding-left: 20px;
 }
 
-/* Re-introducing the custom gold bullet points */
 .spotlight-card li::before {
     content: "•";
-    color: #ffd700; /* Premium Gold Accent */
+    color: #ffd700;
     font-weight: bold;
     font-size: 18px;
     position: absolute;
@@ -1582,31 +1533,7 @@ button:hover ~ .custom-cursor {
     top: -2px;
 }
 
-/* If you have highlighted text/spans within your lists */
 .spotlight-card li strong, 
 .spotlight-card li span.highlight {
     color: #ffd700;
-}
-
-/* 6. Dynamic Timer Progress Bar (Sleek bottom loader) */
-.spotlight-timer-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #ffd700, transparent);
-    width: 0%;
-    transition: width 5s linear;
-}
-
-/* 7. Responsive Mobile Adaptor */
-@media (max-width: 992px) {
-    .spotlight-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-    
-    .spotlight-card {
-        padding: 30px;
-    }
 }
