@@ -20,11 +20,12 @@
                 <img src="logo.png" alt="CyraShift Logo">
             </div>
 
+            <!-- FIXED: Anchor links added for smooth on-page navigation -->
             <nav class="nav">
                 <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Contact</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
@@ -99,7 +100,8 @@
 
     <div class="section-divider"></div>
 
-    <section class="about-section">
+    <!-- FIXED: Added id="about" anchor tag here -->
+    <section class="about-section" id="about">
         <div class="about-container">
             <div class="about-card">
                 <div class="about-image">
@@ -273,7 +275,6 @@
 
     <section class="spotlight-section">
         <div class="spotlight-container">
-            <!-- FIXED: Added yellow theme highlight to the word Industry -->
             <div class="spotlight-header">
                 <h2>Supported <span>Industry</span> Channels</h2>
                 <p>Scalable audiences. Triple-verified contact records.</p>
@@ -286,7 +287,8 @@
 
     <div class="section-divider"></div>
 
-    <section class="services-section">
+    <!-- FIXED: Added id="services" anchor tag here -->
+    <section class="services-section" id="services">
         <div class="services-container">
             <div class="services-title">
                 <h2>Our <span>Services</span></h2>
@@ -360,7 +362,8 @@
         </div>
     </section>
 
-    <section class="contact-section">
+    <!-- FIXED: Added id="contact" anchor tag here -->
+    <section class="contact-section" id="contact">
         <div class="contact-wrapper">
             <h2>Contact <span>Us</span></h2>
             <p class="contact-subtext">Kindly fill in the form to reach us today!</p>
@@ -378,17 +381,18 @@
         </div>
     </section>
 
-<footer class="footer">
+    <footer class="footer">
         <div class="footer-container">
             <div class="footer-brand">
                 <img src="logo.png" class="footer-logo" alt="CyraShift Logo">
             </div>
             <div class="footer-center">
+                <!-- FIXED: Anchor links added to core footer navigation -->
                 <div class="footer-links">
                     <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Services</a>
-                    <a href="#">Contact</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
                 </div>
                 <div class="footer-email">info@cyrashift.com</div>
             </div>
@@ -399,15 +403,17 @@
             </div>
         </div>
 
+        <!-- FIXED: Anchor link added to Services in the legal row -->
         <div class="footer-legal-links">
             <a href="#">Terms and Conditions</a>
             <a href="#">Refund Policy</a>
             <a href="#">Blog</a>
-            <a href="#">Services</a>
+            <a href="#services">Services</a>
         </div>
 
         <div class="footer-bottom">© 2026 CyraShift. All rights reserved.</div>
     </footer>
+
     <script>
     const slides = document.querySelectorAll(".slide");
     const dashboards = document.querySelectorAll(".hero-dashboard");
@@ -581,11 +587,9 @@
         container.innerHTML = '';
 
         selectedData.forEach(item => {
-          // FIXED: Forces a strict max limit of 5 bullet items per card layout 
           const limitedBullets = item.bullets.slice(0, 5);
           let bulletsMarkup = limitedBullets.map(b => `<li>${b}</li>`).join('');
           
-          // FIXED: Description section layout erased completely
           container.innerHTML += `
             <div class="spotlight-card">
               <h3>${item.title}</h3>
