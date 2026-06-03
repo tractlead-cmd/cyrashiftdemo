@@ -1005,7 +1005,7 @@ body::after {
    ========================================================================== */
 .footer{
     background:#050505;
-    margin-top:40px;
+    margin-top:25px;
     padding:100px 0 20px;
     border-top:1px solid rgba(255,215,0,0.08);
     position:relative;
