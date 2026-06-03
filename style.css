@@ -1438,9 +1438,8 @@ button:hover ~ .custom-cursor {
     font-size: 15px;
 }
 
-
 /* ==========================================================================
-   NEW CSS: SPOTLIGHT INVENTORY DECK (WITH 3S ROTATION TRANSITIONS)
+   UPDATED CSS: SPOTLIGHT INVENTORY CARDS WITH 5 SECS DYNAMIC CHANGE
    ========================================================================== */
 .spotlight-section {
     padding: 60px 20px 40px;
@@ -1460,7 +1459,7 @@ button:hover ~ .custom-cursor {
     gap: 40px;
 }
 
-/* Match your premium glassmorphic card layouts */
+/* Premium glassmorphic card layouts with locked down size profiles */
 .spotlight-card {
     position: relative;
     background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
@@ -1470,8 +1469,11 @@ button:hover ~ .custom-cursor {
     transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     overflow: hidden;
     backdrop-filter: blur(12px);
+    
+    /* ENFORCES FIXED MATCHING SIZES across columns */
     display: flex;
     flex-direction: column;
+    height: 100%; 
 
     /* SMOOTH AUTO-ROTATE TRANSITION EFFECT */
     animation: cardFadeIn 0.5s ease-out forwards;
@@ -1489,7 +1491,7 @@ button:hover ~ .custom-cursor {
     }
 }
 
-/* Subtle background radial gold glow matching your about/services elements */
+/* Subtle background radial gold glow matching about/services elements */
 .spotlight-card::before {
     content: "";
     position: absolute;
@@ -1512,22 +1514,15 @@ button:hover ~ .custom-cursor {
 .spotlight-card h3 {
     font-size: 26px;
     color: gold;
-    margin-bottom: 18px;
+    margin-bottom: 22px; /* Margins slightly increased to breathe since <p> is gone */
     font-weight: 600;
     letter-spacing: 0.5px;
 }
 
-.spotlight-card p {
-    color: #b2b2b2;
-    line-height: 1.8;
-    font-size: 16px;
-    margin-bottom: 25px;
-}
-
 .spotlight-card ul {
     list-style: none;
-    margin-bottom: 30px;
-    flex-grow: 1; /* Keeps the bottom "Details" bar balanced even if text counts vary */
+    margin-bottom: 0; /* Clear bottom margins since there are no footer components below it */
+    flex-grow: 1; 
 }
 
 .spotlight-card li {
@@ -1537,6 +1532,10 @@ button:hover ~ .custom-cursor {
     color: #ddd;
     line-height: 1.6;
     font-size: 15.5px;
+}
+
+.spotlight-card li:last-child {
+    margin-bottom: 0; /* Clean end spacing on the last item */
 }
 
 /* Custom list layout markers matching your style sheet */
@@ -1549,7 +1548,6 @@ button:hover ~ .custom-cursor {
     font-size: 22px;
 }
 
-
 /* Responsive breakpoint handling */
 @media (max-width: 900px) {
     .spotlight-grid {
@@ -1558,9 +1556,9 @@ button:hover ~ .custom-cursor {
     }
     .spotlight-card {
         padding: 35px 30px;
+        height: auto; /* Allow flexible stack heights on mobile viewports */
     }
 }
-
 
 .spotlight-header {
     text-align: center;
@@ -1575,7 +1573,7 @@ button:hover ~ .custom-cursor {
     margin-bottom: 12px;
 }
 
-/* Subtle gold emphasis if you want to highlight part of your title */
+/* Bright Gold emphasis for header spans */
 .spotlight-header h2 span {
     color: gold;
 }
