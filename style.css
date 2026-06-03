@@ -1454,25 +1454,51 @@ button:hover ~ .custom-cursor {
 /* ==========================================================================
    22. FIXED: SPOTLIGHT INVENTORY CARDS (RESTORED ALIGNMENT & COLOR)
    ========================================================================== */
-/* ==========================================================================
-   UPDATED CSS: SPOTLIGHT INVENTORY DECK (FIXED HEIGHT & CLEANED DESIGN)
-   ========================================================================== */
 .spotlight-section {
     padding: 60px 20px 40px;
     position: relative;
     z-index: 2;
+    text-align: center; /* Centers the text alignment globally inside the section */
 }
 
 .spotlight-container {
     width: 90%;
     max-width: 1200px;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the header contents perfectly */
+}
+
+/* Force both the main header and paragraph description to center */
+.spotlight-section h2,
+.spotlight-section p {
+    text-align: center;
+    width: 100%;
+}
+
+.spotlight-section h2 {
+    font-size: 50px;
+    color: white;
+    margin-bottom: 16px;
+}
+
+/* Turns the target word inside the spotlight main header to gold/yellow */
+.spotlight-section h2 span {
+    color: gold;
+}
+
+.spotlight-section p {
+    color: #8f8f8f;
+    font-size: 18px;
+    margin-bottom: 60px;
 }
 
 .spotlight-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
+    width: 100%;
 }
 
 /* Premium glassmorphic card layouts with locked down size profiles */
@@ -1482,132 +1508,43 @@ button:hover ~ .custom-cursor {
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 28px;
     padding: 45px 40px;
-    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-    overflow: hidden;
-    backdrop-filter: blur(12px);
-    
-    /* ENFORCES FIXED MATCHING SIZES across columns */
-    display: flex;
-    flex-direction: column;
-    height: 100%; 
-
-    /* SMOOTH AUTO-ROTATE TRANSITION EFFECT */
-    animation: cardFadeIn 0.5s ease-out forwards;
-}
-
-/* Fluid fade-and-rise keyframe for card rotation updates */
-@keyframes cardFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Subtle background radial gold glow matching about/services elements */
-.spotlight-card::before {
-    content: "";
-    position: absolute;
-    top: -60px;
-    right: -60px;
-    width: 160px;
-    height: 160px;
-    background: rgba(255,215,0,0.05);
-    border-radius: 50%;
-    filter: blur(35px);
-    pointer-events: none;
+    text-align: left; /* Keeps your bullet points cleanly left-aligned inside the cards */
+    transition: 0.35s ease;
 }
 
 .spotlight-card:hover {
-    transform: translateY(-6px) !important; /* Overrides keyframe translation on active hover */
-    border-color: rgba(255,215,0,0.25);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transform: translateY(-8px);
+    border-color: rgba(255,215,0,0.22);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.45);
 }
 
+/* Fixes the inside card headers to display in yellow/gold */
 .spotlight-card h3 {
-    font-size: 26px;
-    color: gold;
-    margin-bottom: 22px; /* Margins slightly increased to breathe since <p> is gone */
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-size: 28px;
+    color: gold; /* Changed from white to gold */
+    margin-bottom: 24px;
 }
 
 .spotlight-card ul {
     list-style: none;
-    margin-bottom: 0; /* Clear bottom margins since there are no footer components below it */
-    flex-grow: 1; 
+    padding: 0;
 }
 
 .spotlight-card li {
     position: relative;
-    padding-left: 28px;
-    margin-bottom: 14px;
-    color: #ddd;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    color: #b3b3b3;
+    font-size: 16px;
     line-height: 1.6;
-    font-size: 15.5px;
 }
 
-.spotlight-card li:last-child {
-    margin-bottom: 0; /* Clean end spacing on the last item */
-}
-
-/* Custom list layout markers matching your style sheet */
+/* Custom golden bullet points for your list items */
 .spotlight-card li::before {
     content: "•";
     position: absolute;
-    left: 4px;
+    left: 0;
     top: -2px;
     color: gold;
     font-size: 22px;
-}
-
-/* Responsive breakpoint handling */
-@media (max-width: 900px) {
-    .spotlight-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    .spotlight-card {
-        padding: 35px 30px;
-        height: auto; /* Allow flexible stack heights on mobile viewports */
-    }
-}
-
-.spotlight-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.spotlight-header h2 {
-    font-size: 38px;
-    color: #ffffff;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
-}
-
-/* Bright Gold emphasis for header spans */
-.spotlight-header h2 span {
-    color: gold;
-}
-
-.spotlight-header p {
-    font-size: 18px;
-    color: #b2b2b2;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-/* Quick mobile fix for titles */
-@media (max-width: 768px) {
-    .spotlight-header h2 {
-        font-size: 28px;
-    }
-    .spotlight-header p {
-        font-size: 15px;
-    }
 }
