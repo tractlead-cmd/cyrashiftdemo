@@ -339,7 +339,7 @@ body::after {
     /* BONUS: Increased structure clarity from 0.04 to 0.12 */
     border: 1px solid rgba(255, 255, 255, 0.12); 
     border-radius: 24px;
-    padding: 50px 60px;
+    padding: 20px 60px 50px; /* CHANGED: Top padding cut from 50px down to 20px */
     box-sizing: border-box;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     text-align: left; 
