@@ -582,15 +582,37 @@ body::after {
 }
 
 /* ==========================================================================
-   11. LINEAR SECTION DIVIDERS
+   11. LINEAR SECTION DIVIDERS (ANIMATED LEFT TO RIGHT)
    ========================================================================== */
 .section-divider {
     width: 100%;
     max-width: 1200px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,215,0,0.35), transparent);
+    height: 2px; /* Slightly increased thickness for a crisp visual effect */
     margin: 10px auto 50px;
-    opacity: 0.8;
+    
+    /* Creates a premium gold shifting wave gradient background */
+    background: linear-gradient(
+        90deg, 
+        rgba(255, 215, 0, 0) 0%, 
+        rgba(255, 215, 0, 0.45) 50%, 
+        rgba(255, 215, 0, 0) 100%
+    );
+    
+    /* Double the width of the gradient pool to give it sliding room */
+    background-size: 200% 100%; 
+    
+    /* Triggers continuous left-to-right scanning wave motion */
+    animation: dividerScan 5s linear infinite;
+}
+
+/* Keyframe tracking engine to continuously translate the gradient position */
+@keyframes dividerScan {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 /* ==========================================================================
