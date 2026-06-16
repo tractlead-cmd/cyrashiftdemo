@@ -346,7 +346,7 @@
                     <div class="trust-logo">LIGHTHOUSE</div>
                     <div class="trust-logo">BLUETIME</div>
                     <div class="trust-logo">RETROFIX</div>
-                    
+                     
                     <div class="trust-logo">CYRASHIFT</div>
                     <div class="trust-logo">NEXORA</div>
                     <div class="trust-logo">CORESTACK</div>
@@ -406,7 +406,7 @@
         <!-- FIXED: Anchor link added to Services in the legal row -->
         <div class="footer-legal-links">
             <a href="cyrashifttermsandcondition.pdf" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>
-            <a href="cyrashiftprivacypolicy.pdf" target="_blank" rel="noopener noreferrer"">Privacy Policy</a>
+            <a href="cyrashiftprivacypolicy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
             <a href="#">Blog</a>
             <a href="#services">Services</a>
         </div>
@@ -414,6 +414,23 @@
         <div class="footer-bottom">© 2026 CyraShift. All rights reserved.</div>
     </footer>
 
+    <!-- NEW SCRIPT: Handles the dynamic 5-second browser tab text rotation -->
+    <script>
+        const titles = [
+            "CyraShift",
+            "B2B Email List | CyraShift",
+            "Accurate Email List | CyraShift",
+            "Lead Generation | CyraShift"
+        ];
+        let titleIndex = 0;
+
+        setInterval(() => {
+            titleIndex = (titleIndex + 1) % titles.length;
+            document.title = titles[titleIndex];
+        }, 5000);
+    </script>
+
+    <!-- CORE INTERACTION SCRIPT: Image Slider Engine -->
     <script>
     const slides = document.querySelectorAll(".slide");
     const dashboards = document.querySelectorAll(".hero-dashboard");
@@ -442,6 +459,7 @@
     setInterval(nextSlide, 6500);
     </script>
 
+    <!-- CORE INTERACTION SCRIPT: Scroll reveal & forms -->
     <script>
         const scrollBtn = document.getElementById("scrollTopBtn");
         const reveals = document.querySelectorAll(".about-section, .services-section, .contact-section, .service-card");
@@ -489,6 +507,7 @@
         }
     </script>
 
+    <!-- CORE INTERACTION SCRIPT: Custom cursor logic -->
     <script>
         const cursor = document.querySelector(".custom-cursor");
         document.addEventListener("mousemove", (e) => {
@@ -511,6 +530,7 @@
         });
     </script>
 
+    <!-- CORE INTERACTION SCRIPT: Dynamic Shuffle Intelligence Spotlight Engine -->
     <script>
     document.addEventListener("DOMContentLoaded", function() {
       const datasetPool = [
@@ -604,22 +624,18 @@
     });
     </script>
 
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a20270f406ae81c377c00ce/1jq6ph5vq';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-
-</body>
-</html>
+    <!-- Tawk.to Live Chat Script Linkage -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6a20270f406ae81c377c00ce/1jq6ph5vq';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
 
 </body>
 </html>
