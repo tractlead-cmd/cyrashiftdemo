@@ -582,43 +582,62 @@ body::after {
 }
 
 /* ==========================================================================
-   11. LINEAR SECTION DIVIDERS (SHARP LEFT-TO-RIGHT SWEEP)
+   11. LINEAR SECTION DIVIDERS (PREMIUM LASER PULSE ENGINE)
    ========================================================================== */
 .section-divider {
     width: 100%;
     max-width: 1200px;
-    height: 2px;                 /* Clean, crisp thickness */
-    margin: 20px auto 60px;
+    height: 1.5px;               /* Ultra-sleek premium thickness */
+    margin: 30px auto 70px;
     position: relative;
-    background: transparent;     /* Completely transparent track so edges are perfectly sharp */
-    overflow: hidden;            /* Ensures the line vanishes cleanly at the boundaries */
+    background: rgba(255, 255, 255, 0.02); /* Ghost track so the layout feels anchored */
+    overflow: hidden;            /* Perfect clipping at container edges */
 }
 
-/* The sharp line element that travels across the screen */
+/* The adaptive laser beam */
 .section-divider::after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
-    width: 150px;                /* The physical length of your moving line segment */
-    background: #ffd700;         /* Solid, sharp premium gold (no soft gradients) */
-    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4); /* Subtle premium glow that stays within the sharp line */
-    animation: sharpSweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    width: 100%;                 /* Takes full width to allow fluid scaling */
+    background: #ffd700;         /* Razor-sharp, solid gold core */
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.25); /* Elegant, expensive-looking ambient glow */
+    transform-origin: left center;
+    animation: premiumLaser 4.5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
 }
 
-/* Coordinates that pull the line out from the left and drop it off the right edge */
-@keyframes sharpSweep {
+/* Luxury timing curve: Shoots out fast, glides smoothly, vanishes completely */
+@keyframes premiumLaser {
     0% {
-        transform: translateX(-150px); /* Hidden entirely off-screen to the left */
+        transform: translateX(0) scaleX(0);
+        opacity: 0;
     }
-    50% {
-        transform: translateX(600px);  /* Sweeping smoothly across the center layout */
+    5% {
+        transform: translateX(0) scaleX(0.05);
+        opacity: 1;
     }
-    100% {
-        transform: translateX(1250px); /* Pushed completely past the 1200px max-width boundary to disappear */
+    15% {
+        /* The beam stretches long as it accelerates from the left edge */
+        transform: translateX(10%) scaleX(0.4);
+    }
+    45% {
+        /* It compresses into a sleek, fast pulse as it cruises across the center */
+        transform: translateX(40%) scaleX(0.15);
+    }
+    70% {
+        /* It glides toward the right edge */
+        transform: translateX(85%) scaleX(0.1);
+        opacity: 1;
+    }
+    85%, 100% {
+        /* It hits the right 1200px boundary, shrinks to zero, and completely disappears */
+        transform: translateX(100%) scaleX(0);
+        opacity: 0;
     }
 }
+
 
 /* ==========================================================================
    12. PREMIUM PERFORMANCE STATS SECTION
