@@ -582,40 +582,36 @@ body::after {
 }
 
 /* ==========================================================================
-   11. LINEAR SECTION DIVIDERS (PURE LEFT-TO-RIGHT SWEEP)
+   11. LINEAR SECTION DIVIDERS (ANIMATED LEFT TO RIGHT)
    ========================================================================== */
 .section-divider {
     width: 100%;
     max-width: 1200px;
-    height: 3px;                 /* Thick enough to be clearly visible, but still sleek */
-    margin: 30px auto 60px;
-    position: relative;
-    background: transparent;     /* Completely empty track so there are no distracting back-lines */
-    overflow: hidden;            /* This ensures the line completely vanishes when exiting the right edge */
+    height: 2px; /* Slightly increased thickness for a crisp visual effect */
+    margin: 10px auto 50px;
+    
+    /* Creates a premium gold shifting wave gradient background */
+    background: linear-gradient(
+        90deg, 
+        rgba(255, 215, 0, 0) 0%, 
+        rgba(255, 215, 0, 0.45) 50%, 
+        rgba(255, 215, 0, 0) 100%
+    );
+    
+    /* Double the width of the gradient pool to give it sliding room */
+    background-size: 200% 100%; 
+    
+    /* Triggers continuous left-to-right scanning wave motion */
+    animation: dividerScan 5s linear infinite;
 }
 
-/* The solid, sharp uniform line segment */
-.section-divider::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 25%;                  /* Sets a solid, fixed length (1/4 of the container width) */
-    background: #ffd700;         /* Solid, 100% sharp premium gold with zero fading or gradients */
-    animation: cleanSweep 4s linear infinite; /* Pure linear movement at a steady, decent pace */
-}
-
-/* Move the solid segment completely from left to right */
-@keyframes cleanSweep {
+/* Keyframe tracking engine to continuously translate the gradient position */
+@keyframes dividerScan {
     0% {
-        transform: translateX(-100%); /* Starts completely hidden outside the left edge */
-    }
-    80% {
-        transform: translateX(300%);  /* Sweeps smoothly across the layout at an even speed */
+        background-position: 200% 0;
     }
     100% {
-        transform: translateX(400%);  /* Completely exits past the right edge, vanishing instantly */
+        background-position: -200% 0;
     }
 }
 
