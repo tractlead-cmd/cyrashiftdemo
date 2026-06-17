@@ -231,7 +231,7 @@ body::after {
 .slide.active p {
     opacity: 1;
     animation:
-        typing 2.5s steps(60, end) forwards,
+        typing 3.5s steps(60, end) forwards,
         blink 0.7s infinite;
 }
 
