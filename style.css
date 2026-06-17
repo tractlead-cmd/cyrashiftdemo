@@ -582,39 +582,45 @@ body::after {
 }
 
 /* ==========================================================================
-   11. LINEAR SECTION DIVIDERS (ANIMATED LEFT TO RIGHT)
+   11. LINEAR SECTION DIVIDERS (TRUE LEFT-TO-RIGHT LOOP)
    ========================================================================== */
 .section-divider {
     width: 100%;
     max-width: 1200px;
-    height: 2px; /* Slightly increased thickness for a crisp visual effect */
-    margin: 10px auto 50px;
-    
-    /* Creates a premium gold shifting wave gradient background */
-    background: linear-gradient(
-        90deg, 
-        rgba(255, 215, 0, 0) 0%, 
-        rgba(255, 215, 0, 0.45) 50%, 
-        rgba(255, 215, 0, 0) 100%
-    );
-    
-    /* Double the width of the gradient pool to give it sliding room */
-    background-size: 200% 100%; 
-    
-    /* Triggers continuous left-to-right scanning wave motion */
-    animation: dividerScan 5s linear infinite;
+    height: 2.5px;               /* Clean thickness: thin, but crisp and visible */
+    margin: 20px auto 60px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.03); /* Subtle dark track so it doesn't look empty */
+    overflow: hidden;            /* Keeps the moving line contained */
+    border-radius: 2px;
 }
 
-/* Keyframe tracking engine to continuously translate the gradient position */
-@keyframes dividerScan {
+/* The actual gold beam traveling across the track */
+.section-divider::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;                  /* The length of the moving line segment */
+    background: linear-gradient(
+        90deg,
+        rgba(255, 215, 0, 0) 0%,
+        rgba(255, 215, 0, 0.7) 50%,
+        rgba(255, 215, 0, 0) 100__%
+    );
+    animation: linePasses 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Drives the beam completely from off-screen left to off-screen right */
+@keyframes linePasses {
     0% {
-        background-position: 200% 0;
+        transform: translateX(-150%);
     }
     100% {
-        background-position: -200% 0;
+        transform: translateX(400%);
     }
 }
-
 /* ==========================================================================
    12. PREMIUM PERFORMANCE STATS SECTION
    ========================================================================== */
