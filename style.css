@@ -582,62 +582,42 @@ body::after {
 }
 
 /* ==========================================================================
-   11. LINEAR SECTION DIVIDERS (PREMIUM LASER PULSE ENGINE)
+   11. LINEAR SECTION DIVIDERS (PURE LEFT-TO-RIGHT SWEEP)
    ========================================================================== */
 .section-divider {
     width: 100%;
     max-width: 1200px;
-    height: 1.5px;               /* Ultra-sleek premium thickness */
-    margin: 30px auto 70px;
+    height: 3px;                 /* Thick enough to be clearly visible, but still sleek */
+    margin: 30px auto 60px;
     position: relative;
-    background: rgba(255, 255, 255, 0.02); /* Ghost track so the layout feels anchored */
-    overflow: hidden;            /* Perfect clipping at container edges */
+    background: transparent;     /* Completely empty track so there are no distracting back-lines */
+    overflow: hidden;            /* This ensures the line completely vanishes when exiting the right edge */
 }
 
-/* The adaptive laser beam */
+/* The solid, sharp uniform line segment */
 .section-divider::after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
-    width: 100%;                 /* Takes full width to allow fluid scaling */
-    background: #ffd700;         /* Razor-sharp, solid gold core */
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.25); /* Elegant, expensive-looking ambient glow */
-    transform-origin: left center;
-    animation: premiumLaser 4.5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    width: 25%;                  /* Sets a solid, fixed length (1/4 of the container width) */
+    background: #ffd700;         /* Solid, 100% sharp premium gold with zero fading or gradients */
+    animation: cleanSweep 4s linear infinite; /* Pure linear movement at a steady, decent pace */
 }
 
-/* Luxury timing curve: Shoots out fast, glides smoothly, vanishes completely */
-@keyframes premiumLaser {
+/* Move the solid segment completely from left to right */
+@keyframes cleanSweep {
     0% {
-        transform: translateX(0) scaleX(0);
-        opacity: 0;
+        transform: translateX(-100%); /* Starts completely hidden outside the left edge */
     }
-    5% {
-        transform: translateX(0) scaleX(0.05);
-        opacity: 1;
+    80% {
+        transform: translateX(300%);  /* Sweeps smoothly across the layout at an even speed */
     }
-    15% {
-        /* The beam stretches long as it accelerates from the left edge */
-        transform: translateX(10%) scaleX(0.4);
-    }
-    45% {
-        /* It compresses into a sleek, fast pulse as it cruises across the center */
-        transform: translateX(40%) scaleX(0.15);
-    }
-    70% {
-        /* It glides toward the right edge */
-        transform: translateX(85%) scaleX(0.1);
-        opacity: 1;
-    }
-    85%, 100% {
-        /* It hits the right 1200px boundary, shrinks to zero, and completely disappears */
-        transform: translateX(100%) scaleX(0);
-        opacity: 0;
+    100% {
+        transform: translateX(400%);  /* Completely exits past the right edge, vanishing instantly */
     }
 }
-
 
 /* ==========================================================================
    12. PREMIUM PERFORMANCE STATS SECTION
