@@ -374,11 +374,6 @@
                         <input type="email" name="email" id="userEmail" placeholder="Email Address" required>
                     </div>
                     <input type="text" name="company" placeholder="Company Name">
-                    
-                    <!-- Added phone input with US validation pattern -->
-                    <input type="tel" name="phone" id="userPhone" placeholder="Phone Number (e.g., 555-123-4567)" 
-                           pattern="^(\+?1\s?)?(\([2-9]\d{2}\)|[2-9]\d{2})[-.\s]?[2-9]\d{2}[-.\s]?\d{4}$" 
-                           title="US phone numbers and exchange codes cannot start with 0 or 1, and must contain 10 digits." required>
                     <textarea name="message" placeholder="Tell us about your project..." required></textarea>
                     <button type="submit" id="submitBtn">Send Message</button>
                 </form>
@@ -511,15 +506,11 @@
 
         const contactForm = document.getElementById("mainContactForm");
         const emailInput = document.getElementById("userEmail");
-        const phoneInput = document.getElementById("userPhone");
         const popup = document.getElementById("formPopup");
         const popupTitle = document.getElementById("popupTitle");
         const popupMessage = document.getElementById("popupMessage");
         const popupCloseBtn = document.getElementById("popupCloseBtn");
-        
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        // US Phone validation regex: area code cannot start with 0 or 1
-        const usPhoneRegex = /^(\+?1\s?)?(\([2-9]\d{2}\)|[2-9]\d{2})[-.\s]?\d{3}[-.\s]?\d{4}$/;
 
         if(contactForm) {
             contactForm.addEventListener("submit", (e) => {
@@ -527,11 +518,6 @@
 
                 if (!emailRegex.test(emailInput.value)) {
                     showPopup("Error", "Please enter a valid email address (e.g., name@gmail.com).", false);
-                    return;
-                }
-
-                if (phoneInput && !usPhoneRegex.test(phoneInput.value)) {
-                    showPopup("Error", "Please enter a valid US phone number. Area codes cannot start with 0 or 1.", false);
                     return;
                 }
 
@@ -710,6 +696,6 @@
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
-</body>
 
+</body>
 </html>
