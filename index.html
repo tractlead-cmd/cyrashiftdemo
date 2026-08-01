@@ -373,10 +373,13 @@
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="email" id="userEmail" placeholder="Email Address" required>
                     </div>
-                    <div class="input-row">
-                        <input type="text" name="company" placeholder="Company Name" required>
-                        <input type="tel" name="phone" id="userPhone" placeholder="US Phone (e.g., 123-456-7890)" required>
-                    </div>
+                    <input type="text" name="company" placeholder="Company Name">
+                    
+                    <!-- Added phone input with US validation pattern -->
+                    <input type="tel" name="phone" id="userPhone" placeholder="Phone Number (e.g., 555-123-4567)" 
+                           pattern="^(\+?1\s?)?(\([2-9]\d{2}\)|[2-9]\d{2})[-.\s]?\d{3}[-.\s]?\d{4}$" 
+                           title="US phone numbers cannot start with 0 or 1 in the area code." required>
+
                     <textarea name="message" placeholder="Tell us about your project..." required></textarea>
                     <button type="submit" id="submitBtn">Send Message</button>
                 </form>
@@ -516,9 +519,8 @@
         const popupCloseBtn = document.getElementById("popupCloseBtn");
         
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        const usPhoneRegex = /^(\+?1\s?)?(\(\d{3}\)|\d{3})[\s.-]?\d{3}[\s.-]?\d{4}$/;
-
-        let popupTimer = null;
+        // US Phone validation regex: area code cannot start with 0 or 1
+        const usPhoneRegex = /^(\+?1\s?)?(\([2-9]\d{2}\)|[2-9]\d{2})[-.\s]?\d{3}[-.\s]?\d{4}$/;
 
         if(contactForm) {
             contactForm.addEventListener("submit", (e) => {
@@ -529,8 +531,8 @@
                     return;
                 }
 
-                if (!usPhoneRegex.test(phoneInput.value)) {
-                    showPopup("Error", "Please enter a valid US phone number (e.g., 123-456-7890).", false);
+                if (phoneInput && !usPhoneRegex.test(phoneInput.value)) {
+                    showPopup("Error", "Please enter a valid US phone number. Area codes cannot start with 0 or 1.", false);
                     return;
                 }
 
@@ -564,24 +566,14 @@
 
         function showPopup(title, message, isSuccess) {
             if (!popup) return;
-            
-            if (popupTimer) clearTimeout(popupTimer);
-
             popupTitle.textContent = title;
             popupTitle.style.color = isSuccess ? "#ffd700" : "#ff4d4d";
             popupMessage.textContent = message;
             popup.style.display = "flex";
-
-            if (isSuccess) {
-                popupTimer = setTimeout(() => {
-                    popup.style.display = "none";
-                }, 10000);
-            }
         }
 
         if (popupCloseBtn) {
             popupCloseBtn.addEventListener("click", () => {
-                if (popupTimer) clearTimeout(popupTimer);
                 popup.style.display = "none";
             });
         }
@@ -719,6 +711,6 @@
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
-
 </body>
+
 </html>
