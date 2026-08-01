@@ -20,7 +20,6 @@
                 <img src="logo.png" alt="CyraShift Logo">
             </div>
 
-            <!-- FIXED: Anchor links added for smooth on-page navigation -->
             <nav class="nav">
                 <a href="#">Home</a>
                 <a href="#about">About</a>
@@ -100,7 +99,6 @@
 
     <div class="section-divider"></div>
 
-    <!-- FIXED: Added id="about" anchor tag here -->
     <section class="about-section" id="about">
         <div class="about-container">
             <div class="about-card">
@@ -287,7 +285,6 @@
 
     <div class="section-divider"></div>
 
-    <!-- FIXED: Added id="services" anchor tag here -->
     <section class="services-section" id="services">
         <div class="services-container">
             <div class="services-title">
@@ -362,21 +359,33 @@
         </div>
     </section>
 
-    <!-- FIXED: Added id="contact" anchor tag here -->
     <section class="contact-section" id="contact">
         <div class="contact-wrapper">
             <h2>Contact <span>Us</span></h2>
             <p class="contact-subtext">Kindly fill in the form to reach us today!</p>
             <div class="contact-card">
-                <form class="contact-form" id="mainContactForm">
+                <form class="contact-form" id="mainContactForm" action="https://formsubmit.co/your-email@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration Inputs -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
                     <div class="input-row">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Email Address" required>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" id="userEmail" placeholder="Email Address" required>
                     </div>
-                    <input type="text" placeholder="Company Name">
-                    <textarea placeholder="Tell us about your project..." required></textarea>
-                    <button type="submit">Send Message</button>
+                    <input type="text" name="company" placeholder="Company Name">
+                    <textarea name="message" placeholder="Tell us about your project..." required></textarea>
+                    <button type="submit" id="submitBtn">Send Message</button>
                 </form>
+
+                <!-- Popup Modal Structure -->
+                <div id="formPopup" class="popup-overlay" style="display: none;">
+                    <div class="popup-card">
+                        <h3 id="popupTitle">Success!</h3>
+                        <p id="popupMessage">Email sent successfully.</p>
+                        <button id="popupCloseBtn">OK</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -387,7 +396,6 @@
                 <img src="logo.png" class="footer-logo" alt="CyraShift Logo">
             </div>
             <div class="footer-center">
-                <!-- FIXED: Anchor links added to core footer navigation -->
                 <div class="footer-links">
                     <a href="#">Home</a>
                     <a href="#about">About</a>
@@ -403,7 +411,6 @@
             </div>
         </div>
 
-        <!-- FIXED: Anchor link added to Services in the legal row -->
         <div class="footer-legal-links">
             <a href="cyrashifttermsandcondition.pdf" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>
             <a href="cyrashiftprivacypolicy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
@@ -414,7 +421,7 @@
         <div class="footer-bottom">© 2026 CyraShift. All rights reserved.</div>
     </footer>
 
-    <!-- NEW SCRIPT: Handles the dynamic 5-second browser tab text rotation -->
+    <!-- Dynamic Tab Title Script -->
     <script>
         const titles = [
             "CyraShift",
@@ -430,36 +437,36 @@
         }, 5000);
     </script>
 
-    <!-- CORE INTERACTION SCRIPT: Image Slider Engine -->
+    <!-- Image Slider Engine -->
     <script>
-    const slides = document.querySelectorAll(".slide");
-    const dashboards = document.querySelectorAll(".hero-dashboard");
-    let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const dashboards = document.querySelectorAll(".hero-dashboard");
+        let currentSlide = 0;
 
-    function nextSlide() {
-        let oldSlide = currentSlide;
-        currentSlide = (currentSlide + 1) % slides.length;
+        function nextSlide() {
+            let oldSlide = currentSlide;
+            currentSlide = (currentSlide + 1) % slides.length;
 
-        slides[oldSlide].classList.remove("active");
-        if (dashboards[oldSlide]) {
-            dashboards[oldSlide].classList.remove("active-dashboard");
-        }
+            slides[oldSlide].classList.remove("active");
+            if (dashboards[oldSlide]) {
+                dashboards[oldSlide].classList.remove("active-dashboard");
+            }
 
-        setTimeout(() => {
-            slides[currentSlide].classList.add("active");
             setTimeout(() => {
-                if (dashboards[currentSlide]) {
-                    dashboards[currentSlide].classList.add("active-dashboard");
-                } else {
-                    dashboards[0].classList.add("active-dashboard");
-                }
-            }, 2200);
-        }, 500);
-    }
-    setInterval(nextSlide, 7500);
+                slides[currentSlide].classList.add("active");
+                setTimeout(() => {
+                    if (dashboards[currentSlide]) {
+                        dashboards[currentSlide].classList.add("active-dashboard");
+                    } else {
+                        dashboards[0].classList.add("active-dashboard");
+                    }
+                }, 2200);
+            }, 500);
+        }
+        setInterval(nextSlide, 7500);
     </script>
 
-    <!-- CORE INTERACTION SCRIPT: Scroll reveal & forms -->
+    <!-- Scroll Reveal & Form Submission Script -->
     <script>
         const scrollBtn = document.getElementById("scrollTopBtn");
         const reveals = document.querySelectorAll(".about-section, .services-section, .contact-section, .service-card");
@@ -498,19 +505,70 @@
         }
 
         const contactForm = document.getElementById("mainContactForm");
+        const emailInput = document.getElementById("userEmail");
+        const popup = document.getElementById("formPopup");
+        const popupTitle = document.getElementById("popupTitle");
+        const popupMessage = document.getElementById("popupMessage");
+        const popupCloseBtn = document.getElementById("popupCloseBtn");
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
         if(contactForm) {
             contactForm.addEventListener("submit", (e) => {
                 e.preventDefault();
-                alert("Thank you! Your submission has been captured successfully.");
-                contactForm.reset();
+
+                if (!emailRegex.test(emailInput.value)) {
+                    showPopup("Error", "Please enter a valid email address (e.g., name@gmail.com).", false);
+                    return;
+                }
+
+                const formData = new FormData(contactForm);
+                const submitBtn = document.getElementById("submitBtn");
+                submitBtn.textContent = "Sending...";
+                submitBtn.disabled = true;
+
+                fetch(contactForm.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: { 'Accept': 'json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        showPopup("Success!", "Email sent successfully. We will get back to you soon.", true);
+                        contactForm.reset();
+                    } else {
+                        showPopup("Failed", "Email sending failed. Please try again later.", false);
+                    }
+                })
+                .catch(error => {
+                    showPopup("Failed", "Network error. Please check your connection and try again.", false);
+                })
+                .finally(() => {
+                    submitBtn.textContent = "Send Message";
+                    submitBtn.disabled = false;
+                });
+            });
+        }
+
+        function showPopup(title, message, isSuccess) {
+            if (!popup) return;
+            popupTitle.textContent = title;
+            popupTitle.style.color = isSuccess ? "#ffd700" : "#ff4d4d";
+            popupMessage.textContent = message;
+            popup.style.display = "flex";
+        }
+
+        if (popupCloseBtn) {
+            popupCloseBtn.addEventListener("click", () => {
+                popup.style.display = "none";
             });
         }
     </script>
 
-    <!-- CORE INTERACTION SCRIPT: Custom cursor logic -->
+    <!-- Custom Cursor Script -->
     <script>
         const cursor = document.querySelector(".custom-cursor");
         document.addEventListener("mousemove", (e) => {
+            if (!cursor) return;
             cursor.style.left = e.clientX + "px";
             cursor.style.top = e.clientY + "px";
         });
@@ -518,11 +576,13 @@
         const hoverItems = document.querySelectorAll("a, button");
         hoverItems.forEach((item) => {
             item.addEventListener("mouseenter", () => {
+                if (!cursor) return;
                 cursor.style.width = "55px";
                 cursor.style.height = "55px";
                 cursor.style.background = "rgba(255,215,0,0.18)";
             });
             item.addEventListener("mouseleave", () => {
+                if (!cursor) return;
                 cursor.style.width = "30px";
                 cursor.style.height = "30px";
                 cursor.style.background = "rgba(255,215,0,0.12)";
@@ -530,7 +590,7 @@
         });
     </script>
 
-    <!-- CORE INTERACTION SCRIPT: Dynamic Shuffle Intelligence Spotlight Engine -->
+    <!-- Spotlight Engine Script -->
     <script>
     document.addEventListener("DOMContentLoaded", function() {
       const datasetPool = [
