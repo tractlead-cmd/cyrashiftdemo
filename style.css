@@ -749,9 +749,9 @@ body::after {
 .hero-dashboard{
     position:absolute;
     top:50%;
-    left:52%;
+    left:50%;
 
-    width:118%;
+    width:143%;
     height:100%;
 
     object-fit:contain;
