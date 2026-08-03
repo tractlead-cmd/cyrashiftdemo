@@ -749,7 +749,7 @@ body::after {
     top:50%;
     left:50%;
 
-    width:110%;      /* Try between 170% and 200% */
+    width:105%;      /* Try between 170% and 200% */
     height:auto;
 
     object-fit:unset;
