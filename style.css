@@ -134,25 +134,24 @@ body::after {
     position:absolute;
     left:50%;
     transform:translateX(-50%);
+
+    color:#FFD700;
+
+    font-size:20px;
+    font-weight:800;
+
+    letter-spacing:0.8px;
+
+    text-transform:uppercase;
+
+    white-space:nowrap;
+
+    transition:.3s ease;
 }
 
-.header-phone a{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:12px 26px;
-    border-radius:999px;
-    background:linear-gradient(135deg,#FFD700,#F4B400);
-    color:#111;
-    font-weight:700;
-    text-decoration:none;
-    transition:.3s;
-    box-shadow:0 10px 25px rgba(255,215,0,.25);
-}
-
-.header-phone a:hover{
-    transform:translateY(-2px);
-    box-shadow:0 15px 35px rgba(255,215,0,.45);
+.header-phone:hover{
+    color:#ffea70;
+    text-shadow:0 0 10px rgba(255,215,0,.5);
 }
 
 /* ==========================================================================
