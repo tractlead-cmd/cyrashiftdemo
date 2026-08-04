@@ -209,8 +209,8 @@ body::after {
     z-index:2;
     pointer-events:none;
 
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 
     background:
         radial-gradient(
