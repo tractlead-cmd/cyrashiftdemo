@@ -136,8 +136,8 @@ body::after {
     transform:translateX(-50%);
 
     color:#FFD54A;              /* Rich premium gold */
-    font-size:20px;
-    font-weight:800;
+    font-size:18px;
+    font-weight:600;
     letter-spacing:1px;
 
     white-space:nowrap;
