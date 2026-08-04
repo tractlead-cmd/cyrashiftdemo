@@ -135,25 +135,19 @@ body::after {
     left:50%;
     transform:translateX(-50%);
 
+    font-size:22px;
+    font-weight:900;
+
     color:#FFD700;
 
-    font-size:20px;
-    font-weight:800;
+    letter-spacing:1px;
 
-    letter-spacing:0.8px;
-
-    text-transform:uppercase;
+    text-shadow:
+        0 0 8px rgba(255,215,0,.35),
+        0 0 18px rgba(255,215,0,.15);
 
     white-space:nowrap;
-
-    transition:.3s ease;
 }
-
-.header-phone:hover{
-    color:#ffea70;
-    text-shadow:0 0 10px rgba(255,215,0,.5);
-}
-
 /* ==========================================================================
    4. HERO SECTION & TYPOGRAPHY SLIDER
    ========================================================================== */
