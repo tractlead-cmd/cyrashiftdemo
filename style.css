@@ -135,19 +135,34 @@ body::after {
     left:50%;
     transform:translateX(-50%);
 
+    color:#FFD54A;              /* Rich premium gold */
     font-size:22px;
     font-weight:900;
-
-    color:#FFD700;
-
     letter-spacing:1px;
 
-    text-shadow:
-        0 0 8px rgba(255,215,0,.35),
-        0 0 18px rgba(255,215,0,.15);
-
     white-space:nowrap;
+
+    text-shadow:
+        0 0 6px rgba(255,213,74,0.25),
+        0 0 16px rgba(255,213,74,0.12);
+
+    transition:
+        transform .25s ease,
+        color .25s ease,
+        text-shadow .25s ease;
 }
+
+.header-phone:hover{
+    color:#E5BE3C;              /* Slightly darker gold */
+    transform:translateX(-50%) scale(1.08);
+
+    text-shadow:
+        0 0 4px rgba(229,190,60,0.18),
+        0 0 10px rgba(229,190,60,0.08);
+
+    cursor:pointer;
+}
+
 /* ==========================================================================
    4. HERO SECTION & TYPOGRAPHY SLIDER
    ========================================================================== */
