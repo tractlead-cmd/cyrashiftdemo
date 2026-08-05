@@ -153,7 +153,7 @@ body::after {
 }
 
 .header-phone:hover{
-    color:#E5BE3C;              /* Slightly darker gold */
+    color:#FFD54A;               /* Slightly darker gold */
     transform:translateX(-50%) scale(1.08);
 
     text-shadow:
@@ -1556,7 +1556,7 @@ button:hover ~ .custom-cursor {
 
 .database-title h2{
     font-size:50px;
-    color:#fff;
+    color:#FFD54A; 
     margin-bottom:18px;
     font-weight:700;
 }
