@@ -1577,7 +1577,7 @@ button:hover ~ .custom-cursor {
 
 .database-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:30px;
 }
 
@@ -1585,24 +1585,22 @@ button:hover ~ .custom-cursor {
 
 .database-card{
 
-    background:
-    linear-gradient(145deg,
-    rgba(255,255,255,.045),
-    rgba(255,255,255,.02));
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.045),
+        rgba(255,255,255,.02)
+    );
 
     border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
 
-    border-radius:26px;
-
-    padding:36px 34px;
+    padding:28px 24px;
 
     backdrop-filter:blur(16px);
 
     transition:.35s ease;
 
-    position:relative;
-
-    overflow:hidden;
+    min-height:320px;
 }
 
 .database-card::before{
@@ -1641,9 +1639,9 @@ button:hover ~ .custom-cursor {
 
     color:gold;
 
-    font-size:26px;
+    font-size:22px;
 
-    margin-bottom:24px;
+    margin-bottom:18px;
 
     font-weight:650;
 }
@@ -1660,49 +1658,37 @@ button:hover ~ .custom-cursor {
 }
 
 .database-card li{
-
     position:relative;
-
-    padding-left:30px;
-
-    margin-bottom:16px;
-
-    color:#b6b6b6;
-
-    font-size:16px;
-
-    line-height:1.6;
+    padding-left:24px;
+    margin-bottom:12px;
+    color:#b8b8b8;
+    font-size:15px;
+    line-height:1.5;
 }
-
 /* Gold Check */
 
 .database-card li::before{
-
     content:"✓";
-
     position:absolute;
-
     left:0;
-
     color:gold;
-
     font-weight:700;
 }
 
 /* ---------- Responsive ---------- */
 
-@media(max-width:900px){
+@media (max-width:1100px){
 
-.database-grid{
-
-grid-template-columns:1fr;
-
-}
-
-.database-title h2{
-
-font-size:40px;
+    .database-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
 }
+
+@media (max-width:700px){
+
+    .database-grid{
+        grid-template-columns:1fr;
+    }
 
 }
