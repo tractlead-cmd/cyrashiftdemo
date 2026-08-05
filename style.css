@@ -523,9 +523,9 @@ body::after {
     border-radius: 28px;
     padding: 40px 32px;
     transition:
-    transform 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
     overflow: hidden;
     backdrop-filter: blur(12px);
     min-height: 280px;
