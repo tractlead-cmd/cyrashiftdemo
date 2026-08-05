@@ -604,7 +604,7 @@ body::after {
     transform: translateY(-5px);
     border-color: rgba(255,215,0,0.2);
 }
-
+fstats-section
 .advantages-content h2 {
     font-size: 50px;
     color: white;
@@ -670,7 +670,7 @@ body::after {
     gap: 4px;
     padding: 0 30px;
     z-index: 1;
-    opacity: 0.22;
+    opacity: 0.12;
 }
 
 .bar {
@@ -689,7 +689,7 @@ body::after {
 .stats-container {
     position: relative;
     z-index: 5;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -701,30 +701,35 @@ body::after {
     background: linear-gradient(145deg, rgba(18,18,18,0.92), rgba(10,10,10,0.88));
     border: 1px solid rgba(255,215,0,0.06);
     border-radius: 22px;
-    padding: 28px 20px;
+    padding: 22px 18px;
     text-align: center;
     overflow: hidden;
     backdrop-filter: blur(10px);
     transition: 0.3s ease;
 }
 
-.stat-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255,215,0,0.18);
-    box-shadow: 0 0 20px rgba(255,215,0,0.08);
+.stat-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,215,0,.22);
+    box-shadow:0 18px 35px rgba(255,215,0,.08);
 }
 
 .stat-card h2 {
-    font-size: 36px;
-    color: gold;
-    margin-bottom: 8px;
-    font-weight: 700;
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1;
+    color: #FFD700;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+    text-shadow: 0 0 12px rgba(255,215,0,0.15);
 }
 
 .stat-card p {
-    color: #b8b8b8;
-    font-size: 14px;
-    letter-spacing: 0.3px;
+    color: #bdbdbd;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 /* ==========================================================================
