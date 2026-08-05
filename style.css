@@ -1529,3 +1529,180 @@ button:hover ~ .custom-cursor {
     color: gold;
     font-size: 22px;
 }
+
+
+/* ==========================================================================
+   16. EVERYTHING INCLUDED IN EVERY DATABASE
+   ========================================================================== */
+
+.database-section{
+    padding:90px 20px;
+    position:relative;
+    z-index:2;
+}
+
+.database-container{
+    width:90%;
+    max-width:1250px;
+    margin:auto;
+}
+
+/* ---------- Heading ---------- */
+
+.database-title{
+    text-align:center;
+    margin-bottom:65px;
+}
+
+.database-title h2{
+    font-size:50px;
+    color:#fff;
+    margin-bottom:18px;
+    font-weight:700;
+}
+
+.database-title h2 span{
+    color:gold;
+}
+
+.database-title p{
+    max-width:760px;
+    margin:auto;
+    color:#8f8f8f;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* ---------- Grid ---------- */
+
+.database-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+}
+
+/* ---------- Card ---------- */
+
+.database-card{
+
+    background:
+    linear-gradient(145deg,
+    rgba(255,255,255,.045),
+    rgba(255,255,255,.02));
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:26px;
+
+    padding:36px 34px;
+
+    backdrop-filter:blur(16px);
+
+    transition:.35s ease;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.database-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-70px;
+    right:-70px;
+
+    width:180px;
+    height:180px;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,215,0,.08),
+    transparent 70%);
+
+    filter:blur(30px);
+}
+
+.database-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(255,215,0,.22);
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.45);
+}
+
+/* ---------- Card Heading ---------- */
+
+.database-card h3{
+
+    color:gold;
+
+    font-size:26px;
+
+    margin-bottom:24px;
+
+    font-weight:650;
+}
+
+/* ---------- List ---------- */
+
+.database-card ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+}
+
+.database-card li{
+
+    position:relative;
+
+    padding-left:30px;
+
+    margin-bottom:16px;
+
+    color:#b6b6b6;
+
+    font-size:16px;
+
+    line-height:1.6;
+}
+
+/* Gold Check */
+
+.database-card li::before{
+
+    content:"✓";
+
+    position:absolute;
+
+    left:0;
+
+    color:gold;
+
+    font-weight:700;
+}
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:900px){
+
+.database-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.database-title h2{
+
+font-size:40px;
+
+}
+
+}
