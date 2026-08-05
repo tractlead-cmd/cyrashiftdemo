@@ -1547,6 +1547,15 @@ button:hover ~ .custom-cursor {
     margin-bottom: 60px;
 }
 
+.spotlight-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    align-items: stretch;
+}
+
+
 .spotlight-card {
     position: relative;
     background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
@@ -1560,6 +1569,8 @@ button:hover ~ .custom-cursor {
 
     min-height: 370px;
     height: 100%;
+    width: 100%;
+    box-sizing: border-box;
 
     transition: .35s ease;
 }
