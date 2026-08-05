@@ -1759,3 +1759,65 @@ button:hover ~ .custom-cursor {
     }
 
 }
+
+
+/* ==========================================================================
+   DATABASE DOWNLOAD CTA
+   ========================================================================== */
+
+.database-download{
+    text-align:center;
+    margin-top:50px;
+}
+
+.database-download p{
+    max-width:700px;
+    margin:0 auto 28px;
+    color:#8f8f8f;
+    font-size:17px;
+    line-height:1.7;
+}
+
+.download-sample-btn{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:16px 34px;
+
+    background:linear-gradient(
+        135deg,
+        #FFD700,
+        #E6B800
+    );
+
+    color:#111;
+    text-decoration:none;
+
+    font-size:16px;
+    font-weight:700;
+
+    border-radius:14px;
+
+    transition:.35s ease;
+
+    box-shadow:
+        0 12px 28px rgba(255,215,0,.18);
+}
+
+.download-sample-btn:hover{
+
+    transform:translateY(-4px) scale(1.03);
+
+    box-shadow:
+        0 18px 38px rgba(255,215,0,.28);
+
+    filter:brightness(1.05);
+}
+
+.download-sample-btn:active{
+
+    transform:translateY(-2px);
+
+}
