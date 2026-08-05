@@ -1547,11 +1547,21 @@ button:hover ~ .custom-cursor {
     margin-bottom: 60px;
 }
 
-.spotlight-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    width: 100%;
+.spotlight-card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 28px;
+    padding: 45px 40px;
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 370px;
+    height: 100%;
+
+    transition: .35s ease;
 }
 
 /* Premium glassmorphic card layouts with locked down size profiles */
@@ -1581,15 +1591,17 @@ button:hover ~ .custom-cursor {
 .spotlight-card ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    flex: 1;
 }
 
 .spotlight-card li {
     position: relative;
     padding-left: 25px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     color: #b3b3b3;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.55;
 }
 
 /* Custom golden bullet points for your list items */
