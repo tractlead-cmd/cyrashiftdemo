@@ -552,8 +552,6 @@ body::after {
 .service-icon {
     font-size: 38px;
     margin-bottom: 24px;
-
-   
 }
 
 .service-card h3 {
@@ -609,7 +607,7 @@ body::after {
     transform: translateY(-5px);
     border-color: rgba(255,215,0,0.2);
 }
-fstats-section
+
 .advantages-content h2 {
     font-size: 50px;
     color: white;
@@ -1221,8 +1219,7 @@ button:hover ~ .custom-cursor {
     }
     .about-content h2 { font-size: 42px; }
     .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .campaign-grid { grid-template-columns: repeat(2, 1fr); }
-    .spotlight-grid { grid-template-columns: 1fr; gap: 24px; } /* Added spotlight control */
+    .spotlight-grid { grid-template-columns: 1fr; gap: 24px; }
 }
 
 @media (max-width: 900px){
@@ -1296,9 +1293,6 @@ button:hover ~ .custom-cursor {
         }
     }
 
-    .campaign-top-card { padding: 35px 25px; }
-    .campaign-top-heading { font-size: 28px; }
-    .campaign-description { font-size: 15px; }
     .contact-wrapper h2 { font-size: 40px; }
     .contact-subtext { font-size: 16px; }
     .input-row { grid-template-columns: 1fr; }
@@ -1325,10 +1319,6 @@ button:hover ~ .custom-cursor {
     .stat-card p { font-size: 13px; }
     .graph-bg { gap: 3px; }
     .bar { max-width: 8px; }
-    .campaign-grid{ grid-template-columns:1fr; }
-    .campaign-title h2 { font-size:34px; }
-    .campaign-title p { font-size:15px; }
-    .campaign-card { min-height:auto; }
     .segment-grid { grid-template-columns: 1fr; gap: 20px; }
 }
 
@@ -1347,8 +1337,6 @@ button:hover ~ .custom-cursor {
     max-width: 1280px;
     margin: auto;
 }
-
-/* ---------- HEADER ---------- */
 
 .segment-header {
     text-align: center;
@@ -1375,34 +1363,25 @@ button:hover ~ .custom-cursor {
     line-height: 1.8;
 }
 
-/* ---------- GRID ---------- */
-
 .segment-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
 }
 
-/* ---------- CARD ---------- */
-
 .segment-card {
     display: flex;
     align-items: flex-start;
     gap: 18px;
-
     background: linear-gradient(
         145deg,
         rgba(255,255,255,0.04),
         rgba(255,255,255,0.02)
     );
-
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 22px;
-
     padding: 24px;
-
     backdrop-filter: blur(14px);
-
     transition:
         transform .35s ease,
         border-color .35s ease,
@@ -1410,14 +1389,9 @@ button:hover ~ .custom-cursor {
 }
 
 .segment-card:hover {
-
     transform: translateY(-6px);
-
     border-color: rgba(255,215,0,.22);
-
-    box-shadow:
-        0 18px 38px rgba(0,0,0,.35);
-
+    box-shadow: 0 18px 38px rgba(0,0,0,.35);
     background: linear-gradient(
         145deg,
         rgba(255,255,255,0.05),
@@ -1425,34 +1399,21 @@ button:hover ~ .custom-cursor {
     );
 }
 
-/* ---------- ICON ---------- */
-
 .segment-icon {
-
     width: 56px;
     height: 56px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     font-size: 26px;
-
     flex-shrink: 0;
-
     border-radius: 14px;
-
     background: rgba(255,215,0,.08);
-
     border: 1px solid rgba(255,215,0,.16);
-
     color: gold;
 }
 
-/* ---------- CONTENT ---------- */
-
 .segment-body h3 {
-
     font-size: 20px;
     color: white;
     margin-bottom: 10px;
@@ -1460,41 +1421,34 @@ button:hover ~ .custom-cursor {
 }
 
 .segment-body p {
-
     color: #a2a2a2;
     line-height: 1.6;
     font-size: 14px;
 }
 
-/* ---------- RESPONSIVE ---------- */
-
 @media (max-width:1100px){
-
     .segment-grid{
         grid-template-columns:repeat(2,1fr);
     }
-
 }
 
 @media (max-width:700px){
-
     .segment-grid{
         grid-template-columns:1fr;
     }
-
     .segment-header h2{
         font-size:40px;
     }
-
 }
+
 /* ==========================================================================
-   22. FIXED: SPOTLIGHT INVENTORY CARDS (RESTORED ALIGNMENT & COLOR)
+   22. SPOTLIGHT INVENTORY CARDS
    ========================================================================== */
 .spotlight-section {
     padding: 60px 20px 40px;
     position: relative;
     z-index: 2;
-    text-align: center; /* Centers the text alignment globally inside the section */
+    text-align: center;
 }
 
 .spotlight-container {
@@ -1503,10 +1457,9 @@ button:hover ~ .custom-cursor {
     margin: auto;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers the header contents perfectly */
+    align-items: center;
 }
 
-/* Force both the main header and paragraph description to center */
 .spotlight-section h2,
 .spotlight-section p {
     text-align: center;
@@ -1519,7 +1472,6 @@ button:hover ~ .custom-cursor {
     margin-bottom: 16px;
 }
 
-/* Turns the target word inside the spotlight main header to gold/yellow */
 .spotlight-section h2 span {
     color: gold;
 }
@@ -1538,7 +1490,6 @@ button:hover ~ .custom-cursor {
     align-items: stretch;
 }
 
-
 .spotlight-card {
     position: relative;
     background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
@@ -1546,26 +1497,12 @@ button:hover ~ .custom-cursor {
     border-radius: 28px;
     padding: 45px 40px;
     text-align: left;
-
     display: flex;
     flex-direction: column;
-
     min-height: 370px;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-
-    transition: .35s ease;
-}
-
-/* Premium glassmorphic card layouts with locked down size profiles */
-.spotlight-card {
-    position: relative;
-    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 28px;
-    padding: 45px 40px;
-    text-align: left; /* Keeps your bullet points cleanly left-aligned inside the cards */
     transition: 0.35s ease;
 }
 
@@ -1575,10 +1512,9 @@ button:hover ~ .custom-cursor {
     box-shadow: 0 20px 40px rgba(0,0,0,0.45);
 }
 
-/* Fixes the inside card headers to display in yellow/gold */
 .spotlight-card h3 {
     font-size: 28px;
-    color: gold; /* Changed from white to gold */
+    color: gold;
     margin-bottom: 24px;
 }
 
@@ -1598,7 +1534,6 @@ button:hover ~ .custom-cursor {
     line-height: 1.55;
 }
 
-/* Custom golden bullet points for your list items */
 .spotlight-card li::before {
     content: "•";
     position: absolute;
@@ -1608,9 +1543,8 @@ button:hover ~ .custom-cursor {
     font-size: 22px;
 }
 
-
 /* ==========================================================================
-   16. EVERYTHING INCLUDED IN EVERY DATABASE
+   23. EVERYTHING INCLUDED IN EVERY DATABASE
    ========================================================================== */
 
 .database-section{
@@ -1625,8 +1559,6 @@ button:hover ~ .custom-cursor {
     margin:auto;
 }
 
-/* ---------- Heading ---------- */
-
 .database-title{
     text-align:center;
     margin-bottom:65px;
@@ -1634,7 +1566,7 @@ button:hover ~ .custom-cursor {
 
 .database-title h2{
     font-size:50px;
-    color:#FFFFFF
+    color:#FFFFFF; /* FIXED MISSING SEMICOLON */
     margin-bottom:18px;
     font-weight:700;
 }
@@ -1651,86 +1583,54 @@ button:hover ~ .custom-cursor {
     line-height:1.8;
 }
 
-/* ---------- Grid ---------- */
-
 .database-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:30px;
 }
 
-/* ---------- Card ---------- */
-
 .database-card{
-
     background:linear-gradient(
         145deg,
         rgba(255,255,255,.045),
         rgba(255,255,255,.02)
     );
-
     border:1px solid rgba(255,255,255,.08);
     border-radius:22px;
-
     padding:28px 24px;
-
     backdrop-filter:blur(16px);
-
     transition:.35s ease;
-
     min-height:320px;
+    position: relative;
 }
 
 .database-card::before{
-
     content:"";
-
     position:absolute;
-
     top:-70px;
     right:-70px;
-
     width:180px;
     height:180px;
-
-    background:
-    radial-gradient(circle,
-    rgba(255,215,0,.08),
-    transparent 70%);
-
+    background: radial-gradient(circle, rgba(255,215,0,.08), transparent 70%);
     filter:blur(30px);
 }
 
 .database-card:hover{
-
     transform:translateY(-8px);
-
     border-color:rgba(255,215,0,.22);
-
-    box-shadow:
-    0 20px 45px rgba(0,0,0,.45);
+    box-shadow: 0 20px 45px rgba(0,0,0,.45);
 }
 
-/* ---------- Card Heading ---------- */
-
 .database-card h3{
-
     color:#FFD54A;
     font-size:22px;
-
     margin-bottom:18px;
-
     font-weight:650;
 }
 
-/* ---------- List ---------- */
-
 .database-card ul{
-
     list-style:none;
-
     padding:0;
-
     margin:0;
 }
 
@@ -1742,7 +1642,6 @@ button:hover ~ .custom-cursor {
     font-size:15px;
     line-height:1.5;
 }
-/* Gold Check */
 
 .database-card li::before{
     content:"✓";
@@ -1752,24 +1651,17 @@ button:hover ~ .custom-cursor {
     font-weight:700;
 }
 
-/* ---------- Responsive ---------- */
-
 @media (max-width:1100px){
-
     .database-grid{
         grid-template-columns:repeat(2,1fr);
     }
-
 }
 
 @media (max-width:700px){
-
     .database-grid{
         grid-template-columns:1fr;
     }
-
 }
-
 
 /* ==========================================================================
    DATABASE DOWNLOAD CTA
@@ -1781,47 +1673,28 @@ button:hover ~ .custom-cursor {
 }
 
 .download-sample-btn{
-
     display:inline-flex;
     align-items:center;
     justify-content:center;
-
     padding:16px 34px;
-
-    background:linear-gradient(
-        135deg,
-        #FFD700,
-        #E6B800
-    );
-
+    background:linear-gradient(135deg, #FFD700, #E6B800);
     color:#111;
     text-decoration:none;
-
     font-size:16px;
     font-weight:700;
-
     border-radius:14px;
-
     transition:.35s ease;
-
-    box-shadow:
-        0 12px 28px rgba(255,215,0,.18);
+    box-shadow: 0 12px 28px rgba(255,215,0,.18);
 }
 
 .download-sample-btn:hover{
-
     transform:translateY(-4px) scale(1.03);
-
-    box-shadow:
-        0 18px 38px rgba(255,215,0,.28);
-
+    box-shadow: 0 18px 38px rgba(255,215,0,.28);
     filter:brightness(1.05);
 }
 
 .download-sample-btn:active{
-
     transform:translateY(-2px);
-
 }
 
 /* ==========================================================================
@@ -1829,147 +1702,85 @@ button:hover ~ .custom-cursor {
    ========================================================================== */
 
 .final-cta{
-
     padding:90px 20px;
-
     position:relative;
-
     text-align:center;
-
 }
 
 .final-cta-container{
-
     width:90%;
     max-width:1100px;
-
     margin:auto;
-
     background:linear-gradient(
         145deg,
         rgba(255,255,255,.04),
         rgba(255,255,255,.015)
     );
-
     border:1px solid rgba(255,255,255,.08);
-
     border-radius:28px;
-
     padding:70px 60px;
-
     backdrop-filter:blur(16px);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.35);
-
+    box-shadow: 0 25px 70px rgba(0,0,0,.35);
 }
 
 .final-cta h2{
-
     color:white;
-
     font-size:46px;
-
     line-height:1.2;
-
     margin-bottom:24px;
-
 }
 
 .final-cta h2 span{
-
     color:gold;
-
 }
 
 .final-cta p{
-
     color:#9b9b9b;
-
     font-size:18px;
-
     line-height:1.8;
-
     max-width:720px;
-
     margin:0 auto 45px;
-
 }
 
 .final-cta-buttons{
-
     display:flex;
-
     justify-content:center;
-
     gap:20px;
-
     flex-wrap:wrap;
-
 }
 
-/* Primary Button */
-
 .quote-btn{
-
-    background:linear-gradient(
-        135deg,
-        #FFD700,
-        #E0B400
-    );
-
+    background:linear-gradient(135deg, #FFD700, #E0B400);
     color:#111;
-
     padding:16px 34px;
-
     border-radius:14px;
-
     text-decoration:none;
-
     font-weight:700;
-
     transition:.35s;
-
 }
 
 .quote-btn:hover{
-
     transform:translateY(-4px);
-
     box-shadow:0 18px 35px rgba(255,215,0,.28);
-
 }
 
-/* Secondary Button */
-
 .sample-btn{
-
     border:1px solid rgba(255,215,0,.35);
-
     color:gold;
-
     padding:16px 34px;
-
     border-radius:14px;
-
     text-decoration:none;
-
     font-weight:600;
-
     transition:.35s;
-
 }
 
 .sample-btn:hover{
-
     background:rgba(255,215,0,.08);
-
     transform:translateY(-4px);
-
 }
 
 /* ==========================================================================
-   23. FAQ CAROUSEL & FLIP CARD STYLES
+   24. FAQ CAROUSEL & FLIP CARD STYLES
    ========================================================================== */
 .faq-section {
     padding: 80px 20px;
