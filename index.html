@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- ==========================================================================
+   START: HEAD & METADATA SECTION
+   ========================================================================== -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyraShift</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+<!-- ==========================================================================
+   END: HEAD & METADATA SECTION
+   ========================================================================== -->
 
 <body>
 
+    <!-- START: CUSTOM CURSOR -->
     <div class="custom-cursor"></div>
+    <!-- END: CUSTOM CURSOR -->
 
+    <!-- START: SCROLL TO TOP BUTTON -->
     <button id="scrollTopBtn" title="Go to top">↑</button>
+    <!-- END: SCROLL TO TOP BUTTON -->
 
+    <!-- ==========================================================================
+       START: HEADER / NAVIGATION SECTION
+       ========================================================================== -->
     <header class="header">
         <div class="container">
             <div class="logo">
                 <img src="logo.png" alt="CyraShift Logo">
             </div>
 
-            <!-- CORRECT -->
-           <div class="header-phone">
-           <a href="tel:+14085551234" style="color: inherit; text-decoration: none;">
-              +1 (408) 555-1234
-           </a>
-           </div>
+            <div class="header-phone">
+                <a href="tel:+14085551234" style="color: inherit; text-decoration: none;">
+                    +1 (408) 555-1234
+                </a>
+            </div>
 
             <nav class="nav">
                 <a href="#">Home</a>
@@ -35,7 +47,13 @@
             </nav>
         </div>
     </header>
+    <!-- ==========================================================================
+       END: HEADER / NAVIGATION SECTION
+       ========================================================================== -->
 
+    <!-- ==========================================================================
+       START: HERO SECTION & SLIDER
+       ========================================================================== -->
     <section class="hero">
         <div class="hero-image-slider">
             <img src="dashboard.png" class="hero-dashboard active-dashboard" alt="Dashboard View">
@@ -43,7 +61,7 @@
             <img src="dashboard2.png" class="hero-dashboard" alt="Database View">
             <img src="dashboard3.png" class="hero-dashboard" alt="Leads View">
             <img src="dashboard4.png" class="hero-dashboard" alt="Campaigns View">
-            <img src="dashboard5.png" class="hero-dashboard" alt="Leads View">
+            <img src="dashboard5.png" class="hero-dashboard" alt="Outreach View">
         </div>
 
         <div class="hero-overlay"></div>
@@ -104,10 +122,16 @@
             </div>
         </div>
     </section>
+    <!-- ==========================================================================
+       END: HERO SECTION & SLIDER
+       ========================================================================== -->
 
     <div class="section-divider"></div>
 
-        <section class="stats-section">
+    <!-- ==========================================================================
+       START: STATS & GRAPH SECTION
+       ========================================================================== -->
+    <section class="stats-section">
         <div class="graph-bg">
             <div class="bar" style="height:12%"></div>
             <div class="bar" style="height:14%"></div>
@@ -128,9 +152,8 @@
             <div class="bar" style="height:86%"></div>
             <div class="bar" style="height:95%"></div>
         </div>
-        
 
-            <div class="stats-container">
+        <div class="stats-container">
             <div class="stat-card">
                 <h2>100M+</h2>
                 <p>Verified Emails</p>
@@ -149,118 +172,103 @@
             </div>
         </div>
     </section>
+    <!-- ==========================================================================
+       END: STATS & GRAPH SECTION
+       ========================================================================== -->
 
-    
     <div class="section-divider"></div>
 
-        <section class="spotlight-section">
+    <!-- ==========================================================================
+       START: SPOTLIGHT / INDUSTRY CHANNELS SECTION
+       ========================================================================== -->
+    <section class="spotlight-section">
         <div class="spotlight-container">
             <div class="spotlight-header">
                 <h2>Supported <span>Industry</span> Channels</h2>
                 <p>Scalable audiences. Triple-verified contact records.</p>
             </div>
             <div class="spotlight-grid" id="dynamic-spotlight-container">
-                <!-- Dynamic Content Here -->
+                <!-- Dynamic Content Rendered via JavaScript -->
             </div>
         </div>
     </section>
+    <!-- ==========================================================================
+       END: SPOTLIGHT / INDUSTRY CHANNELS SECTION
+       ========================================================================== -->
 
     <div class="section-divider"></div>
 
+    <!-- ==========================================================================
+       START: DATABASE INCLUSIONS SECTION
+       ========================================================================== -->
     <section class="database-section">
+        <div class="database-container">
+            <div class="database-title">
+                <h2>What's Included in <span>Every Database</span></h2>
+                <p>
+                    Every database is professionally structured with essential business,
+                    company, and executive-level information to support smarter prospecting.
+                </p>
+            </div>
 
-    <div class="database-container">
+            <div class="database-grid">
+                <div class="database-card">
+                    <h3>Business Information</h3>
+                    <ul>
+                        <li>Company Name</li>
+                        <li>Company Website</li>
+                        <li>Industry</li>
+                        <li>NAICS / SIC Codes</li>
+                    </ul>
+                </div>
 
-        <div class="database-title">
+                <div class="database-card">
+                    <h3>Contact Details</h3>
+                    <ul>
+                        <li>Contact Name</li>
+                        <li>Job Title</li>
+                        <li>Business Email</li>
+                        <li>Direct Phone Number</li>
+                    </ul>
+                </div>
 
-            <h2>What's Included in <span>Every Database</span></h2>
+                <div class="database-card">
+                    <h3>Company Profile</h3>
+                    <ul>
+                        <li>Employee Size</li>
+                        <li>Annual Revenue</li>
+                        <li>Ownership Type</li>
+                        <li>Company Address</li>
+                    </ul>
+                </div>
 
-            <p>
-                Every database is professionally structured with essential business,
-                company, and executive-level information to support smarter prospecting.
-            </p>
+                <div class="database-card">
+                    <h3>Geographic Data</h3>
+                    <ul>
+                        <li>Country</li>
+                        <li>State</li>
+                        <li>City</li>
+                        <li>ZIP / Postal Code</li>
+                    </ul>
+                </div>
+            </div>
 
+            <div class="database-download">
+                <a href="sample-business-database.xlsx" download class="download-sample-btn">
+                    Download Sample Database
+                </a>
+            </div>
         </div>
-
-        <div class="database-grid">
-
-            <div class="database-card">
-
-                <h3>Business Information</h3>
-
-                <ul>
-
-                    <li>Company Name</li>
-                    <li>Company Website</li>
-                    <li>Industry</li>
-                    <li>NAICS / SIC Codes</li>
-
-                </ul>
-
-            </div>
-
-            <div class="database-card">
-
-                <h3>Contact Details</h3>
-
-                <ul>
-
-                    <li>Contact Name</li>
-                    <li>Job Title</li>
-                    <li>Business Email</li>
-                    <li>Direct Phone Number</li>
-
-                </ul>
-
-            </div>
-
-            <div class="database-card">
-
-                <h3>Company Profile</h3>
-
-                <ul>
-
-                    <li>Employee Size</li>
-                    <li>Annual Revenue</li>
-                    <li>Ownership Type</li>
-                    <li>Company Address</li>
-
-                </ul>
-
-            </div>
-
-            <div class="database-card">
-
-                <h3>Geographic Data</h3>
-
-                <ul>
-
-                    <li>Country</li>
-                    <li>State</li>
-                    <li>City</li>
-                    <li>ZIP / Postal Code</li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    <div class="database-download">
-    <a href="sample-business-database.xlsx"
-       download
-       class="download-sample-btn">
-        Download Sample Database
-    </a>
-
-</div>
-
-    </div>
-
-</section>
+    </section>
+    <!-- ==========================================================================
+       END: DATABASE INCLUSIONS SECTION
+       ========================================================================== -->
 
     <div class="section-divider"></div>
 
+    <!-- ==========================================================================
+       START: ABOUT SECTION
+       ========================================================================== -->
     <section class="about-section" id="about">
         <div class="about-container">
             <div class="about-card">
@@ -290,73 +298,82 @@
             </div>
         </div>
     </section>
+    <!-- ==========================================================================
+       END: ABOUT SECTION
+       ========================================================================== -->
 
     <div class="section-divider"></div>
 
-<section class="segment-section">
-    <div class="segment-container">
+    <!-- ==========================================================================
+       START: DATA SEGMENTATION FILTERS SECTION
+       ========================================================================== -->
+    <section class="segment-section">
+        <div class="segment-container">
+            <div class="segment-header">
+                <h2>Build Smarter <span>Prospect Lists</span></h2>
+                <p>Create highly targeted business audiences using advanced company, industry, and executive-level filters.</p>
+            </div>
 
-        <div class="segment-header">
-            <h2>Build Smarter <span>Prospect Lists</span></h2>
-            <p>Create highly targeted business audiences using advanced company, industry, and executive-level filters.</p>
+            <div class="segment-grid">
+                <div class="segment-card">
+                    <div class="segment-icon">🏢</div>
+                    <div class="segment-body">
+                        <h3>Company Size</h3>
+                        <p>Identify businesses by employee count, from small companies to large enterprise organizations.</p>
+                    </div>
+                </div>
+
+                <div class="segment-card">
+                    <div class="segment-icon">👔</div>
+                    <div class="segment-body">
+                        <h3>Executive Contacts</h3>
+                        <p>Locate decision-makers by job title, department, seniority level, and executive responsibility.</p>
+                    </div>
+                </div>
+
+                <div class="segment-card">
+                    <div class="segment-icon">🏭</div>
+                    <div class="segment-body">
+                        <h3>Industry Classification</h3>
+                        <p>Target companies using NAICS codes, SIC codes, business categories, and specialized industries.</p>
+                    </div>
+                </div>
+
+                <div class="segment-card">
+                    <div class="segment-icon">📈</div>
+                    <div class="segment-body">
+                        <h3>Company Intelligence</h3>
+                        <p>Filter organizations by annual revenue, ownership type, business size, and firmographic attributes.</p>
+                    </div>
+                </div>
+
+                <div class="segment-card">
+                    <div class="segment-icon">📍</div>
+                    <div class="segment-body">
+                        <h3>Geographic Targeting</h3>
+                        <p>Build precise audiences by country, state, city, ZIP code, county, or metropolitan region.</p>
+                    </div>
+                </div>
+
+                <div class="segment-card">
+                    <div class="segment-icon">⚙️</div>
+                    <div class="segment-body">
+                        <h3>Custom Data Selection</h3>
+                        <p>Create tailored business databases by combining multiple filters to match your exact requirements.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="segment-grid">
-
-            <div class="segment-card">
-                <div class="segment-icon">🏢</div>
-                <div class="segment-body">
-                    <h3>Company Size</h3>
-                    <p>Identify businesses by employee count, from small companies to large enterprise organizations.</p>
-                </div>
-            </div>
-
-            <div class="segment-card">
-                <div class="segment-icon">👔</div>
-                <div class="segment-body">
-                    <h3>Executive Contacts</h3>
-                    <p>Locate decision-makers by job title, department, seniority level, and executive responsibility.</p>
-                </div>
-            </div>
-
-            <div class="segment-card">
-                <div class="segment-icon">🏭</div>
-                <div class="segment-body">
-                    <h3>Industry Classification</h3>
-                    <p>Target companies using NAICS codes, SIC codes, business categories, and specialized industries.</p>
-                </div>
-            </div>
-
-            <div class="segment-card">
-                <div class="segment-icon">📈</div>
-                <div class="segment-body">
-                    <h3>Company Intelligence</h3>
-                    <p>Filter organizations by annual revenue, ownership type, business size, and firmographic attributes.</p>
-                </div>
-            </div>
-
-            <div class="segment-card">
-                <div class="segment-icon">📍</div>
-                <div class="segment-body">
-                    <h3>Geographic Targeting</h3>
-                    <p>Build precise audiences by country, state, city, ZIP code, county, or metropolitan region.</p>
-                </div>
-            </div>
-
-            <div class="segment-card">
-                <div class="segment-icon">⚙️</div>
-                <div class="segment-body">
-                    <h3>Custom Data Selection</h3>
-                    <p>Create tailored business databases by combining multiple filters to match your exact requirements.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+    </section>
+    <!-- ==========================================================================
+       END: DATA SEGMENTATION FILTERS SECTION
+       ========================================================================== -->
 
     <div class="section-divider"></div>
 
+    <!-- ==========================================================================
+       START: SERVICES SECTION
+       ========================================================================== -->
     <section class="services-section" id="services">
         <div class="services-container">
             <div class="services-title">
@@ -397,9 +414,15 @@
             </div>
         </div>
     </section>
+    <!-- ==========================================================================
+       END: SERVICES SECTION
+       ========================================================================== -->
 
     <div class="section-divider"></div>
 
+    <!-- ==========================================================================
+       START: BRAND TRUST TRACK SECTION
+       ========================================================================== -->
     <section class="trust-section">
         <div class="trust-container">
             <h2>Trusted By <span>Growing Businesses</span></h2>
@@ -430,49 +453,45 @@
             </div>
         </div>
     </section>
+    <!-- ==========================================================================
+       END: BRAND TRUST TRACK SECTION
+       ========================================================================== -->
 
-<!-- ================= FAQ SECTION ================= -->
-<section class="faq-section" id="faq">
-    <div class="container">
+    <!-- ==========================================================================
+       START: FAQ SECTION
+       ========================================================================== -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
 
-        <h2 class="faq-title">Frequently Asked Questions</h2>
+            <div class="faq-wrapper">
+                <!-- Previous Button -->
+                <button class="faq-nav prev" id="prevBtn" aria-label="Previous Slide">&#10094;</button>
 
-        <div class="faq-wrapper">
+                <!-- Cards Track -->
+                <div class="faq-track" id="faqTrack"></div>
 
-            <!-- Previous Button -->
-            <button class="faq-nav prev" id="prevBtn">
-                &#10094;
-            </button>
+                <!-- Next Button -->
+                <button class="faq-nav next" id="nextBtn" aria-label="Next Slide">&#10095;</button>
+            </div>
 
-            <!-- Cards -->
-            <div class="faq-track" id="faqTrack"></div>
-
-            <!-- Next Button -->
-            <button class="faq-nav next" id="nextBtn">
-                &#10095;
-            </button>
-
+            <!-- Pagination Dots -->
+            <div class="faq-pagination" id="faqPagination"></div>
         </div>
+    </section>
+    <!-- ==========================================================================
+       END: FAQ SECTION
+       ========================================================================== -->
 
-        <!-- Pagination -->
-        <div class="faq-pagination" id="faqPagination">
-            <span class="active"></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-    </div>
-</section>
-<!-- ================= END FAQ SECTION ================= -->
-
+    <!-- ==========================================================================
+       START: CONTACT SECTION
+       ========================================================================== -->
     <section class="contact-section" id="contact">
         <div class="contact-wrapper">
             <h2>Contact <span>Us</span></h2>
             <p class="contact-subtext">Kindly fill in the form to reach us today!</p>
             <div class="contact-card">
                 <form class="contact-form" id="mainContactForm" action="https://formsubmit.co/cyrashift@gmail.com" method="POST">
-                    <!-- FormSubmit Configuration Inputs -->
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
 
@@ -485,7 +504,7 @@
                     <button type="submit" id="submitBtn">Send Message</button>
                 </form>
 
-                <!-- Popup Modal Structure -->
+                <!-- Popup Modal -->
                 <div id="formPopup" class="popup-overlay" style="display: none;">
                     <div class="popup-card">
                         <h3 id="popupTitle">Success!</h3>
@@ -496,44 +515,42 @@
             </div>
         </div>
     </section>
+    <!-- ==========================================================================
+       END: CONTACT SECTION
+       ========================================================================== -->
 
-
+    <!-- ==========================================================================
+       START: FINAL CTA SECTION
+       ========================================================================== -->
     <section class="final-cta">
+        <div class="final-cta-container">
+            <h2>Ready to Build Your <span>Next Prospect List?</span></h2>
+            <p>
+                Tell us your target industry, location, company size, or job titles,
+                and we'll deliver a professionally organized B2B database tailored
+                to your business goals.
+            </p>
 
-    <div class="final-cta-container">
+            <div class="final-cta-buttons">
+                <a href="mailto:hello@cyrashift.com?subject=Request%20for%20Custom%20Quote&body=Hello%20CyraShift,%0A%0AI%20am%20interested%20in%20purchasing%20a%20custom%20B2B%20database.%0A%0AIndustry:%0ATarget%20Location:%0AJob%20Titles:%0ACompany%20Size:%0AAdditional%20Requirements:%0A%0AThank%20you." class="quote-btn">
+                   Request a Custom Quote
+                </a>
 
-        <h2>
-            Ready to Build Your
-            <span>Next Prospect List?</span>
-        </h2>
-
-        <p>
-            Tell us your target industry, location, company size, or job titles,
-            and we'll deliver a professionally organized B2B database tailored
-            to your business goals.
-        </p>
-
-        <div class="final-cta-buttons">
-
-            <a href="mailto:hello@cyrashift.com?subject=Request%20for%20Custom%20Quote&body=Hello%20CyraShift,%0A%0AI%20am%20interested%20in%20purchasing%20a%20custom%20B2B%20database.%0A%0AIndustry:%0ATarget%20Location:%0AJob%20Titles:%0ACompany%20Size:%0AAdditional%20Requirements:%0A%0AThank%20you."
-               class="quote-btn">
-                Request a Custom Quote
-            </a>
-
-            <a href="sample-business-database.xlsx"
-               download
-               class="sample-btn">
-                 Download Sample Database
-            </a>
-
+                <a href="sample-business-database.xlsx" download class="sample-btn">
+                    Download Sample Database
+                </a>
+            </div>
         </div>
+    </section>
+    <!-- ==========================================================================
+       END: FINAL CTA SECTION
+       ========================================================================== -->
 
-    </div>
+    <div class="section-divider"></div>
 
-</section>
-
-<div class="section-divider"></div>
-
+    <!-- ==========================================================================
+       START: FOOTER SECTION
+       ========================================================================== -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-brand">
@@ -562,415 +579,13 @@
             <a href="#services">Services</a>
         </div>
 
-        <div class="footer-bottom">&copy; 2026 CyraShift. All rights reserved.</div>
+        <div class="footer-bottom">© 2026 CyraShift. All rights reserved.</div>
     </footer>
+    <!-- ==========================================================================
+       END: FOOTER SECTION
+       ========================================================================== -->
 
-    <!-- Dynamic Tab Title Script -->
-    <script>
-        const titles = [
-            "CyraShift",
-            "B2B Email List | CyraShift",
-            "Accurate Email List | CyraShift",
-            "Lead Generation | CyraShift"
-        ];
-        let titleIndex = 0;
-
-        setInterval(() => {
-            titleIndex = (titleIndex + 1) % titles.length;
-            document.title = titles[titleIndex];
-        }, 5000);
-    </script>
-
-    <!-- Image Slider Engine -->
-    <script>
-        const slides = document.querySelectorAll(".slide");
-        const dashboards = document.querySelectorAll(".hero-dashboard");
-        let currentSlide = 0;
-
-        function nextSlide() {
-            let oldSlide = currentSlide;
-            currentSlide = (currentSlide + 1) % slides.length;
-
-            slides[oldSlide].classList.remove("active");
-            if (dashboards[oldSlide]) {
-                dashboards[oldSlide].classList.remove("active-dashboard");
-            }
-
-            setTimeout(() => {
-                slides[currentSlide].classList.add("active");
-                setTimeout(() => {
-                    if (dashboards[currentSlide]) {
-                        dashboards[currentSlide].classList.add("active-dashboard");
-                    } else {
-                        dashboards[0].classList.add("active-dashboard");
-                    }
-                }, 2200);
-            }, 500);
-        }
-        setInterval(nextSlide, 9000);
-    </script>
-
-    <!-- Scroll Reveal & Form Submission Script -->
-    <script>
-        const scrollBtn = document.getElementById("scrollTopBtn");
-        const reveals = document.querySelectorAll(".about-section, .services-section, .contact-section, .service-card");
-        let ticking = false;
-
-        window.addEventListener("scroll", () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrollY = window.scrollY;
-                    const windowHeight = window.innerHeight;
-
-                    if (scrollBtn) {
-                        if (scrollY > 300) {
-                            scrollBtn.classList.add("show");
-                        } else {
-                            scrollBtn.classList.remove("show");
-                        }
-                    }
-
-                    reveals.forEach((el) => {
-                        const revealTop = el.getBoundingClientRect().top;
-                        if (revealTop < windowHeight - 80) {
-                            el.classList.add("active-reveal");
-                        }
-                    });
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-
-        if (scrollBtn) {
-            scrollBtn.addEventListener("click", () => {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-            });
-        }
-
-        const contactForm = document.getElementById("mainContactForm");
-        const emailInput = document.getElementById("userEmail");
-        const popup = document.getElementById("formPopup");
-        const popupTitle = document.getElementById("popupTitle");
-        const popupMessage = document.getElementById("popupMessage");
-        const popupCloseBtn = document.getElementById("popupCloseBtn");
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-        if(contactForm) {
-            contactForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-
-                if (!emailRegex.test(emailInput.value)) {
-                    showPopup("Error", "Please enter a valid email address (e.g., name@gmail.com).", false);
-                    return;
-                }
-
-                const formData = new FormData(contactForm);
-                const submitBtn = document.getElementById("submitBtn");
-                submitBtn.textContent = "Sending...";
-                submitBtn.disabled = true;
-
-                fetch(contactForm.action, {
-                    method: "POST",
-                    body: formData,
-                    headers: { 'Accept': 'json' }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        showPopup("Success!", "Email sent successfully. We will get back to you soon.", true);
-                        contactForm.reset();
-                    } else {
-                        showPopup("Failed", "Email sending failed. Please try again later.", false);
-                    }
-                })
-                .catch(error => {
-                    showPopup("Failed", "Network error. Please check your connection and try again.", false);
-                })
-                .finally(() => {
-                    submitBtn.textContent = "Send Message";
-                    submitBtn.disabled = false;
-                });
-            });
-        }
-
-        function showPopup(title, message, isSuccess) {
-            if (!popup) return;
-            popupTitle.textContent = title;
-            popupTitle.style.color = isSuccess ? "#ffd700" : "#ff4d4d";
-            popupMessage.textContent = message;
-            popup.style.display = "flex";
-        }
-
-        if (popupCloseBtn) {
-            popupCloseBtn.addEventListener("click", () => {
-                popup.style.display = "none";
-            });
-        }
-    </script>
-
-    <!-- Custom Cursor Script -->
-    <script>
-        const cursor = document.querySelector(".custom-cursor");
-        document.addEventListener("mousemove", (e) => {
-            if (!cursor) return;
-            cursor.style.left = e.clientX + "px";
-            cursor.style.top = e.clientY + "px";
-        });
-
-        const hoverItems = document.querySelectorAll("a, button");
-        hoverItems.forEach((item) => {
-            item.addEventListener("mouseenter", () => {
-                if (!cursor) return;
-                cursor.style.width = "55px";
-                cursor.style.height = "55px";
-                cursor.style.background = "rgba(255,215,0,0.18)";
-            });
-            item.addEventListener("mouseleave", () => {
-                if (!cursor) return;
-                cursor.style.width = "30px";
-                cursor.style.height = "30px";
-                cursor.style.background = "rgba(255,215,0,0.12)";
-            });
-        });
-    </script>
-
-    <!-- Spotlight Engine Script -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const datasetPool = [
-{
-title: "Construction Companies Database",
-bullets: [
-"2.5M+ Construction Businesses",
-"Owners, Estimators & Project Managers",
-"Commercial & Residential Contractors",
-"NAICS, SIC & Trade Classification",
-"Advanced Firmographic Intelligence"
-]
-},
-{
-title: "Business Intelligence Database",
-bullets: [
-"100M+ Verified Business Profiles",
-"500+ Industry Market Segments",
-"C-Level Executive Intelligence",
-"40+ Precision Search Filters",
-"Continuously Refreshed Records"
-]
-},
-{
-title: "Physicians Database",
-bullets: [
-"Licensed Physicians Nationwide",
-"120+ Medical Specialties",
-"Hospitals & Private Practices",
-"Practice Ownership Intelligence",
-"Clinical Decision-Maker Profiles"
-]
-},
-{
-title: "Architecture Firms Database",
-bullets: [
-"Licensed Architecture Practices",
-"Principal Architects & Partners",
-"Commercial Design Specialists",
-"Firm Size & Revenue Insights",
-"Executive Contact Intelligence"
-]
-},
-{
-title: "Real Estate Professionals Database",
-bullets: [
-"Licensed Realtors & Brokerages",
-"Residential & Commercial Markets",
-"Top-Producing Sales Professionals",
-"Regional Market Intelligence",
-"Verified Executive Profiles"
-]
-},
-{
-title: "Property Management Database",
-bullets: [
-"Commercial Portfolio Operators",
-"Residential Property Managers",
-"Facility Operations Leadership",
-"Ownership Intelligence Records",
-"Executive Contact Database"
-]
-},
-{
-title: "Commercial Real Estate Database",
-bullets: [
-"Developers & Investment Groups",
-"Commercial Brokerage Networks",
-"Institutional Asset Managers",
-"Property Intelligence Platform",
-"C-Level Contact Profiles"
-]
-},
-{
-title: "Education Institutions Database",
-bullets: [
-"K-12 & Higher Education",
-"District Leadership Teams",
-"School Decision-Makers",
-"Institutional Business Records",
-"Education Market Intelligence"
-]
-},
-{
-title: "Restaurant Industry Database",
-bullets: [
-"Restaurant Ownership Groups",
-"Franchise & Multi-Unit Operators",
-"Hospitality Purchasing Leaders",
-"Regional Market Coverage",
-"Business Contact Intelligence"
-]
-},
-{
-title: "Technology Companies Database",
-bullets: [
-"SaaS & Software Companies",
-"CIO, CTO & VP Engineering",
-"Technographic Intelligence",
-"Startup to Enterprise Coverage",
-"Executive Business Profiles"
-]
-},
-{
-title: "HR & Talent Leaders Database",
-bullets: [
-"Chief Human Resources Officers",
-"Talent Acquisition Leadership",
-"People Operations Executives",
-"Corporate Workforce Insights",
-"Verified Professional Records"
-]
-},
-{
-title: "Law Firms Database",
-bullets: [
-"Managing Partners & Attorneys",
-"Corporate Legal Practices",
-"Practice Area Intelligence",
-"Regional & National Firms",
-"Verified Legal Profiles"
-]
-},
-{
-title: "Accounting Firms Database",
-bullets: [
-"CPA & Advisory Firms",
-"Tax & Audit Professionals",
-"Financial Decision-Makers",
-"Firmographic Business Insights",
-"Executive Contact Intelligence"
-]
-},
-{
-title: "Manufacturing Companies Database",
-bullets: [
-"Industrial Manufacturers",
-"Operations & Plant Leadership",
-"Supply Chain Executives",
-"NAICS Industry Classification",
-"Business Intelligence Profiles"
-]
-},
-{
-title: "Data Enrichment Services",
-bullets: [
-"CRM Data Enhancement",
-"Identity & Email Verification",
-"Contact Record Completion",
-"Business Profile Enrichment",
-"Enterprise Data Quality"
-]
-}
-];
-
-      const container = document.getElementById('dynamic-spotlight-container');
-
-      function updateCards() {
-        if (!container) return;
-
-        const shuffled = [...datasetPool].sort(() => 0.5 - Math.random());
-        const selectedData = shuffled.slice(0, 2);
-
-        container.innerHTML = '';
-
-        selectedData.forEach(item => {
-          const limitedBullets = item.bullets.slice(0, 5);
-          let bulletsMarkup = limitedBullets.map(b => `<li>${b}</li>`).join('');
-          
-          container.innerHTML += `
-            <div class="spotlight-card">
-              <h3>${item.title}</h3>
-              <ul>${bulletsMarkup}</ul>
-            </div>
-          `;
-        });
-      }
-
-      updateCards();
-      setInterval(updateCards, 8000);
-    });
-    </script>
-
-    <!-- FAQ Carousel Engine Script -->
-    <script>
-    /* ===========================================
-       CYRASHIFT FAQ CAROUSEL ENGINE
-    =========================================== */
-    document.addEventListener("DOMContentLoaded", function () {
-        const faqData = [
-            { q: "What is CyraShift?", a: "CyraShift is a modern B2B lead generation platform providing verified business databases and custom contact lists." },
-            { q: "How accurate is your data?", a: "Our data goes through multi-level verification processes and is continuously updated to ensure a high deliverability rate." },
-            { q: "Can I request a custom industry list?", a: "Yes! You can specify your target criteria like location, job title, and company size for a custom database." },
-            { q: "How do I download a sample database?", a: "You can click on any 'Download Sample Database' button on our website to get an immediate Excel sample file." }
-        ];
-
-        const track = document.getElementById("faqTrack");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
-        const paginationDots = document.querySelectorAll("#faqPagination span");
-
-        let currentIndex = 0;
-
-        function renderFaq() {
-            if (!track) return;
-            track.innerHTML = "";
-            
-            faqData.forEach((item, index) => {
-                const card = document.createElement("div");
-                card.className = `faq-card ${index === currentIndex ? "active" : ""}`;
-                card.innerHTML = `<h3>${item.q}</h3><p>${item.a}</p>`;
-                track.appendChild(card);
-            });
-
-            paginationDots.forEach((dot, index) => {
-                dot.classList.toggle("active", index === currentIndex);
-            });
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener("click", () => {
-                currentIndex = (currentIndex + 1) % faqData.length;
-                renderFaq();
-            });
-        }
-
-        if (prevBtn) {
-            prevBtn.addEventListener("click", () => {
-                currentIndex = (currentIndex - 1 + faqData.length) % faqData.length;
-                renderFaq();
-            });
-        }
-
-        renderFaq();
-    });
-    </script>
-
+    <!-- External JavaScript File -->
+    <script src="./script.js"></script>
 </body>
 </html>
