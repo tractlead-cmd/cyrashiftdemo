@@ -2005,6 +2005,8 @@ Cards Container
     display:grid;
     grid-template-columns:repeat(5,1fr);
     gap:22px;
+   transition: transform .35s ease, opacity .35s ease;
+   will-change: transform, opacity;
 }
 
 /*=========================
