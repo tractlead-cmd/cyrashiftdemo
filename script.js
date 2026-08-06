@@ -1,0 +1,417 @@
+/* ==========================================================================
+   START: 1. DYNAMIC TAB TITLE ENGINE
+   ========================================================================== */
+const titles = [
+    "CyraShift",
+    "B2B Email List | CyraShift",
+    "Accurate Email List | CyraShift",
+    "Lead Generation | CyraShift"
+];
+let titleIndex = 0;
+
+setInterval(() => {
+    titleIndex = (titleIndex + 1) % titles.length;
+    document.title = titles[titleIndex];
+}, 5000);
+/* ==========================================================================
+   END: 1. DYNAMIC TAB TITLE ENGINE
+   ========================================================================== */
+
+
+/* ==========================================================================
+   START: 2. HERO IMAGE & TEXT SLIDER ENGINE
+   ========================================================================== */
+const slides = document.querySelectorAll(".slide");
+const dashboards = document.querySelectorAll(".hero-dashboard");
+let currentSlide = 0;
+
+function nextSlide() {
+    let oldSlide = currentSlide;
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    slides[oldSlide].classList.remove("active");
+    if (dashboards[oldSlide]) {
+        dashboards[oldSlide].classList.remove("active-dashboard");
+    }
+
+    setTimeout(() => {
+        slides[currentSlide].classList.add("active");
+        setTimeout(() => {
+            if (dashboards[currentSlide]) {
+                dashboards[currentSlide].classList.add("active-dashboard");
+            } else if (dashboards.length > 0) {
+                dashboards[0].classList.add("active-dashboard");
+            }
+        }, 2200);
+    }, 500);
+}
+setInterval(nextSlide, 9000);
+/* ==========================================================================
+   END: 2. HERO IMAGE & TEXT SLIDER ENGINE
+   ========================================================================== */
+
+
+/* ==========================================================================
+   START: 3. SCROLL REVEAL & CONTACT FORM HANDLER
+   ========================================================================== */
+const scrollBtn = document.getElementById("scrollTopBtn");
+const reveals = document.querySelectorAll(".about-section, .services-section, .contact-section, .service-card");
+let ticking = false;
+
+window.addEventListener("scroll", () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            if (scrollBtn) {
+                if (scrollY > 300) {
+                    scrollBtn.classList.add("show");
+                } else {
+                    scrollBtn.classList.remove("show");
+                }
+            }
+
+            reveals.forEach((el) => {
+                const revealTop = el.getBoundingClientRect().top;
+                if (revealTop < windowHeight - 80) {
+                    el.classList.add("active-reveal");
+                }
+            });
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+if (scrollBtn) {
+    scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+}
+
+// Contact Form AJAX Handler
+const contactForm = document.getElementById("mainContactForm");
+const emailInput = document.getElementById("userEmail");
+const popup = document.getElementById("formPopup");
+const popupTitle = document.getElementById("popupTitle");
+const popupMessage = document.getElementById("popupMessage");
+const popupCloseBtn = document.getElementById("popupCloseBtn");
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (!emailRegex.test(emailInput.value)) {
+            showPopup("Error", "Please enter a valid email address (e.g., name@gmail.com).", false);
+            return;
+        }
+
+        const formData = new FormData(contactForm);
+        const submitBtn = document.getElementById("submitBtn");
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+
+        fetch(contactForm.action, {
+            method: "POST",
+            body: formData,
+            headers: { 'Accept': 'json' }
+        })
+        .then(response => {
+            if (response.ok) {
+                showPopup("Success!", "Email sent successfully. We will get back to you soon.", true);
+                contactForm.reset();
+            } else {
+                showPopup("Failed", "Email sending failed. Please try again later.", false);
+            }
+        })
+        .catch(() => {
+            showPopup("Failed", "Network error. Please check your connection and try again.", false);
+        })
+        .finally(() => {
+            submitBtn.textContent = "Send Message";
+            submitBtn.disabled = false;
+        });
+    });
+}
+
+function showPopup(title, message, isSuccess) {
+    if (!popup) return;
+    popupTitle.textContent = title;
+    popupTitle.style.color = isSuccess ? "#ffd700" : "#ff4d4d";
+    popupMessage.textContent = message;
+    popup.style.display = "flex";
+}
+
+if (popupCloseBtn) {
+    popupCloseBtn.addEventListener("click", () => {
+        popup.style.display = "none";
+    });
+}
+/* ==========================================================================
+   END: 3. SCROLL REVEAL & CONTACT FORM HANDLER
+   ========================================================================== */
+
+
+/* ==========================================================================
+   START: 4. CUSTOM INTERACTIVE CURSOR ENGINE
+   ========================================================================== */
+const cursor = document.querySelector(".custom-cursor");
+document.addEventListener("mousemove", (e) => {
+    if (!cursor) return;
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
+
+const hoverItems = document.querySelectorAll("a, button");
+hoverItems.forEach((item) => {
+    item.addEventListener("mouseenter", () => {
+        if (!cursor) return;
+        cursor.style.width = "55px";
+        cursor.style.height = "55px";
+        cursor.style.background = "rgba(255,215,0,0.18)";
+    });
+    item.addEventListener("mouseleave", () => {
+        if (!cursor) return;
+        cursor.style.width = "30px";
+        cursor.style.height = "30px";
+        cursor.style.background = "rgba(255,215,0,0.12)";
+    });
+});
+/* ==========================================================================
+   END: 4. CUSTOM INTERACTIVE CURSOR ENGINE
+   ========================================================================== */
+
+
+/* ==========================================================================
+   START: 5. DYNAMIC SPOTLIGHT INVENTORY ENGINE
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", function() {
+    const datasetPool = [
+        {
+            title: "Construction Companies Database",
+            bullets: [
+                "2.5M+ Construction Businesses",
+                "Owners, Estimators & Project Managers",
+                "Commercial & Residential Contractors",
+                "NAICS, SIC & Trade Classification",
+                "Advanced Firmographic Intelligence"
+            ]
+        },
+        {
+            title: "Business Intelligence Database",
+            bullets: [
+                "100M+ Verified Business Profiles",
+                "500+ Industry Market Segments",
+                "C-Level Executive Intelligence",
+                "40+ Precision Search Filters",
+                "Continuously Refreshed Records"
+            ]
+        },
+        {
+            title: "Physicians Database",
+            bullets: [
+                "Licensed Physicians Nationwide",
+                "120+ Medical Specialties",
+                "Hospitals & Private Practices",
+                "Practice Ownership Intelligence",
+                "Clinical Decision-Maker Profiles"
+            ]
+        },
+        {
+            title: "Architecture Firms Database",
+            bullets: [
+                "Licensed Architecture Practices",
+                "Principal Architects & Partners",
+                "Commercial Design Specialists",
+                "Firm Size & Revenue Insights",
+                "Executive Contact Intelligence"
+            ]
+        },
+        {
+            title: "Real Estate Professionals Database",
+            bullets: [
+                "Licensed Realtors & Brokerages",
+                "Residential & Commercial Markets",
+                "Top-Producing Sales Professionals",
+                "Regional Market Intelligence",
+                "Verified Executive Profiles"
+            ]
+        },
+        {
+            title: "Technology Companies Database",
+            bullets: [
+                "SaaS & Software Companies",
+                "CIO, CTO & VP Engineering",
+                "Technographic Intelligence",
+                "Startup to Enterprise Coverage",
+                "Executive Business Profiles"
+            ]
+        }
+    ];
+
+    const container = document.getElementById('dynamic-spotlight-container');
+
+    function updateCards() {
+        if (!container) return;
+        const shuffled = [...datasetPool].sort(() => 0.5 - Math.random());
+        const selectedData = shuffled.slice(0, 2);
+
+        container.innerHTML = '';
+        selectedData.forEach(item => {
+            let bulletsMarkup = item.bullets.slice(0, 5).map(b => `<li>${b}</li>`).join('');
+            container.innerHTML += `
+                <div class="spotlight-card">
+                    <h3>${item.title}</h3>
+                    <ul>${bulletsMarkup}</ul>
+                </div>
+            `;
+        });
+    }
+
+    updateCards();
+    setInterval(updateCards, 8000);
+});
+/* ==========================================================================
+   END: 5. DYNAMIC SPOTLIGHT INVENTORY ENGINE
+   ========================================================================== */
+
+
+/* ==========================================================================
+   START: 6. FAQ CAROUSEL & FLIP CARD ENGINE
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", function() {
+    const faqs = [
+        { icon:"📊", question:"How accurate is your database?", answer:"Our database is regularly verified using multiple trusted sources to maintain high-quality business information." },
+        { icon:"🔄", question:"How often is the data updated?", answer:"We continuously refresh our records to keep business information current and reliable." },
+        { icon:"📦", question:"Do you provide sample data?", answer:"Yes. We can provide sample records before purchase." },
+        { icon:"🎯", question:"Can I request a custom list?", answer:"Yes. We can filter by industry, state, city, ZIP code, revenue, employee size and more." },
+        { icon:"📁", question:"Which file formats do you deliver?", answer:"Excel, CSV and other commonly requested formats are available." },
+        { icon:"⚡", question:"How quickly is delivery?", answer:"Most databases are delivered within a few hours after confirmation." },
+        { icon:"🛡", question:"Is the data compliant?", answer:"Our business data is collected and maintained according to applicable regulations and best practices." },
+        { icon:"🏢", question:"Which industries do you cover?", answer:"Over 500 industries across the United States." },
+        { icon:"📍", question:"Can you filter by location?", answer:"Yes. We can filter by State, City, County and ZIP Code." },
+        { icon:"💼", question:"Do you provide company size filters?", answer:"Yes. Employee count, revenue and company size are available." },
+        { icon:"📞", question:"Do you include phone numbers?", answer:"Yes, where available." },
+        { icon:"📧", question:"Do you include email addresses?", answer:"Yes, verified business email addresses are available." },
+        { icon:"🌎", question:"Do you cover all US states?", answer:"Yes. Our databases cover businesses throughout the United States." },
+        { icon:"⭐", question:"Can I buy a one-time list?", answer:"Absolutely. No subscription is required." },
+        { icon:"🤝", question:"Do you offer bulk discounts?", answer:"Yes. Contact us for volume pricing." }
+    ];
+
+    const faqTrack = document.getElementById("faqTrack");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const pagination = document.getElementById("faqPagination");
+
+    let currentPage = 0;
+
+    function getCardsPerPage() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1200) return 3;
+        return 5;
+    }
+
+    function renderCards() {
+        if (!faqTrack) return;
+        faqTrack.innerHTML = "";
+        
+        const cardsPerPage = getCardsPerPage();
+        const start = currentPage * cardsPerPage;
+        const end = start + cardsPerPage;
+
+        faqs.slice(start, end).forEach(faq => {
+            faqTrack.innerHTML += `
+                <div class="faq-card">
+                    <div class="faq-card-inner">
+                        <div class="faq-front">
+                            <div class="faq-icon">${faq.icon}</div>
+                            <h3>${faq.question}</h3>
+                        </div>
+                        <div class="faq-back">
+                            <h3>${faq.question}</h3>
+                            <p>${faq.answer}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        updatePagination();
+        updateButtons();
+    }
+
+    function updatePagination() {
+        if (!pagination) return;
+        const cardsPerPage = getCardsPerPage();
+        const totalPages = Math.ceil(faqs.length / cardsPerPage);
+        pagination.innerHTML = "";
+
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement("span");
+            if (i === currentPage) dot.classList.add("active");
+            dot.addEventListener("click", () => {
+                currentPage = i;
+                slideAnimation();
+            });
+            pagination.appendChild(dot);
+        }
+    }
+
+    function updateButtons() {
+        if (!prevBtn || !nextBtn) return;
+        const cardsPerPage = getCardsPerPage();
+        const maxPage = Math.ceil(faqs.length / cardsPerPage) - 1;
+
+        prevBtn.disabled = currentPage === 0;
+        nextBtn.disabled = currentPage >= maxPage;
+
+        prevBtn.style.opacity = currentPage === 0 ? "0.4" : "1";
+        nextBtn.style.opacity = currentPage >= maxPage ? "0.4" : "1";
+    }
+
+    function slideAnimation() {
+        faqTrack.style.opacity = "0";
+        faqTrack.style.transform = "translateX(40px)";
+        setTimeout(() => {
+            renderCards();
+            faqTrack.style.transform = "translateX(0px)";
+            faqTrack.style.opacity = "1";
+        }, 220);
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            const cardsPerPage = getCardsPerPage();
+            if (currentPage < Math.ceil(faqs.length / cardsPerPage) - 1) {
+                currentPage++;
+                slideAnimation();
+            }
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            if (currentPage > 0) {
+                currentPage--;
+                slideAnimation();
+            }
+        });
+    }
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" && nextBtn) nextBtn.click();
+        if (e.key === "ArrowLeft" && prevBtn) prevBtn.click();
+    });
+
+    window.addEventListener("resize", () => {
+        currentPage = 0;
+        renderCards();
+    });
+
+    renderCards();
+});
+/* ==========================================================================
+   END: 6. FAQ CAROUSEL & FLIP CARD ENGINE
+   ========================================================================== */
