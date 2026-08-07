@@ -1759,3 +1759,102 @@ button:hover ~ .custom-cursor {
     }
 
 }
+
+/* ==========================================================================
+   FINAL CTA BUTTONS
+   ========================================================================== */
+
+.final-cta-buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:22px;
+    margin-top:45px;
+    flex-wrap:wrap;
+}
+
+.final-cta-buttons a{
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:.3px;
+    padding:18px 38px;
+    border-radius:50px;
+    transition:all .35s ease;
+    min-width:270px;
+}
+
+/* ===============================
+   REQUEST QUOTE BUTTON
+================================ */
+
+.quote-btn{
+
+    background:linear-gradient(135deg,#FFD700,#F4B400);
+
+    color:#111;
+
+    box-shadow:
+    0 10px 30px rgba(255,215,0,.18);
+
+    border:2px solid transparent;
+}
+
+.quote-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 18px 40px rgba(255,215,0,.35);
+
+    background:linear-gradient(135deg,#FFE45C,#FFD700);
+}
+
+/* ===============================
+   SAMPLE BUTTON
+================================ */
+
+.sample-btn{
+
+    background:rgba(255,255,255,.03);
+
+    color:#fff;
+
+    border:2px solid rgba(255,215,0,.18);
+
+    backdrop-filter:blur(10px);
+}
+
+.sample-btn:hover{
+
+    transform:translateY(-4px);
+
+    background:rgba(255,215,0,.08);
+
+    border-color:gold;
+
+    box-shadow:
+    0 18px 40px rgba(255,215,0,.15);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width:768px){
+
+.final-cta-buttons{
+
+    flex-direction:column;
+}
+
+.final-cta-buttons a{
+
+    width:100%;
+    max-width:340px;
+}
+
+}
