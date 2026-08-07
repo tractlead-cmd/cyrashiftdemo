@@ -522,7 +522,10 @@ body::after {
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 28px;
     padding: 40px 32px;
-    transition: 0.35s ease;
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
     overflow: hidden;
     backdrop-filter: blur(12px);
     min-height: 280px;
@@ -541,14 +544,16 @@ body::after {
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(255,215,0,0.25);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transform: translateY(-10px) scale(1.06);
+    border-color: rgba(255,215,0,0.28);
+    box-shadow: 0 28px 60px rgba(0,0,0,0.5);
 }
 
 .service-icon {
     font-size: 38px;
     margin-bottom: 24px;
+
+   
 }
 
 .service-card h3 {
@@ -604,7 +609,7 @@ body::after {
     transform: translateY(-5px);
     border-color: rgba(255,215,0,0.2);
 }
-
+fstats-section
 .advantages-content h2 {
     font-size: 50px;
     color: white;
@@ -670,7 +675,7 @@ body::after {
     gap: 4px;
     padding: 0 30px;
     z-index: 1;
-    opacity: 0.22;
+    opacity: 0.12;
 }
 
 .bar {
@@ -689,7 +694,7 @@ body::after {
 .stats-container {
     position: relative;
     z-index: 5;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -701,30 +706,35 @@ body::after {
     background: linear-gradient(145deg, rgba(18,18,18,0.92), rgba(10,10,10,0.88));
     border: 1px solid rgba(255,215,0,0.06);
     border-radius: 22px;
-    padding: 28px 20px;
+    padding: 22px 18px;
     text-align: center;
     overflow: hidden;
     backdrop-filter: blur(10px);
     transition: 0.3s ease;
 }
 
-.stat-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255,215,0,0.18);
-    box-shadow: 0 0 20px rgba(255,215,0,0.08);
+.stat-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,215,0,.22);
+    box-shadow:0 18px 35px rgba(255,215,0,.08);
 }
 
 .stat-card h2 {
-    font-size: 36px;
-    color: gold;
-    margin-bottom: 8px;
-    font-weight: 700;
+    font-size: 44px;
+    font-weight: 675;
+    line-height: 1;
+    color: #FFD700;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+    text-shadow: 0 0 12px rgba(255,215,0,0.15);
 }
 
 .stat-card p {
-    color: #b8b8b8;
-    font-size: 14px;
-    letter-spacing: 0.3px;
+    color: #bdbdbd;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 /* ==========================================================================
@@ -1760,371 +1770,367 @@ button:hover ~ .custom-cursor {
 
 }
 
+
 /* ==========================================================================
-   FINAL CTA BUTTONS
+   DATABASE DOWNLOAD CTA
    ========================================================================== */
 
-.final-cta-buttons{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:22px;
-    margin-top:45px;
-    flex-wrap:wrap;
+.database-download{
+    text-align:center;
+    margin-top:50px;
 }
 
-.final-cta-buttons a{
+.download-sample-btn{
+
     display:inline-flex;
-    justify-content:center;
     align-items:center;
-    text-decoration:none;
-    font-size:16px;
-    font-weight:600;
-    letter-spacing:.3px;
-    padding:18px 38px;
-    border-radius:50px;
-    transition:all .35s ease;
-    min-width:270px;
-}
+    justify-content:center;
 
-/* ===============================
-   REQUEST QUOTE BUTTON
-================================ */
+    padding:16px 34px;
 
-.quote-btn{
-
-    background:linear-gradient(135deg,#FFD700,#F4B400);
+    background:linear-gradient(
+        135deg,
+        #FFD700,
+        #E6B800
+    );
 
     color:#111;
+    text-decoration:none;
+
+    font-size:16px;
+    font-weight:700;
+
+    border-radius:14px;
+
+    transition:.35s ease;
 
     box-shadow:
-    0 10px 30px rgba(255,215,0,.18);
-
-    border:2px solid transparent;
+        0 12px 28px rgba(255,215,0,.18);
 }
 
-.quote-btn:hover{
+.download-sample-btn:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-4px) scale(1.03);
 
     box-shadow:
-    0 18px 40px rgba(255,215,0,.35);
+        0 18px 38px rgba(255,215,0,.28);
 
-    background:linear-gradient(135deg,#FFE45C,#FFD700);
+    filter:brightness(1.05);
 }
 
-/* ===============================
-   SAMPLE BUTTON
-================================ */
+.download-sample-btn:active{
 
-.sample-btn{
-
-    background:rgba(255,255,255,.03);
-
-    color:#fff;
-
-    border:2px solid rgba(255,215,0,.18);
-
-    backdrop-filter:blur(10px);
-}
-
-.sample-btn:hover{
-
-    transform:translateY(-4px);
-
-    background:rgba(255,215,0,.08);
-
-    border-color:gold;
-
-    box-shadow:
-    0 18px 40px rgba(255,215,0,.15);
-}
-
-/* ===============================
-   RESPONSIVE
-================================ */
-
-@media (max-width:768px){
-
-.final-cta-buttons{
-
-    flex-direction:column;
-}
-
-.final-cta-buttons a{
-
-    width:100%;
-    max-width:340px;
-}
+    transform:translateY(-2px);
 
 }
 
 /* ==========================================================================
-   FINAL CALL TO ACTION
+   FINAL CTA
    ========================================================================== */
 
-.final-cta-section{
-    padding:100px 20px;
-    position:relative;
-    overflow:hidden;
-}
+.final-cta{
 
-.final-cta-container{
-    width:90%;
-    max-width:1180px;
-    margin:auto;
-}
-
-.final-cta-box{
+    padding:90px 20px;
 
     position:relative;
-
-    padding:75px 70px;
 
     text-align:center;
 
-    border-radius:34px;
+}
 
-    overflow:hidden;
+.final-cta-container{
 
-    background:
-    linear-gradient(
+    width:90%;
+    max-width:1100px;
+
+    margin:auto;
+
+    background:linear-gradient(
         145deg,
-        rgba(255,255,255,.05),
-        rgba(255,255,255,.02)
+        rgba(255,255,255,.04),
+        rgba(255,255,255,.015)
     );
 
     border:1px solid rgba(255,255,255,.08);
 
+    border-radius:28px;
+
+    padding:70px 60px;
+
     backdrop-filter:blur(16px);
 
     box-shadow:
-    0 25px 60px rgba(0,0,0,.35);
+        0 25px 70px rgba(0,0,0,.35);
 
 }
 
-/* Gold glow */
+.final-cta h2{
 
-.final-cta-box::before{
+    color:white;
 
-    content:"";
+    font-size:46px;
 
-    position:absolute;
-
-    width:420px;
-    height:420px;
-
-    top:-220px;
-    right:-160px;
-
-    border-radius:50%;
-
-    background:
-    rgba(255,215,0,.08);
-
-    filter:blur(80px);
-
-    pointer-events:none;
-}
-
-/* Small glow */
-
-.final-cta-box::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:240px;
-    height:240px;
-
-    left:-120px;
-    bottom:-120px;
-
-    border-radius:50%;
-
-    background:
-    rgba(255,215,0,.05);
-
-    filter:blur(60px);
-
-    pointer-events:none;
-}
-
-.final-cta-box h2{
-
-    position:relative;
-    z-index:2;
-
-    font-size:52px;
-
-    color:#fff;
+    line-height:1.2;
 
     margin-bottom:24px;
 
-    line-height:1.2;
 }
 
-.final-cta-box h2 span{
+.final-cta h2 span{
 
     color:gold;
+
 }
 
-.final-cta-box p{
-
-    position:relative;
-    z-index:2;
-
-    max-width:760px;
-
-    margin:0 auto;
+.final-cta p{
 
     color:#9b9b9b;
 
     font-size:18px;
 
-    line-height:1.9;
+    line-height:1.8;
+
+    max-width:720px;
+
+    margin:0 auto 45px;
+
 }
 
-/* ==========================================================================
-   BUTTONS
-   ========================================================================== */
-
 .final-cta-buttons{
-
-    position:relative;
-    z-index:2;
-
-    margin-top:45px;
 
     display:flex;
 
     justify-content:center;
 
-    gap:22px;
+    gap:20px;
 
     flex-wrap:wrap;
+
 }
 
-.final-cta-buttons a{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    min-width:280px;
-
-    padding:18px 40px;
-
-    border-radius:60px;
-
-    font-size:16px;
-
-    font-weight:600;
-
-    text-decoration:none;
-
-    transition:.35s ease;
-}
-
-/* Primary */
+/* Primary Button */
 
 .quote-btn{
 
-    background:
-    linear-gradient(135deg,#FFD700,#F4B400);
+    background:linear-gradient(
+        135deg,
+        #FFD700,
+        #E0B400
+    );
 
     color:#111;
 
-    box-shadow:
-    0 12px 30px rgba(255,215,0,.18);
+    padding:16px 34px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.35s;
+
 }
 
 .quote-btn:hover{
 
-    transform:
-    translateY(-4px);
+    transform:translateY(-4px);
 
-    box-shadow:
-    0 18px 40px rgba(255,215,0,.30);
+    box-shadow:0 18px 35px rgba(255,215,0,.28);
+
 }
 
-/* Secondary */
+/* Secondary Button */
 
 .sample-btn{
 
-    color:#fff;
+    border:1px solid rgba(255,215,0,.35);
 
-    background:
-    rgba(255,255,255,.03);
+    color:gold;
 
-    border:1px solid rgba(255,215,0,.18);
+    padding:16px 34px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.35s;
+
 }
 
 .sample-btn:hover{
 
-    transform:
-    translateY(-4px);
+    background:rgba(255,215,0,.08);
 
-    border-color:gold;
+    transform:translateY(-4px);
 
-    background:
-    rgba(255,215,0,.08);
-
-    box-shadow:
-    0 18px 40px rgba(255,215,0,.12);
 }
 
 /* ==========================================================================
-   RESPONSIVE
+   23. FAQ CAROUSEL & FLIP CARD STYLES
    ========================================================================== */
-
-@media(max-width:900px){
-
-.final-cta-box{
-
-padding:60px 35px;
-
+.faq-section {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
 }
 
-.final-cta-box h2{
-
-font-size:40px;
-
+.faq-title {
+    text-align: center;
+    font-size: 50px;
+    color: #fff;
+    margin-bottom: 50px;
 }
 
-.final-cta-buttons{
-
-flex-direction:column;
-
-align-items:center;
-
+.faq-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.final-cta-buttons a{
-
-width:100%;
-
-max-width:360px;
-
+.faq-nav {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: gold;
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
+.faq-nav:hover:not(:disabled) {
+    background: gold;
+    color: #111;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
 }
 
-@media(max-width:600px){
-
-.final-cta-box h2{
-
-font-size:34px;
-
+.faq-track {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    width: 100%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    perspective: 1000px;
 }
 
-.final-cta-box p{
-
-font-size:16px;
-
+.faq-card {
+    height: 260px;
+    perspective: 1000px;
+    cursor: pointer;
 }
 
+.faq-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.faq-card:hover .faq-card-inner {
+    transform: rotateY(180deg);
+}
+
+.faq-front, .faq-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    backdrop-filter: blur(12px);
+    box-sizing: border-box;
+}
+
+.faq-front {
+    border-top: 2px solid gold;
+}
+
+.faq-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(145deg, rgba(20, 20, 20, 0.95), rgba(10, 10, 10, 0.95));
+    border-color: rgba(255, 215, 0, 0.3);
+    overflow-y: auto;
+}
+
+.faq-icon {
+    font-size: 36px;
+    margin-bottom: 16px;
+}
+
+.faq-front h3 {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.faq-back h3 {
+    font-size: 15px;
+    color: gold;
+    margin-bottom: 10px;
+}
+
+.faq-back p {
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.faq-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 35px;
+}
+
+.faq-pagination span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faq-pagination span.active {
+    background: gold;
+    width: 28px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+@media (max-width: 1200px) {
+    .faq-track {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-track {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .faq-title {
+        font-size: 36px;
+    }
 }
