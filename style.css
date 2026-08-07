@@ -1,417 +1,1761 @@
 /* ==========================================================================
-   START: 1. DYNAMIC TAB TITLE ENGINE
+   1. RESET & CORE GLOBAL STYLES
    ========================================================================== */
-const titles = [
-    "CyraShift",
-    "B2B Email List | CyraShift",
-    "Accurate Email List | CyraShift",
-    "Lead Generation | CyraShift"
-];
-let titleIndex = 0;
-
-setInterval(() => {
-    titleIndex = (titleIndex + 1) % titles.length;
-    document.title = titles[titleIndex];
-}, 5000);
-/* ==========================================================================
-   END: 1. DYNAMIC TAB TITLE ENGINE
-   ========================================================================== */
-
-
-/* ==========================================================================
-   START: 2. HERO IMAGE & TEXT SLIDER ENGINE
-   ========================================================================== */
-const slides = document.querySelectorAll(".slide");
-const dashboards = document.querySelectorAll(".hero-dashboard");
-let currentSlide = 0;
-
-function nextSlide() {
-    let oldSlide = currentSlide;
-    currentSlide = (currentSlide + 1) % slides.length;
-
-    slides[oldSlide].classList.remove("active");
-    if (dashboards[oldSlide]) {
-        dashboards[oldSlide].classList.remove("active-dashboard");
-    }
-
-    setTimeout(() => {
-        slides[currentSlide].classList.add("active");
-        setTimeout(() => {
-            if (dashboards[currentSlide]) {
-                dashboards[currentSlide].classList.add("active-dashboard");
-            } else if (dashboards.length > 0) {
-                dashboards[0].classList.add("active-dashboard");
-            }
-        }, 2200);
-    }, 500);
-}
-setInterval(nextSlide, 9000);
-/* ==========================================================================
-   END: 2. HERO IMAGE & TEXT SLIDER ENGINE
-   ========================================================================== */
-
-
-/* ==========================================================================
-   START: 3. SCROLL REVEAL & CONTACT FORM HANDLER
-   ========================================================================== */
-const scrollBtn = document.getElementById("scrollTopBtn");
-const reveals = document.querySelectorAll(".about-section, .services-section, .contact-section, .service-card");
-let ticking = false;
-
-window.addEventListener("scroll", () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            const scrollY = window.scrollY;
-            const windowHeight = window.innerHeight;
-
-            if (scrollBtn) {
-                if (scrollY > 300) {
-                    scrollBtn.classList.add("show");
-                } else {
-                    scrollBtn.classList.remove("show");
-                }
-            }
-
-            reveals.forEach((el) => {
-                const revealTop = el.getBoundingClientRect().top;
-                if (revealTop < windowHeight - 80) {
-                    el.classList.add("active-reveal");
-                }
-            });
-            ticking = false;
-        });
-        ticking = true;
-    }
-});
-
-if (scrollBtn) {
-    scrollBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-// Contact Form AJAX Handler
-const contactForm = document.getElementById("mainContactForm");
-const emailInput = document.getElementById("userEmail");
-const popup = document.getElementById("formPopup");
-const popupTitle = document.getElementById("popupTitle");
-const popupMessage = document.getElementById("popupMessage");
-const popupCloseBtn = document.getElementById("popupCloseBtn");
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+html {
+    scroll-behavior: smooth;
+}
 
-if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-        e.preventDefault();
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d0d0d;
+    color: #ddd;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+    overflow-x: hidden;
+    position: relative;
 
-        if (!emailRegex.test(emailInput.value)) {
-            showPopup("Error", "Please enter a valid email address (e.g., name@gmail.com).", false);
-            return;
+    /* PREMIUM GRID BACKGROUND */
+    background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* ==========================================================================
+   2. OPEN BOOK VISUAL EFFECTS
+   ========================================================================== */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: -80px;
+    width: 200px;
+    height: 100vh;
+    background: linear-gradient(
+        to right,
+        rgba(255,255,255,0.05),
+        rgba(0,0,0,0)
+    );
+    transform: skewY(-5deg);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: -80px;
+    width: 200px;
+    height: 100vh;
+    background: linear-gradient(
+        to left,
+        rgba(255,255,255,0.05),
+        rgba(0,0,0,0)
+    );
+    transform: skewY(5deg);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ==========================================================================
+   3. NAVIGATION HEADER & LOGO
+   ========================================================================== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(20,20,20,0.75);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    height: 90px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 108px;
+    margin-top: 15px;
+    transition: transform 0.5s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.08);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: gold;
+    transition: 0.3s ease;
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+.nav a:hover {
+    color: gold;
+}
+
+.header-phone{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+
+    color:#FFD54A;              /* Rich premium gold */
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:1px;
+
+    white-space:nowrap;
+
+    text-shadow:
+        0 0 6px rgba(255,213,74,0.25),
+        0 0 16px rgba(255,213,74,0.12);
+
+    transition:
+        transform .25s ease,
+        color .25s ease,
+        text-shadow .25s ease;
+}
+
+.header-phone:hover{
+    color:#FFD54A;               /* Slightly darker gold */
+    transform:translateX(-50%) scale(1.08);
+
+    text-shadow:
+        0 0 4px rgba(229,190,60,0.18),
+        0 0 10px rgba(229,190,60,0.08);
+
+    cursor:pointer;
+}
+
+/* ==========================================================================
+   4. HERO SECTION & TYPOGRAPHY SLIDER
+   ========================================================================== */
+.hero {
+    height: calc(100vh - 80px);
+    padding: 80px 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.72),
+            rgba(0,0,0,0.82)
+        ),
+        url("dashboard.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* DARK GOLD GLOW */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,215,0,0.06),
+            transparent 60%
+        );
+    z-index: 1;
+}
+
+/* Premium Blur Overlay */
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+
+    backdrop-filter: blur(.75px);
+    -webkit-backdrop-filter: blur(.75px);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,0,0,0.12) 15%,
+            rgba(0,0,0,0.38) 60%,
+            rgba(0,0,0,0.62) 100%
+        );
+}
+
+.hero-container {
+    width: 100%;
+    max-width: 1100px;
+    position: relative;
+    z-index: 5;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(-200px);
+    transition: opacity 1s ease, transform 1s ease;
+    will-change: transform, opacity;
+    pointer-events: none;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide h1 {
+    font-size: 40px;
+    line-height: 1.1;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.slide h1 span {
+    color: gold;
+}
+
+.slide p {
+    font-size: 22px;
+    margin-top: 20px;
+    color: #aaa;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid gold;
+    display: inline-block;
+    max-width: 0;
+    opacity: 0;
+}
+
+.slide.active p {
+    opacity: 1;
+    animation:
+        typing 3s steps(60, end) forwards,
+        blink 0.7s infinite;
+}
+
+@keyframes typing {
+    from { max-width: 0; }
+    to { max-width: 1000px; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* ==========================================================================
+   5. PROGRESS STEPS FLOW
+   ========================================================================== */
+.steps-flow {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.steps-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.step {
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+}
+
+.steps-group .step:nth-child(1) { opacity: 0.3; }
+.steps-group .step:nth-child(2) { opacity: 0.6; }
+.steps-group .step:nth-child(3) { opacity: 1; }
+
+.step-end {
+    width: 110px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: gold;
+    color: #111;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 0 18px rgba(255,215,0,0.35);
+    transition: 0.3s ease;
+}
+
+.step-end:hover {
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   6. BLANK INTERMEDIATE SECTIONS
+   ========================================================================== */
+.blankline {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.blankline h2 {
+    font-size: 42px;
+    color: white;
+}
+
+.blankline span {
+    color: gold;
+}
+
+/* ==========================================================================
+   8. PREMIUM ABOUT SECTION
+   ========================================================================== */
+.about-section {
+    padding: 30px 20px 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.about-container {
+    width: 90%;
+    max-width: 1250px;
+    margin: auto;
+}
+
+.about-card {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 36px;
+    padding: 60px;
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+    transition: 0.35s ease;
+}
+
+.about-card::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 260px;
+    height: 260px;
+    background: rgba(255,215,0,0.08);
+    border-radius: 50%;
+    filter: blur(55px);
+}
+
+.about-image {
+    position: relative;
+    z-index: 2;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 28px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+.about-content {
+    position: relative;
+    z-index: 2;
+}
+
+.about-content h2 {
+    font-size: 58px;
+    line-height: 1.1;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.about-content h2 span { color: gold; }
+
+.about-content p {
+    color: #a5a5a5;
+    font-size: 17px;
+    line-height: 2;
+    margin-bottom: 22px;
+}
+
+.why-choose { margin-top: 45px; }
+.why-choose h3 {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 24px;
+}
+.why-choose h3 span { color: gold; }
+.why-choose ul { list-style: none; }
+
+.why-choose li {
+    position: relative;
+    padding-left: 34px;
+    margin-bottom: 18px;
+    color: #b7b7b7;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.why-choose li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: gold;
+    font-size: 28px;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,215,0,0.2);
+}
+
+/* ==========================================================================
+   9. CORE SERVICES MODULAR SECTION
+   ========================================================================== */
+.services-section {
+    padding: 10px 20px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.services-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.services-title {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.services-title h2 {
+    font-size: 52px;
+    color: white;
+    margin-bottom: 18px;
+}
+
+.services-title h2 span { color: gold; }
+.services-title p {
+    color: #8f8f8f;
+    font-size: 18px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.service-card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 28px;
+    padding: 40px 32px;
+    transition: 0.35s ease;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    min-height: 280px;
+}
+
+.service-card::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 160px;
+    height: 160px;
+    background: rgba(255,215,0,0.06);
+    border-radius: 50%;
+    filter: blur(35px);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255,215,0,0.25);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.service-icon {
+    font-size: 38px;
+    margin-bottom: 24px;
+}
+
+.service-card h3 {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 18px;
+}
+
+.service-card p {
+    color: #9a9a9a;
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+/* ==========================================================================
+   10. STRATEGIC ADVANTAGES SECTION
+   ========================================================================== */
+.advantages-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.advantages-left {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.advantages-line {
+    width: 4px;
+    height: 260px;
+    border-radius: 999px;
+    background: linear-gradient(to bottom, transparent, gold, transparent);
+    box-shadow: 0 0 25px rgba(255,215,0,0.35);
+}
+
+.advantages-content {
+    flex: 1;
+    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 32px;
+    padding: 55px 60px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    transition: 0.35s ease;
+}
+
+.advantages-content:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,215,0,0.2);
+}
+
+.advantages-content h2 {
+    font-size: 50px;
+    color: white;
+    margin-bottom: 35px;
+    line-height: 1.2;
+}
+
+.advantages-content h2 span { color: gold; }
+.advantages-content ul { list-style: none; }
+
+.advantages-content li {
+    position: relative;
+    color: #b3b3b3;
+    font-size: 18px;
+    line-height: 1.9;
+    margin-bottom: 18px;
+    padding-left: 34px;
+}
+
+.advantages-content li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: gold;
+    font-size: 28px;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   11. LINEAR SECTION DIVIDERS
+   ========================================================================== */
+.section-divider {
+    width: 100%;
+    max-width: 1200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,215,0,0.35), transparent);
+    margin: 10px auto 50px;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   12. PREMIUM PERFORMANCE STATS SECTION
+   ========================================================================== */
+.stats-section {
+    position: relative;
+    padding: 55px 20px;
+    overflow: hidden;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.graph-bg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    padding: 0 30px;
+    z-index: 1;
+    opacity: 0.22;
+}
+
+.bar {
+    flex: 1;
+    max-width: 12px;
+    background: linear-gradient(to top, rgba(255,215,0,0.08), rgba(255,215,0,0.55));
+    border-radius: 10px 10px 0 0;
+    animation: barFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes barFloat {
+    from { transform: scaleY(0.96); }
+    to { transform: scaleY(1.03); }
+}
+
+.stats-container {
+    position: relative;
+    z-index: 5;
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.stat-card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(18,18,18,0.92), rgba(10,10,10,0.88));
+    border: 1px solid rgba(255,215,0,0.06);
+    border-radius: 22px;
+    padding: 28px 20px;
+    text-align: center;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,215,0,0.18);
+    box-shadow: 0 0 20px rgba(255,215,0,0.08);
+}
+
+.stat-card h2 {
+    font-size: 36px;
+    color: gold;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.stat-card p {
+    color: #b8b8b8;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+}
+
+/* ==========================================================================
+   13. BRAND TRUST LOGO TRACK
+   ========================================================================== */
+.trust-section{
+    padding:40px 20px 30px;
+    position:relative;
+    overflow:hidden;
+}
+
+.trust-container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    text-align:center;
+}
+
+.trust-container h2{
+    font-size:44px;
+    color:white;
+    margin-bottom:50px;
+}
+
+.trust-container h2 span{ color:gold; }
+.trust-logos{ overflow:hidden; white-space:nowrap; }
+
+.trust-track{
+    display:flex;
+    gap:24px;
+    width:max-content;
+    animation: scroll-left 18s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.trust-logo{
+    min-width:180px;
+    height:85px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:22px;
+    color:rgba(255,255,255,0.45);
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:2px;
+    flex-shrink:0;
+    transition:0.3s ease;
+}
+
+.trust-logo:hover{
+    transform:translateY(-5px);
+    color:gold;
+    border-color:rgba(255,215,0,0.25);
+}
+
+/* ==========================================================================
+   14. HERO BACKGROUND INTERACTIVE TRACKS
+   ========================================================================== */
+.hero-image-slider{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    z-index:0;
+}
+
+.hero-dashboard{
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    width:100%;      
+    height:auto;
+
+    object-fit:unset;
+
+    transform:translate(-50%,-50%);
+
+    opacity:0;
+    transition:opacity 1.2s ease;
+
+    filter:brightness(.42) contrast(1.05) saturate(.9);
+}
+
+.hero-dashboard.active-dashboard{
+    opacity:1;
+}
+
+/* ==========================================================================
+   16. ENGAGING INTERACTIVE CONTACT SECTION
+   ========================================================================== */
+.contact-section {
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.contact-mini {
+    color: gold;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 22px;
+}
+
+.contact-wrapper h2 {
+    font-size: 58px;
+    line-height: 1.1;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.contact-wrapper h2 span {
+    color: gold;
+}
+
+.contact-subtext {
+    color: #8e8e8e;
+    font-size: 18px;
+    margin-bottom: 60px;
+}
+
+.contact-card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 32px;
+    padding: 50px;
+    backdrop-filter: blur(18px);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+.contact-card::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 260px;
+    height: 260px;
+    background: rgba(255,215,0,0.08);
+    border-radius: 50%;
+    filter: blur(50px);
+}
+
+.contact-form {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 18px 20px;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.contact-form textarea {
+    min-height: 180px;
+    resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #777;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: gold;
+    box-shadow: 0 0 0 4px rgba(255,215,0,0.08);
+}
+
+.contact-form button {
+    height: 58px;
+    border: none;
+    border-radius: 16px;
+    background: gold;
+    color: #111;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(255,215,0,0.25);
+}
+
+.contact-form button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+    transition: 0.6s;
+}
+
+.contact-form button:hover::before { left: 100%; }
+
+/* ==========================================================================
+   17. SYSTEM FOOTER WRAPPER
+   ========================================================================== */
+.footer{
+    background:#050505;
+    margin-top:25px;
+    padding:100px 0 20px;
+    border-top:1px solid rgba(255,215,0,0.08);
+    position:relative;
+}
+
+.footer-container{
+    width:92%;
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+}
+
+.footer-brand{
+    width:220px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.footer-logo{
+    width:135px;
+    display:block;
+    margin-bottom:14px;
+}
+
+.footer-center{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:38px;
+}
+
+.footer-links{
+    display:flex;
+    gap:24px;
+    margin-bottom:10px;
+}
+
+.footer-links a{
+    color:#fff;
+    text-decoration:none;
+    font-size:15px;
+    transition:0.3s ease;
+    position:relative;
+}
+
+.footer-links a:hover{
+    color:gold;
+}
+
+.footer-links a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:0%;
+    height:1px;
+    background:gold;
+    transition:0.3s ease;
+}
+
+.footer-links a:hover::after{
+    width:100%;
+}
+
+.footer-email{
+    font-size:12px;
+    color:#9d9d9d;
+    letter-spacing:0.4px;
+}
+
+.footer-contact{
+    width:320px;
+    text-align:right;
+    padding-top:32px;
+}
+
+.footer-contact p{
+    color:#d2d2d2;
+    font-size:13px;
+    line-height:1.5;
+    margin-bottom:8px;
+}
+
+.footer-contact span{
+    color:gold;
+    font-weight:600;
+}
+
+.footer-bottom{
+    margin-top:16px;
+    padding-top:12px;
+    border-top:1px solid rgba(255,255,255,0.05);
+    text-align:center;
+    color:#666;
+    font-size:11px;
+}
+
+/* ==========================================================================
+   NEW FOOTER LEGAL NAVIGATION STYLE
+   ========================================================================== */
+.footer-legal-links {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.footer-legal-links a {
+    color: #888888;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-legal-links a:hover {
+    color: gold; 
+}
+
+/* ==========================================================================
+   18. INTERACTIVE UTILITY ACTIONS (CURSOR & FLOATING BUTTONS)
+   ========================================================================== */
+#scrollTopBtn {
+    position: fixed;
+    right: 30px;
+    bottom: 80px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(20,20,20,0.75);
+    color: gold;
+    border: 1px solid rgba(255,215,0,0.35);
+    border-radius: 14px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+#scrollTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#scrollTopBtn:hover {
+    transform: translateY(-4px);
+    border-color: gold;
+    box-shadow: 0 10px 30px rgba(255,215,0,0.18);
+}
+
+.custom-cursor {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: rgba(255,215,0,0.12);
+    border: 1px solid rgba(255,215,0,0.35);
+    backdrop-filter: blur(1px);
+    box-shadow: 0 0 15px rgba(255,215,0,0.18);
+    transform: translate(-50%, -50%);
+    transition: width 0.25s ease, height 0.25s ease, background 0.25s ease, transform 0.08s linear;
+}
+
+a:hover ~ .custom-cursor,
+button:hover ~ .custom-cursor {
+    width: 28px;
+    height: 28px;
+    background: rgba(255,255,255,0.9);
+}
+
+.hero-button-wrap {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    z-index: 9995;
+}
+
+.browse-db-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #ffd700, #f5c400);
+    color: #111;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    box-shadow:
+        0 0 15px rgba(255,215,0,0.25),
+        0 0 35px rgba(255,215,0,0.10);
+    transition: all 0.35s ease;
+}
+
+.browse-db-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 5px 20px rgba(255,215,0,0.4),
+        0 0 40px rgba(255,215,0,0.2);
+}
+
+/* ==========================================================================
+   19. SCROLL REVEAL ANIMATION CONTROLLERS
+   ========================================================================== */
+.about-section,
+.services-section,
+.contact-section,
+.service-card {
+    opacity: 0.2;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.active-reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* ==========================================================================
+   20. RESPONSIVE DESIGN BREAKPOINTS (MOBILE & TABLET)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .about-card {
+        grid-template-columns: 1fr;
+        padding: 40px;
+    }
+    .about-content h2 { font-size: 42px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .campaign-grid { grid-template-columns: repeat(2, 1fr); }
+    .spotlight-grid { grid-template-columns: 1fr; gap: 24px; } /* Added spotlight control */
+}
+
+@media (max-width: 900px){
+    .footer-container{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        gap:24px;
+    }
+
+    .footer-brand,
+    .footer-contact{
+        width:100%;
+        text-align:center;
+        align-items:center;
+    }
+
+    .footer-logo{
+        width:120px;
+        margin-bottom:12px;
+    }
+
+    .footer-center{
+        padding-top:0;
+    }
+
+    .footer-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:16px;
+    }
+
+    .footer-links a{
+        font-size:14px;
+    }
+
+    .footer-email{
+        font-size:12px;
+    }
+
+    .footer-contact{
+        padding-top:0;
+    }
+
+    .footer-contact p{
+        font-size:12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide p {
+        width: 100% !important;
+        white-space: normal;
+        overflow: visible;
+        border-right: none;
+        opacity: 0;
+    }
+
+    .slide.active p {
+        animation: fadeText 1s ease forwards !important;
+    }
+
+    @keyframes fadeText {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
         }
-
-        const formData = new FormData(contactForm);
-        const submitBtn = document.getElementById("submitBtn");
-        submitBtn.textContent = "Sending...";
-        submitBtn.disabled = true;
-
-        fetch(contactForm.action, {
-            method: "POST",
-            body: formData,
-            headers: { 'Accept': 'json' }
-        })
-        .then(response => {
-            if (response.ok) {
-                showPopup("Success!", "Email sent successfully. We will get back to you soon.", true);
-                contactForm.reset();
-            } else {
-                showPopup("Failed", "Email sending failed. Please try again later.", false);
-            }
-        })
-        .catch(() => {
-            showPopup("Failed", "Network error. Please check your connection and try again.", false);
-        })
-        .finally(() => {
-            submitBtn.textContent = "Send Message";
-            submitBtn.disabled = false;
-        });
-    });
-}
-
-function showPopup(title, message, isSuccess) {
-    if (!popup) return;
-    popupTitle.textContent = title;
-    popupTitle.style.color = isSuccess ? "#ffd700" : "#ff4d4d";
-    popupMessage.textContent = message;
-    popup.style.display = "flex";
-}
-
-if (popupCloseBtn) {
-    popupCloseBtn.addEventListener("click", () => {
-        popup.style.display = "none";
-    });
-}
-/* ==========================================================================
-   END: 3. SCROLL REVEAL & CONTACT FORM HANDLER
-   ========================================================================== */
-
-
-/* ==========================================================================
-   START: 4. CUSTOM INTERACTIVE CURSOR ENGINE
-   ========================================================================== */
-const cursor = document.querySelector(".custom-cursor");
-document.addEventListener("mousemove", (e) => {
-    if (!cursor) return;
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-});
-
-const hoverItems = document.querySelectorAll("a, button");
-hoverItems.forEach((item) => {
-    item.addEventListener("mouseenter", () => {
-        if (!cursor) return;
-        cursor.style.width = "55px";
-        cursor.style.height = "55px";
-        cursor.style.background = "rgba(255,215,0,0.18)";
-    });
-    item.addEventListener("mouseleave", () => {
-        if (!cursor) return;
-        cursor.style.width = "30px";
-        cursor.style.height = "30px";
-        cursor.style.background = "rgba(255,215,0,0.12)";
-    });
-});
-/* ==========================================================================
-   END: 4. CUSTOM INTERACTIVE CURSOR ENGINE
-   ========================================================================== */
-
-
-/* ==========================================================================
-   START: 5. DYNAMIC SPOTLIGHT INVENTORY ENGINE
-   ========================================================================== */
-document.addEventListener("DOMContentLoaded", function() {
-    const datasetPool = [
-        {
-            title: "Construction Companies Database",
-            bullets: [
-                "2.5M+ Construction Businesses",
-                "Owners, Estimators & Project Managers",
-                "Commercial & Residential Contractors",
-                "NAICS, SIC & Trade Classification",
-                "Advanced Firmographic Intelligence"
-            ]
-        },
-        {
-            title: "Business Intelligence Database",
-            bullets: [
-                "100M+ Verified Business Profiles",
-                "500+ Industry Market Segments",
-                "C-Level Executive Intelligence",
-                "40+ Precision Search Filters",
-                "Continuously Refreshed Records"
-            ]
-        },
-        {
-            title: "Physicians Database",
-            bullets: [
-                "Licensed Physicians Nationwide",
-                "120+ Medical Specialties",
-                "Hospitals & Private Practices",
-                "Practice Ownership Intelligence",
-                "Clinical Decision-Maker Profiles"
-            ]
-        },
-        {
-            title: "Architecture Firms Database",
-            bullets: [
-                "Licensed Architecture Practices",
-                "Principal Architects & Partners",
-                "Commercial Design Specialists",
-                "Firm Size & Revenue Insights",
-                "Executive Contact Intelligence"
-            ]
-        },
-        {
-            title: "Real Estate Professionals Database",
-            bullets: [
-                "Licensed Realtors & Brokerages",
-                "Residential & Commercial Markets",
-                "Top-Producing Sales Professionals",
-                "Regional Market Intelligence",
-                "Verified Executive Profiles"
-            ]
-        },
-        {
-            title: "Technology Companies Database",
-            bullets: [
-                "SaaS & Software Companies",
-                "CIO, CTO & VP Engineering",
-                "Technographic Intelligence",
-                "Startup to Enterprise Coverage",
-                "Executive Business Profiles"
-            ]
-        }
-    ];
-
-    const container = document.getElementById('dynamic-spotlight-container');
-
-    function updateCards() {
-        if (!container) return;
-        const shuffled = [...datasetPool].sort(() => 0.5 - Math.random());
-        const selectedData = shuffled.slice(0, 2);
-
-        container.innerHTML = '';
-        selectedData.forEach(item => {
-            let bulletsMarkup = item.bullets.slice(0, 5).map(b => `<li>${b}</li>`).join('');
-            container.innerHTML += `
-                <div class="spotlight-card">
-                    <h3>${item.title}</h3>
-                    <ul>${bulletsMarkup}</ul>
-                </div>
-            `;
-        });
-    }
-
-    updateCards();
-    setInterval(updateCards, 8000);
-});
-/* ==========================================================================
-   END: 5. DYNAMIC SPOTLIGHT INVENTORY ENGINE
-   ========================================================================== */
-
-
-/* ==========================================================================
-   START: 6. FAQ CAROUSEL & FLIP CARD ENGINE
-   ========================================================================== */
-document.addEventListener("DOMContentLoaded", function() {
-    const faqs = [
-        { icon:"📊", question:"How accurate is your database?", answer:"Our database is regularly verified using multiple trusted sources to maintain high-quality business information." },
-        { icon:"🔄", question:"How often is the data updated?", answer:"We continuously refresh our records to keep business information current and reliable." },
-        { icon:"📦", question:"Do you provide sample data?", answer:"Yes. We can provide sample records before purchase." },
-        { icon:"🎯", question:"Can I request a custom list?", answer:"Yes. We can filter by industry, state, city, ZIP code, revenue, employee size and more." },
-        { icon:"📁", question:"Which file formats do you deliver?", answer:"Excel, CSV and other commonly requested formats are available." },
-        { icon:"⚡", question:"How quickly is delivery?", answer:"Most databases are delivered within a few hours after confirmation." },
-        { icon:"🛡", question:"Is the data compliant?", answer:"Our business data is collected and maintained according to applicable regulations and best practices." },
-        { icon:"🏢", question:"Which industries do you cover?", answer:"Over 500 industries across the United States." },
-        { icon:"📍", question:"Can you filter by location?", answer:"Yes. We can filter by State, City, County and ZIP Code." },
-        { icon:"💼", question:"Do you provide company size filters?", answer:"Yes. Employee count, revenue and company size are available." },
-        { icon:"📞", question:"Do you include phone numbers?", answer:"Yes, where available." },
-        { icon:"📧", question:"Do you include email addresses?", answer:"Yes, verified business email addresses are available." },
-        { icon:"🌎", question:"Do you cover all US states?", answer:"Yes. Our databases cover businesses throughout the United States." },
-        { icon:"⭐", question:"Can I buy a one-time list?", answer:"Absolutely. No subscription is required." },
-        { icon:"🤝", question:"Do you offer bulk discounts?", answer:"Yes. Contact us for volume pricing." }
-    ];
-
-    const faqTrack = document.getElementById("faqTrack");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const pagination = document.getElementById("faqPagination");
-
-    let currentPage = 0;
-
-    function getCardsPerPage() {
-        if (window.innerWidth <= 768) return 1;
-        if (window.innerWidth <= 1200) return 3;
-        return 5;
-    }
-
-    function renderCards() {
-        if (!faqTrack) return;
-        faqTrack.innerHTML = "";
-        
-        const cardsPerPage = getCardsPerPage();
-        const start = currentPage * cardsPerPage;
-        const end = start + cardsPerPage;
-
-        faqs.slice(start, end).forEach(faq => {
-            faqTrack.innerHTML += `
-                <div class="faq-card">
-                    <div class="faq-card-inner">
-                        <div class="faq-front">
-                            <div class="faq-icon">${faq.icon}</div>
-                            <h3>${faq.question}</h3>
-                        </div>
-                        <div class="faq-back">
-                            <h3>${faq.question}</h3>
-                            <p>${faq.answer}</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-
-        updatePagination();
-        updateButtons();
-    }
-
-    function updatePagination() {
-        if (!pagination) return;
-        const cardsPerPage = getCardsPerPage();
-        const totalPages = Math.ceil(faqs.length / cardsPerPage);
-        pagination.innerHTML = "";
-
-        for (let i = 0; i < totalPages; i++) {
-            const dot = document.createElement("span");
-            if (i === currentPage) dot.classList.add("active");
-            dot.addEventListener("click", () => {
-                currentPage = i;
-                slideAnimation();
-            });
-            pagination.appendChild(dot);
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 
-    function updateButtons() {
-        if (!prevBtn || !nextBtn) return;
-        const cardsPerPage = getCardsPerPage();
-        const maxPage = Math.ceil(faqs.length / cardsPerPage) - 1;
+    .campaign-top-card { padding: 35px 25px; }
+    .campaign-top-heading { font-size: 28px; }
+    .campaign-description { font-size: 15px; }
+    .contact-wrapper h2 { font-size: 40px; }
+    .contact-subtext { font-size: 16px; }
+    .input-row { grid-template-columns: 1fr; }
+    .contact-card { padding: 30px; }
+    .about-section { padding: 90px 20px; }
+    .about-card { padding: 28px; }
+    .about-content h2 { font-size: 34px; }
+    .about-content p { font-size: 15px; }
+    .why-choose h3 { font-size: 26px; }
+    .why-choose li { font-size: 15px; }
+    .about-text h2, .services-title h2 { font-size: 38px; }
+    .about-text p, .services-title p { font-size: 16px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { min-height: auto; }
+    .advantages-container { flex-direction: column; gap: 30px; }
+    .advantages-left { width: 100%; }
+    .advantages-line { width: 180px; height: 4px; }
+    .advantages-content { padding: 40px 28px; }
+    .advantages-content h2 { font-size: 36px; }
+    .advantages-content li { font-size: 16px; }
+    .stats-container { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .stat-card { padding: 24px 16px; }
+    .stat-card h2 { font-size: 28px; }
+    .stat-card p { font-size: 13px; }
+    .graph-bg { gap: 3px; }
+    .bar { max-width: 8px; }
+    .campaign-grid{ grid-template-columns:1fr; }
+    .campaign-title h2 { font-size:34px; }
+    .campaign-title p { font-size:15px; }
+    .campaign-card { min-height:auto; }
+    .segment-grid { grid-template-columns: 1fr; gap: 20px; }
+}
 
-        prevBtn.disabled = currentPage === 0;
-        nextBtn.disabled = currentPage >= maxPage;
-
-        prevBtn.style.opacity = currentPage === 0 ? "0.4" : "1";
-        nextBtn.style.opacity = currentPage >= maxPage ? "0.4" : "1";
-    }
-
-    function slideAnimation() {
-        faqTrack.style.opacity = "0";
-        faqTrack.style.transform = "translateX(40px)";
-        setTimeout(() => {
-            renderCards();
-            faqTrack.style.transform = "translateX(0px)";
-            faqTrack.style.opacity = "1";
-        }, 220);
-    }
-
-    if (nextBtn) {
-        nextBtn.addEventListener("click", () => {
-            const cardsPerPage = getCardsPerPage();
-            if (currentPage < Math.ceil(faqs.length / cardsPerPage) - 1) {
-                currentPage++;
-                slideAnimation();
-            }
-        });
-    }
-
-    if (prevBtn) {
-        prevBtn.addEventListener("click", () => {
-            if (currentPage > 0) {
-                currentPage--;
-                slideAnimation();
-            }
-        });
-    }
-
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowRight" && nextBtn) nextBtn.click();
-        if (e.key === "ArrowLeft" && prevBtn) prevBtn.click();
-    });
-
-    window.addEventListener("resize", () => {
-        currentPage = 0;
-        renderCards();
-    });
-
-    renderCards();
-});
 /* ==========================================================================
-   END: 6. FAQ CAROUSEL & FLIP CARD ENGINE
+   21. DATA SEGMENTATION FILTERS SECTION
    ========================================================================== */
+
+.segment-section {
+    padding: 60px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.segment-container {
+    width: 90%;
+    max-width: 1280px;
+    margin: auto;
+}
+
+/* ---------- HEADER ---------- */
+
+.segment-header {
+    text-align: center;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.segment-header h2 {
+    font-size: 48px;
+    color: white;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.segment-header h2 span {
+    color: gold;
+}
+
+.segment-header p {
+    color: #8f8f8f;
+    font-size: 18px;
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* ---------- GRID ---------- */
+
+.segment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+/* ---------- CARD ---------- */
+
+.segment-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.04),
+        rgba(255,255,255,0.02)
+    );
+
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 22px;
+
+    padding: 24px;
+
+    backdrop-filter: blur(14px);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.segment-card:hover {
+
+    transform: translateY(-6px);
+
+    border-color: rgba(255,215,0,.22);
+
+    box-shadow:
+        0 18px 38px rgba(0,0,0,.35);
+
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.025)
+    );
+}
+
+/* ---------- ICON ---------- */
+
+.segment-icon {
+
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 26px;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    background: rgba(255,215,0,.08);
+
+    border: 1px solid rgba(255,215,0,.16);
+
+    color: gold;
+}
+
+/* ---------- CONTENT ---------- */
+
+.segment-body h3 {
+
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 650;
+}
+
+.segment-body p {
+
+    color: #a2a2a2;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width:1100px){
+
+    .segment-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media (max-width:700px){
+
+    .segment-grid{
+        grid-template-columns:1fr;
+    }
+
+    .segment-header h2{
+        font-size:40px;
+    }
+
+}
+/* ==========================================================================
+   22. FIXED: SPOTLIGHT INVENTORY CARDS (RESTORED ALIGNMENT & COLOR)
+   ========================================================================== */
+.spotlight-section {
+    padding: 60px 20px 40px;
+    position: relative;
+    z-index: 2;
+    text-align: center; /* Centers the text alignment globally inside the section */
+}
+
+.spotlight-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the header contents perfectly */
+}
+
+/* Force both the main header and paragraph description to center */
+.spotlight-section h2,
+.spotlight-section p {
+    text-align: center;
+    width: 100%;
+}
+
+.spotlight-section h2 {
+    font-size: 50px;
+    color: white;
+    margin-bottom: 16px;
+}
+
+/* Turns the target word inside the spotlight main header to gold/yellow */
+.spotlight-section h2 span {
+    color: gold;
+}
+
+.spotlight-section p {
+    color: #8f8f8f;
+    font-size: 18px;
+    margin-bottom: 60px;
+}
+
+.spotlight-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    align-items: stretch;
+}
+
+
+.spotlight-card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 28px;
+    padding: 45px 40px;
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 370px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+
+    transition: .35s ease;
+}
+
+/* Premium glassmorphic card layouts with locked down size profiles */
+.spotlight-card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 28px;
+    padding: 45px 40px;
+    text-align: left; /* Keeps your bullet points cleanly left-aligned inside the cards */
+    transition: 0.35s ease;
+}
+
+.spotlight-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255,215,0,0.22);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+/* Fixes the inside card headers to display in yellow/gold */
+.spotlight-card h3 {
+    font-size: 28px;
+    color: gold; /* Changed from white to gold */
+    margin-bottom: 24px;
+}
+
+.spotlight-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.spotlight-card li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 16px;
+    color: #b3b3b3;
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+/* Custom golden bullet points for your list items */
+.spotlight-card li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: gold;
+    font-size: 22px;
+}
+
+
+/* ==========================================================================
+   16. EVERYTHING INCLUDED IN EVERY DATABASE
+   ========================================================================== */
+
+.database-section{
+    padding:90px 20px;
+    position:relative;
+    z-index:2;
+}
+
+.database-container{
+    width:90%;
+    max-width:1250px;
+    margin:auto;
+}
+
+/* ---------- Heading ---------- */
+
+.database-title{
+    text-align:center;
+    margin-bottom:65px;
+}
+
+.database-title h2{
+    font-size:50px;
+    color:#FFFFFF
+    margin-bottom:18px;
+    font-weight:700;
+}
+
+.database-title h2 span{
+    color:gold;
+}
+
+.database-title p{
+    max-width:760px;
+    margin:auto;
+    color:#8f8f8f;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* ---------- Grid ---------- */
+
+.database-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+/* ---------- Card ---------- */
+
+.database-card{
+
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.045),
+        rgba(255,255,255,.02)
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+
+    padding:28px 24px;
+
+    backdrop-filter:blur(16px);
+
+    transition:.35s ease;
+
+    min-height:320px;
+}
+
+.database-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-70px;
+    right:-70px;
+
+    width:180px;
+    height:180px;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,215,0,.08),
+    transparent 70%);
+
+    filter:blur(30px);
+}
+
+.database-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(255,215,0,.22);
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.45);
+}
+
+/* ---------- Card Heading ---------- */
+
+.database-card h3{
+
+    color:#FFD54A;
+    font-size:22px;
+
+    margin-bottom:18px;
+
+    font-weight:650;
+}
+
+/* ---------- List ---------- */
+
+.database-card ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+}
+
+.database-card li{
+    position:relative;
+    padding-left:24px;
+    margin-bottom:12px;
+    color:#b8b8b8;
+    font-size:15px;
+    line-height:1.5;
+}
+/* Gold Check */
+
+.database-card li::before{
+    content:"✓";
+    position:absolute;
+    left:0;
+    color:gold;
+    font-weight:700;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width:1100px){
+
+    .database-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media (max-width:700px){
+
+    .database-grid{
+        grid-template-columns:1fr;
+    }
+
+}
