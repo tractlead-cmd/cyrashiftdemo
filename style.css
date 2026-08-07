@@ -1858,3 +1858,273 @@ button:hover ~ .custom-cursor {
 }
 
 }
+
+/* ==========================================================================
+   FINAL CALL TO ACTION
+   ========================================================================== */
+
+.final-cta-section{
+    padding:100px 20px;
+    position:relative;
+    overflow:hidden;
+}
+
+.final-cta-container{
+    width:90%;
+    max-width:1180px;
+    margin:auto;
+}
+
+.final-cta-box{
+
+    position:relative;
+
+    padding:75px 70px;
+
+    text-align:center;
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.05),
+        rgba(255,255,255,.02)
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.35);
+
+}
+
+/* Gold glow */
+
+.final-cta-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    top:-220px;
+    right:-160px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,215,0,.08);
+
+    filter:blur(80px);
+
+    pointer-events:none;
+}
+
+/* Small glow */
+
+.final-cta-box::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:240px;
+    height:240px;
+
+    left:-120px;
+    bottom:-120px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,215,0,.05);
+
+    filter:blur(60px);
+
+    pointer-events:none;
+}
+
+.final-cta-box h2{
+
+    position:relative;
+    z-index:2;
+
+    font-size:52px;
+
+    color:#fff;
+
+    margin-bottom:24px;
+
+    line-height:1.2;
+}
+
+.final-cta-box h2 span{
+
+    color:gold;
+}
+
+.final-cta-box p{
+
+    position:relative;
+    z-index:2;
+
+    max-width:760px;
+
+    margin:0 auto;
+
+    color:#9b9b9b;
+
+    font-size:18px;
+
+    line-height:1.9;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.final-cta-buttons{
+
+    position:relative;
+    z-index:2;
+
+    margin-top:45px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:22px;
+
+    flex-wrap:wrap;
+}
+
+.final-cta-buttons a{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:280px;
+
+    padding:18px 40px;
+
+    border-radius:60px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:.35s ease;
+}
+
+/* Primary */
+
+.quote-btn{
+
+    background:
+    linear-gradient(135deg,#FFD700,#F4B400);
+
+    color:#111;
+
+    box-shadow:
+    0 12px 30px rgba(255,215,0,.18);
+}
+
+.quote-btn:hover{
+
+    transform:
+    translateY(-4px);
+
+    box-shadow:
+    0 18px 40px rgba(255,215,0,.30);
+}
+
+/* Secondary */
+
+.sample-btn{
+
+    color:#fff;
+
+    background:
+    rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,215,0,.18);
+}
+
+.sample-btn:hover{
+
+    transform:
+    translateY(-4px);
+
+    border-color:gold;
+
+    background:
+    rgba(255,215,0,.08);
+
+    box-shadow:
+    0 18px 40px rgba(255,215,0,.12);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media(max-width:900px){
+
+.final-cta-box{
+
+padding:60px 35px;
+
+}
+
+.final-cta-box h2{
+
+font-size:40px;
+
+}
+
+.final-cta-buttons{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.final-cta-buttons a{
+
+width:100%;
+
+max-width:360px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.final-cta-box h2{
+
+font-size:34px;
+
+}
+
+.final-cta-box p{
+
+font-size:16px;
+
+}
+
+}
