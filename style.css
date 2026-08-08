@@ -857,15 +857,11 @@ fstats-section
    ========================================================================== */
 
 .trust-title{
-    margin:0;
-
+    margin:0 0 18px;
     color:#fff;
-
     font-size:46px;
     line-height:1.12;
-
     font-weight:800;
-
     letter-spacing:-1px;
 }
 
@@ -875,24 +871,6 @@ fstats-section
     text-shadow:
         0 0 20px rgba(255,215,0,0.08);
 }
-
-
-/* ==========================================================================
-   SUBTITLE
-   ========================================================================== */
-
-.trust-subtitle{
-    max-width:720px;
-
-    margin:16px auto 31px;
-
-    color:#bcbcbc;
-
-    font-size:15px;
-
-    line-height:1.55;
-}
-
 
 /* ==========================================================================
    BENEFIT CARDS
