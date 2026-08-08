@@ -9,7 +9,7 @@
 
 html {
     scroll-behavior: smooth;
-}
+}f.trust-section{
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -743,7 +743,7 @@ fstats-section
 
 .trust-section{
     position:relative;
-    padding:75px 20px 85px;
+    padding:45px 20px 50px;
     overflow:hidden;
     background:#050505;
 }
@@ -861,14 +861,10 @@ fstats-section
 
 .trust-title{
     margin:0;
-
     color:#fff;
-
-    font-size:48px;
+    font-size:40px;
     line-height:1.15;
-
     font-weight:800;
-
     letter-spacing:-1px;
 }
 
@@ -886,14 +882,10 @@ fstats-section
    ========================================================================== */
 
 .trust-subtitle{
-    max-width:720px;
-
-    margin:22px auto 38px;
-
+    max-width:680px;
+    margin:14px auto 28px;
     color:#bcbcbc;
-
     font-size:16px;
-
     line-height:1.65;
 }
 
@@ -908,14 +900,14 @@ fstats-section
     grid-template-columns:
         repeat(5, 1fr);
 
-    gap:22px;
+    gap:16px;
 
-    margin-bottom:62px;
+    margin-bottom:38px;
 }
 
 
 .trust-benefit{
-    min-height:96px;
+    min-height:76px;
 
     display:flex;
 
@@ -923,7 +915,7 @@ fstats-section
 
     text-align:left;
 
-    padding:17px 22px;
+    padding:12px 16px;
 
     background:
         linear-gradient(
@@ -960,8 +952,8 @@ fstats-section
    ========================================================================== */
 
 .benefit-icon{
-    width:47px;
-    height:47px;
+    width:40px;
+    height:40px;
 
     flex-shrink:0;
 
@@ -983,8 +975,8 @@ fstats-section
 
 
 .benefit-icon svg{
-    width:27px;
-    height:27px;
+    width:23px;
+    height:23px;
 
     fill:none;
 
@@ -1026,9 +1018,9 @@ fstats-section
 .trust-showcase{
     position:relative;
 
-    min-height:280px;
+    min-height:220px;
 
-    padding:76px 64px 67px;
+    padding:55px 55px 48px;
 
     border:1px solid rgba(255,215,0,0.38);
 
@@ -1156,7 +1148,7 @@ fstats-section
     grid-template-columns:
         repeat(6, 1fr);
 
-    gap:24px;
+    gap:16px;
 }
 
 
@@ -1165,7 +1157,7 @@ fstats-section
    ========================================================================== */
 
 .trust-logo{
-    height:118px;
+    height:92px;
 
     display:flex;
 
@@ -1187,7 +1179,7 @@ fstats-section
 
     color:#eeeeee;
 
-    font-size:19px;
+    font-size:17px;
 
     font-weight:700;
 
@@ -1293,7 +1285,7 @@ fstats-section
 .trust-dots{
     position:absolute;
 
-    bottom:25px;
+    bottom:16px;
 
     left:0;
     right:0;
@@ -1348,9 +1340,9 @@ fstats-section
    ========================================================================== */
 
 .trust-message{
-    max-width:1000px;
+    max-width:900px;
 
-    margin:45px auto 0;
+    margin:28px auto 0;
 
     display:flex;
 
@@ -1362,8 +1354,8 @@ fstats-section
 
 
 .trust-message-icon{
-    width:62px;
-    height:62px;
+    width:50px;
+    height:50px;
 
     flex-shrink:0;
 
@@ -1414,7 +1406,7 @@ fstats-section
 
     color:#eee;
 
-    font-size:16px;
+    font-size:14px;
 
     font-weight:500;
 
@@ -1453,6 +1445,7 @@ fstats-section
 
 
 /* ==========================================================================
+
    MOBILE
    ========================================================================== */
 
