@@ -738,12 +738,12 @@ fstats-section
 }
 
 /* ==========================================================================
-   13. PREMIUM BRAND TRUST SECTION
+   13. PREMIUM BRAND TRUST SECTION — COMPACT VERSION
    ========================================================================== */
 
 .trust-section{
     position:relative;
-    padding:45px 20px 50px;
+    padding:48px 20px 52px;
     overflow:hidden;
     background:#050505;
 }
@@ -770,7 +770,6 @@ fstats-section
         );
 
     background-size:38px 38px;
-
     pointer-events:none;
 }
 
@@ -784,7 +783,7 @@ fstats-section
     width:700px;
     height:500px;
 
-    top:180px;
+    top:150px;
     left:50%;
 
     transform:translateX(-50%);
@@ -828,7 +827,7 @@ fstats-section
 
     gap:12px;
 
-    margin-bottom:17px;
+    margin-bottom:13px;
 
     color:gold;
 
@@ -838,9 +837,8 @@ fstats-section
     letter-spacing:3px;
 }
 
-
 .eyebrow-line{
-    width:58px;
+    width:52px;
     height:1px;
 
     background:gold;
@@ -848,7 +846,6 @@ fstats-section
     box-shadow:
         0 0 7px rgba(255,215,0,0.7);
 }
-
 
 .trust-eyebrow span:nth-child(2){
     white-space:nowrap;
@@ -861,13 +858,16 @@ fstats-section
 
 .trust-title{
     margin:0;
+
     color:#fff;
-    font-size:40px;
-    line-height:1.15;
+
+    font-size:46px;
+    line-height:1.12;
+
     font-weight:800;
+
     letter-spacing:-1px;
 }
-
 
 .trust-title span{
     color:gold;
@@ -882,11 +882,15 @@ fstats-section
    ========================================================================== */
 
 .trust-subtitle{
-    max-width:680px;
-    margin:14px auto 28px;
+    max-width:720px;
+
+    margin:16px auto 31px;
+
     color:#bcbcbc;
-    font-size:16px;
-    line-height:1.65;
+
+    font-size:15px;
+
+    line-height:1.55;
 }
 
 
@@ -900,14 +904,13 @@ fstats-section
     grid-template-columns:
         repeat(5, 1fr);
 
-    gap:16px;
+    gap:18px;
 
-    margin-bottom:38px;
+    margin-bottom:43px;
 }
 
-
 .trust-benefit{
-    min-height:76px;
+    min-height:90px;
 
     display:flex;
 
@@ -915,7 +918,7 @@ fstats-section
 
     text-align:left;
 
-    padding:12px 16px;
+    padding:14px 18px;
 
     background:
         linear-gradient(
@@ -934,7 +937,6 @@ fstats-section
         box-shadow .3s ease;
 }
 
-
 .trust-benefit:hover{
     transform:translateY(-4px);
 
@@ -952,8 +954,8 @@ fstats-section
    ========================================================================== */
 
 .benefit-icon{
-    width:40px;
-    height:40px;
+    width:43px;
+    height:43px;
 
     flex-shrink:0;
 
@@ -961,7 +963,7 @@ fstats-section
     align-items:center;
     justify-content:center;
 
-    margin-right:15px;
+    margin-right:13px;
 
     color:gold;
 
@@ -973,10 +975,9 @@ fstats-section
         0 0 10px rgba(255,215,0,0.12);
 }
 
-
 .benefit-icon svg{
-    width:23px;
-    height:23px;
+    width:24px;
+    height:24px;
 
     fill:none;
 
@@ -988,9 +989,8 @@ fstats-section
     stroke-linejoin:round;
 }
 
-
 .benefit-content h3{
-    margin:0 0 5px;
+    margin:0 0 4px;
 
     color:#f5f5f5;
 
@@ -999,13 +999,12 @@ fstats-section
     font-weight:600;
 }
 
-
 .benefit-content p{
     margin:0;
 
     color:#929292;
 
-    font-size:12px;
+    font-size:11px;
 
     line-height:1.3;
 }
@@ -1018,9 +1017,9 @@ fstats-section
 .trust-showcase{
     position:relative;
 
-    min-height:220px;
+    min-height:245px;
 
-    padding:55px 55px 48px;
+    padding:62px 58px 58px;
 
     border:1px solid rgba(255,215,0,0.38);
 
@@ -1098,14 +1097,12 @@ fstats-section
     z-index:4;
 }
 
-
 .showcase-glow-top{
     top:-1px;
 
     left:36%;
     right:36%;
 }
-
 
 .showcase-glow-bottom{
     bottom:-1px;
@@ -1129,7 +1126,6 @@ fstats-section
     z-index:3;
 }
 
-
 .trust-logo-track{
     display:flex;
 
@@ -1139,7 +1135,6 @@ fstats-section
         transform .65s cubic-bezier(.4,0,.2,1);
 }
 
-
 .trust-logo-page{
     min-width:100%;
 
@@ -1148,7 +1143,7 @@ fstats-section
     grid-template-columns:
         repeat(6, 1fr);
 
-    gap:16px;
+    gap:20px;
 }
 
 
@@ -1157,14 +1152,14 @@ fstats-section
    ========================================================================== */
 
 .trust-logo{
-    height:92px;
+    height:105px;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
-    padding:15px;
+    padding:12px;
 
     background:
         linear-gradient(
@@ -1179,7 +1174,7 @@ fstats-section
 
     color:#eeeeee;
 
-    font-size:17px;
+    font-size:18px;
 
     font-weight:700;
 
@@ -1192,7 +1187,6 @@ fstats-section
         border-color .3s ease,
         box-shadow .3s ease;
 }
-
 
 .trust-logo:hover{
     transform:translateY(-4px);
@@ -1219,8 +1213,8 @@ fstats-section
 
     transform:translateY(-50%);
 
-    width:55px;
-    height:55px;
+    width:52px;
+    height:52px;
 
     display:flex;
     align-items:center;
@@ -1236,7 +1230,7 @@ fstats-section
 
     color:gold;
 
-    font-size:42px;
+    font-size:39px;
 
     line-height:1;
 
@@ -1250,13 +1244,10 @@ fstats-section
         box-shadow .25s ease;
 }
 
-
 .trust-arrow span{
     position:relative;
-
     top:-2px;
 }
-
 
 .trust-arrow:hover{
     background:gold;
@@ -1267,14 +1258,12 @@ fstats-section
         0 0 20px rgba(255,215,0,0.55);
 }
 
-
 .trust-prev{
-    left:-28px;
+    left:-26px;
 }
 
-
 .trust-next{
-    right:-28px;
+    right:-26px;
 }
 
 
@@ -1285,7 +1274,7 @@ fstats-section
 .trust-dots{
     position:absolute;
 
-    bottom:16px;
+    bottom:18px;
 
     left:0;
     right:0;
@@ -1293,14 +1282,12 @@ fstats-section
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
-    gap:10px;
+    gap:9px;
 
     z-index:5;
 }
-
 
 .trust-dot{
     width:8px;
@@ -1323,7 +1310,6 @@ fstats-section
         box-shadow .25s ease;
 }
 
-
 .trust-dot.active{
     width:10px;
     height:10px;
@@ -1342,20 +1328,19 @@ fstats-section
 .trust-message{
     max-width:900px;
 
-    margin:28px auto 0;
+    margin:30px auto 0;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
-    gap:25px;
+    gap:20px;
 }
 
-
 .trust-message-icon{
-    width:50px;
-    height:50px;
+    width:52px;
+    height:52px;
 
     flex-shrink:0;
 
@@ -1373,10 +1358,9 @@ fstats-section
         0 0 18px rgba(255,215,0,0.12);
 }
 
-
 .trust-message-icon svg{
-    width:34px;
-    height:34px;
+    width:29px;
+    height:29px;
 
     fill:none;
 
@@ -1385,21 +1369,18 @@ fstats-section
     stroke-width:1.5;
 
     stroke-linecap:round;
-
     stroke-linejoin:round;
 }
 
-
 .trust-message-divider{
     width:2px;
-    height:42px;
+    height:36px;
 
     background:gold;
 
     box-shadow:
         0 0 8px rgba(255,215,0,0.5);
 }
-
 
 .trust-message p{
     margin:0;
@@ -1414,7 +1395,6 @@ fstats-section
 
     text-align:left;
 }
-
 
 .trust-message p span{
     color:gold;
@@ -1445,70 +1425,52 @@ fstats-section
 
 
 /* ==========================================================================
-
    MOBILE
    ========================================================================== */
 
 @media(max-width:700px){
 
     .trust-section{
-        padding:55px 15px 65px;
+        padding:45px 15px 55px;
     }
-
 
     .trust-container{
         width:100%;
     }
 
-
     .trust-title{
         font-size:34px;
-
-        letter-spacing:-.5px;
     }
-
 
     .trust-eyebrow{
         font-size:11px;
-
         letter-spacing:2px;
     }
-
 
     .eyebrow-line{
         width:35px;
     }
 
-
     .trust-subtitle{
         font-size:14px;
-
-        margin-bottom:30px;
+        margin-bottom:28px;
     }
-
 
     .trust-benefits{
         grid-template-columns:1fr;
-
         gap:12px;
-
-        margin-bottom:40px;
+        margin-bottom:35px;
     }
-
 
     .trust-benefit{
-        min-height:82px;
-
-        padding:14px 18px;
+        min-height:78px;
+        padding:13px 17px;
     }
-
 
     .trust-showcase{
-        padding:55px 30px 65px;
-
-        min-height:230px;
+        padding:50px 28px 58px;
+        min-height:220px;
     }
-
 
     .trust-logo-page{
         grid-template-columns:
@@ -1517,66 +1479,54 @@ fstats-section
         gap:12px;
     }
 
-
     .trust-logo{
-        height:85px;
-
+        height:82px;
         font-size:14px;
     }
 
-
     .trust-arrow{
-        width:43px;
-        height:43px;
-
-        font-size:32px;
+        width:42px;
+        height:42px;
+        font-size:31px;
     }
-
 
     .trust-prev{
         left:-17px;
     }
 
-
     .trust-next{
         right:-17px;
     }
-
 
     .trust-world-dots{
         inset:20px 30px;
     }
 
-
     .trust-message{
-        gap:14px;
-
-        margin-top:35px;
+        gap:13px;
+        margin-top:28px;
     }
-
 
     .trust-message-icon{
-        width:50px;
-        height:50px;
+        width:48px;
+        height:48px;
     }
-
 
     .trust-message-icon svg{
-        width:27px;
-        height:27px;
+        width:26px;
+        height:26px;
     }
-
 
     .trust-message-divider{
-        height:35px;
+        height:33px;
     }
-
 
     .trust-message p{
         font-size:13px;
     }
 
 }
+   
 /* ==========================================================================
    14. HERO BACKGROUND INTERACTIVE TRACKS
    ========================================================================== */
