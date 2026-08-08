@@ -1070,7 +1070,7 @@ fstats-section
 .footer-bottom{
     margin-top:16px;
     padding-top:12px;
-    border-top:1px solid gold;
+    border-top:1px solid rgba(255,215,0,0.45);
     text-align:center;
     color:#666;
     font-size:11px;
