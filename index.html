@@ -1123,5 +1123,127 @@ bullets: [
     })();
     </script>
     -->
+
+
+<script>
+/* ==========================================================================
+   PREMIUM TRUST CAROUSEL
+   ========================================================================== */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const track = document.querySelector(".trust-logo-track");
+    const prev = document.querySelector(".trust-prev");
+    const next = document.querySelector(".trust-next");
+    const dots = document.querySelectorAll(".trust-dot");
+
+    if(!track || !prev || !next || !dots.length) return;
+
+    let currentPage = 0;
+    const totalPages = dots.length;
+
+
+    function updateTrustCarousel(){
+
+        track.style.transform =
+            `translateX(-${currentPage * 100}%)`;
+
+        dots.forEach((dot, index) => {
+
+            dot.classList.toggle(
+                "active",
+                index === currentPage
+            );
+
+        });
+
+    }
+
+
+    next.addEventListener("click", function(){
+
+        currentPage++;
+
+        if(currentPage >= totalPages){
+            currentPage = 0;
+        }
+
+        updateTrustCarousel();
+
+    });
+
+
+    prev.addEventListener("click", function(){
+
+        currentPage--;
+
+        if(currentPage < 0){
+            currentPage = totalPages - 1;
+        }
+
+        updateTrustCarousel();
+
+    });
+
+
+    dots.forEach((dot, index) => {
+
+        dot.addEventListener("click", function(){
+
+            currentPage = index;
+
+            updateTrustCarousel();
+
+        });
+
+    });
+
+
+    /* -------------------------------------------------------------
+       AUTO ROTATION
+       Change 5000 to 0 if you DON'T want automatic movement.
+       ------------------------------------------------------------- */
+
+    let autoRotate = setInterval(function(){
+
+        currentPage++;
+
+        if(currentPage >= totalPages){
+            currentPage = 0;
+        }
+
+        updateTrustCarousel();
+
+    }, 5000);
+
+
+    /* Pause auto movement when user interacts */
+
+    [prev, next, ...dots].forEach(element => {
+
+        element.addEventListener("mouseenter", function(){
+            clearInterval(autoRotate);
+        });
+
+        element.addEventListener("mouseleave", function(){
+
+            autoRotate = setInterval(function(){
+
+                currentPage++;
+
+                if(currentPage >= totalPages){
+                    currentPage = 0;
+                }
+
+                updateTrustCarousel();
+
+            }, 5000);
+
+        });
+
+    });
+
+});
+</script>
 </body>
 </html>
