@@ -1,1973 +1,902 @@
-/* ==========================================================================
-   1. RESET & CORE GLOBAL STYLES
-   ========================================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0d0d0d;
-    color: #ddd;
-    line-height: 1.6;
-    letter-spacing: 0.3px;
-    overflow-x: hidden;
-    position: relative;
-
-    /* PREMIUM GRID BACKGROUND */
-    background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 40px 40px;
-}
-
-/* ==========================================================================
-   2. OPEN BOOK VISUAL EFFECTS
-   ========================================================================== */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: -80px;
-    width: 200px;
-    height: 100vh;
-    background: linear-gradient(
-        to right,
-        rgba(255,255,255,0.05),
-        rgba(0,0,0,0)
-    );
-    transform: skewY(-5deg);
-    pointer-events: none;
-    z-index: 0;
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    right: -80px;
-    width: 200px;
-    height: 100vh;
-    background: linear-gradient(
-        to left,
-        rgba(255,255,255,0.05),
-        rgba(0,0,0,0)
-    );
-    transform: skewY(5deg);
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* ==========================================================================
-   3. NAVIGATION HEADER & LOGO
-   ========================================================================== */
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(20,20,20,0.75);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    height: 90px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    height: 108px;
-    margin-top: 15px;
-    transition: transform 0.5s ease;
-}
-
-.logo img:hover {
-    transform: scale(1.08);
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-}
-
-.nav a {
-    color: #ddd;
-    text-decoration: none;
-    margin-left: 30px;
-    font-size: 18px;
-    font-weight: 500;
-    position: relative;
-    transition: 0.3s ease;
-}
-
-.nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0%;
-    height: 2px;
-    background: gold;
-    transition: 0.3s ease;
-}
-
-.nav a:hover::after {
-    width: 100%;
-}
-
-.nav a:hover {
-    color: gold;
-}
-
-.header-phone{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-
-    color:#FFD54A;              /* Rich premium gold */
-    font-size:18px;
-    font-weight:700;
-    letter-spacing:1px;
-
-    white-space:nowrap;
-
-    text-shadow:
-        0 0 6px rgba(255,213,74,0.25),
-        0 0 16px rgba(255,213,74,0.12);
-
-    transition:
-        transform .25s ease,
-        color .25s ease,
-        text-shadow .25s ease;
-}
-
-.header-phone:hover{
-    color:#FFD54A;               /* Slightly darker gold */
-    transform:translateX(-50%) scale(1.08);
-
-    text-shadow:
-        0 0 4px rgba(229,190,60,0.18),
-        0 0 10px rgba(229,190,60,0.08);
-
-    cursor:pointer;
-}
-
-/* ==========================================================================
-   4. HERO SECTION & TYPOGRAPHY SLIDER
-   ========================================================================== */
-.hero {
-    height: calc(100vh - 80px);
-    padding: 80px 20px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.72),
-            rgba(0,0,0,0.82)
-        ),
-        url("dashboard.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-/* DARK GOLD GLOW */
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,215,0,0.06),
-            transparent 60%
-        );
-    z-index: 1;
-}
-
-/* Premium Blur Overlay */
-.hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:2;
-    pointer-events:none;
-
-    backdrop-filter: blur(.75px);
-    -webkit-backdrop-filter: blur(.75px);
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(0,0,0,0.12) 15%,
-            rgba(0,0,0,0.38) 60%,
-            rgba(0,0,0,0.62) 100%
-        );
-}
-
-.hero-container {
-    width: 100%;
-    max-width: 1100px;
-    position: relative;
-    z-index: 5;
-}
-
-.slider {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    margin-bottom: 30px;
-}
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transform: translateX(-200px);
-    transition: opacity 1s ease, transform 1s ease;
-    will-change: transform, opacity;
-    pointer-events: none;
-}
-
-.slide.active {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.slide h1 {
-    font-size: 40px;
-    line-height: 1.1;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.slide h1 span {
-    color: gold;
-}
-
-.slide p {
-    font-size: 22px;
-    margin-top: 20px;
-    color: #aaa;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid gold;
-    display: inline-block;
-    max-width: 0;
-    opacity: 0;
-}
-
-.slide.active p {
-    opacity: 1;
-    animation:
-        typing 3s steps(60, end) forwards,
-        blink 0.7s infinite;
-}
-
-@keyframes typing {
-    from { max-width: 0; }
-    to { max-width: 1000px; }
-}
-
-@keyframes blink {
-    50% { border-color: transparent; }
-}
-
-/* ==========================================================================
-   5. PROGRESS STEPS FLOW
-   ========================================================================== */
-.steps-flow {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    margin-top: 10px;
-}
-
-.steps-group {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-}
-
-.step {
-    width: 10px;
-    height: 10px;
-    background: white;
-    border-radius: 50%;
-}
-
-.steps-group .step:nth-child(1) { opacity: 0.3; }
-.steps-group .step:nth-child(2) { opacity: 0.6; }
-.steps-group .step:nth-child(3) { opacity: 1; }
-
-.step-end {
-    width: 110px;
-    height: 42px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: gold;
-    color: #111;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 700;
-    flex-shrink: 0;
-    box-shadow: 0 0 18px rgba(255,215,0,0.35);
-    transition: 0.3s ease;
-}
-
-.step-end:hover {
-    transform: translateY(-2px);
-}
-
-/* ==========================================================================
-   6. BLANK INTERMEDIATE SECTIONS
-   ========================================================================== */
-.blankline {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.blankline h2 {
-    font-size: 42px;
-    color: white;
-}
-
-.blankline span {
-    color: gold;
-}
-
-/* ==========================================================================
-   8. PREMIUM ABOUT SECTION
-   ========================================================================== */
-.about-section {
-    padding: 30px 20px 10px;
-    position: relative;
-    z-index: 1;
-}
-
-.about-container {
-    width: 90%;
-    max-width: 1250px;
-    margin: auto;
-}
-
-.about-card {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 60px;
-    align-items: center;
-    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 36px;
-    padding: 60px;
-    overflow: hidden;
-    position: relative;
-    backdrop-filter: blur(16px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-    transition: 0.35s ease;
-}
-
-.about-card::before {
-    content: "";
-    position: absolute;
-    top: -120px;
-    right: -120px;
-    width: 260px;
-    height: 260px;
-    background: rgba(255,215,0,0.08);
-    border-radius: 50%;
-    filter: blur(55px);
-}
-
-.about-image {
-    position: relative;
-    z-index: 2;
-}
-
-.about-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 28px;
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-}
-
-.about-content {
-    position: relative;
-    z-index: 2;
-}
-
-.about-content h2 {
-    font-size: 58px;
-    line-height: 1.1;
-    color: white;
-    margin-bottom: 30px;
-}
-
-.about-content h2 span { color: gold; }
-
-.about-content p {
-    color: #a5a5a5;
-    font-size: 17px;
-    line-height: 2;
-    margin-bottom: 22px;
-}
-
-.why-choose { margin-top: 45px; }
-.why-choose h3 {
-    font-size: 32px;
-    color: white;
-    margin-bottom: 24px;
-}
-.why-choose h3 span { color: gold; }
-.why-choose ul { list-style: none; }
-
-.why-choose li {
-    position: relative;
-    padding-left: 34px;
-    margin-bottom: 18px;
-    color: #b7b7b7;
-    line-height: 1.8;
-    font-size: 16px;
-}
-
-.why-choose li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: -2px;
-    color: gold;
-    font-size: 28px;
-}
-
-.about-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255,215,0,0.2);
-}
-
-/* ==========================================================================
-   9. CORE SERVICES MODULAR SECTION
-   ========================================================================== */
-.services-section {
-    padding: 10px 20px 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.services-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.services-title {
-    text-align: center;
-    margin-bottom: 70px;
-}
-
-.services-title h2 {
-    font-size: 52px;
-    color: white;
-    margin-bottom: 18px;
-}
-
-.services-title h2 span { color: gold; }
-.services-title p {
-    color: #8f8f8f;
-    font-size: 18px;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.service-card {
-    position: relative;
-    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 28px;
-    padding: 40px 32px;
-    transition:
-        transform 0.35s ease,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
-    overflow: hidden;
-    backdrop-filter: blur(12px);
-    min-height: 280px;
-}
-
-.service-card::before {
-    content: "";
-    position: absolute;
-    top: -60px;
-    right: -60px;
-    width: 160px;
-    height: 160px;
-    background: rgba(255,215,0,0.06);
-    border-radius: 50%;
-    filter: blur(35px);
-}
-
-.service-card:hover {
-    transform: translateY(-10px) scale(1.06);
-    border-color: rgba(255,215,0,0.28);
-    box-shadow: 0 28px 60px rgba(0,0,0,0.5);
-}
-
-.service-icon {
-    font-size: 38px;
-    margin-bottom: 24px;
-
-   
-}
-
-.service-card h3 {
-    font-size: 24px;
-    color: white;
-    margin-bottom: 18px;
-}
-
-.service-card p {
-    color: #9a9a9a;
-    line-height: 1.9;
-    font-size: 16px;
-}
-
-/* ==========================================================================
-   10. STRATEGIC ADVANTAGES SECTION
-   ========================================================================== */
-.advantages-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    gap: 60px;
-}
-
-.advantages-left {
-    width: 120px;
-    display: flex;
-    justify-content: center;
-}
-
-.advantages-line {
-    width: 4px;
-    height: 260px;
-    border-radius: 999px;
-    background: linear-gradient(to bottom, transparent, gold, transparent);
-    box-shadow: 0 0 25px rgba(255,215,0,0.35);
-}
-
-.advantages-content {
-    flex: 1;
-    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 32px;
-    padding: 55px 60px;
-    backdrop-filter: blur(14px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-    transition: 0.35s ease;
-}
-
-.advantages-content:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255,215,0,0.2);
-}
-fstats-section
-.advantages-content h2 {
-    font-size: 50px;
-    color: white;
-    margin-bottom: 35px;
-    line-height: 1.2;
-}
-
-.advantages-content h2 span { color: gold; }
-.advantages-content ul { list-style: none; }
-
-.advantages-content li {
-    position: relative;
-    color: #b3b3b3;
-    font-size: 18px;
-    line-height: 1.9;
-    margin-bottom: 18px;
-    padding-left: 34px;
-}
-
-.advantages-content li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: -2px;
-    color: gold;
-    font-size: 28px;
-    line-height: 1;
-}
-
-/* ==========================================================================
-   11. LINEAR SECTION DIVIDERS
-   ========================================================================== */
-.section-divider {
-    width: 100%;
-    max-width: 1200px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,215,0,0.35), transparent);
-    margin: 10px auto 50px;
-    opacity: 0.8;
-}
-
-/* ==========================================================================
-   12. PREMIUM PERFORMANCE STATS SECTION
-   ========================================================================== */
-.stats-section {
-    position: relative;
-    padding: 55px 20px;
-    overflow: hidden;
-    background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 40px 40px;
-}
-
-.graph-bg {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    gap: 4px;
-    padding: 0 30px;
-    z-index: 1;
-    opacity: 0.12;
-}
-
-.bar {
-    flex: 1;
-    max-width: 12px;
-    background: linear-gradient(to top, rgba(255,215,0,0.08), rgba(255,215,0,0.55));
-    border-radius: 10px 10px 0 0;
-    animation: barFloat 4s ease-in-out infinite alternate;
-}
-
-@keyframes barFloat {
-    from { transform: scaleY(0.96); }
-    to { transform: scaleY(1.03); }
-}
-
-.stats-container {
-    position: relative;
-    z-index: 5;
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
-.stat-card {
-    position: relative;
-    background: linear-gradient(145deg, rgba(18,18,18,0.92), rgba(10,10,10,0.88));
-    border: 1px solid rgba(255,215,0,0.06);
-    border-radius: 22px;
-    padding: 22px 18px;
-    text-align: center;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    transition: 0.3s ease;
-}
-
-.stat-card:hover{
-    transform:translateY(-6px);
-    border-color:rgba(255,215,0,.22);
-    box-shadow:0 18px 35px rgba(255,215,0,.08);
-}
-
-.stat-card h2 {
-    font-size: 44px;
-    font-weight: 675;
-    line-height: 1;
-    color: #FFD700;
-    margin-bottom: 10px;
-    letter-spacing: -1px;
-    text-shadow: 0 0 12px rgba(255,215,0,0.15);
-}
-
-.stat-card p {
-    color: #bdbdbd;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-/* ==========================================================================
-   13. BRAND TRUST LOGO TRACK
-   ========================================================================== */
-.trust-section{
-    padding:40px 20px 30px;
-    position:relative;
-    overflow:hidden;
-}
-
-.trust-container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-    text-align:center;
-}
-
-.trust-container h2{
-    font-size:44px;
-    color:white;
-    margin-bottom:50px;
-}
-
-.trust-container h2 span{ color:gold; }
-.trust-logos{ overflow:hidden; white-space:nowrap; }
-
-.trust-track{
-    display:flex;
-    gap:24px;
-    width:max-content;
-    animation: scroll-left 18s linear infinite;
-}
-
-@keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.trust-logo{
-    min-width:180px;
-    height:85px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.06);
-    border-radius:22px;
-    color:rgba(255,255,255,0.45);
-    font-size:20px;
-    font-weight:700;
-    letter-spacing:2px;
-    flex-shrink:0;
-    transition:0.3s ease;
-}
-
-.trust-logo:hover{
-    transform:translateY(-5px);
-    color:gold;
-    border-color:rgba(255,215,0,0.25);
-}
-
-/* ==========================================================================
-   14. HERO BACKGROUND INTERACTIVE TRACKS
-   ========================================================================== */
-.hero-image-slider{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-    z-index:0;
-}
-
-.hero-dashboard{
-    position:absolute;
-    top:50%;
-    left:50%;
-
-    width:100%;      
-    height:auto;
-
-    object-fit:unset;
-
-    transform:translate(-50%,-50%);
-
-    opacity:0;
-    transition:opacity 1.2s ease;
-
-    filter:brightness(.42) contrast(1.05) saturate(.9);
-}
-
-.hero-dashboard.active-dashboard{
-    opacity:1;
-}
-
-/* ==========================================================================
-   16. ENGAGING INTERACTIVE CONTACT SECTION
-   ========================================================================== */
-.contact-section {
-    padding: 40px 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.contact-wrapper {
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
-    text-align: center;
-}
-
-.contact-mini {
-    color: gold;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 22px;
-}
-
-.contact-wrapper h2 {
-    font-size: 58px;
-    line-height: 1.1;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.contact-wrapper h2 span {
-    color: gold;
-}
-
-.contact-subtext {
-    color: #8e8e8e;
-    font-size: 18px;
-    margin-bottom: 60px;
-}
-
-.contact-card {
-    position: relative;
-    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 32px;
-    padding: 50px;
-    backdrop-filter: blur(18px);
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-}
-
-.contact-card::before {
-    content: "";
-    position: absolute;
-    top: -120px;
-    right: -120px;
-    width: 260px;
-    height: 260px;
-    background: rgba(255,215,0,0.08);
-    border-radius: 50%;
-    filter: blur(50px);
-}
-
-.contact-form {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-}
-
-.input-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    padding: 18px 20px;
-    color: white;
-    font-size: 15px;
-    outline: none;
-    transition: 0.3s ease;
-}
-
-.contact-form textarea {
-    min-height: 180px;
-    resize: none;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: #777;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: gold;
-    box-shadow: 0 0 0 4px rgba(255,215,0,0.08);
-}
-
-.contact-form button {
-    height: 58px;
-    border: none;
-    border-radius: 16px;
-    background: gold;
-    color: #111;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-form button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px rgba(255,215,0,0.25);
-}
-
-.contact-form button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
-    transition: 0.6s;
-}
-
-.contact-form button:hover::before { left: 100%; }
-
-/* ==========================================================================
-   17. SYSTEM FOOTER WRAPPER
-   ========================================================================== */
-.footer{
-    background:#050505;
-    margin-top:25px;
-    padding:115px 0 20px;
-    border-top:none;
-    position:relative;
-}
-
-.footer-container{
-    width:92%;
-    max-width:1250px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:20px;
-}
-
-.footer-brand{
-    width:220px;
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-}
-
-.footer-logo{
-    width:135px;
-    display:block;
-    margin-bottom:14px;
-}
-
-.footer-center{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding-top:38px;
-}
-
-.footer-links{
-    display:flex;
-    gap:24px;
-    margin-bottom:10px;
-    padding:18px 0;
-    border-top:1px solid rgba(255,215,0,0.45);
-    border-bottom:1px solid rgba(255,215,0,0.45);
-}
-
-.footer-links a{
-    color:#fff;
-    text-decoration:none;
-    font-size:18px;
-    transition:0.3s ease;
-    position:relative;
-}
-
-.footer-links a:hover{
-    color:gold;
-}
-
-.footer-links a::after{
-    content:'';
-    position:absolute;
-    left:0;
-    bottom:-4px;
-    width:0%;
-    height:1px;
-    background:gold;
-    transition:0.3s ease;
-}
-
-.footer-links a:hover::after{
-    width:100%;
-}
-
-.footer-email{
-    font-size:15px;
-    color:#9d9d9d;
-    letter-spacing:0.4px;
-}
-
-.footer-contact{
-    width:400px;
-    text-align:right;
-    padding-top:32px;
-}
-
-.footer-contact p{
-    color:#d2d2d2;
-    font-size:14px;
-    line-height:1.5;
-    margin-bottom:8px;
-}
-
-.footer-contact span{
-    color:gold;
-    font-weight:600;
-}
-
-.footer-bottom{
-    margin-top:16px;
-    padding-top:12px;
-    border-top:none;
-    text-align:center;
-    color:#666;
-    font-size:13px;
-}
-
-/* ==========================================================================
-   NEW FOOTER LEGAL NAVIGATION STYLE
-   ========================================================================== */
-.footer-legal-links {
-    text-align: center;
-    padding: 15px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.footer-legal-links a {
-    color: #888888;
-    font-size: 14px;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-legal-links a:hover {
-    color: gold; 
-}
-
-/* ==========================================================================
-   18. INTERACTIVE UTILITY ACTIONS (CURSOR & FLOATING BUTTONS)
-   ========================================================================== */
-#scrollTopBtn {
-    position: fixed;
-    right: 30px;
-    bottom: 80px;
-    width: 52px;
-    height: 52px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(20,20,20,0.75);
-    color: gold;
-    border: 1px solid rgba(255,215,0,0.35);
-    border-radius: 14px;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-}
-
-#scrollTopBtn.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-#scrollTopBtn:hover {
-    transform: translateY(-4px);
-    border-color: gold;
-    box-shadow: 0 10px 30px rgba(255,215,0,0.18);
-}
-
-.custom-cursor {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    background: rgba(255,215,0,0.12);
-    border: 1px solid rgba(255,215,0,0.35);
-    backdrop-filter: blur(1px);
-    box-shadow: 0 0 15px rgba(255,215,0,0.18);
-    transform: translate(-50%, -50%);
-    transition: width 0.25s ease, height 0.25s ease, background 0.25s ease, transform 0.08s linear;
-}
-
-a:hover ~ .custom-cursor,
-button:hover ~ .custom-cursor {
-    width: 28px;
-    height: 28px;
-    background: rgba(255,255,255,0.9);
-}
-
-.hero-button-wrap {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-    z-index: 9995;
-}
-
-.browse-db-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #ffd700, #f5c400);
-    color: #111;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    border-radius: 50px;
-    box-shadow:
-        0 0 15px rgba(255,215,0,0.25),
-        0 0 35px rgba(255,215,0,0.10);
-    transition: all 0.35s ease;
-}
-
-.browse-db-btn:hover {
-    transform: translateY(-3px);
-    box-shadow:
-        0 5px 20px rgba(255,215,0,0.4),
-        0 0 40px rgba(255,215,0,0.2);
-}
-
-/* ==========================================================================
-   19. SCROLL REVEAL ANIMATION CONTROLLERS
-   ========================================================================== */
-.about-section,
-.services-section,
-.contact-section,
-.service-card {
-    opacity: 0.2;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.active-reveal {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-}
-
-/* ==========================================================================
-   20. RESPONSIVE DESIGN BREAKPOINTS (MOBILE & TABLET)
-   ========================================================================== */
-@media (max-width: 992px) {
-    .about-card {
-        grid-template-columns: 1fr;
-        padding: 40px;
-    }
-    .about-content h2 { font-size: 42px; }
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .campaign-grid { grid-template-columns: repeat(2, 1fr); }
-    .spotlight-grid { grid-template-columns: 1fr; gap: 24px; } /* Added spotlight control */
-}
-
-@media (max-width: 900px){
-    .footer-container{
-        flex-direction:column;
-        align-items:center;
-        text-align:center;
-        gap:24px;
-    }
-
-    .footer-brand,
-    .footer-contact{
-        width:100%;
-        text-align:center;
-        align-items:center;
-    }
-
-    .footer-logo{
-        width:120px;
-        margin-bottom:12px;
-    }
-
-    .footer-center{
-        padding-top:0;
-    }
-
-    .footer-links{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:16px;
-    }
-
-    .footer-links a{
-        font-size:14px;
-    }
-
-    .footer-email{
-        font-size:12px;
-    }
-
-    .footer-contact{
-        padding-top:0;
-    }
-
-    .footer-contact p{
-        font-size:12px;
-    }
-}
-
-@media (max-width: 768px) {
-    .slide p {
-        width: 100% !important;
-        white-space: normal;
-        overflow: visible;
-        border-right: none;
-        opacity: 0;
-    }
-
-    .slide.active p {
-        animation: fadeText 1s ease forwards !important;
-    }
-
-    @keyframes fadeText {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyraShift</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="custom-cursor"></div>
+
+    <button id="scrollTopBtn" title="Go to top">↑</button>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="CyraShift Logo">
+            </div>
+
+            <div class="header-phone">
+                   +1 (408) 555-1234
+                 </a>
+            </div>
+
+            <nav class="nav">
+                <a href="#">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-image-slider">
+            <img src="dashboard.png" class="hero-dashboard active-dashboard" alt="Dashboard View">
+            <img src="dashboard1.png" class="hero-dashboard" alt="Analytics View">
+            <img src="dashboard2.png" class="hero-dashboard" alt="Database View">
+            <img src="dashboard3.png" class="hero-dashboard" alt="Leads View">
+            <img src="dashboard4.png" class="hero-dashboard" alt="Campaigns View">
+            <img src="dashboard5.png" class="hero-dashboard" alt="Leads View">
+        </div>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-container">
+            <div class="slider">
+                <div class="slide active">
+                    <h1>Built for <span>Better</span> Prospecting</h1>
+                    <p>Reach verified decision-makers with accurate business data that converts consistently...</p>
+                </div>
+                <div class="slide">
+                    <h1>Clean <span>Data </span> Better Conversion Rates</h1>
+                    <p>Reduce email bounces using continuously verified and regularly updated business contacts...</p>
+                </div>
+                <div class="slide">
+                    <h1>One <span>Database</span> Endless Opportunities</h1>
+                    <p>Access verified B2B databases across 500+ industries to reach qualified decision-makers...</p>
+                </div>
+                <div class="slide">  
+                    <h1>Find Your <span>Ideal</span> Audience Today</h1>
+                    <p>Filter prospects by job role, location, company size, and business category...</p>
+                </div>
+                <div class="slide">
+                    <h1>Confidence <span>Starts</span> With Better Data</h1>
+                    <p>Every contact is validated for accuracy, reliability, deliverability, and business relevance...</p>
+                </div>
+                <div class="slide">
+                    <h1>Turn <span>Data</span> Into Your Competitive Edge</h1>
+                    <p>Transform accurate business data into more conversations, more opportunities, and more revenue...</p>
+                </div>
+            </div>
+
+            <div class="steps-flow">
+                <div class="steps-group">
+                    <div class="step"></div>
+                    <div class="step"></div>
+                    <div class="step"></div>
+                </div>
+                <div class="step-end">Build</div>
+
+                <div class="steps-group">
+                    <div class="step"></div>
+                    <div class="step"></div>
+                    <div class="step"></div>
+                </div>
+                <div class="step-end">Govern</div>
+
+                <div class="steps-group">
+                    <div class="step"></div>
+                    <div class="step"></div>
+                    <div class="step"></div>
+                </div>
+                <div class="step-end">Scale</div>
+            </div>
+
+            <div class="hero-button-wrap">
+                <a href="database.html" class="browse-db-btn">Browse Our Database</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+        <section class="stats-section">
+        <div class="graph-bg">
+            <div class="bar" style="height:12%"></div>
+            <div class="bar" style="height:14%"></div>
+            <div class="bar" style="height:16%"></div>
+            <div class="bar" style="height:18%"></div>
+            <div class="bar" style="height:22%"></div>
+            <div class="bar" style="height:26%"></div>
+            <div class="bar" style="height:30%"></div>
+            <div class="bar" style="height:34%"></div>
+            <div class="bar" style="height:38%"></div>
+            <div class="bar" style="height:42%"></div>
+            <div class="bar" style="height:46%"></div>
+            <div class="bar" style="height:52%"></div>
+            <div class="bar" style="height:58%"></div>
+            <div class="bar" style="height:64%"></div>
+            <div class="bar" style="height:70%"></div>
+            <div class="bar" style="height:78%"></div>
+            <div class="bar" style="height:86%"></div>
+            <div class="bar" style="height:95%"></div>
+        </div>
+        
+
+            <div class="stats-container">
+            <div class="stat-card">
+                <h2>100M+</h2>
+                <p>Verified Emails</p>
+            </div>
+            <div class="stat-card">
+                <h2>500+</h2>
+                <p>Industries Covered</p>
+            </div>
+            <div class="stat-card">
+                <h2>Custom</h2>
+                <p>Data Segmentation</p>
+            </div>
+            <div class="stat-card">
+                <h2>Rapid</h2>
+                <p>Data Delivery</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <div class="section-divider"></div>
+
+        <section class="spotlight-section">
+        <div class="spotlight-container">
+            <div class="spotlight-header">
+                <h2>Supported <span>Industry</span> Channels</h2>
+                <p>Scalable audiences. Triple-verified contact records.</p>
+            </div>
+            <div class="spotlight-grid" id="dynamic-spotlight-container">
+                <!-- Dynamic Content Here -->
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="database-section">
+
+    <div class="database-container">
+
+        <div class="database-title">
+
+            <h2>What's Included in <span>Every Database</span></h2>
+
+            <p>
+                Every database is professionally structured with essential business,
+                company, and executive-level information to support smarter prospecting.
+            </p>
+
+        </div>
+
+        <div class="database-grid">
+
+            <div class="database-card">
+
+                <h3>Business Information</h3>
+
+                <ul>
+
+                    <li>Company Name</li>
+                    <li>Company Website</li>
+                    <li>Industry</li>
+                    <li>NAICS / SIC Codes</li>
+
+                </ul>
+
+            </div>
+
+            <div class="database-card">
+
+                <h3>Contact Details</h3>
+
+                <ul>
+
+                    <li>Contact Name</li>
+                    <li>Job Title</li>
+                    <li>Business Email</li>
+                    <li>Direct Phone Number</li>
+
+                </ul>
+
+            </div>
+
+            <div class="database-card">
+
+                <h3>Company Profile</h3>
+
+                <ul>
+
+                    <li>Employee Size</li>
+                    <li>Annual Revenue</li>
+                    <li>Ownership Type</li>
+                    <li>Company Address</li>
+
+                </ul>
+
+            </div>
+
+            <div class="database-card">
+
+                <h3>Geographic Data</h3>
+
+                <ul>
+
+                    <li>Country</li>
+                    <li>State</li>
+                    <li>City</li>
+                    <li>ZIP / Postal Code</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    <div class="database-download">
+    <a href="sample-business-database.xlsx"
+       download
+       class="download-sample-btn">
+        Download Sample Database
+    </a>
+
+</div>
+
+    </div>
+
+</section>
+
+    <div class="section-divider"></div>
+
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-card">
+                <div class="about-image">
+                    <img src="office.png" alt="Office Working Environment">
+                </div>
+
+                <div class="about-content">
+                    <h2>About <span>CyraShift</span></h2>
+                    <p>CyraShift is a modern B2B database and lead generation company focused on delivering high-quality business email lists for targeted marketing campaigns.</p>
+                    <p>We help businesses connect with decision makers across industries using verified databases, custom segmentation, and precision targeting solutions.</p>
+                    <p>Our mission is to simplify outreach by providing reliable, scalable, and conversion-focused data solutions for growing companies worldwide.</p>
+
+                    <div class="why-choose">
+                        <h3>Why Businesses <span>Choose Us</span></h3>
+                        <ul>
+                            <li>Highly targeted B2B email databases built for precision outreach.</li>
+                            <li>Verified and updated contacts to improve campaign performance.</li>
+                            <li>Custom industry segmentation based on your business needs.</li>
+                            <li>Fast database delivery with scalable lead generation solutions.</li>
+                            <li>Affordable pricing for startups, agencies, and growing companies.</li>
+                            <li>Dedicated research process focused on quality and accuracy.</li>
+                            <li>Designed to help your emails reach the right decision makers.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+<section class="segment-section">
+    <div class="segment-container">
+
+        <div class="segment-header">
+            <h2>Build Smarter <span>Prospect Lists</span></h2>
+            <p>Create highly targeted business audiences using advanced company, industry, and executive-level filters.</p>
+        </div>
+
+        <div class="segment-grid">
+
+            <div class="segment-card">
+                <div class="segment-icon">🏢</div>
+                <div class="segment-body">
+                    <h3>Company Size</h3>
+                    <p>Identify businesses by employee count, from small companies to large enterprise organizations.</p>
+                </div>
+            </div>
+
+            <div class="segment-card">
+                <div class="segment-icon">👔</div>
+                <div class="segment-body">
+                    <h3>Executive Contacts</h3>
+                    <p>Locate decision-makers by job title, department, seniority level, and executive responsibility.</p>
+                </div>
+            </div>
+
+            <div class="segment-card">
+                <div class="segment-icon">🏭</div>
+                <div class="segment-body">
+                    <h3>Industry Classification</h3>
+                    <p>Target companies using NAICS codes, SIC codes, business categories, and specialized industries.</p>
+                </div>
+            </div>
+
+            <div class="segment-card">
+                <div class="segment-icon">📈</div>
+                <div class="segment-body">
+                    <h3>Company Intelligence</h3>
+                    <p>Filter organizations by annual revenue, ownership type, business size, and firmographic attributes.</p>
+                </div>
+            </div>
+
+            <div class="segment-card">
+                <div class="segment-icon">📍</div>
+                <div class="segment-body">
+                    <h3>Geographic Targeting</h3>
+                    <p>Build precise audiences by country, state, city, ZIP code, county, or metropolitan region.</p>
+                </div>
+            </div>
+
+            <div class="segment-card">
+                <div class="segment-icon">⚙️</div>
+                <div class="segment-body">
+                    <h3>Custom Data Selection</h3>
+                    <p>Create tailored business databases by combining multiple filters to match your exact requirements.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <div class="section-divider"></div>
+
+    <section class="services-section" id="services">
+        <div class="services-container">
+            <div class="services-title">
+                <h2>Our <span>Services</span></h2>
+                <p>Powerful data-driven solutions designed for modern B2B growth.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📧</div>
+                    <h3>B2B Email Lists</h3>
+                    <p>Verified business email databases tailored for targeted outreach campaigns.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>SEO</h3>
+                    <p>Advance Search Engine Optimization team.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✅</div>
+                    <h3>Email Verification</h3>
+                    <p>Multi-level verification process to improve deliverability and reduce bounce rates.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Lead Generation</h3>
+                    <p>Scalable lead sourcing solutions designed to accelerate business growth.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Email Campagins</h3>
+                    <p>Get Instant leads with our ready-to-use databases for immediate campaigns.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>Web Development</h3>
+                    <p>Meet our Highly Skilled Web developers to design your website on the go.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="trust-section">
+        <div class="trust-container">
+            <h2>Trusted By <span>Growing Businesses</span></h2>
+            <div class="trust-slider">
+                <div class="trust-track">
+                    <div class="trust-logo">CYRASHIFT</div>
+                    <div class="trust-logo">NEXORA</div>
+                    <div class="trust-logo">CORESTACK</div>
+                    <div class="trust-logo">BLUEPEAK</div>
+                    <div class="trust-logo">ELEVATEX</div>
+                    <div class="trust-logo">TOMTOM</div>
+                    <div class="trust-logo">B &amp; C'S</div>
+                    <div class="trust-logo">LIGHTHOUSE</div>
+                    <div class="trust-logo">BLUETIME</div>
+                    <div class="trust-logo">RETROFIX</div>
+                     
+                    <div class="trust-logo">CYRASHIFT</div>
+                    <div class="trust-logo">NEXORA</div>
+                    <div class="trust-logo">CORESTACK</div>
+                    <div class="trust-logo">BLUEPEAK</div>
+                    <div class="trust-logo">ELEVATEX</div>
+                    <div class="trust-logo">TOMTOM</div>
+                    <div class="trust-logo">B &amp; C'S</div>
+                    <div class="trust-logo">LIGHTHOUSE</div>
+                    <div class="trust-logo">BLUETIME</div>
+                    <div class="trust-logo">RETROFIX</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="section-divider"></div>
+    
+    <section class="contact-section" id="contact">
+        <div class="contact-wrapper">
+            <h2>Contact <span>Us</span></h2>
+            <p class="contact-subtext">Kindly fill in the form to reach us today!</p>
+            <div class="contact-card">
+                <form class="contact-form" id="mainContactForm" action="https://formsubmit.co/cyrashift@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration Inputs -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div class="input-row">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" id="userEmail" placeholder="Email Address" required>
+                    </div>
+                    <input type="text" name="company" placeholder="Company Name">
+                    <textarea name="message" placeholder="Tell us about your project..." required></textarea>
+                    <button type="submit" id="submitBtn">Send Message</button>
+                </form>
+
+                <!-- Popup Modal Structure -->
+                <div id="formPopup" class="popup-overlay" style="display: none;">
+                    <div class="popup-card">
+                        <h3 id="popupTitle">Success!</h3>
+                        <p id="popupMessage">Email sent successfully.</p>
+                        <button id="popupCloseBtn">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="final-cta">
+
+    <div class="final-cta-container">
+
+        <h2>
+            Ready to Build Your
+            <span>Next Prospect List?</span>
+        </h2>
+
+        <p>
+            Tell us your target industry, location, company size, or job titles,
+            and we'll deliver a professionally organized B2B database tailored
+            to your business goals.
+        </p>
+
+        <div class="final-cta-buttons">
+
+            <a href="mailto:hello@cyrashift.com?subject=Request%20for%20Custom%20Quote&body=Hello%20CyraShift,%0A%0AI%20am%20interested%20in%20purchasing%20a%20custom%20B2B%20database.%0A%0AIndustry:%0ATarget%20Location:%0AJob%20Titles:%0ACompany%20Size:%0AAdditional%20Requirements:%0A%0AThank%20you."
+               class="quote-btn">
+               Request a Custom Quote
+            </a>
+
+            <a href="sample-business-database.xlsx"
+               download
+               class="sample-btn">
+                Download Sample Database
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="section-divider"></div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.png" class="footer-logo" alt="CyraShift Logo">
+            </div>
+            <div class="footer-center">
+                <div class="footer-links">
+                    <a href="#">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-email">info@cyrashift.com</div>
+            </div>
+            <div class="footer-contact">
+                <p><span>Address:</span> 2305 Bay Area Blvd, Houston, Texas, 77058</p>
+                <p><span>Phone:</span> (832) 569-3521</p>
+                <p><span>Website:</span> www.cyrashift.com</p>
+            </div>
+        </div>
+
+        <div class="footer-legal-links">
+            <a href="cyrashifttermsandcondition.pdf" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>
+            <a href="cyrashiftprivacypolicy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+            <a href="cyrashift-faq.pdf" target="_blank" rel="noopener noreferrer">FAQ</a>
+            <a href="#services">Services</a>
+        </div>
+
+        <div class="footer-bottom">© 2026 CyraShift. All rights reserved.</div>
+    </footer>
+
+    <!-- Dynamic Tab Title Script -->
+    <script>
+        const titles = [
+            "CyraShift",
+            "B2B Email List | CyraShift",
+            "Accurate Email List | CyraShift",
+            "Lead Generation | CyraShift"
+        ];
+        let titleIndex = 0;
+
+        setInterval(() => {
+            titleIndex = (titleIndex + 1) % titles.length;
+            document.title = titles[titleIndex];
+        }, 5000);
+    </script>
+
+    <!-- Image Slider Engine -->
+    <script>
+        const slides = document.querySelectorAll(".slide");
+        const dashboards = document.querySelectorAll(".hero-dashboard");
+        let currentSlide = 0;
+
+        function nextSlide() {
+            let oldSlide = currentSlide;
+            currentSlide = (currentSlide + 1) % slides.length;
+
+            slides[oldSlide].classList.remove("active");
+            if (dashboards[oldSlide]) {
+                dashboards[oldSlide].classList.remove("active-dashboard");
+            }
+
+            setTimeout(() => {
+                slides[currentSlide].classList.add("active");
+                setTimeout(() => {
+                    if (dashboards[currentSlide]) {
+                        dashboards[currentSlide].classList.add("active-dashboard");
+                    } else {
+                        dashboards[0].classList.add("active-dashboard");
+                    }
+                }, 2200);
+            }, 500);
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+        setInterval(nextSlide, 9000);
+    </script>
+
+    <!-- Scroll Reveal & Form Submission Script -->
+    <script>
+        const scrollBtn = document.getElementById("scrollTopBtn");
+        const reveals = document.querySelectorAll(".about-section, .services-section, .contact-section, .service-card");
+        let ticking = false;
+
+        window.addEventListener("scroll", () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    const windowHeight = window.innerHeight;
+
+                    if (scrollBtn) {
+                        if (scrollY > 300) {
+                            scrollBtn.classList.add("show");
+                        } else {
+                            scrollBtn.classList.remove("show");
+                        }
+                    }
+
+                    reveals.forEach((el) => {
+                        const revealTop = el.getBoundingClientRect().top;
+                        if (revealTop < windowHeight - 80) {
+                            el.classList.add("active-reveal");
+                        }
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        if (scrollBtn) {
+            scrollBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
         }
-    }
 
-    .campaign-top-card { padding: 35px 25px; }
-    .campaign-top-heading { font-size: 28px; }
-    .campaign-description { font-size: 15px; }
-    .contact-wrapper h2 { font-size: 40px; }
-    .contact-subtext { font-size: 16px; }
-    .input-row { grid-template-columns: 1fr; }
-    .contact-card { padding: 30px; }
-    .about-section { padding: 90px 20px; }
-    .about-card { padding: 28px; }
-    .about-content h2 { font-size: 34px; }
-    .about-content p { font-size: 15px; }
-    .why-choose h3 { font-size: 26px; }
-    .why-choose li { font-size: 15px; }
-    .about-text h2, .services-title h2 { font-size: 38px; }
-    .about-text p, .services-title p { font-size: 16px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .service-card { min-height: auto; }
-    .advantages-container { flex-direction: column; gap: 30px; }
-    .advantages-left { width: 100%; }
-    .advantages-line { width: 180px; height: 4px; }
-    .advantages-content { padding: 40px 28px; }
-    .advantages-content h2 { font-size: 36px; }
-    .advantages-content li { font-size: 16px; }
-    .stats-container { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .stat-card { padding: 24px 16px; }
-    .stat-card h2 { font-size: 28px; }
-    .stat-card p { font-size: 13px; }
-    .graph-bg { gap: 3px; }
-    .bar { max-width: 8px; }
-    .campaign-grid{ grid-template-columns:1fr; }
-    .campaign-title h2 { font-size:34px; }
-    .campaign-title p { font-size:15px; }
-    .campaign-card { min-height:auto; }
-    .segment-grid { grid-template-columns: 1fr; gap: 20px; }
+        const contactForm = document.getElementById("mainContactForm");
+        const emailInput = document.getElementById("userEmail");
+        const popup = document.getElementById("formPopup");
+        const popupTitle = document.getElementById("popupTitle");
+        const popupMessage = document.getElementById("popupMessage");
+        const popupCloseBtn = document.getElementById("popupCloseBtn");
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if(contactForm) {
+            contactForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                if (!emailRegex.test(emailInput.value)) {
+                    showPopup("Error", "Please enter a valid email address (e.g., name@gmail.com).", false);
+                    return;
+                }
+
+                const formData = new FormData(contactForm);
+                const submitBtn = document.getElementById("submitBtn");
+                submitBtn.textContent = "Sending...";
+                submitBtn.disabled = true;
+
+                fetch(contactForm.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: { 'Accept': 'json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        showPopup("Success!", "Email sent successfully. We will get back to you soon.", true);
+                        contactForm.reset();
+                    } else {
+                        showPopup("Failed", "Email sending failed. Please try again later.", false);
+                    }
+                })
+                .catch(error => {
+                    showPopup("Failed", "Network error. Please check your connection and try again.", false);
+                })
+                .finally(() => {
+                    submitBtn.textContent = "Send Message";
+                    submitBtn.disabled = false;
+                });
+            });
+        }
+
+        function showPopup(title, message, isSuccess) {
+            if (!popup) return;
+            popupTitle.textContent = title;
+            popupTitle.style.color = isSuccess ? "#ffd700" : "#ff4d4d";
+            popupMessage.textContent = message;
+            popup.style.display = "flex";
+        }
+
+        if (popupCloseBtn) {
+            popupCloseBtn.addEventListener("click", () => {
+                popup.style.display = "none";
+            });
+        }
+    </script>
+
+    <!-- Custom Cursor Script -->
+    <script>
+        const cursor = document.querySelector(".custom-cursor");
+        document.addEventListener("mousemove", (e) => {
+            if (!cursor) return;
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+        });
+
+        const hoverItems = document.querySelectorAll("a, button");
+        hoverItems.forEach((item) => {
+            item.addEventListener("mouseenter", () => {
+                if (!cursor) return;
+                cursor.style.width = "55px";
+                cursor.style.height = "55px";
+                cursor.style.background = "rgba(255,215,0,0.18)";
+            });
+            item.addEventListener("mouseleave", () => {
+                if (!cursor) return;
+                cursor.style.width = "30px";
+                cursor.style.height = "30px";
+                cursor.style.background = "rgba(255,215,0,0.12)";
+            });
+        });
+    </script>
+
+    <!-- Spotlight Engine Script -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const datasetPool = [
+{
+title: "Construction Companies Database",
+bullets: [
+"2.5M+ Construction Businesses",
+"Owners, Estimators & Project Managers",
+"Commercial & Residential Contractors",
+"NAICS, SIC & Trade Classification",
+"Advanced Firmographic Intelligence"
+]
+},
+{
+title: "Business Intelligence Database",
+bullets: [
+"100M+ Verified Business Profiles",
+"500+ Industry Market Segments",
+"C-Level Executive Intelligence",
+"40+ Precision Search Filters",
+"Continuously Refreshed Records"
+]
+},
+{
+title: "Physicians Database",
+bullets: [
+"Licensed Physicians Nationwide",
+"120+ Medical Specialties",
+"Hospitals & Private Practices",
+"Practice Ownership Intelligence",
+"Clinical Decision-Maker Profiles"
+]
+},
+{
+title: "Architecture Firms Database",
+bullets: [
+"Licensed Architecture Practices",
+"Principal Architects & Partners",
+"Commercial Design Specialists",
+"Firm Size & Revenue Insights",
+"Executive Contact Intelligence"
+]
+},
+{
+title: "Real Estate Professionals Database",
+bullets: [
+"Licensed Realtors & Brokerages",
+"Residential & Commercial Markets",
+"Top-Producing Sales Professionals",
+"Regional Market Intelligence",
+"Verified Executive Profiles"
+]
+},
+{
+title: "Property Management Database",
+bullets: [
+"Commercial Portfolio Operators",
+"Residential Property Managers",
+"Facility Operations Leadership",
+"Ownership Intelligence Records",
+"Executive Contact Database"
+]
+},
+{
+title: "Commercial Real Estate Database",
+bullets: [
+"Developers & Investment Groups",
+"Commercial Brokerage Networks",
+"Institutional Asset Managers",
+"Property Intelligence Platform",
+"C-Level Contact Profiles"
+]
+},
+{
+title: "Education Institutions Database",
+bullets: [
+"K-12 & Higher Education",
+"District Leadership Teams",
+"School Decision-Makers",
+"Institutional Business Records",
+"Education Market Intelligence"
+]
+},
+{
+title: "Restaurant Industry Database",
+bullets: [
+"Restaurant Ownership Groups",
+"Franchise & Multi-Unit Operators",
+"Hospitality Purchasing Leaders",
+"Regional Market Coverage",
+"Business Contact Intelligence"
+]
+},
+{
+title: "Technology Companies Database",
+bullets: [
+"SaaS & Software Companies",
+"CIO, CTO & VP Engineering",
+"Technographic Intelligence",
+"Startup to Enterprise Coverage",
+"Executive Business Profiles"
+]
+},
+{
+title: "HR & Talent Leaders Database",
+bullets: [
+"Chief Human Resources Officers",
+"Talent Acquisition Leadership",
+"People Operations Executives",
+"Corporate Workforce Insights",
+"Verified Professional Records"
+]
+},
+{
+title: "Law Firms Database",
+bullets: [
+"Managing Partners & Attorneys",
+"Corporate Legal Practices",
+"Practice Area Intelligence",
+"Regional & National Firms",
+"Verified Legal Profiles"
+]
+},
+{
+title: "Accounting Firms Database",
+bullets: [
+"CPA & Advisory Firms",
+"Tax & Audit Professionals",
+"Financial Decision-Makers",
+"Firmographic Business Insights",
+"Executive Contact Intelligence"
+]
+},
+{
+title: "Manufacturing Companies Database",
+bullets: [
+"Industrial Manufacturers",
+"Operations & Plant Leadership",
+"Supply Chain Executives",
+"NAICS Industry Classification",
+"Business Intelligence Profiles"
+]
+},
+{
+title: "Data Enrichment Services",
+bullets: [
+"CRM Data Enhancement",
+"Identity & Email Verification",
+"Contact Record Completion",
+"Business Profile Enrichment",
+"Enterprise Data Quality"
+]
 }
-
-/* ==========================================================================
-   21. DATA SEGMENTATION FILTERS SECTION
-   ========================================================================== */
-
-.segment-section {
-    padding: 60px 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.segment-container {
-    width: 90%;
-    max-width: 1280px;
-    margin: auto;
-}
-
-/* ---------- HEADER ---------- */
-
-.segment-header {
-    text-align: center;
-    margin-bottom: 50px;
-    width: 100%;
-}
-
-.segment-header h2 {
-    font-size: 48px;
-    color: white;
-    margin-bottom: 16px;
-    font-weight: 700;
-}
-
-.segment-header h2 span {
-    color: gold;
-}
-
-.segment-header p {
-    color: #8f8f8f;
-    font-size: 18px;
-    max-width: 760px;
-    margin: 0 auto;
-    line-height: 1.8;
-}
-
-/* ---------- GRID ---------- */
-
-.segment-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-}
-
-/* ---------- CARD ---------- */
-
-.segment-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.04),
-        rgba(255,255,255,0.02)
-    );
-
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 22px;
-
-    padding: 24px;
-
-    backdrop-filter: blur(14px);
-
-    transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
-}
-
-.segment-card:hover {
-
-    transform: translateY(-6px);
-
-    border-color: rgba(255,215,0,.22);
-
-    box-shadow:
-        0 18px 38px rgba(0,0,0,.35);
-
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.05),
-        rgba(255,255,255,0.025)
-    );
-}
-
-/* ---------- ICON ---------- */
-
-.segment-icon {
-
-    width: 56px;
-    height: 56px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 26px;
-
-    flex-shrink: 0;
-
-    border-radius: 14px;
-
-    background: rgba(255,215,0,.08);
-
-    border: 1px solid rgba(255,215,0,.16);
-
-    color: gold;
-}
-
-/* ---------- CONTENT ---------- */
-
-.segment-body h3 {
-
-    font-size: 20px;
-    color: white;
-    margin-bottom: 10px;
-    font-weight: 650;
-}
-
-.segment-body p {
-
-    color: #a2a2a2;
-    line-height: 1.6;
-    font-size: 14px;
-}
-
-/* ---------- RESPONSIVE ---------- */
-
-@media (max-width:1100px){
-
-    .segment-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-@media (max-width:700px){
-
-    .segment-grid{
-        grid-template-columns:1fr;
-    }
-
-    .segment-header h2{
-        font-size:40px;
-    }
-
-}
-/* ==========================================================================
-   22. FIXED: SPOTLIGHT INVENTORY CARDS (RESTORED ALIGNMENT & COLOR)
-   ========================================================================== */
-.spotlight-section {
-    padding: 60px 20px 40px;
-    position: relative;
-    z-index: 2;
-    text-align: center; /* Centers the text alignment globally inside the section */
-}
-
-.spotlight-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers the header contents perfectly */
-}
-
-/* Force both the main header and paragraph description to center */
-.spotlight-section h2,
-.spotlight-section p {
-    text-align: center;
-    width: 100%;
-}
-
-.spotlight-section h2 {
-    font-size: 50px;
-    color: white;
-    margin-bottom: 16px;
-}
-
-/* Turns the target word inside the spotlight main header to gold/yellow */
-.spotlight-section h2 span {
-    color: gold;
-}
-
-.spotlight-section p {
-    color: #8f8f8f;
-    font-size: 18px;
-    margin-bottom: 60px;
-}
-
-.spotlight-grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    align-items: stretch;
-}
-
-
-.spotlight-card {
-    position: relative;
-    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 28px;
-    padding: 45px 40px;
-    text-align: left;
-
-    display: flex;
-    flex-direction: column;
-
-    min-height: 370px;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-
-    transition: .35s ease;
-}
-
-/* Premium glassmorphic card layouts with locked down size profiles */
-.spotlight-card {
-    position: relative;
-    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 28px;
-    padding: 45px 40px;
-    text-align: left; /* Keeps your bullet points cleanly left-aligned inside the cards */
-    transition: 0.35s ease;
-}
-
-.spotlight-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(255,215,0,0.22);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-}
-
-/* Fixes the inside card headers to display in yellow/gold */
-.spotlight-card h3 {
-    font-size: 28px;
-    color: gold; /* Changed from white to gold */
-    margin-bottom: 24px;
-}
-
-.spotlight-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex: 1;
-}
-
-.spotlight-card li {
-    position: relative;
-    padding-left: 25px;
-    margin-bottom: 16px;
-    color: #b3b3b3;
-    font-size: 16px;
-    line-height: 1.55;
-}
-
-/* Custom golden bullet points for your list items */
-.spotlight-card li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: -2px;
-    color: gold;
-    font-size: 22px;
-}
-
-
-/* ==========================================================================
-   16. EVERYTHING INCLUDED IN EVERY DATABASE
-   ========================================================================== */
-
-.database-section{
-    padding:90px 20px;
-    position:relative;
-    z-index:2;
-}
-
-.database-container{
-    width:90%;
-    max-width:1250px;
-    margin:auto;
-}
-
-/* ---------- Heading ---------- */
-
-.database-title{
-    text-align:center;
-    margin-bottom:65px;
-}
-
-.database-title h2{
-    font-size:50px;
-    color:#FFFFFF
-    margin-bottom:18px;
-    font-weight:700;
-}
-
-.database-title h2 span{
-    color:gold;
-}
-
-.database-title p{
-    max-width:760px;
-    margin:auto;
-    color:#8f8f8f;
-    font-size:18px;
-    line-height:1.8;
-}
-
-/* ---------- Grid ---------- */
-
-.database-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:30px;
-}
-
-/* ---------- Card ---------- */
-
-.database-card{
-
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.045),
-        rgba(255,255,255,.02)
-    );
-
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:22px;
-
-    padding:28px 24px;
-
-    backdrop-filter:blur(16px);
-
-    transition:.35s ease;
-
-    min-height:320px;
-}
-
-.database-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:-70px;
-    right:-70px;
-
-    width:180px;
-    height:180px;
-
-    background:
-    radial-gradient(circle,
-    rgba(255,215,0,.08),
-    transparent 70%);
-
-    filter:blur(30px);
-}
-
-.database-card:hover{
-
-    transform:translateY(-8px);
-
-    border-color:rgba(255,215,0,.22);
-
-    box-shadow:
-    0 20px 45px rgba(0,0,0,.45);
-}
-
-/* ---------- Card Heading ---------- */
-
-.database-card h3{
-
-    color:#FFD54A;
-    font-size:22px;
-
-    margin-bottom:18px;
-
-    font-weight:650;
-}
-
-/* ---------- List ---------- */
-
-.database-card ul{
-
-    list-style:none;
-
-    padding:0;
-
-    margin:0;
-}
-
-.database-card li{
-    position:relative;
-    padding-left:24px;
-    margin-bottom:12px;
-    color:#b8b8b8;
-    font-size:15px;
-    line-height:1.5;
-}
-/* Gold Check */
-
-.database-card li::before{
-    content:"✓";
-    position:absolute;
-    left:0;
-    color:gold;
-    font-weight:700;
-}
-
-/* ---------- Responsive ---------- */
-
-@media (max-width:1100px){
-
-    .database-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-@media (max-width:700px){
-
-    .database-grid{
-        grid-template-columns:1fr;
-    }
-
-}
-
-
-/* ==========================================================================
-   DATABASE DOWNLOAD CTA
-   ========================================================================== */
-
-.database-download{
-    text-align:center;
-    margin-top:50px;
-}
-
-.download-sample-btn{
-
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:16px 34px;
-
-    background:linear-gradient(
-        135deg,
-        #FFD700,
-        #E6B800
-    );
-
-    color:#111;
-    text-decoration:none;
-
-    font-size:16px;
-    font-weight:700;
-
-    border-radius:14px;
-
-    transition:.35s ease;
-
-    box-shadow:
-        0 12px 28px rgba(255,215,0,.18);
-}
-
-.download-sample-btn:hover{
-
-    transform:translateY(-4px) scale(1.03);
-
-    box-shadow:
-        0 18px 38px rgba(255,215,0,.28);
-
-    filter:brightness(1.05);
-}
-
-.download-sample-btn:active{
-
-    transform:translateY(-2px);
-
-}
-
-/* ==========================================================================
-   FINAL CTA
-   ========================================================================== */
-
-.final-cta{
-
-    padding:90px 20px;
-
-    position:relative;
-
-    text-align:center;
-
-}
-
-.final-cta-container{
-
-    width:90%;
-    max-width:1100px;
-
-    margin:auto;
-
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.04),
-        rgba(255,255,255,.015)
-    );
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:28px;
-
-    padding:70px 60px;
-
-    backdrop-filter:blur(16px);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.35);
-
-}
-
-.final-cta h2{
-
-    color:white;
-
-    font-size:46px;
-
-    line-height:1.2;
-
-    margin-bottom:24px;
-
-}
-
-.final-cta h2 span{
-
-    color:gold;
-
-}
-
-.final-cta p{
-
-    color:#9b9b9b;
-
-    font-size:18px;
-
-    line-height:1.8;
-
-    max-width:720px;
-
-    margin:0 auto 45px;
-
-}
-
-.final-cta-buttons{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-
-}
-
-/* Primary Button */
-
-.quote-btn{
-
-    background:linear-gradient(
-        135deg,
-        #FFD700,
-        #E0B400
-    );
-
-    color:#111;
-
-    padding:16px 34px;
-
-    border-radius:14px;
-
-    text-decoration:none;
-
-    font-weight:700;
-
-    transition:.35s;
-
-}
-
-.quote-btn:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:0 18px 35px rgba(255,215,0,.28);
-
-}
-
-/* Secondary Button */
-
-.sample-btn{
-
-    border:1px solid rgba(255,215,0,.35);
-
-    color:gold;
-
-    padding:16px 34px;
-
-    border-radius:14px;
-
-    text-decoration:none;
-
-    font-weight:600;
-
-    transition:.35s;
-
-}
-
-.sample-btn:hover{
-
-    background:rgba(255,215,0,.08);
-
-    transform:translateY(-4px);
-
-}
-
+];
+
+      const container = document.getElementById('dynamic-spotlight-container');
+
+      function updateCards() {
+        if (!container) return;
+
+        const shuffled = [...datasetPool].sort(() => 0.5 - Math.random());
+        const selectedData = shuffled.slice(0, 2);
+
+        container.innerHTML = '';
+
+        selectedData.forEach(item => {
+          const limitedBullets = item.bullets.slice(0, 5);
+          let bulletsMarkup = limitedBullets.map(b => `<li>${b}</li>`).join('');
+          
+          container.innerHTML += `
+            <div class="spotlight-card">
+              <h3>${item.title}</h3>
+              <ul>${bulletsMarkup}</ul>
+            </div>
+          `;
+        });
+      }
+
+      updateCards();
+      setInterval(updateCards, 8000);
+    });
+    </script>
+
+    <!-- Tawk.to Live Chat Script Linkage -->
+    <!-- Remove this and the end arrow to enable the tawk 
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6a20270f406ae81c377c00ce/1jq6ph5vq';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    -->
+</body>
+</html>
