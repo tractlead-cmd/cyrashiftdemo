@@ -975,7 +975,7 @@ fstats-section
     background:#050505;
     margin-top:25px;
     padding:100px 0 20px;
-    border-top:1px solid rgba(255,215,0,0.45);
+    border-top:none;
     position:relative;
 }
 
@@ -1014,6 +1014,9 @@ fstats-section
     display:flex;
     gap:24px;
     margin-bottom:10px;
+    padding:18px 0;
+    border-top:1px solid rgba(255,215,0,0.45);
+    border-bottom:1px solid rgba(255,215,0,0.45);
 }
 
 .footer-links a{
