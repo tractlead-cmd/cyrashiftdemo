@@ -398,128 +398,37 @@
 
     <div class="section-divider"></div>
 
-<section class="trust-section">
-
-    <div class="trust-container">
-
-        <!-- SMALL LABEL -->
-        <div class="trust-eyebrow">
-            <span></span>
-            OUR TRUST, THEIR SUCCESS
-            <span></span>
-        </div>
-
-        <!-- MAIN HEADING -->
-        <h2>
-            Trusted By <span>Growing Businesses</span>
-        </h2>
-
-        <p class="trust-subtitle">
-            We're proud to partner with innovative companies that rely on
-            CyraShift for accurate data, powerful insights, and real growth.
-        </p>
-
-
-        <!-- BENEFIT CARDS -->
-        <div class="trust-benefits">
-
-            <div class="trust-benefit">
-                <div class="benefit-icon">✓</div>
-                <h3>Reliable Data</h3>
-                <p>Verified &amp; Accurate</p>
-            </div>
-
-            <div class="trust-benefit">
-                <div class="benefit-icon">◎</div>
-                <h3>Smarter Targeting</h3>
-                <p>Reach Right Prospects</p>
-            </div>
-
-            <div class="trust-benefit">
-                <div class="benefit-icon">↗</div>
-                <h3>Accelerate Growth</h3>
-                <p>Drive More Revenue</p>
-            </div>
-
-            <div class="trust-benefit">
-                <div class="benefit-icon">♙</div>
-                <h3>Secure &amp; Compliant</h3>
-                <p>Your Data, Protected</p>
-            </div>
-
-            <div class="trust-benefit">
-                <div class="benefit-icon">◉</div>
-                <h3>Dedicated Support</h3>
-                <p>We're Here to Help</p>
-            </div>
-
-        </div>
-
-
-        <!-- LOGO CAROUSEL -->
-        <div class="trust-showcase">
-
-            <button class="trust-arrow trust-prev" aria-label="Previous">
-                ‹
-            </button>
-
-            <div class="trust-logo-window">
-
-                <div class="trust-logo-track">
-
+    <section class="trust-section">
+        <div class="trust-container">
+            <h2>Trusted By <span>Growing Businesses</span></h2>
+            <div class="trust-slider">
+                <div class="trust-track">
+                    <div class="trust-logo">CYRASHIFT</div>
                     <div class="trust-logo">NEXORA</div>
                     <div class="trust-logo">CORESTACK</div>
                     <div class="trust-logo">BLUEPEAK</div>
                     <div class="trust-logo">ELEVATEX</div>
                     <div class="trust-logo">TOMTOM</div>
-
                     <div class="trust-logo">B &amp; C'S</div>
                     <div class="trust-logo">LIGHTHOUSE</div>
                     <div class="trust-logo">BLUETIME</div>
                     <div class="trust-logo">RETROFIX</div>
+                     
                     <div class="trust-logo">CYRASHIFT</div>
-
+                    <div class="trust-logo">NEXORA</div>
+                    <div class="trust-logo">CORESTACK</div>
+                    <div class="trust-logo">BLUEPEAK</div>
+                    <div class="trust-logo">ELEVATEX</div>
+                    <div class="trust-logo">TOMTOM</div>
+                    <div class="trust-logo">B &amp; C'S</div>
+                    <div class="trust-logo">LIGHTHOUSE</div>
+                    <div class="trust-logo">BLUETIME</div>
+                    <div class="trust-logo">RETROFIX</div>
                 </div>
-
             </div>
-
-            <button class="trust-arrow trust-next" aria-label="Next">
-                ›
-            </button>
-
-
-            <!-- DOTS -->
-            <div class="trust-dots">
-                <span class="active"></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
         </div>
+    </section>
 
-
-        <!-- BOTTOM STATEMENT -->
-        <div class="trust-message">
-
-            <div class="trust-message-icon">
-                ↗
-            </div>
-
-            <div class="trust-message-line"></div>
-
-            <p>
-                Proud to partner with industry leaders
-                <span>driving innovation and growth worldwide.</span>
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
 
     <div class="section-divider"></div>
     
@@ -989,127 +898,5 @@ bullets: [
     })();
     </script>
     -->
-
-<script>
-/* ==========================================================================
-   PREMIUM TRUST CAROUSEL
-   ========================================================================== */
-
-document.addEventListener("DOMContentLoaded", function(){
-
-    const track = document.querySelector(".trust-logo-track");
-    const prev = document.querySelector(".trust-prev");
-    const next = document.querySelector(".trust-next");
-    const dots = document.querySelectorAll(".trust-dot");
-
-    if(!track || !prev || !next || !dots.length) return;
-
-    let currentPage = 0;
-    const totalPages = dots.length;
-
-
-    function updateTrustCarousel(){
-
-        track.style.transform =
-            `translateX(-${currentPage * 100}%)`;
-
-        dots.forEach((dot, index) => {
-
-            dot.classList.toggle(
-                "active",
-                index === currentPage
-            );
-
-        });
-
-    }
-
-
-    next.addEventListener("click", function(){
-
-        currentPage++;
-
-        if(currentPage >= totalPages){
-            currentPage = 0;
-        }
-
-        updateTrustCarousel();
-
-    });
-
-
-    prev.addEventListener("click", function(){
-
-        currentPage--;
-
-        if(currentPage < 0){
-            currentPage = totalPages - 1;
-        }
-
-        updateTrustCarousel();
-
-    });
-
-
-    dots.forEach((dot, index) => {
-
-        dot.addEventListener("click", function(){
-
-            currentPage = index;
-
-            updateTrustCarousel();
-
-        });
-
-    });
-
-
-    /* -------------------------------------------------------------
-       AUTO ROTATION
-       Change 5000 to 0 if you DON'T want automatic movement.
-       ------------------------------------------------------------- */
-
-    let autoRotate = setInterval(function(){
-
-        currentPage++;
-
-        if(currentPage >= totalPages){
-            currentPage = 0;
-        }
-
-        updateTrustCarousel();
-
-    }, 5000);
-
-
-    /* Pause auto movement when user interacts */
-
-    [prev, next, ...dots].forEach(element => {
-
-        element.addEventListener("mouseenter", function(){
-            clearInterval(autoRotate);
-        });
-
-        element.addEventListener("mouseleave", function(){
-
-            autoRotate = setInterval(function(){
-
-                currentPage++;
-
-                if(currentPage >= totalPages){
-                    currentPage = 0;
-                }
-
-                updateTrustCarousel();
-
-            }, 5000);
-
-        });
-
-    });
-
-});
-</script>
-    
 </body>
 </html>
