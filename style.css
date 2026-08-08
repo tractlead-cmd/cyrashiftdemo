@@ -738,63 +738,582 @@ fstats-section
 }
 
 /* ==========================================================================
-   13. BRAND TRUST LOGO TRACK
+   13. PREMIUM BRAND TRUST SECTION
    ========================================================================== */
+
 .trust-section{
-    padding:40px 20px 30px;
     position:relative;
+    padding:75px 20px 80px;
     overflow:hidden;
+    background:#050505;
 }
+
+
+/* SUBTLE BACKGROUND GRID */
+
+.trust-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none;
+}
+
+
+/* SOFT GOLD GLOW */
+
+.trust-section::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    top:80px;
+    left:50%;
+    transform:translateX(-50%);
+    background:radial-gradient(
+        circle,
+        rgba(255,215,0,0.07) 0%,
+        rgba(255,215,0,0.02) 35%,
+        transparent 70%
+    );
+    pointer-events:none;
+}
+
+
+/* MAIN CONTAINER */
 
 .trust-container{
-    width:90%;
-    max-width:1200px;
+    width:92%;
+    max-width:1250px;
     margin:auto;
     text-align:center;
+    position:relative;
+    z-index:2;
 }
 
+
+/* ==========================================================================
+   EYEBROW
+   ========================================================================== */
+
+.trust-eyebrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+
+    color:gold;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:3px;
+
+    margin-bottom:18px;
+}
+
+.trust-eyebrow span{
+    width:45px;
+    height:1px;
+    background:gold;
+    box-shadow:0 0 8px rgba(255,215,0,0.6);
+}
+
+
+/* ==========================================================================
+   MAIN HEADING
+   ========================================================================== */
+
 .trust-container h2{
-    font-size:44px;
-    color:white;
+    margin:0;
+    font-size:48px;
+    line-height:1.15;
+    font-weight:800;
+    color:#fff;
+}
+
+.trust-container h2 span{
+    color:gold;
+}
+
+
+/* ==========================================================================
+   SUBTITLE
+   ========================================================================== */
+
+.trust-subtitle{
+    max-width:720px;
+    margin:20px auto 40px;
+
+    color:#aaa;
+    font-size:16px;
+    line-height:1.7;
+}
+
+
+/* ==========================================================================
+   BENEFIT CARDS
+   ========================================================================== */
+
+.trust-benefits{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
     margin-bottom:50px;
 }
 
-.trust-container h2 span{ color:gold; }
-.trust-logos{ overflow:hidden; white-space:nowrap; }
+.trust-benefit{
+    min-height:130px;
 
-.trust-track{
     display:flex;
-    gap:24px;
-    width:max-content;
-    animation: scroll-left 18s linear infinite;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px 15px;
+
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,0.045),
+        rgba(255,255,255,0.015)
+    );
+
+    border:1px solid rgba(255,255,255,0.13);
+    border-radius:18px;
+
+    transition:0.35s ease;
 }
 
-@keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+.trust-benefit:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,215,0,0.5);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.4),
+        0 0 25px rgba(255,215,0,0.08);
 }
+
+
+/* ICON */
+
+.benefit-icon{
+    width:48px;
+    height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(255,215,0,0.7);
+    border-radius:50%;
+
+    color:gold;
+    font-size:24px;
+
+    margin-bottom:12px;
+
+    box-shadow:
+        0 0 12px rgba(255,215,0,0.12);
+}
+
+.trust-benefit h3{
+    margin:0 0 5px;
+
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+}
+
+.trust-benefit p{
+    margin:0;
+
+    color:#999;
+    font-size:12px;
+}
+
+
+/* ==========================================================================
+   LOGO SHOWCASE
+   ========================================================================== */
+
+.trust-showcase{
+    position:relative;
+
+    padding:42px 65px 48px;
+
+    border:1px solid rgba(255,215,0,0.35);
+    border-radius:25px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,215,0,0.035),
+            transparent 55%
+        ),
+        rgba(255,255,255,0.015);
+
+    box-shadow:
+        inset 0 0 50px rgba(0,0,0,0.5);
+}
+
+
+/* GOLD GLOW LINE */
+
+.trust-showcase::before{
+    content:"";
+
+    position:absolute;
+    top:-1px;
+    left:25%;
+    right:25%;
+
+    height:2px;
+
+    background:gold;
+
+    box-shadow:
+        0 0 10px gold,
+        0 0 25px rgba(255,215,0,0.5);
+}
+
+
+/* BOTTOM GOLD GLOW */
+
+.trust-showcase::after{
+    content:"";
+
+    position:absolute;
+    bottom:-1px;
+    left:35%;
+    right:35%;
+
+    height:2px;
+
+    background:gold;
+
+    box-shadow:
+        0 0 10px gold,
+        0 0 25px rgba(255,215,0,0.5);
+}
+
+
+/* ==========================================================================
+   LOGO WINDOW
+   ========================================================================== */
+
+.trust-logo-window{
+    overflow:hidden;
+    width:100%;
+}
+
+
+/* LOGO TRACK */
+
+.trust-logo-track{
+    display:grid;
+
+    grid-template-columns:
+        repeat(5, minmax(150px,1fr));
+
+    gap:20px;
+
+    transition:transform 0.6s ease;
+}
+
+
+/* ==========================================================================
+   LOGO CARDS
+   ========================================================================== */
 
 .trust-logo{
-    min-width:180px;
-    height:85px;
+    height:105px;
+
     display:flex;
-    justify-content:center;
     align-items:center;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.06);
-    border-radius:22px;
-    color:rgba(255,255,255,0.45);
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.015)
+        );
+
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:14px;
+
+    color:#ddd;
+
     font-size:20px;
     font-weight:700;
-    letter-spacing:2px;
-    flex-shrink:0;
-    transition:0.3s ease;
+
+    letter-spacing:1.5px;
+
+    transition:0.35s ease;
+
+    position:relative;
 }
+
+
+/* GOLD LIGHT UNDER CARD */
+
+.trust-logo::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-1px;
+    left:25%;
+    right:25%;
+
+    height:2px;
+
+    background:gold;
+
+    opacity:0.65;
+
+    box-shadow:0 0 10px rgba(255,215,0,0.5);
+}
+
 
 .trust-logo:hover{
     transform:translateY(-5px);
+
+    color:#fff;
+
+    border-color:rgba(255,215,0,0.5);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.4),
+        0 0 18px rgba(255,215,0,0.08);
+}
+
+
+/* ==========================================================================
+   ARROWS
+   ========================================================================== */
+
+.trust-arrow{
+    position:absolute;
+
+    top:50%;
+    transform:translateY(-50%);
+
+    width:54px;
+    height:54px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid gold;
+    border-radius:50%;
+
+    background:#080808;
+
     color:gold;
-    border-color:rgba(255,215,0,0.25);
+
+    font-size:34px;
+    line-height:1;
+
+    cursor:pointer;
+
+    z-index:5;
+
+    transition:0.3s ease;
+}
+
+.trust-arrow:hover{
+    background:gold;
+    color:#000;
+
+    box-shadow:
+        0 0 20px rgba(255,215,0,0.5);
+}
+
+.trust-prev{
+    left:-27px;
+}
+
+.trust-next{
+    right:-27px;
+}
+
+
+/* ==========================================================================
+   DOTS
+   ========================================================================== */
+
+.trust-dots{
+    display:flex;
+    justify-content:center;
+    gap:9px;
+
+    margin-top:28px;
+}
+
+.trust-dots span{
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#777;
+
+    transition:0.3s ease;
+}
+
+.trust-dots span.active{
+    width:10px;
+    height:10px;
+
+    background:gold;
+
+    box-shadow:
+        0 0 10px rgba(255,215,0,0.7);
+}
+
+
+/* ==========================================================================
+   BOTTOM MESSAGE
+   ========================================================================== */
+
+.trust-message{
+    max-width:1050px;
+
+    margin:42px auto 0;
+
+    padding:22px 35px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:22px;
+
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.018);
+}
+
+
+.trust-message-icon{
+    width:52px;
+    height:52px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid gold;
+    border-radius:50%;
+
+    color:gold;
+    font-size:25px;
+
+    flex-shrink:0;
+}
+
+
+.trust-message-line{
+    width:2px;
+    height:38px;
+
+    background:gold;
+
+    box-shadow:0 0 8px rgba(255,215,0,0.5);
+}
+
+
+.trust-message p{
+    margin:0;
+
+    color:#ddd;
+
+    font-size:16px;
+    line-height:1.5;
+}
+
+
+.trust-message p span{
+    color:gold;
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media(max-width:1000px){
+
+    .trust-benefits{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .trust-logo-track{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+
+@media(max-width:700px){
+
+    .trust-section{
+        padding:55px 15px 60px;
+    }
+
+    .trust-container h2{
+        font-size:34px;
+    }
+
+    .trust-subtitle{
+        font-size:14px;
+    }
+
+    .trust-benefits{
+        grid-template-columns:1fr;
+    }
+
+    .trust-showcase{
+        padding:30px 20px 40px;
+    }
+
+    .trust-logo-track{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .trust-logo{
+        height:80px;
+        font-size:15px;
+    }
+
+    .trust-arrow{
+        width:42px;
+        height:42px;
+        font-size:27px;
+    }
+
+    .trust-prev{
+        left:-18px;
+    }
+
+    .trust-next{
+        right:-18px;
+    }
+
+    .trust-message{
+        padding:18px;
+        gap:12px;
+    }
+
+    .trust-message p{
+        font-size:13px;
+    }
+
 }
 
 /* ==========================================================================
