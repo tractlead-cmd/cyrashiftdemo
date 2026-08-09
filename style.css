@@ -1025,11 +1025,11 @@ body::after {
 }
 
 /* ==========================================================================
-   9. PREMIUM B2B SERVICES SECTION
+   9. PREMIUM SERVICES SECTION
    ========================================================================== */
 
 .services-section {
-    padding: 35px 20px 45px;
+    padding: 45px 20px 55px;
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -1037,8 +1037,8 @@ body::after {
 
 .services-container {
     width: 92%;
-    max-width: 1280px;
-    margin: auto;
+    max-width: 1250px;
+    margin: 0 auto;
 }
 
 
@@ -1048,50 +1048,54 @@ body::after {
 
 .services-title {
     text-align: center;
-    margin-bottom: 42px;
+    margin-bottom: 38px;
 }
 
-.section-kicker {
+.services-kicker {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
-    margin-bottom: 16px;
+    gap: 12px;
+
+    margin-bottom: 12px;
 
     color: #ffd700;
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 3px;
     text-transform: uppercase;
 }
 
-.kicker-line {
-    width: 55px;
+.services-kicker span {
+    display: block;
+
+    width: 45px;
     height: 1px;
+
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(255,215,0,0.9)
+        rgba(255,215,0,0.8)
     );
 }
 
-.kicker-line:last-child {
+.services-kicker span:last-child {
     background: linear-gradient(
         90deg,
-        rgba(255,215,0,0.9),
+        rgba(255,215,0,0.8),
         transparent
     );
 }
 
-
 .services-title h2 {
     margin: 0;
+
     color: #fff;
 
-    font-size: 52px;
-    line-height: 1.12;
-    font-weight: 800;
+    font-size: 50px;
+    line-height: 1.1;
 
+    font-weight: 800;
     letter-spacing: -1.5px;
 }
 
@@ -1099,100 +1103,43 @@ body::after {
     color: #ffd700;
 }
 
-.services-title p {
-    max-width: 720px;
-    margin: 16px auto 0;
+.services-title > p {
+    max-width: 680px;
 
-    color: #999;
-    font-size: 16px;
+    margin: 13px auto 0;
+
+    color: #8f8f8f;
+
+    font-size: 15px;
     line-height: 1.7;
 }
 
 
 /* ==========================================================================
-   SERVICE CATEGORY HEADING
+   SERVICES GRID
    ========================================================================== */
 
-.services-category {
-    margin-bottom: 42px;
-}
-
-.category-heading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-
-    margin-bottom: 24px;
-
-    color: #ffd700;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-
-    position: relative;
-}
-
-.category-heading::before,
-.category-heading::after {
-    content: "";
-    height: 1px;
-    flex: 1;
-
-    max-width: 430px;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,215,0,0.45)
-    );
-}
-
-.category-heading::after {
-    background: linear-gradient(
-        90deg,
-        rgba(255,215,0,0.45),
-        transparent
-    );
-}
-
-.category-icon {
-    width: 30px;
-    height: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid rgba(255,215,0,0.7);
-    border-radius: 50%;
-
-    color: #ffd700;
-    font-size: 18px;
-
-    box-shadow:
-        0 0 12px rgba(255,215,0,0.15);
-}
-
-
-/* ==========================================================================
-   CORE SERVICES GRID
-   ========================================================================== */
-
-.core-services-grid {
+.services-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns: repeat(3, 1fr);
+
     gap: 18px;
 }
 
 
 /* ==========================================================================
-   GENERAL SERVICE CARD
+   SERVICE CARD
    ========================================================================== */
 
 .service-card {
     position: relative;
+
+    min-height: 295px;
+
+    padding: 24px 25px 22px;
+
+    box-sizing: border-box;
 
     background:
         linear-gradient(
@@ -1201,40 +1148,38 @@ body::after {
             rgba(255,255,255,0.018)
         );
 
-    border: 1px solid rgba(255,255,255,0.11);
+    border: 1px solid rgba(255,255,255,0.10);
 
     border-radius: 22px;
 
     overflow: hidden;
 
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(12px);
 
     box-shadow:
-        0 15px 40px rgba(0,0,0,0.28);
+        0 15px 35px rgba(0,0,0,0.25);
 
     transition:
         transform 0.3s ease,
         border-color 0.3s ease,
         box-shadow 0.3s ease;
-
-    box-sizing: border-box;
 }
 
 
-/* GOLD AMBIENT GLOW */
+/* Subtle gold glow */
 
 .service-card::before {
     content: "";
 
     position: absolute;
 
-    width: 180px;
-    height: 180px;
+    width: 170px;
+    height: 170px;
 
-    top: -80px;
+    top: -90px;
     right: -70px;
 
-    background: rgba(255,215,0,0.08);
+    background: rgba(255,215,0,0.075);
 
     border-radius: 50%;
 
@@ -1244,12 +1189,13 @@ body::after {
 }
 
 
-/* SUBTLE GRID / LIGHT EFFECT */
+/* Subtle background grid */
 
 .service-card::after {
     content: "";
 
     position: absolute;
+
     inset: 0;
 
     background:
@@ -1265,33 +1211,54 @@ body::after {
 
     background-size: 28px 28px;
 
-    opacity: 0.22;
+    opacity: 0.20;
 
     pointer-events: none;
 }
 
 
-/* HOVER */
+/* Hover */
 
 .service-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
 
-    border-color: rgba(255,215,0,0.35);
+    border-color: rgba(255,215,0,0.30);
 
     box-shadow:
-        0 22px 50px rgba(0,0,0,0.45),
-        0 0 25px rgba(255,215,0,0.06);
+        0 22px 45px rgba(0,0,0,0.42),
+        0 0 20px rgba(255,215,0,0.05);
 }
 
 
 /* ==========================================================================
-   CORE SERVICE CARD
+   PRIMARY SERVICE
    ========================================================================== */
 
-.core-service-card {
-    min-height: 360px;
+.primary-service {
+    border-color: rgba(255,215,0,0.25);
 
-    padding: 28px 24px 22px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,215,0,0.055),
+            rgba(255,255,255,0.018)
+        );
+}
+
+
+/* ==========================================================================
+   SERVICE TOP
+   ========================================================================== */
+
+.service-top {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
 }
 
 
@@ -1299,62 +1266,74 @@ body::after {
    SERVICE ICON
    ========================================================================== */
 
-.service-icon-circle {
-    width: 66px;
-    height: 66px;
+.service-icon {
+    width: 52px;
+    height: 52px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(255,215,0,0.8);
+    box-sizing: border-box;
+
+    border: 1px solid rgba(255,215,0,0.65);
 
     border-radius: 50%;
 
+    background:
+        rgba(255,215,0,0.035);
+
     color: #ffd700;
 
-    font-size: 30px;
-    font-weight: 500;
-
-    margin-bottom: 24px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,215,0,0.08),
-            rgba(255,215,0,0.015)
-        );
+    font-size: 24px;
+    line-height: 1;
 
     box-shadow:
-        0 0 18px rgba(255,215,0,0.08);
-
-    position: relative;
-    z-index: 2;
+        0 0 15px rgba(255,215,0,0.06);
 
     transition: 0.3s ease;
 }
 
-.service-card:hover .service-icon-circle {
-    box-shadow:
-        0 0 24px rgba(255,215,0,0.18);
+.service-card:hover .service-icon {
+    transform: scale(1.05);
 
-    transform: scale(1.04);
+    border-color: rgba(255,215,0,0.9);
+
+    box-shadow:
+        0 0 20px rgba(255,215,0,0.13);
 }
 
 
 /* ==========================================================================
-   SERVICE HEADINGS
+   SERVICE NUMBER
+   ========================================================================== */
+
+.service-number {
+    position: relative;
+    z-index: 2;
+
+    color: rgba(255,215,0,0.45);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* ==========================================================================
+   SERVICE TITLE
    ========================================================================== */
 
 .service-card h3 {
     position: relative;
     z-index: 2;
 
-    margin: 0 0 14px;
+    margin: 0 0 11px;
 
     color: #fff;
 
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.25;
 
     font-weight: 750;
@@ -1373,10 +1352,10 @@ body::after {
 
     margin: 0;
 
-    color: #a5a5a5;
+    color: #a0a0a0;
 
-    font-size: 14px;
-    line-height: 1.75;
+    font-size: 13px;
+    line-height: 1.7;
 }
 
 
@@ -1388,14 +1367,15 @@ body::after {
     position: relative;
     z-index: 2;
 
+    width: 100%;
     height: 1px;
 
-    margin: 22px 0 18px;
+    margin: 18px 0 15px;
 
     background:
         linear-gradient(
             90deg,
-            rgba(255,215,0,0.28),
+            rgba(255,215,0,0.30),
             rgba(255,255,255,0.06),
             transparent
         );
@@ -1403,122 +1383,54 @@ body::after {
 
 
 /* ==========================================================================
-   SERVICE BENEFIT
+   WHY IT MATTERS
    ========================================================================== */
 
-.service-benefit {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
+.service-label {
     position: relative;
     z-index: 2;
+
+    margin-bottom: 6px;
+
+    color: #ffd700;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
 }
 
-.service-benefit p {
+.service-benefit {
+    position: relative;
+    z-index: 2;
+
     margin: 0;
 
-    color: #c2c2c2;
+    color: #b8b8b8;
 
-    font-size: 13px;
-    line-height: 1.55;
+    font-size: 12px;
+    line-height: 1.6;
 }
 
 
-/* SMALL BENEFIT ICON */
+/* ==========================================================================
+   BOTTOM MESSAGE
+   ========================================================================== */
 
-.benefit-icon {
-    width: 40px;
-    height: 40px;
-
-    min-width: 40px;
-
+.services-bottom {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 50%;
-
-    color: #ffd700;
-
-    font-size: 19px;
-
-    border: 1px solid rgba(255,215,0,0.18);
-
-    background:
-        rgba(255,215,0,0.035);
-
-    box-shadow:
-        0 0 12px rgba(255,215,0,0.04);
-}
-
-
-/* ==========================================================================
-   ADDITIONAL DIGITAL SERVICES
-   ========================================================================== */
-
-.additional-services {
-    margin-top: 8px;
-    margin-bottom: 34px;
-}
-
-.additional-services-grid {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
     gap: 18px;
 
-    max-width: 930px;
+    max-width: 850px;
 
-    margin: auto;
-}
+    margin: 32px auto 0;
 
+    padding: 18px 25px;
 
-.additional-service-card {
-    min-height: 205px;
-
-    padding: 24px 28px 20px;
-}
-
-
-/* TOP CONTENT */
-
-.additional-service-content {
-    display: flex;
-    align-items: flex-start;
-
-    gap: 22px;
-
-    position: relative;
-    z-index: 2;
-}
-
-.additional-service-content .service-icon-circle {
-    width: 58px;
-    height: 58px;
-
-    min-width: 58px;
-
-    margin-bottom: 0;
-
-    font-size: 24px;
-}
-
-.additional-service-content h3 {
-    margin-top: 2px;
-    margin-bottom: 10px;
-}
-
-
-/* ==========================================================================
-   BENEFITS BAR
-   ========================================================================== */
-
-.services-benefits-bar {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
+    box-sizing: border-box;
 
     background:
         linear-gradient(
@@ -1527,44 +1439,24 @@ body::after {
             rgba(255,255,255,0.015)
         );
 
-    border: 1px solid rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.09);
 
     border-radius: 18px;
 
-    padding: 20px 24px;
+    backdrop-filter: blur(10px);
 
     box-shadow:
-        0 15px 40px rgba(0,0,0,0.25);
-
-    backdrop-filter: blur(14px);
+        0 12px 30px rgba(0,0,0,0.20);
 }
 
 
-/* BENEFIT ITEM */
+/* Bottom icon */
 
-.services-benefit-item {
-    display: flex;
-    align-items: center;
+.services-bottom-icon {
+    width: 42px;
+    height: 42px;
 
-    gap: 14px;
-
-    padding: 4px 20px;
-
-    border-right: 1px solid rgba(255,255,255,0.08);
-}
-
-.services-benefit-item:last-child {
-    border-right: none;
-}
-
-
-/* BENEFIT ICON */
-
-.services-benefit-icon {
-    width: 48px;
-    height: 48px;
-
-    min-width: 48px;
+    min-width: 42px;
 
     display: flex;
     align-items: center;
@@ -1576,223 +1468,164 @@ body::after {
 
     color: #ffd700;
 
-    font-size: 22px;
+    font-size: 20px;
 
     background:
         rgba(255,215,0,0.035);
-
-    box-shadow:
-        0 0 14px rgba(255,215,0,0.06);
 }
 
 
-/* BENEFIT TEXT */
+/* Bottom heading */
 
-.services-benefit-item h4 {
-    margin: 0 0 5px;
+.services-bottom strong {
+    display: block;
+
+    margin-bottom: 4px;
 
     color: #fff;
 
     font-size: 15px;
-    font-weight: 700;
 }
 
-.services-benefit-item p {
+
+/* Bottom paragraph */
+
+.services-bottom p {
     margin: 0;
 
-    color: #929292;
+    color: #858585;
 
-    font-size: 11px;
-    line-height: 1.45;
+    font-size: 12px;
+    line-height: 1.55;
 }
 
 
 /* ==========================================================================
-   RESPONSIVE — LARGE TABLETS
+   TABLET
    ========================================================================== */
 
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     .services-title h2 {
-        font-size: 46px;
-    }
-
-    .core-services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .core-service-card {
-        min-height: 320px;
-    }
-
-    .services-benefits-bar {
-        grid-template-columns: repeat(2, 1fr);
-        row-gap: 18px;
-    }
-
-    .services-benefit-item:nth-child(2) {
-        border-right: none;
+        font-size: 44px;
     }
 
 }
 
 
 /* ==========================================================================
-   RESPONSIVE — TABLETS
+   MOBILE
    ========================================================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 650px) {
 
     .services-section {
-        padding: 30px 16px 35px;
+        padding: 35px 14px 40px;
     }
 
     .services-container {
-        width: 94%;
+        width: 95%;
     }
 
     .services-title {
-        margin-bottom: 32px;
+        margin-bottom: 30px;
     }
 
-    .section-kicker {
-        font-size: 11px;
+    .services-kicker {
+        font-size: 9px;
         letter-spacing: 2px;
     }
 
-    .kicker-line {
-        width: 35px;
+    .services-kicker span {
+        width: 30px;
     }
 
     .services-title h2 {
-        font-size: 38px;
+        font-size: 36px;
         letter-spacing: -1px;
     }
 
-    .services-title p {
-        font-size: 14px;
-        line-height: 1.6;
-    }
-
-    .category-heading {
+    .services-title > p {
         font-size: 13px;
-        gap: 9px;
     }
 
-    .category-icon {
-        width: 26px;
-        height: 26px;
-        font-size: 15px;
-    }
-
-    .core-services-grid {
+    .services-grid {
         grid-template-columns: 1fr;
+
         gap: 14px;
     }
 
-    .core-service-card {
+    .service-card {
         min-height: auto;
-        padding: 24px 22px;
+
+        padding: 22px 21px;
     }
 
-    .service-icon-circle {
-        width: 58px;
-        height: 58px;
-
-        font-size: 26px;
-
-        margin-bottom: 18px;
+    .service-top {
+        margin-bottom: 17px;
     }
 
-    .service-card h3 {
-        font-size: 20px;
-    }
+    .service-icon {
+        width: 48px;
+        height: 48px;
 
-    .service-description {
-        font-size: 13px;
-    }
-
-    .additional-services-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-    }
-
-    .additional-service-card {
-        min-height: auto;
-    }
-
-    .services-benefits-bar {
-        grid-template-columns: 1fr;
-
-        padding: 18px;
-    }
-
-    .services-benefit-item {
-        border-right: none;
-
-        border-bottom: 1px solid rgba(255,255,255,0.07);
-
-        padding: 12px 4px;
-    }
-
-    .services-benefit-item:last-child {
-        border-bottom: none;
-    }
-
-}
-
-
-/* ==========================================================================
-   RESPONSIVE — SMALL MOBILE
-   ========================================================================== */
-
-@media (max-width: 480px) {
-
-    .services-section {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .services-container {
-        width: 96%;
-    }
-
-    .services-title h2 {
-        font-size: 31px;
-    }
-
-    .services-title p {
-        font-size: 13px;
-    }
-
-    .category-heading::before,
-    .category-heading::after {
-        max-width: 55px;
-    }
-
-    .core-service-card,
-    .additional-service-card {
-        padding: 21px 18px;
+        font-size: 22px;
     }
 
     .service-card h3 {
         font-size: 19px;
     }
 
-    .service-benefit p {
-        font-size: 12px;
+    .service-description {
+        font-size: 13px;
     }
 
-    .additional-service-content {
-        gap: 16px;
+    .services-bottom {
+        align-items: flex-start;
+
+        padding: 17px;
+
+        gap: 13px;
     }
 
-    .services-benefit-item h4 {
+    .services-bottom strong {
         font-size: 14px;
+    }
+
+    .services-bottom p {
+        font-size: 11px;
     }
 
 }
 
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 420px) {
+
+    .services-title h2 {
+        font-size: 32px;
+    }
+
+    .service-card {
+        padding: 20px 18px;
+    }
+
+    .service-description {
+        font-size: 12px;
+    }
+
+    .service-benefit {
+        font-size: 11px;
+    }
+
+}
 /* ==========================================================================
    10. STRATEGIC ADVANTAGES SECTION
    ========================================================================== */
