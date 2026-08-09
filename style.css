@@ -1154,7 +1154,6 @@ body::after {
     transform: translateY(-5px);
     border-color: rgba(255,215,0,0.2);
 }
-fstats-section
 .advantages-content h2 {
     font-size: 50px;
     color: white;
@@ -3224,67 +3223,158 @@ button:hover ~ .custom-cursor {
 
 }
 
-
 /* ==========================================================================
-   CYRASHIFT DESKTOP COMPACT MODE
-   Reduces excessive vertical spacing without changing the overall design.
-   Desktop only — mobile remains untouched.
+   CYRASHIFT DESKTOP COMPACT LAYOUT
+   Complete stylesheet uses these desktop dimensions to keep each section
+   tighter while preserving the existing visual design.
    ========================================================================== */
 
 @media (min-width: 993px){
 
-    /* ----------------------------------------------------------
-       SECTION DIVIDERS
-       ---------------------------------------------------------- */
+    /* ---------- Header ---------- */
+    .container{
+        height:72px;
+    }
+
+    .logo img{
+        height:96px;
+        margin-top:12px;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero{
+        height:calc(100vh - 72px);
+        padding:55px 20px 15px;
+    }
+
+    .slider{
+        height:175px;
+        margin-bottom:22px;
+    }
+
+    .slide h1{
+        font-size:38px;
+        margin-bottom:14px;
+    }
+
+    .slide p{
+        font-size:19px;
+        margin-top:12px;
+    }
+
+    .steps-flow{
+        gap:15px;
+        padding-bottom:7px;
+        margin-top:6px;
+    }
+
+    .step-end{
+        width:100px;
+        height:38px;
+        font-size:13px;
+    }
+
+    /* ---------- Dividers ---------- */
     .section-divider{
-        margin: 8px auto 28px;
+        margin:8px auto 28px;
     }
 
-
-    /* ----------------------------------------------------------
-       SERVICES
-       ---------------------------------------------------------- */
-    .services-section{
-        padding: 5px 20px 15px;
+    /* ---------- Stats ---------- */
+    .stats-section{
+        padding:40px 20px;
     }
 
-    .services-title{
-        margin-bottom: 40px;
+    .stat-card{
+        padding:18px 15px;
     }
 
-    .services-title h2{
-        font-size:48px;
+    .stat-card h2{
+        font-size:39px;
+        margin-bottom:7px;
+    }
+
+    /* ---------- Spotlight ---------- */
+    .spotlight-section{
+        padding:40px 20px 30px;
+    }
+
+    .spotlight-section h2{
+        font-size:46px;
         margin-bottom:12px;
     }
 
-    .services-title p{
+    .spotlight-section p{
         font-size:16px;
+        margin-bottom:35px;
     }
 
-    .service-card{
-        min-height:235px;
-        padding:30px 28px;
+    .spotlight-grid{
+        gap:25px;
     }
 
-    .service-icon{
-        font-size:34px;
+    .spotlight-card{
+        min-height:315px;
+        padding:32px 30px;
+    }
+
+    .spotlight-card h3{
+        font-size:25px;
         margin-bottom:18px;
     }
 
-    .service-card h3{
-        font-size:22px;
+    .spotlight-card li{
+        font-size:14px;
+        margin-bottom:12px;
+        line-height:1.45;
+    }
+
+    /* ---------- Database ---------- */
+    .database-section{
+        padding:55px 20px;
+    }
+
+    .database-title{
+        margin-bottom:40px;
+    }
+
+    .database-title h2{
+        font-size:46px;
         margin-bottom:12px;
     }
 
-    .service-card p{
-        font-size:15px;
-        line-height:1.65;
+    .database-title p{
+        font-size:16px;
+        line-height:1.6;
     }
 
+    .database-grid{
+        gap:20px;
+    }
 
-    /* ----------------------------------------------------------
-       ABOUT
-       ---------------------------------------------------------- */
+    .database-card{
+        min-height:270px;
+        padding:23px 20px;
+    }
+
+    .database-card h3{
+        font-size:20px;
+        margin-bottom:14px;
+    }
+
+    .database-card li{
+        font-size:14px;
+        margin-bottom:9px;
+    }
+
+    .database-download{
+        margin-top:32px;
+    }
+
+    .download-sample-btn{
+        padding:13px 28px;
+    }
+
+    /* ---------- About ---------- */
     .about-section{
         padding:30px 20px 35px;
     }
@@ -3349,10 +3439,7 @@ button:hover ~ .custom-cursor {
         padding:14px 20px;
     }
 
-
-    /* ----------------------------------------------------------
-       SEGMENTATION
-       ---------------------------------------------------------- */
+    /* ---------- Segmentation ---------- */
     .segment-section{
         padding:40px 20px;
     }
@@ -3396,97 +3483,49 @@ button:hover ~ .custom-cursor {
         line-height:1.5;
     }
 
-
-    /* ----------------------------------------------------------
-       SPOTLIGHT / INDUSTRY CHANNELS
-       ---------------------------------------------------------- */
-    .spotlight-section{
-        padding:40px 20px 30px;
+    /* ---------- Services ---------- */
+    .services-section{
+        padding:5px 20px 15px;
     }
 
-    .spotlight-section h2{
-        font-size:46px;
-        margin-bottom:12px;
-    }
-
-    .spotlight-section p{
-        font-size:16px;
-        margin-bottom:35px;
-    }
-
-    .spotlight-grid{
-        gap:25px;
-    }
-
-    .spotlight-card{
-        min-height:315px;
-        padding:32px 30px;
-    }
-
-    .spotlight-card h3{
-        font-size:25px;
-        margin-bottom:18px;
-    }
-
-    .spotlight-card li{
-        font-size:14px;
-        margin-bottom:12px;
-        line-height:1.45;
-    }
-
-
-    /* ----------------------------------------------------------
-       DATABASE SECTION
-       ---------------------------------------------------------- */
-    .database-section{
-        padding:55px 20px;
-    }
-
-    .database-title{
+    .services-title{
         margin-bottom:40px;
     }
 
-    .database-title h2{
-        font-size:46px;
+    .services-title h2{
+        font-size:48px;
         margin-bottom:12px;
     }
 
-    .database-title p{
+    .services-title p{
         font-size:16px;
-        line-height:1.6;
     }
 
-    .database-grid{
+    .services-grid{
         gap:20px;
     }
 
-    .database-card{
-        min-height:270px;
-        padding:23px 20px;
+    .service-card{
+        min-height:235px;
+        padding:30px 28px;
     }
 
-    .database-card h3{
-        font-size:20px;
-        margin-bottom:14px;
+    .service-icon{
+        font-size:34px;
+        margin-bottom:18px;
     }
 
-    .database-card li{
-        font-size:14px;
-        margin-bottom:9px;
+    .service-card h3{
+        font-size:22px;
+        margin-bottom:12px;
     }
 
-    .database-download{
-        margin-top:32px;
+    .service-card p{
+        font-size:15px;
+        line-height:1.65;
     }
 
-    .download-sample-btn{
-        padding:13px 28px;
-    }
-
-
-    /* ----------------------------------------------------------
-       TRUST SECTION
-       ---------------------------------------------------------- */
+    /* ---------- Trust ---------- */
     .trust-section{
         padding:38px 20px 40px;
     }
@@ -3534,31 +3573,7 @@ button:hover ~ .custom-cursor {
         margin-top:22px;
     }
 
-
-    /* ----------------------------------------------------------
-       STATS
-       ---------------------------------------------------------- */
-    .stats-section{
-        padding:40px 20px;
-    }
-
-    .stat-card{
-        padding:18px 15px;
-    }
-
-    .stat-card h2{
-        font-size:39px;
-        margin-bottom:7px;
-    }
-
-    .stat-card p{
-        font-size:13px;
-    }
-
-
-    /* ----------------------------------------------------------
-       CONTACT
-       ---------------------------------------------------------- */
+    /* ---------- Contact ---------- */
     .contact-section{
         padding:30px 20px;
     }
@@ -3594,10 +3609,7 @@ button:hover ~ .custom-cursor {
         height:52px;
     }
 
-
-    /* ----------------------------------------------------------
-       FINAL CTA
-       ---------------------------------------------------------- */
+    /* ---------- Final CTA ---------- */
     .final-cta{
         padding:55px 20px;
     }
@@ -3617,10 +3629,7 @@ button:hover ~ .custom-cursor {
         margin-bottom:32px;
     }
 
-
-    /* ----------------------------------------------------------
-       FOOTER
-       ---------------------------------------------------------- */
+    /* ---------- Footer ---------- */
     .footer{
         margin-top:15px;
         padding:65px 0 15px;
@@ -3662,6 +3671,5 @@ button:hover ~ .custom-cursor {
         padding-top:8px;
         font-size:11px;
     }
-
 }
 
