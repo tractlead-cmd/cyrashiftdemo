@@ -664,37 +664,6 @@ body::after {
 
 
 /* ==========================================================================
-   KICKER
-   ========================================================================== */
-
-.why-kicker {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-
-    color: gold;
-
-    font-size: 13px;
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 14px;
-}
-
-.why-kicker span {
-    width: 42px;
-    height: 1px;
-
-    background: gold;
-
-    box-shadow:
-        0 0 8px rgba(255, 215, 0, 0.45);
-}
-
-
-/* ==========================================================================
    MAIN TITLE
    ========================================================================== */
 
