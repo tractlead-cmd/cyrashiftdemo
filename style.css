@@ -182,11 +182,20 @@ body::after {
             rgba(0,0,0,0.75)
         ),
         url("dashboard.png");
-    background-size: cover;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    animation: heroZoom 15s ease-in-out infinite alternate;
 }
 
+@keyframes heroZoom {
+    from {
+        background-size: 100%;
+    }
+    to {
+        background-size: 110%;
+    }
+}
 /* DARK GOLD GLOW */
 .hero::before {
     content: "";
