@@ -605,69 +605,215 @@ body::after {
    WHY CHOOSE US
    ========================================================================== */
 
-.why-choose{
-    margin-top:42px;
+/* ==========================================================================
+   WHY CHOOSE US — PREMIUM SPLIT SECTION
+   ========================================================================== */
+
+.why-choose-section {
+    padding: 45px 20px 55px;
+    position: relative;
+    z-index: 1;
 }
 
+.why-choose-container {
+    width: 94%;
+    max-width: 1280px;
+    margin: 0 auto;
 
-.why-choose h3{
-    margin:0;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 42px;
 
-    text-align:center;
-
-    color:#fff;
-
-    font-size:32px;
-
-    line-height:1.2;
-
-    font-weight:800;
-}
-
-.why-choose h3 span{
-    color:gold;
+    align-items: stretch;
 }
 
 
 /* ==========================================================================
-   GOLD DIVIDER
+   LEFT IMAGE
    ========================================================================== */
 
-.why-divider{
-    width:70%;
+.why-choose-image {
+    position: relative;
 
-    height:1px;
+    min-height: 590px;
 
-    margin:17px auto 30px;
+    border-radius: 24px;
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 215, 0, 0.18);
+
+    background: #0b0b0b;
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.45);
+
+    transition:
+        border-color 0.35s ease,
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.why-choose-image::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 55%,
+            rgba(0, 0, 0, 0.35)
+        );
+
+    pointer-events: none;
+}
+
+.why-choose-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.why-choose-image:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(255, 215, 0, 0.35);
+
+    box-shadow:
+        0 25px 65px rgba(0, 0, 0, 0.55),
+        0 0 25px rgba(255, 215, 0, 0.06);
+}
+
+
+/* ==========================================================================
+   RIGHT CONTENT
+   ========================================================================== */
+
+.why-choose-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-width: 0;
+}
+
+
+/* ==========================================================================
+   KICKER
+   ========================================================================== */
+
+.why-kicker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+
+    color: gold;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.why-kicker span {
+    width: 55px;
+    height: 1px;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,215,0,0.65),
-            transparent
+            gold
         );
 
-    position:relative;
+    box-shadow:
+        0 0 8px rgba(255, 215, 0, 0.45);
 }
 
-.why-divider::after{
-    content:"";
+.why-kicker span:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            gold,
+            transparent
+        );
+}
 
-    position:absolute;
 
-    left:50%;
-    top:50%;
+/* ==========================================================================
+   MAIN TITLE
+   ========================================================================== */
 
-    transform:translate(-50%,-50%);
+.why-choose-content > h2 {
+    margin: 0;
 
-    width:70px;
-    height:2px;
+    color: #fff;
 
-    background:gold;
+    text-align: center;
+
+    font-size: 42px;
+    line-height: 1.12;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+.why-choose-content > h2 span {
+    color: gold;
+}
+
+
+/* ==========================================================================
+   TITLE DIVIDER
+   ========================================================================== */
+
+.why-title-divider {
+    width: 110px;
+    height: 2px;
+
+    margin: 18px auto 25px;
+
+    background: gold;
 
     box-shadow:
-        0 0 10px rgba(255,215,0,0.8);
+        0 0 12px rgba(255, 215, 0, 0.65);
+
+    position: relative;
+}
+
+.why-title-divider::before,
+.why-title-divider::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    width: 32px;
+    height: 1px;
+
+    background:
+        rgba(255, 215, 0, 0.35);
+}
+
+.why-title-divider::before {
+    right: 100%;
+    margin-right: 8px;
+}
+
+.why-title-divider::after {
+    left: 100%;
+    margin-left: 8px;
 }
 
 
@@ -675,60 +821,65 @@ body::after {
    BENEFIT GRID
    ========================================================================== */
 
-.why-grid{
-    display:grid;
+.why-benefits {
+    display: grid;
 
     grid-template-columns:
-        repeat(4,1fr);
+        repeat(2, 1fr);
 
-    gap:0;
+    gap: 12px;
 
-    border-top:1px solid rgba(255,255,255,0.07);
-    border-bottom:1px solid rgba(255,255,255,0.07);
+    margin-top: 0;
 }
 
 
-.why-item{
-    min-height:115px;
+/* ==========================================================================
+   BENEFIT CARD
+   ========================================================================== */
 
-    display:flex;
+.why-item {
+    display: flex;
+    align-items: center;
 
-    align-items:center;
+    gap: 14px;
 
-    gap:15px;
+    min-height: 92px;
 
-    padding:20px 22px;
+    padding: 14px 16px;
 
-    position:relative;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.035),
+            rgba(255, 255, 255, 0.012)
+        );
 
     transition:
-        background .3s ease,
-        transform .3s ease;
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
+.why-item:hover {
+    transform: translateY(-3px);
 
-/* VERTICAL DIVIDERS */
-
-.why-item:not(:nth-child(4n+1))::before{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    top:22px;
-    bottom:22px;
-
-    width:1px;
+    border-color:
+        rgba(255, 215, 0, 0.25);
 
     background:
-        rgba(255,255,255,0.08);
-}
+        linear-gradient(
+            145deg,
+            rgba(255, 215, 0, 0.045),
+            rgba(255, 255, 255, 0.015)
+        );
 
-
-.why-item:hover{
-    background:
-        rgba(255,215,0,0.025);
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -736,52 +887,53 @@ body::after {
    BENEFIT ICON
    ========================================================================== */
 
-.why-icon{
-    width:48px;
-    height:48px;
+.why-icon {
+    width: 46px;
+    height: 46px;
 
-    flex-shrink:0;
+    flex-shrink: 0;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    border:1px solid rgba(255,215,0,0.55);
+    border: 1px solid rgba(255, 215, 0, 0.55);
 
-    border-radius:50%;
+    border-radius: 50%;
 
-    color:gold;
+    color: gold;
 
     background:
-        rgba(255,215,0,0.025);
+        rgba(255, 215, 0, 0.025);
 
     transition:
-        background .3s ease,
-        box-shadow .3s ease;
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
 }
 
-.why-item:hover .why-icon{
+.why-item:hover .why-icon {
     background:
-        rgba(255,215,0,0.08);
+        rgba(255, 215, 0, 0.08);
 
     box-shadow:
-        0 0 15px rgba(255,215,0,0.12);
+        0 0 15px rgba(255, 215, 0, 0.15);
+
+    transform: scale(1.05);
 }
 
+.why-icon svg {
+    width: 21px;
+    height: 21px;
 
-.why-icon svg{
-    width:23px;
-    height:23px;
+    fill: none;
 
-    fill:none;
+    stroke: currentColor;
 
-    stroke:currentColor;
+    stroke-width: 1.7;
 
-    stroke-width:1.7;
-
-    stroke-linecap:round;
-
-    stroke-linejoin:round;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 
@@ -789,28 +941,215 @@ body::after {
    BENEFIT TEXT
    ========================================================================== */
 
-.why-item h4{
-    margin:0 0 5px;
+.why-item h4 {
+    margin: 0 0 5px;
 
-    color:#f1f1f1;
+    color: #f1f1f1;
 
-    font-size:15px;
+    font-size: 15px;
 
-    font-weight:700;
+    line-height: 1.25;
+
+    font-weight: 750;
+}
+
+.why-item p {
+    margin: 0;
+
+    color: #999;
+
+    font-size: 12px;
+
+    line-height: 1.45;
 }
 
 
-.why-item p{
-    margin:0;
+/* ==========================================================================
+   CLOSING MESSAGE
+   ========================================================================== */
 
-    color:#969696;
+.about-closing {
+    width: 100%;
 
-    font-size:12px;
+    margin: 16px auto 0;
 
-    line-height:1.5;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    padding: 14px 18px;
+
+    border: 1px solid rgba(255, 215, 0, 0.28);
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 215, 0, 0.045),
+            rgba(255, 255, 255, 0.012)
+        );
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.about-closing-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid gold;
+
+    border-radius: 50%;
+
+    color: gold;
+
+    font-size: 20px;
+}
+
+.about-closing p {
+    margin: 0;
+
+    color: #eee;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+.about-closing strong {
+    color: #fff;
+}
+
+.about-closing span {
+    color: gold;
 }
 
 
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width: 1050px) {
+
+    .why-choose-container {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .why-choose-image {
+        min-height: 450px;
+
+        max-height: 500px;
+    }
+
+    .why-choose-content > h2 {
+        font-size: 40px;
+    }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 700px) {
+
+    .why-choose-section {
+        padding: 35px 15px 45px;
+    }
+
+    .why-choose-container {
+        width: 100%;
+
+        gap: 25px;
+    }
+
+    .why-choose-image {
+        min-height: 360px;
+
+        max-height: 420px;
+
+        border-radius: 20px;
+    }
+
+    .why-kicker {
+        font-size: 12px;
+
+        gap: 8px;
+    }
+
+    .why-kicker span {
+        width: 35px;
+    }
+
+    .why-choose-content > h2 {
+        font-size: 32px;
+
+        letter-spacing: -0.5px;
+    }
+
+    .why-title-divider {
+        margin: 14px auto 20px;
+    }
+
+    .why-benefits {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .why-item {
+        min-height: 82px;
+
+        padding: 13px 14px;
+    }
+
+    .why-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .why-item h4 {
+        font-size: 14px;
+    }
+
+    .why-item p {
+        font-size: 11.5px;
+    }
+
+    .about-closing {
+        padding: 13px 14px;
+
+        gap: 10px;
+    }
+
+    .about-closing-icon {
+        width: 35px;
+        height: 35px;
+
+        font-size: 18px;
+    }
+
+    .about-closing p {
+        font-size: 13px;
+    }
+
+}
 /* ==========================================================================
    CLOSING MESSAGE
    ========================================================================== */
