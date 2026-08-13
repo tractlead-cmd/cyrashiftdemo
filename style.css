@@ -2813,6 +2813,7 @@ body::after {
 /* ==========================================================================
    16. ENGAGING INTERACTIVE CONTACT SECTION
    ========================================================================== */
+
 .contact-section {
     padding: 40px 20px;
     position: relative;
@@ -2853,8 +2854,12 @@ body::after {
 
 .contact-card {
     position: relative;
-    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.035),
+        rgba(255,255,255,0.015)
+    );
+    border: 1px solid rgba(255,255,255,0.06);
     border-radius: 32px;
     padding: 50px;
     backdrop-filter: blur(18px);
@@ -2888,17 +2893,35 @@ body::after {
     gap: 20px;
 }
 
+
+/* ==========================================================================
+   INPUTS
+   ========================================================================== */
+
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.018);
+    border: 1px solid rgba(255,255,255,0.055);
     border-radius: 16px;
     padding: 18px 20px;
-    color: white;
+    color: #ffffff;
     font-size: 15px;
     outline: none;
     transition: 0.3s ease;
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover {
+    background: rgba(255,255,255,0.025);
+    border-color: rgba(255,255,255,0.10);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background: rgba(255,255,255,0.025);
+    border-color: gold;
+    box-shadow: 0 0 0 4px rgba(255,215,0,0.08);
 }
 
 .contact-form textarea {
@@ -2908,14 +2931,76 @@ body::after {
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: #777;
+    color: #5f5f5f;
+    opacity: 1;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+
+/* ==========================================================================
+   US PHONE FIELD
+   ========================================================================== */
+
+.phone-input-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+
+    background: rgba(255,255,255,0.018);
+
+    border: 1px solid rgba(255,255,255,0.055);
+    border-radius: 16px;
+
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.phone-input-wrapper:hover {
+    background: rgba(255,255,255,0.025);
+    border-color: rgba(255,255,255,0.10);
+}
+
+.phone-input-wrapper:focus-within {
+    background: rgba(255,255,255,0.025);
     border-color: gold;
     box-shadow: 0 0 0 4px rgba(255,215,0,0.08);
 }
+
+.phone-country-code {
+    min-width: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 15px;
+
+    color: #ffd700;
+    font-size: 15px;
+    font-weight: 700;
+
+    background: rgba(255,215,0,0.025);
+
+    border-right: 1px solid rgba(255,255,255,0.055);
+}
+
+.phone-input-wrapper input {
+    flex: 1;
+    width: 100%;
+
+    border: none !important;
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    outline: none;
+}
+
+
+/* ==========================================================================
+   SUBMIT BUTTON
+   ========================================================================== */
 
 .contact-form button {
     height: 58px;
@@ -2943,11 +3028,50 @@ body::after {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.35),
+        transparent
+    );
     transition: 0.6s;
 }
 
-.contact-form button:hover::before { left: 100%; }
+.contact-form button:hover::before {
+    left: 100%;
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 700px) {
+
+    .contact-card {
+        padding: 30px 20px;
+        border-radius: 24px;
+    }
+
+    .contact-wrapper h2 {
+        font-size: 42px;
+    }
+
+    .contact-subtext {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+
+    .input-row {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .phone-country-code {
+        min-width: 56px;
+        padding: 0 12px;
+    }
+}
 
 /* ==========================================================================
    17. SYSTEM FOOTER WRAPPER
