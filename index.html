@@ -1002,203 +1002,33 @@
                 <span>driving innovation and growth worldwide.</span>
 </p>
 </div>
-</section><div class="section-divider"></div>
-  
-<section class="contact-section" id="contact">
-    <div class="contact-wrapper">
-
-        <h2>Contact <span>Us</span></h2>
-
-        <p class="contact-subtext">
-            Kindly fill in the form to reach us today!
-        </p>
-
-        <div class="contact-card">
-
-            <form
-                action="https://formsubmit.co/cyrashift@gmail.com"
-                class="contact-form"
-                id="mainContactForm"
-                method="POST"
-            >
-
-                <!-- ==============================
-                     FORMSUBMIT CONFIGURATION
-                     ============================== -->
-
-                <!-- Keep CAPTCHA ENABLED -->
-                <!-- Do NOT add _captcha=false -->
-
-                <input
-                    type="hidden"
-                    name="_template"
-                    value="table"
-                >
-
-                <input
-                    type="hidden"
-                    name="_subject"
-                    value="New Contact Request - CyraShift"
-                >
-
-                <!-- Put visitor's email in Reply-To -->
-                <input
-                    type="hidden"
-                    name="_replyto"
-                    value=""
-                    id="replyToEmail"
-                >
-
-                <!-- ==============================
-                     HONEYPOT - ANTI BOT
-                     ============================== -->
-
-                <div
-                    style="display:none;"
-                    aria-hidden="true"
-                >
-                    <label>
-                        Leave this field empty
-                        <input
-                            type="text"
-                            name="_honey"
-                            tabindex="-1"
-                            autocomplete="off"
-                        >
-                    </label>
-                </div>
-
-
-                <!-- ==============================
-                     NAME + EMAIL
-                     ============================== -->
-
-                <div class="input-row">
-
-                    <input
-                        name="name"
-                        id="userName"
-                        placeholder="Your Name"
-                        type="text"
-                        autocomplete="name"
-                        maxlength="80"
-                        required
-                    >
-
-                    <input
-                        id="userEmail"
-                        name="email"
-                        placeholder="Business Email Address"
-                        type="email"
-                        autocomplete="email"
-                        maxlength="254"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- ==============================
-                     PHONE
-                     ============================== -->
-
-                <div class="phone-input-wrapper">
-
-                    <span class="phone-country-code">+1</span>
-
-                    <input
-                        id="userPhone"
-                        name="phone"
-                        type="tel"
-                        placeholder="XXX-XXX-XXXX"
-                        inputmode="numeric"
-                        autocomplete="tel"
-                        maxlength="12"
-                        required
-                        aria-label="US phone number"
-                    >
-
-                </div>
-
-
-                <!-- ==============================
-                     COMPANY
-                     ============================== -->
-
-                <input
-                    name="company"
-                    id="userCompany"
-                    placeholder="Company Name"
-                    type="text"
-                    autocomplete="organization"
-                    maxlength="120"
-                >
-
-
-                <!-- ==============================
-                     MESSAGE
-                     ============================== -->
-
-                <textarea
-                    name="message"
-                    id="userMessage"
-                    placeholder="Tell us about your project..."
-                    maxlength="3000"
-                    required
-                ></textarea>
-
-
-                <!-- ==============================
-                     SUBMIT
-                     ============================== -->
-
-                <button
-                    id="submitBtn"
-                    type="submit"
-                >
-                    Send Message
-                </button>
-
-            </form>
-
-
-            <!-- ==============================
-                 POPUP MODAL
-                 ============================== -->
-
-            <div
-                class="popup-overlay"
-                id="formPopup"
-                style="display: none;"
-            >
-
-                <div class="popup-card">
-
-                    <h3 id="popupTitle">
-                        Success!
-                    </h3>
-
-                    <p id="popupMessage">
-                        Email sent successfully.
-                    </p>
-
-                    <button
-                        id="popupCloseBtn"
-                        type="button"
-                    >
-                        OK
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-  
+</section><div class="section-divider"></div><section class="contact-section" id="contact">
+<div class="contact-wrapper">
+<h2>Contact <span>Us</span></h2>
+<p class="contact-subtext">Kindly fill in the form to reach us today!</p>
+<div class="contact-card">
+<form action="https://formsubmit.co/cyrashift@gmail.com" class="contact-form" id="mainContactForm" method="POST">
+<!-- FormSubmit Configuration Inputs -->
+<input name="_captcha" type="hidden" value="false"/>
+<input name="_template" type="hidden" value="table"/>
+<div class="input-row">
+<input name="name" placeholder="Your Name" required="" type="text"/>
+<input id="userEmail" name="email" placeholder="Email Address" required="" type="email"/>
+</div>
+<input name="company" placeholder="Company Name" type="text"/>
+<textarea name="message" placeholder="Tell us about your project..." required=""></textarea>
+<button id="submitBtn" type="submit">Send Message</button>
+</form>
+<!-- Popup Modal Structure -->
+<div class="popup-overlay" id="formPopup" style="display: none;">
+<div class="popup-card">
+<h3 id="popupTitle">Success!</h3>
+<p id="popupMessage">Email sent successfully.</p>
+<button id="popupCloseBtn">OK</button>
+</div>
+</div>
+</div>
+</div>
 </section><section class="final-cta">
 <div class="final-cta-container">
 <h2>
@@ -1285,144 +1115,70 @@
             }, 500);
         }
         setInterval(nextSlide, 9000);
-    </script>
-  
-  
-<script>
-const scrollBtn = document.getElementById("scrollTopBtn");
+    </script><script>
+        const scrollBtn = document.getElementById("scrollTopBtn");
+        const reveals = document.querySelectorAll(".about-section, .services-section, .contact-section, .service-card");
+        let ticking = false;
 
-const reveals = document.querySelectorAll(
-    ".about-section, .services-section, .contact-section, .service-card"
-);
+        window.addEventListener("scroll", () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    const windowHeight = window.innerHeight;
 
-let ticking = false;
+                    if (scrollBtn) {
+                        if (scrollY > 300) {
+                            scrollBtn.classList.add("show");
+                        } else {
+                            scrollBtn.classList.remove("show");
+                        }
+                    }
 
-
-/* ==========================================
-   REVEAL FUNCTION
-   ========================================== */
-
-function updateReveals() {
-
-    const windowHeight = window.innerHeight;
-
-    reveals.forEach((el) => {
-
-        const revealTop = el.getBoundingClientRect().top;
-
-        if (revealTop < windowHeight - 80) {
-            el.classList.add("active-reveal");
-        }
-
-    });
-}
-
-
-/* ==========================================
-   IMPORTANT:
-   RUN ON PAGE LOAD
-   ========================================== */
-
-updateReveals();
-
-window.addEventListener("load", () => {
-    updateReveals();
-});
-
-
-/* ==========================================
-   SCROLL
-   ========================================== */
-
-window.addEventListener("scroll", () => {
-
-    if (!ticking) {
-
-        window.requestAnimationFrame(() => {
-
-            const scrollY = window.scrollY;
-
-            if (scrollBtn) {
-
-                if (scrollY > 300) {
-                    scrollBtn.classList.add("show");
-                } else {
-                    scrollBtn.classList.remove("show");
-                }
-
+                    reveals.forEach((el) => {
+                        const revealTop = el.getBoundingClientRect().top;
+                        if (revealTop < windowHeight - 80) {
+                            el.classList.add("active-reveal");
+                        }
+                    });
+                    ticking = false;
+                });
+                ticking = true;
             }
-
-            updateReveals();
-
-            ticking = false;
-
         });
 
-        ticking = true;
-    }
-
-});
-
-
-/* ==========================================
-   SCROLL TO TOP
-   ========================================== */
-
-if (scrollBtn) {
-
-    scrollBtn.addEventListener("click", () => {
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    });
-
-}
+        if (scrollBtn) {
+            scrollBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        }
 
 const contactForm = document.getElementById("mainContactForm");
 const emailInput = document.getElementById("userEmail");
 const phoneInput = document.getElementById("userPhone");
-const replyToEmail = document.getElementById("replyToEmail");
 
 const popup = document.getElementById("formPopup");
 const popupTitle = document.getElementById("popupTitle");
 const popupMessage = document.getElementById("popupMessage");
 const popupCloseBtn = document.getElementById("popupCloseBtn");
 
-const submitBtn = document.getElementById("submitBtn");
-
-/* ==========================================
-   CONTACT FORM VALIDATION
-   ========================================== */
-
-// Basic email format validation
-const emailRegex =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
-
-// US NANP phone validation
-// Area code:     2-9XX
-// Exchange code: 2-9XX
-// Last 4 digits: XXXX
-const usPhoneRegex = /^[2-9]\d{2}[2-9]\d{2}\d{4}$/;
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 
 /* ==========================================
-   PHONE NUMBER FORMATTING
+   PHONE NUMBER - 10 DIGITS ONLY
    ========================================== */
 
 if (phoneInput) {
 
     phoneInput.addEventListener("input", () => {
 
-        // Keep digits only
+        // Remove anything that isn't a number
         let digits = phoneInput.value.replace(/\D/g, "");
 
-        // NEVER allow more than 10 digits
+        // Never allow more than 10 digits
         digits = digits.substring(0, 10);
 
-        // Format XXX-XXX-XXXX
+        // Format as XXX-XXX-XXXX
         if (digits.length > 6) {
 
             phoneInput.value =
@@ -1442,13 +1198,16 @@ if (phoneInput) {
         } else {
 
             phoneInput.value = digits;
+
         }
+
     });
+
 }
 
 
 /* ==========================================
-   CONTACT FORM SUBMISSION
+   CONTACT FORM
    ========================================== */
 
 if (contactForm) {
@@ -1458,123 +1217,59 @@ if (contactForm) {
         e.preventDefault();
 
 
-        /* --------------------------------------
-           1. HONEYPOT CHECK
-           -------------------------------------- */
+        /* EMAIL VALIDATION
+           Keeping your original validation */
 
-        const honeyField =
-            contactForm.querySelector('input[name="_honey"]');
-
-        if (honeyField && honeyField.value.trim() !== "") {
-
-            // Silently stop obvious bot submissions
-            return;
-        }
-
-
-        /* --------------------------------------
-           2. EMAIL VALIDATION
-           -------------------------------------- */
-
-        const email =
-            emailInput.value.trim().toLowerCase();
-
-        emailInput.value = email;
-
-        if (!emailRegex.test(email)) {
+        if (!emailRegex.test(emailInput.value)) {
 
             showPopup(
-                "Invalid Email",
-                "Please enter a valid email address.",
+                "Error",
+                "Please enter a valid email address (e.g., name@gmail.com).",
                 false
             );
 
-            emailInput.focus();
             return;
         }
 
 
-        /* --------------------------------------
-           3. US PHONE VALIDATION
-           -------------------------------------- */
+        /* PHONE VALIDATION */
 
-        // Remove formatting characters
         const phoneDigits =
             phoneInput.value.replace(/\D/g, "");
 
 
-        // Must be EXACTLY 10 digits
+        // Must be exactly 10 digits
         if (phoneDigits.length !== 10) {
 
             showPopup(
-                "Invalid Phone",
+                "Error",
                 "Please enter a valid 10-digit US phone number.",
                 false
             );
 
             phoneInput.focus();
+
             return;
         }
 
 
-        // NANP validation
-        // Area code and exchange code cannot start
-        // with 0 or 1
-        if (!usPhoneRegex.test(phoneDigits)) {
-
-            showPopup(
-                "Invalid Phone",
-                "Please enter a valid US phone number in the format XXX-XXX-XXXX.",
-                false
-            );
-
-            phoneInput.focus();
-            return;
-        }
-
-
-        /* --------------------------------------
-           4. UPDATE REPLY-TO EMAIL
-           -------------------------------------- */
-
-        if (replyToEmail) {
-            replyToEmail.value = email;
-        }
-
-
-        /* --------------------------------------
-           5. CREATE FORM DATA
-           -------------------------------------- */
+        /* CONTINUE WITH YOUR ORIGINAL FORM SUBMISSION */
 
         const formData = new FormData(contactForm);
 
-        // Store phone consistently as +1XXXXXXXXXX
-        formData.set("phone", "+1" + phoneDigits);
-
-        // Make sure reply-to is the customer's email
-        formData.set("_replyto", email);
-
-
-        /* --------------------------------------
-           6. DISABLE BUTTON
-           -------------------------------------- */
+        const submitBtn =
+            document.getElementById("submitBtn");
 
         submitBtn.textContent = "Sending...";
         submitBtn.disabled = true;
 
 
-        /* --------------------------------------
-           7. SEND TO FORMSUBMIT
-           -------------------------------------- */
-
         fetch(contactForm.action, {
 
             method: "POST",
-
             body: formData,
-
             headers: {
-                "Accept": "application/json"
+                "Accept": "json"
             }
 
         })
@@ -1598,13 +1293,12 @@ if (contactForm) {
                     "Email sending failed. Please try again later.",
                     false
                 );
+
             }
 
         })
 
         .catch(error => {
-
-            console.error("Contact form error:", error);
 
             showPopup(
                 "Failed",
@@ -1622,6 +1316,7 @@ if (contactForm) {
         });
 
     });
+
 }
 
 
@@ -1659,31 +1354,6 @@ if (popupCloseBtn) {
 }
   
   
-  
-  <script>
-        const cursor = document.querySelector(".custom-cursor");
-        document.addEventListener("mousemove", (e) => {
-            if (!cursor) return;
-            cursor.style.left = e.clientX + "px";
-            cursor.style.top = e.clientY + "px";
-        });
-
-        const hoverItems = document.querySelectorAll("a, button");
-        hoverItems.forEach((item) => {
-            item.addEventListener("mouseenter", () => {
-                if (!cursor) return;
-                cursor.style.width = "55px";
-                cursor.style.height = "55px";
-                cursor.style.background = "rgba(255,215,0,0.18)";
-            });
-            item.addEventListener("mouseleave", () => {
-                if (!cursor) return;
-                cursor.style.width = "30px";
-                cursor.style.height = "30px";
-                cursor.style.background = "rgba(255,215,0,0.12)";
-            });
-        });
-    </script>
   
   
   <script>
