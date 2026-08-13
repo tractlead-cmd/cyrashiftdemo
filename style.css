@@ -162,7 +162,6 @@ body::after {
    ========================================================================== */
 .hero {
     height: calc(100vh - 80px);
-    min-height: 600px; /* Prevents text collapse on smaller heights */
     padding: 80px 20px 20px;
     display: flex;
     justify-content: center;
@@ -222,23 +221,23 @@ body::after {
 .slider {
     position: relative;
     width: 100%;
-    height: auto; /* Fixed: Prevents clipping if headlines wrap on narrow laptops */
-    min-height: 200px;
+    height: 200px;
     overflow: hidden;
     margin-bottom: 30px;
 }
 
 .slide {
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 0;
-    transform: translate(-200px, -50%); /* Center vertical alignment in slider space */
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     opacity: 0;
+    transform: translateX(-200px);
     transition: opacity 1s ease, transform 1s ease;
     will-change: transform, opacity;
     pointer-events: none;
@@ -246,13 +245,12 @@ body::after {
 
 .slide.active {
     opacity: 1;
-    transform: translate(0, -50%);
-    pointer-events: auto;
+    transform: translateX(0);
 }
 
 .slide h1 {
     font-size: 40px;
-    line-height: 1.2;
+    line-height: 1.1;
     color: white;
     margin-bottom: 20px;
 }
@@ -269,7 +267,7 @@ body::after {
     white-space: nowrap;
     border-right: 2px solid gold;
     display: inline-block;
-    width: 0; /* Fixed: Switched from max-width to explicit width percent to prevent micro-layout-jumps */
+    max-width: 0;
     opacity: 0;
 }
 
@@ -281,8 +279,8 @@ body::after {
 }
 
 @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+    from { max-width: 0; }
+    to { max-width: 1000px; }
 }
 
 @keyframes blink {
@@ -1737,7 +1735,6 @@ body::after {
     padding:115px 0 20px;
     border-top:none;
     position:relative;
-    z-index: 10; /* Added: Clear stacking layer over standard components context */
 }
 
 .footer-container{
@@ -1908,7 +1905,7 @@ body::after {
     position: fixed;
     top: 0;
     left: 0;
-    pointer-events: none; /* Fixed: Prevents cursor element from hijacking click metrics */
+    pointer-events: none;
     z-index: 9999;
     background: rgba(255,215,0,0.12);
     border: 1px solid rgba(255,215,0,0.35);
@@ -1926,10 +1923,10 @@ button:hover ~ .custom-cursor {
 }
 
 .hero-button-wrap {
-    position: absolute; /* Fixed: Changed from fixed to absolute pin inside Hero framework */
+    position: fixed;
     bottom: 25px;
     left: 25px;
-    z-index: 95;
+    z-index: 9995;
 }
 
 .browse-db-btn {
@@ -2478,16 +2475,8 @@ button:hover ~ .custom-cursor {
 }
 
 /* ==========================================================================
-   20. RESPONSIVE DESIGN BREAKPOINTS & DEVICE PATCHES
+   20. RESPONSIVE DESIGN BREAKPOINTS (MOBILE & TABLET)
    ========================================================================== */
-
-/* --- LAPTOP / MEDIUM DESKTOP OVERLAPS (1100px - 1400px) --- */
-@media (max-width: 1400px) {
-    .core-services-grid {
-        grid-template-columns: repeat(3, 1fr); /* Step down layout early on smaller monitors */
-    }
-}
-
 @media (max-width: 1100px){
     .why-choose-container {
         grid-template-columns: 1fr;
@@ -2513,7 +2502,6 @@ button:hover ~ .custom-cursor {
     }
 }
 
-/* --- TABLETS & SMALL LAPTOPS (769px - 1050px) --- */
 @media (max-width: 1050px) {
     .services-title h2 {
         font-size: 43px;
@@ -2545,7 +2533,6 @@ button:hover ~ .custom-cursor {
     }
     .about-content h2 { font-size: 42px; }
     .spotlight-grid { grid-template-columns: 1fr; gap: 24px; } 
-    .custom-cursor { display: none !important; } /* Optimization: Disable custom cursor elements on mobile/touch interfaces */
 }
 
 @media (max-width: 900px){
@@ -2587,12 +2574,10 @@ button:hover ~ .custom-cursor {
     }
 }
 
-/* --- SMALL TABLETS / LARGE PHONES (481px - 768px) --- */
 @media (max-width: 768px) {
-    /* Fixed: Typographical structural adaptation for portrait phone frames */
     .slide p {
         width: 100% !important;
-        white-space: normal !important;
+        white-space: normal;
         overflow: visible;
         border-right: none;
         opacity: 0;
@@ -2873,7 +2858,6 @@ button:hover ~ .custom-cursor {
     }
 }
 
-/* --- SMALL PHONES & COMPACT MOBILE MODELS (0px - 480px) --- */
 @media (max-width: 480px) {
     .segment-header h2 {
         font-size: 31px;
@@ -2888,23 +2872,6 @@ button:hover ~ .custom-cursor {
     }
     .segment-card {
         padding: 18px 16px;
-    }
-    .logo img {
-        height: 80px; /* Scales header container properties nicely down to prevent overlapping titles */
-    }
-    .container {
-        width: 95%;
-    }
-    .slide h1 {
-        font-size: 28px; /* Strict typography sizing scales for tight viewports */
-    }
-    .about-content h2 {
-        font-size: 28px;
-    }
-    .database-title h2, 
-    .spotlight-section h2, 
-    .contact-wrapper h2 {
-        font-size: 32px;
     }
 }
 
