@@ -1152,211 +1152,88 @@
             });
         }
 
-const contactForm = document.getElementById("mainContactForm");
-const emailInput = document.getElementById("userEmail");
-const phoneInput = document.getElementById("userPhone");
+        const contactForm = document.getElementById("mainContactForm");
+        const emailInput = document.getElementById("userEmail");
+        const popup = document.getElementById("formPopup");
+        const popupTitle = document.getElementById("popupTitle");
+        const popupMessage = document.getElementById("popupMessage");
+        const popupCloseBtn = document.getElementById("popupCloseBtn");
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-const popup = document.getElementById("formPopup");
-const popupTitle = document.getElementById("popupTitle");
-const popupMessage = document.getElementById("popupMessage");
-const popupCloseBtn = document.getElementById("popupCloseBtn");
+        if(contactForm) {
+            contactForm.addEventListener("submit", (e) => {
+                e.preventDefault();
 
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    showPopup("Error", "Please enter a valid email address (e.g., name@gmail.com).", false);
+                    return;
+                }
 
+                const formData = new FormData(contactForm);
+                const submitBtn = document.getElementById("submitBtn");
+                submitBtn.textContent = "Sending...";
+                submitBtn.disabled = true;
 
-/* ==========================================
-   PHONE NUMBER - 10 DIGITS ONLY
-   ========================================== */
-
-if (phoneInput) {
-
-    phoneInput.addEventListener("input", () => {
-
-        // Remove anything that isn't a number
-        let digits = phoneInput.value.replace(/\D/g, "");
-
-        // Never allow more than 10 digits
-        digits = digits.substring(0, 10);
-
-        // Format as XXX-XXX-XXXX
-        if (digits.length > 6) {
-
-            phoneInput.value =
-                digits.substring(0, 3) +
-                "-" +
-                digits.substring(3, 6) +
-                "-" +
-                digits.substring(6);
-
-        } else if (digits.length > 3) {
-
-            phoneInput.value =
-                digits.substring(0, 3) +
-                "-" +
-                digits.substring(3);
-
-        } else {
-
-            phoneInput.value = digits;
-
+                fetch(contactForm.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: { 'Accept': 'json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        showPopup("Success!", "Email sent successfully. We will get back to you soon.", true);
+                        contactForm.reset();
+                    } else {
+                        showPopup("Failed", "Email sending failed. Please try again later.", false);
+                    }
+                })
+                .catch(error => {
+                    showPopup("Failed", "Network error. Please check your connection and try again.", false);
+                })
+                .finally(() => {
+                    submitBtn.textContent = "Send Message";
+                    submitBtn.disabled = false;
+                });
+            });
         }
 
-    });
-
-}
-
-
-/* ==========================================
-   CONTACT FORM
-   ========================================== */
-
-if (contactForm) {
-
-    contactForm.addEventListener("submit", (e) => {
-
-        e.preventDefault();
-
-
-        /* EMAIL VALIDATION
-           Keeping your original validation */
-
-        if (!emailRegex.test(emailInput.value)) {
-
-            showPopup(
-                "Error",
-                "Please enter a valid email address (e.g., name@gmail.com).",
-                false
-            );
-
-            return;
+        function showPopup(title, message, isSuccess) {
+            if (!popup) return;
+            popupTitle.textContent = title;
+            popupTitle.style.color = isSuccess ? "#ffd700" : "#ff4d4d";
+            popupMessage.textContent = message;
+            popup.style.display = "flex";
         }
 
-
-        /* PHONE VALIDATION */
-
-        const phoneDigits =
-            phoneInput.value.replace(/\D/g, "");
-
-
-        // Must be exactly 10 digits
-        if (phoneDigits.length !== 10) {
-
-            showPopup(
-                "Error",
-                "Please enter a valid 10-digit US phone number.",
-                false
-            );
-
-            phoneInput.focus();
-
-            return;
+        if (popupCloseBtn) {
+            popupCloseBtn.addEventListener("click", () => {
+                popup.style.display = "none";
+            });
         }
-
-
-        /* CONTINUE WITH YOUR ORIGINAL FORM SUBMISSION */
-
-        const formData = new FormData(contactForm);
-
-        const submitBtn =
-            document.getElementById("submitBtn");
-
-        submitBtn.textContent = "Sending...";
-        submitBtn.disabled = true;
-
-
-        fetch(contactForm.action, {
-
-            method: "POST",
-            body: formData,
-            headers: {
-                "Accept": "json"
-            }
-
-        })
-
-        .then(response => {
-
-            if (response.ok) {
-
-                showPopup(
-                    "Success!",
-                    "Email sent successfully. We will get back to you soon.",
-                    true
-                );
-
-                contactForm.reset();
-
-            } else {
-
-                showPopup(
-                    "Failed",
-                    "Email sending failed. Please try again later.",
-                    false
-                );
-
-            }
-
-        })
-
-        .catch(error => {
-
-            showPopup(
-                "Failed",
-                "Network error. Please check your connection and try again.",
-                false
-            );
-
-        })
-
-        .finally(() => {
-
-            submitBtn.textContent = "Send Message";
-            submitBtn.disabled = false;
-
+    </script><script>
+        const cursor = document.querySelector(".custom-cursor");
+        document.addEventListener("mousemove", (e) => {
+            if (!cursor) return;
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
         });
 
-    });
-
-}
-
-
-/* ==========================================
-   POPUP
-   ========================================== */
-
-function showPopup(title, message, isSuccess) {
-
-    if (!popup) return;
-
-    popupTitle.textContent = title;
-
-    popupTitle.style.color =
-        isSuccess ? "#ffd700" : "#ff4d4d";
-
-    popupMessage.textContent = message;
-
-    popup.style.display = "flex";
-}
-
-
-/* ==========================================
-   CLOSE POPUP
-   ========================================== */
-
-if (popupCloseBtn) {
-
-    popupCloseBtn.addEventListener("click", () => {
-
-        popup.style.display = "none";
-
-    });
-
-}
-  
-  
-  
-  
-  <script>
+        const hoverItems = document.querySelectorAll("a, button");
+        hoverItems.forEach((item) => {
+            item.addEventListener("mouseenter", () => {
+                if (!cursor) return;
+                cursor.style.width = "55px";
+                cursor.style.height = "55px";
+                cursor.style.background = "rgba(255,215,0,0.18)";
+            });
+            item.addEventListener("mouseleave", () => {
+                if (!cursor) return;
+                cursor.style.width = "30px";
+                cursor.style.height = "30px";
+                cursor.style.background = "rgba(255,215,0,0.12)";
+            });
+        });
+    </script><script>
     document.addEventListener("DOMContentLoaded", function() {
     const datasetPool = [
 {
