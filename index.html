@@ -1288,43 +1288,98 @@
     </script>
   
   
-  <script>
-        const scrollBtn = document.getElementById("scrollTopBtn");
-        const reveals = document.querySelectorAll(".about-section, .services-section, .contact-section, .service-card");
-        let ticking = false;
+<script>
+const scrollBtn = document.getElementById("scrollTopBtn");
 
-        window.addEventListener("scroll", () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrollY = window.scrollY;
-                    const windowHeight = window.innerHeight;
+const reveals = document.querySelectorAll(
+    ".about-section, .services-section, .contact-section, .service-card"
+);
 
-                    if (scrollBtn) {
-                        if (scrollY > 300) {
-                            scrollBtn.classList.add("show");
-                        } else {
-                            scrollBtn.classList.remove("show");
-                        }
-                    }
+let ticking = false;
 
-                    reveals.forEach((el) => {
-                        const revealTop = el.getBoundingClientRect().top;
-                        if (revealTop < windowHeight - 80) {
-                            el.classList.add("active-reveal");
-                        }
-                    });
-                    ticking = false;
-                });
-                ticking = true;
+
+/* ==========================================
+   REVEAL FUNCTION
+   ========================================== */
+
+function updateReveals() {
+
+    const windowHeight = window.innerHeight;
+
+    reveals.forEach((el) => {
+
+        const revealTop = el.getBoundingClientRect().top;
+
+        if (revealTop < windowHeight - 80) {
+            el.classList.add("active-reveal");
+        }
+
+    });
+}
+
+
+/* ==========================================
+   IMPORTANT:
+   RUN ON PAGE LOAD
+   ========================================== */
+
+updateReveals();
+
+window.addEventListener("load", () => {
+    updateReveals();
+});
+
+
+/* ==========================================
+   SCROLL
+   ========================================== */
+
+window.addEventListener("scroll", () => {
+
+    if (!ticking) {
+
+        window.requestAnimationFrame(() => {
+
+            const scrollY = window.scrollY;
+
+            if (scrollBtn) {
+
+                if (scrollY > 300) {
+                    scrollBtn.classList.add("show");
+                } else {
+                    scrollBtn.classList.remove("show");
+                }
+
             }
+
+            updateReveals();
+
+            ticking = false;
+
         });
 
-        if (scrollBtn) {
-            scrollBtn.addEventListener("click", () => {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-            });
-        }
-      
+        ticking = true;
+    }
+
+});
+
+
+/* ==========================================
+   SCROLL TO TOP
+   ========================================== */
+
+if (scrollBtn) {
+
+    scrollBtn.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+}
 
 const contactForm = document.getElementById("mainContactForm");
 const emailInput = document.getElementById("userEmail");
