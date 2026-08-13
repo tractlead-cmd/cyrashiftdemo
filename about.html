@@ -1,4 +1,20 @@
-</div><section class="about-section" id="about">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | CyraShift</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="site-header"></div
+
+<section class="about-section" id="about">
 <div class="about-container">
 <div class="about-card">
 <!-- LEFT IMAGE -->
@@ -287,3 +303,26 @@
 <!-- =========================================================
      END WHY CHOOSE US
      ========================================================= -->
+
+
+    <div id="site-footer"></div>
+
+
+    <script>
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("site-header").innerHTML = data;
+            });
+
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("site-footer").innerHTML = data;
+            });
+    </script>
+
+</body>
+</html>
+
+  
