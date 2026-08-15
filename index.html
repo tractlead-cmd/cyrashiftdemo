@@ -1283,5 +1283,32 @@
         startAutoPlay();
     });
     </script>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+     &#8593; <!-- Up Arrow Icon -->
+    </button>
+
+
+    <script>
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  // Show the button when scrolling down 300px
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.add("show");
+    } else {
+      scrollTopBtn.classList.remove("show");
+    }
+  });
+
+  // Smooth scroll back to top on click
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+    
 </body>
 </html>
