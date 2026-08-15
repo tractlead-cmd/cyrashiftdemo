@@ -4577,3 +4577,49 @@ p {
         scroll-behavior: auto !important;
     }
 }
+
+
+/* Back to Top Button */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FFD700, #FFD54A);
+    color: #050505;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+    z-index: 9999;
+}
+
+/* Show state triggered by JavaScript */
+#scrollTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#scrollTopBtn:hover {
+    transform: translateY(-4px);
+    filter: brightness(1.1);
+}
+
+/* Mobile Adjustment */
+@media screen and (max-width: 480px) {
+    #scrollTopBtn {
+        bottom: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
