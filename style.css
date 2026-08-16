@@ -4579,47 +4579,72 @@ p {
 }
 
 
-/* Back to Top Button */
-#scrollTopBtn {
+/* ---------- SCROLL TO TOP (CAPSULE STYLE) ---------- */
+
+.arrow-btn.style-capsule {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #FFD700, #FFD54A);
-    color: #050505;
-    border: none;
-    font-size: 20px;
-    font-weight: bold;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 20px;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    color: #FFD700;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    
-    /* Hidden by default */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
-    z-index: 9999;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
 }
 
-/* Show state triggered by JavaScript */
-#scrollTopBtn.show {
-    opacity: 1;
-    visibility: visible;
+.arrow-btn.style-capsule:hover {
+    background: #FFD700;
+    color: #050505;
+    border-color: #FFD700;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
 
-#scrollTopBtn:hover {
-    transform: translateY(-4px);
-    filter: brightness(1.1);
+.arrow-btn.style-capsule:active {
+    transform: translateY(-1px);
 }
 
-/* Mobile Adjustment */
-@media screen and (max-width: 480px) {
-    #scrollTopBtn {
+
+/* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+
+/* Mobile Phones (Portrait) */
+@media (max-width: 768px) {
+    .arrow-btn.style-capsule {
         bottom: 16px;
         right: 16px;
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
+        height: 36px;
+        padding: 0 12px;
+        font-size: 10px;
+        gap: 4px;
+    }
+
+    .arrow-btn.style-capsule svg {
+        width: 12px;
+        height: 12px;
     }
 }
+
+/* Landscape Phones & Short Screens */
+@media (max-height: 600px) and (max-width: 900px) {
+    .arrow-btn.style-capsule {
+        bottom: 12px;
+        right: 12px;
+        height: 34px;
+        padding: 0 10px;
+    }
+}
+
+
