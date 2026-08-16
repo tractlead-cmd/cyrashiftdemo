@@ -770,6 +770,9 @@
         <div class="footer-bottom">© <span id="current-year"></span> CyraShift. All rights reserved.</div>
     </footer>
 
+    <!-- Back to Top Button Hooked up for script visibility -->
+    <button id="scrollTopBtn" title="Go to top" style="position:fixed; bottom:20px; right:20px; display:none; z-index:99;">↑</button>
+
     <!-- TITLE ROTATION SCRIPT -->
     <script>
         const titles = [
@@ -1280,45 +1283,5 @@
         startAutoPlay();
     });
     </script>
-
-
-
-    <script>
-  const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-  // Show the button when scrolling down 300px
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      scrollTopBtn.classList.add("show");
-    } else {
-      scrollTopBtn.classList.remove("show");
-    }
-  });
-
-<button class="arrow-btn style-capsule" aria-label="Scroll to top">
-  <span>TOP</span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="18 15 12 9 6 15"></polyline>
-  </svg>
-</button>
-
-const scrollTopBtn = document.getElementById('scrollTopBtn');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollTopBtn.classList.add('show');
-    } else {
-        scrollTopBtn.classList.remove('show');
-    }
-});
-
-scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-        
 </body>
 </html>
