@@ -4605,6 +4605,14 @@ p {
     z-index: 999;
 }
 
+/* Base SVG sizing controlled via CSS */
+.arrow-btn.style-capsule svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor; /* Guarantees arrow turns dark on hover */
+    transition: stroke 0.3s ease;
+}
+
 .arrow-btn.style-capsule:hover {
     background: #FFD700;
     color: #050505;
@@ -4646,5 +4654,3 @@ p {
         padding: 0 10px;
     }
 }
-
-
