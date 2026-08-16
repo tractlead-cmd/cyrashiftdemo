@@ -1862,41 +1862,59 @@ body::after {
 /* ==========================================================================
    18. INTERACTIVE UTILITY ACTIONS (CURSOR & FLOATING BUTTONS)
    ========================================================================== */
-#scrollTopBtn {
-    position: fixed;
-    right: 30px;
-    bottom: 80px;
-    width: 52px;
-    height: 52px;
+
+/* Scroll to top button - capsule style */
+.style-capsule {
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 20px;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    color: #FFD700;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: rgba(20,20,20,0.75);
-    color: gold;
-    border: 1px solid rgba(255,215,0,0.35);
-    border-radius: 14px;
-    font-size: 24px;
-    font-weight: bold;
+    gap: 6px;
     cursor: pointer;
-    backdrop-filter: blur(10px);
-    z-index: 9999;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: all 0.3s ease;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
 }
 
-#scrollTopBtn.show {
+.style-capsule.visible {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-#scrollTopBtn:hover {
-    transform: translateY(-4px);
-    border-color: gold;
-    box-shadow: 0 10px 30px rgba(255,215,0,0.18);
+.style-capsule svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    transition: stroke 0.3s ease;
 }
+
+.style-capsule.visible:hover {
+    background: #FFD700;
+    color: #050505;
+    border-color: #FFD700;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.style-capsule.visible:active {
+    transform: translateY(-1px);
+}
+
 
 .custom-cursor {
     width: 30px;
@@ -4446,6 +4464,32 @@ p {
 }
 
 
+
+@media (max-width: 768px) {
+    .style-capsule {
+        bottom: 16px;
+        right: 16px;
+        height: 36px;
+        padding: 0 12px;
+        font-size: 10px;
+        gap: 4px;
+    }
+
+    .style-capsule svg {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-height: 600px) and (max-width: 900px) {
+    .style-capsule {
+        bottom: 12px;
+        right: 12px;
+        height: 34px;
+        padding: 0 10px;
+    }
+}
+
 /* ---------- VERY SMALL PHONES ---------- */
 
 @media (max-width: 400px) {
@@ -4579,53 +4623,6 @@ p {
 }
 
 
-/* ---------- SCROLL TO TOP (CAPSULE STYLE) ---------- */
-
-.arrow-btn.style-capsule {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    height: 40px;
-    padding: 0 16px;
-    border-radius: 20px;
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid rgba(255, 215, 0, 0.4);
-    color: #FFD700;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    z-index: 999;
-}
-
-/* Base SVG sizing controlled via CSS */
-.arrow-btn.style-capsule svg {
-    width: 14px;
-    height: 14px;
-    stroke: currentColor; /* Guarantees arrow turns dark on hover */
-    transition: stroke 0.3s ease;
-}
-
-.arrow-btn.style-capsule:hover {
-    background: #FFD700;
-    color: #050505;
-    border-color: #FFD700;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
-}
-
-.arrow-btn.style-capsule:active {
-    transform: translateY(-1px);
-}
-
-
 /* ---------- RESPONSIVE ADJUSTMENTS ---------- */
 
 /* Mobile Phones (Portrait) */
@@ -4646,11 +4643,4 @@ p {
 }
 
 /* Landscape Phones & Short Screens */
-@media (max-height: 600px) and (max-width: 900px) {
-    .arrow-btn.style-capsule {
-        bottom: 12px;
-        right: 12px;
-        height: 34px;
-        padding: 0 10px;
-    }
-}
+
