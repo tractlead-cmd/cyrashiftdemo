@@ -2186,7 +2186,7 @@ button:hover ~ .custom-cursor {
    22. FIXED: SPOTLIGHT INVENTORY CARDS (RESTORED ALIGNMENT & COLOR)
    ========================================================================== */
 .spotlight-section {
-    padding: 100px 20px 40px;
+    padding: 10px 20px 40px;
     position: relative;
     z-index: 2;
     text-align: center; 
