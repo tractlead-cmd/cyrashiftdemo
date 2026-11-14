@@ -4672,3 +4672,25 @@ p {
 #dynamic-spotlight-container {
     min-height: 280px;
 }
+
+
+
+/* ==========================================
+   THE CYRASHIFT ADVANTAGE 
+   ========================================== */
+
+
+.stats-heading {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 45px;
+}
+
+.stats-heading h2 {
+    font-size: 38px;
+    font-weight: 700;
+    color: #F5C542;
+    margin: 0;
+    letter-spacing: 1px;
+}
