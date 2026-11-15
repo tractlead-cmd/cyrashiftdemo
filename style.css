@@ -4690,7 +4690,20 @@ p {
 .stats-heading h2 {
     font-size: 38px;
     font-weight: 700;
-    color: #F5C542;
-    margin: 0;
+    color: #FFFFFF;
+    margin: 0 0 20px;
     letter-spacing: 1px;
+}
+
+.stats-heading h2 span {
+    color: #F5C542;
+}
+
+.stats-heading p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #BDBDBD;
+    max-width: 750px;
+    margin: 0 auto;
+    font-weight: 400;
 }
