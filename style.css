@@ -1138,15 +1138,20 @@ body::after {
     display: flex;
     align-items: flex-end;
     gap: 4px;
-    padding: 0 30px;
+    padding: 0 15px;
     z-index: 1;
     opacity: 0.12;
 }
 
 .bar {
-    flex: 1;
-    max-width: 12px;
-    background: linear-gradient(to top, rgba(255,215,0,0.08), rgba(255,215,0,0.55));
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+    background: linear-gradient(
+        to top,
+        rgba(255,215,0,0.08),
+        rgba(255,215,0,0.55)
+    );
     border-radius: 10px 10px 0 0;
     animation: barFloat 4s ease-in-out infinite alternate;
 }
