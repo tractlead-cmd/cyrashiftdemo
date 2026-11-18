@@ -1157,7 +1157,7 @@ body::after {
 }
 
 @keyframes barFloat {
-    from { transform: scaleY(0.75); }
+    from { transform: scaleY(0.55); }
     to { transform: scaleY(1.03); }
 }
 
