@@ -1,0 +1,823 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explore B2B Databases | CyraShift</title>
+
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        /* =========================================
+           CYRASHIFT DATABASE PAGE
+           Independent styles - homepage untouched
+        ========================================= */
+
+        .db-page {
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(201,148,24,0.12), transparent 48%),
+                #090909;
+            color: #f5f5f5;
+        }
+
+        /* HEADER */
+
+        .db-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            background: rgba(8,8,8,0.94);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(224,174,42,0.28);
+        }
+
+        .db-header-inner {
+            width: min(94%, 1450px);
+            min-height: 76px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .db-brand {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .db-brand img {
+            display: block;
+            width: auto;
+            height: 62px;
+            object-fit: contain;
+        }
+
+        .db-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 32px;
+        }
+
+        .db-nav a {
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .db-nav a:hover,
+        .db-nav a.db-active {
+            color: #ffca38;
+        }
+
+        .db-nav .db-quote-link {
+            padding: 11px 22px;
+            border-radius: 30px;
+            color: #111;
+            background: linear-gradient(135deg,#ffe17a,#e9a900);
+            font-weight: 700;
+            box-shadow: 0 3px 15px rgba(232,177,24,0.18);
+        }
+
+        .db-nav .db-quote-link:hover {
+            color: #000;
+            background: #ffdc67;
+            transform: translateY(-2px);
+        }
+
+        /* MAIN SECTION */
+
+        .db-main {
+            width: min(94%, 1400px);
+            margin: auto;
+            padding: 58px 0 85px;
+        }
+
+        .db-heading {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .db-eyebrow {
+            color: #f5c12e;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        .db-heading h1 {
+            color: #fff;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.2;
+            font-weight: 750;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .db-heading h1 span {
+            color: #f6c43b;
+        }
+
+        .db-heading p {
+            color: #bcbcbc;
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* SEARCH BAR */
+
+        .db-search-wrap {
+            width: min(100%, 720px);
+            margin: 30px auto 45px;
+        }
+
+        .db-search-box {
+            display: flex;
+            align-items: center;
+            min-height: 54px;
+            padding: 5px 6px 5px 18px;
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 13px;
+            background: linear-gradient(110deg,#1c1c1c,#111);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .db-search-box:focus-within {
+            border-color: #dba91f;
+            box-shadow: 0 0 0 3px rgba(235,183,42,0.09);
+        }
+
+        .db-search-icon {
+            width: 23px;
+            height: 23px;
+            flex-shrink: 0;
+            color: #f3bd2e;
+        }
+
+        .db-search-box input {
+            width: 100%;
+            min-width: 0;
+            height: 44px;
+            padding: 0 14px;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: #fff;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .db-search-box input::placeholder {
+            color: #999;
+        }
+
+        .db-search-box button {
+            min-width: 110px;
+            height: 44px;
+            padding: 0 23px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg,#ffe17a,#e8a900);
+            color: #111;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 750;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .db-search-box button:hover {
+            background: #ffdf69;
+            box-shadow: 0 4px 18px rgba(239,184,28,0.22);
+        }
+
+        /* AVAILABLE DATABASES TITLE */
+
+        .db-available-heading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 23px;
+        }
+
+        .db-available-heading span {
+            width: min(90px, 12vw);
+            height: 1px;
+            background: linear-gradient(90deg,transparent,#e7b522);
+        }
+
+        .db-available-heading span:last-child {
+            background: linear-gradient(90deg,#e7b522,transparent);
+        }
+
+        .db-available-heading h2 {
+            color: #f6c32f;
+            font-size: 21px;
+            font-weight: 750;
+            white-space: nowrap;
+        }
+
+        /* DATABASE CARDS */
+
+        .db-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 13px;
+        }
+
+        .db-card {
+            min-width: 0;
+            min-height: 132px;
+            padding: 20px 19px;
+            display: flex;
+            align-items: center;
+            gap: 19px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 12px;
+            background: linear-gradient(135deg,#191919,#111);
+            box-shadow: 0 5px 18px rgba(0,0,0,0.22);
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .db-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 0% 50%,rgba(239,185,35,0.09),transparent 65%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .db-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(239,188,47,0.55);
+            background: linear-gradient(135deg,#202020,#141414);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+        }
+
+        .db-card:hover::before {
+            opacity: 1;
+        }
+
+        .db-card-icon {
+            width: 55px;
+            height: 55px;
+            flex-shrink: 0;
+            color: #efb82e;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 2px 8px rgba(236,176,27,0.13));
+        }
+
+        .db-card-content {
+            min-width: 0;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .db-card-content h3 {
+            color: #f5f5f5;
+            font-size: 15px;
+            font-weight: 750;
+            line-height: 1.35;
+            margin-bottom: 4px;
+        }
+
+        .db-card-content p {
+            color: #bdbdbd;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .db-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            float: right;
+            color: #f6c32f;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            transition: gap 0.25s ease;
+        }
+
+        .db-card-link:hover {
+            gap: 11px;
+            color: #ffe17a;
+        }
+
+        /* NO SEARCH RESULTS */
+
+        .db-no-results {
+            display: none;
+            padding: 40px 15px;
+            text-align: center;
+            color: #bcbcbc;
+            border: 1px dashed rgba(239,188,47,0.3);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .db-no-results strong {
+            display: block;
+            color: #f4c33d;
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .db-count {
+            text-align: center;
+            margin-top: 22px;
+            color: #858585;
+            font-size: 12px;
+        }
+
+        /* RESPONSIVE TABLETS */
+
+        @media (max-width: 950px) {
+            .db-header-inner {
+                width: 95%;
+                gap: 15px;
+            }
+
+            .db-nav {
+                gap: 17px;
+            }
+
+            .db-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+        }
+
+        /* RESPONSIVE MOBILE */
+
+        @media (max-width: 600px) {
+            .db-header-inner {
+                min-height: auto;
+                padding: 9px 0 12px;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .db-brand img {
+                height: 52px;
+            }
+
+            .db-nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px 17px;
+            }
+
+            .db-nav a {
+                font-size: 12px;
+            }
+
+            .db-nav .db-quote-link {
+                padding: 8px 14px;
+            }
+
+            .db-main {
+                width: 92%;
+                padding: 43px 0 60px;
+            }
+
+            .db-heading {
+                margin-bottom: 25px;
+            }
+
+            .db-heading h1 {
+                font-size: 32px;
+            }
+
+            .db-heading p {
+                font-size: 14px;
+            }
+
+            .db-eyebrow {
+                font-size: 11px;
+                letter-spacing: 2.5px;
+            }
+
+            .db-search-wrap {
+                margin: 25px auto 35px;
+            }
+
+            .db-search-box {
+                padding-left: 11px;
+                min-height: 49px;
+            }
+
+            .db-search-box input {
+                font-size: 12px;
+                padding: 0 8px;
+            }
+
+            .db-search-box button {
+                min-width: 76px;
+                height: 39px;
+                padding: 0 12px;
+                font-size: 12px;
+            }
+
+            .db-available-heading {
+                gap: 10px;
+            }
+
+            .db-available-heading h2 {
+                font-size: 17px;
+            }
+
+            .db-grid {
+                grid-template-columns: 1fr;
+                gap: 11px;
+            }
+
+            .db-card {
+                min-height: 112px;
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .db-card-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .db-card-content h3 {
+                font-size: 14px;
+            }
+
+            .db-card-content p {
+                font-size: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .db-card,
+            .db-card::before,
+            .db-card-link {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="db-page">
+
+    <!-- HEADER -->
+
+    <header class="db-header">
+        <div class="db-header-inner">
+
+            <a href="index.html" class="db-brand">
+                <img src="logo.png" alt="CyraShift">
+            </a>
+
+            <nav class="db-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="database.html" class="db-active">Our Databases</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+
+                <a href="index.html#contact" class="db-quote-link">
+                    Request a Quote
+                </a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- DATABASE MAIN SECTION -->
+
+    <main class="db-main">
+
+        <!-- HEADING -->
+
+        <section class="db-heading">
+
+            <div class="db-eyebrow">B2B DATABASES</div>
+
+            <h1>
+                Explore Our <span>B2B Databases</span>
+            </h1>
+
+            <p>
+                Find verified business contacts to reach your next customers.
+                Explore industry-specific databases built around your target audience.
+            </p>
+
+        </section>
+
+
+        <!-- SEARCH -->
+
+        <div class="db-search-wrap">
+
+            <div class="db-search-box">
+
+                <svg class="db-search-icon"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2.3"
+                     stroke-linecap="round">
+                    <circle cx="10.8" cy="10.8" r="7"></circle>
+                    <path d="m16 16 5 5"></path>
+                </svg>
+
+                <input
+                    type="search"
+                    id="databaseSearch"
+                    placeholder="Search industries or databases..."
+                    aria-label="Search databases"
+                    autocomplete="off"
+                >
+
+                <button type="button" id="databaseSearchButton">
+                    Search
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- AVAILABLE DATABASES -->
+
+        <section class="db-available-section">
+
+            <div class="db-available-heading">
+                <span></span>
+                <h2>Available Databases</h2>
+                <span></span>
+            </div>
+
+
+            <div class="db-grid" id="databaseGrid">
+
+
+                <!-- 1. REAL ESTATE -->
+
+                <article class="db-card" data-search="real estate realtors agents brokers property sales residential commercial">
+
+                    <svg class="db-card-icon"
+                         viewBox="0 0 64 64"
+                         fill="currentColor"
+                         aria-hidden="true">
+
+                        <rect x="5" y="20" width="20" height="38" rx="2"/>
+                        <rect x="29" y="6" width="25" height="52" rx="2"/>
+
+                        <path d="M11 27h5v6h-5zm0 12h5v6h-5zm0 12h5v5h-5zm24-42h5v7h-5zm10 0h5v7h-5zM34 20h5v7h-5zm10 0h5v7h-5zM34 32h5v7h-5zm10 0h5v7h-5zM34 44h5v7h-5zm10 0h5v7h-5z"/>
+                        <rect x="27" y="50" width="9" height="8" fill="#171717"/>
+
+                    </svg>
+
+                    <div class="db-card-content">
+                        <h3>Real Estate</h3>
+                        <p>Business Contacts</p>
+                        <a href="index.html#contact" class="db-card-link">View Details →</a>
+                    </div>
+
+                </article>
+
+
+                <!-- 2. HOME INSPECTION -->
+
+                <article class="db-card" data-search="home inspection inspectors residential property inspection home inspectors">
+
+                    <svg class="db-card-icon"
+                         viewBox="0 0 64 64"
+                         fill="currentColor"
+                         aria-hidden="true">
+
+                        <path d="M5 28 32 6l27 22-5 6-5-4v27H15V30l-5 4z"/>
+                        <path d="M26 39h12v18H26z" fill="#171717"/>
+                        <path d="M21 26h22v3H21z" fill="#171717"/>
+
+                    </svg>
+
+                    <div class="db-card-content">
+                        <h3>Home Inspection</h3>
+                        <p>Business Contacts</p>
+                        <a href="index.html#contact" class="db-card-link">View Details →</a>
+                    </div>
+
+                </article>
+
+
+                <!-- 3. HVAC COMPANIES -->
+
+                <article class="db-card" data-search="hvac heating ventilation air conditioning contractors cooling refrigeration mechanical">
+
+                    <svg class="db-card-icon"
+                         viewBox="0 0 64 64"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="5"
+                         stroke-linecap="round"
+                         stroke-linejoin="round"
+                         aria-hidden="true">
+
+                        <path d="M7 22h16c9 0 9-12 0-12h-3"/>
+                        <path d="M7 32h45c10 0 10-13 0-13h-7"/>
+                        <path d="M7 42h16c9 0 9 12 0 12h-3"/>
+                        <path d="M39 9h10M39 9l5-5M39 9l5 5"/>
+                        <path d="M42 45h10M42 45l5-5M42 45l5 5"/>
+
+                    </svg>
+
+                    <div class="db-card-content">
+                        <h3>HVAC Companies</h3>
+                        <p>Business Contacts</p>
+                        <a href="index.html#contact" class="db-card-link">View Details →</a>
+                    </div>
+
+                </article>
+
+
+                <!-- 4. PROPERTY MANAGEMENT -->
+
+                <article class="db-card" data-search="property management property managers apartments multifamily residential commercial landlords">
+
+                    <svg class="db-card-icon"
+                         viewBox="0 0 64 64"
+                         fill="currentColor"
+                         aria-hidden="true">
+
+                        <path d="M8 29 32 7l24 22-5 6-5-4v24H18V31l-5 4z"/>
+                        <circle cx="32" cy="34" r="8" fill="#171717"/>
+                        <path d="M32 29v10m-5-5h10" stroke="#eeb72d" stroke-width="3" stroke-linecap="round"/>
+
+                    </svg>
+
+                    <div class="db-card-content">
+                        <h3>Property Management</h3>
+                        <p>Business Contacts</p>
+                        <a href="index.html#contact" class="db-card-link">View Details →</a>
+                    </div>
+
+                </article>
+
+
+                <!-- 5. CONSTRUCTION -->
+
+                <article class="db-card" data-search="construction contractors builders general contractors commercial residential engineering">
+
+                    <svg class="db-card-icon"
+                         viewBox="0 0 64 64"
+                         fill="currentColor"
+                         aria-hidden="true">
+
+                        <path d="M12 24 19 12l13 5 13-5 7 12-7 6H19z"/>
+                        <path d="M18 30h29l-3 13H21z"/>
+                        <path d="M23 44h19v6H23z"/>
+                        <path d="M28 50h9v8h-9z"/>
+                        <path d="M8 22h9v8H8zm39 0h9v8h-9z"/>
+
+                    </svg>
+
+                    <div class="db-card-content">
+                        <h3>Construction</h3>
+                        <p>Business Contacts</p>
+                        <a href="index.html#contact" class="db-card-link">View Details →</a>
+                    </div>
+
+                </article>
+
+
+                <!-- 6. FACILITIES MANAGEMENT -->
+
+                <article class="db-card" data-search="facilities management facility managers building maintenance operations commercial maintenance">
+
+                    <svg class="db-card-icon"
+                         viewBox="0 0 64 64"
+                         fill="currentColor"
+                         aria-hidden="true">
+
+                        <path d="M26 5h12l2 8a21 21 0 0 1 5 3l8-2 6 10-6 6v5l6 6-6 10-8-2a21 21 0 0 1-5 3l-2 8H26l-2-8a21 21 0 0 1-5-3l-8 2-6-10 6-6v-5l-6-6 6-10 8 2a21 21 0 0 1 5-3z"/>
+                        <circle cx="32" cy="32" r="11" fill="#171717"/>
+                        <circle cx="32" cy="32" r="5" fill="currentColor"/>
+
+                    </svg>
+
+                    <div class="db-card-content">
+                        <h3>Facilities Management</h3>
+                        <p>Business Contacts</p>
+                        <a href="index.html#contact" class="db-card-link">View Details →</a>
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- NO RESULTS MESSAGE -->
+
+            <div class="db-no-results" id="noResults">
+                <strong>No databases found</strong>
+                Try another industry or search term.
+            </div>
+
+            <div class="db-count" id="databaseCount">
+                Showing 6 available databases
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- SEARCH FUNCTIONALITY -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const searchInput = document.getElementById("databaseSearch");
+            const searchButton = document.getElementById("databaseSearchButton");
+            const cards = document.querySelectorAll(".db-card");
+            const noResults = document.getElementById("noResults");
+            const count = document.getElementById("databaseCount");
+
+            function searchDatabases() {
+
+                const searchValue = searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+                let visibleCount = 0;
+
+                cards.forEach(function (card) {
+
+                    const title = card.innerText.toLowerCase();
+                    const keywords = (card.dataset.search || "").toLowerCase();
+
+                    const matches =
+                        title.includes(searchValue) ||
+                        keywords.includes(searchValue);
+
+                    card.style.display = matches ? "flex" : "none";
+
+                    if (matches) {
+                        visibleCount++;
+                    }
+
+                });
+
+                noResults.style.display =
+                    visibleCount === 0 ? "block" : "none";
+
+                count.textContent =
+                    "Showing " + visibleCount +
+                    " of " + cards.length + " available databases";
+
+            }
+
+            searchInput.addEventListener("input", searchDatabases);
+
+            searchButton.addEventListener("click", searchDatabases);
+
+            searchInput.addEventListener("keydown", function (event) {
+
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    searchDatabases();
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
