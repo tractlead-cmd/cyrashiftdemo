@@ -357,7 +357,7 @@
         }
 
         /* =========================================
-           INDUSTRY POPUP MODAL (REAL ESTATE SAMPLE)
+           INDUSTRY POPUP MODAL (ALL 42 INDUSTRIES)
         ========================================= */
 
         .db-popup-backdrop {
@@ -450,8 +450,8 @@
 
         .db-popup-title {
             margin: 0 0 10px;
-            font-size: clamp(32px, 4.1vw, 44px);
-            line-height: 1.06;
+            font-size: clamp(28px, 3.8vw, 42px);
+            line-height: 1.08;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: -0.6px;
@@ -889,37 +889,20 @@
     </main>
 
 
-    <!-- SAMPLE POPUP MODAL (REAL ESTATE) -->
+    <!-- INDUSTRY POPUP MODAL -->
 
-    <div class="db-popup-backdrop" id="realEstatePopup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="rePopupTitle">
+    <div class="db-popup-backdrop" id="industryPopup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="dbPopupTitle">
         <div class="db-popup-dialog">
-            <button type="button" class="db-popup-close" id="rePopupClose" aria-label="Close popup">&times;</button>
+            <button type="button" class="db-popup-close" id="dbPopupClose" aria-label="Close popup">&times;</button>
 
             <div class="db-popup-hero">
                 <div class="db-popup-left">
-                    <button type="button" class="db-popup-back" id="rePopupBack">← Back to Databases</button>
+                    <button type="button" class="db-popup-back" id="dbPopupBack">← Back to Databases</button>
 
-                    <h2 class="db-popup-title" id="rePopupTitle">Real Estate<br>Database</h2>
-                    <p class="db-popup-subtitle">Reach real estate professionals across the U.S.</p>
+                    <h2 class="db-popup-title" id="dbPopupTitle">Real Estate<br>Database</h2>
+                    <p class="db-popup-subtitle" id="dbPopupSubtitle">Reach real estate professionals across the U.S.</p>
 
-                    <ul class="db-popup-bullets">
-                        <li>
-                            <span class="db-popup-check" aria-hidden="true">✓</span>
-                            <span>Real Estate Agents &amp; Brokers</span>
-                        </li>
-                        <li>
-                            <span class="db-popup-check" aria-hidden="true">✓</span>
-                            <span>Property Managers</span>
-                        </li>
-                        <li>
-                            <span class="db-popup-check" aria-hidden="true">✓</span>
-                            <span>Real Estate Firms</span>
-                        </li>
-                        <li>
-                            <span class="db-popup-check" aria-hidden="true">✓</span>
-                            <span>Investors &amp; Developers</span>
-                        </li>
-                    </ul>
+                    <ul class="db-popup-bullets" id="dbPopupBullets"></ul>
 
                     <div class="db-popup-actions">
                         <a href="index.html#contact" class="db-popup-btn-primary">Request a Quote →</a>
@@ -927,7 +910,7 @@
                     </div>
                 </div>
 
-                <div class="db-popup-right" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80');"></div>
+                <div class="db-popup-right" id="dbPopupImage" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80');"></div>
                 <div class="db-popup-diagonal" aria-hidden="true"></div>
             </div>
 
@@ -935,7 +918,7 @@
                 <div class="db-popup-stat">
                     <span class="db-popup-stat-icon" aria-hidden="true">🪙</span>
                     <div>
-                        <strong>200,000+</strong>
+                        <strong id="dbPopupContacts">200,000+</strong>
                         <span>Contacts</span>
                     </div>
                 </div>
@@ -943,7 +926,7 @@
                 <div class="db-popup-stat">
                     <span class="db-popup-stat-icon" aria-hidden="true">📍</span>
                     <div>
-                        <strong>USA</strong>
+                        <strong id="dbPopupCoverage">USA</strong>
                         <span>Coverage</span>
                     </div>
                 </div>
@@ -951,7 +934,7 @@
                 <div class="db-popup-stat">
                     <span class="db-popup-stat-icon" aria-hidden="true">📅</span>
                     <div>
-                        <strong>Updated</strong>
+                        <strong id="dbPopupUpdated">Updated</strong>
                         <span>Monthly</span>
                     </div>
                 </div>
@@ -995,7 +978,7 @@
     </footer>
 
 
-    <!-- DATABASES DATA, RENDERING & SEARCH -->
+    <!-- DATABASES DATA, POPUP LOGIC & SEARCH -->
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -1024,54 +1007,748 @@
                 factory: `<svg class="db-card-icon" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M6 54V28l16 8V28l16 8V10h12v26h8v18H6z"/><rect x="14" y="42" width="6" height="6" fill="#171717"/><rect x="26" y="42" width="6" height="6" fill="#171717"/><rect x="38" y="42" width="6" height="6" fill="#171717"/></svg>`
             };
 
-            // 2. MASTER LIST OF 42 B2B INDUSTRIES (Add new lines here anytime!)
-            const DATABASES = [
-                // Researched Core List (35)
-                { name: "Agriculture Crops", keywords: "agriculture crops farming crop production agribusiness growers", icon: "tree" },
-                { name: "Agriculture Livestock", keywords: "agriculture livestock cattle ranching dairy poultry farms", icon: "tree" },
-                { name: "Oil & Gas Extraction", keywords: "oil gas extraction drilling petroleum energy exploration", icon: "factory" },
-                { name: "Construction - General Contractors", keywords: "construction general contractors builders commercial residential projects", icon: "helmet" },
-                { name: "Construction - Special Trade Contractors", keywords: "construction special trade contractors subcontractors masonry concrete trades", icon: "helmet" },
-                { name: "Building Materials and Hardware", keywords: "building materials hardware lumber supplies supply stores contractors", icon: "store" },
-                { name: "Used and New Car Dealers", keywords: "used new car dealers auto dealerships vehicle sales automotive", icon: "truck" },
-                { name: "Hotels and Restaurants", keywords: "hotels restaurants hospitality lodging dining catering food service", icon: "store" },
-                { name: "Apparel & Accessory Stores", keywords: "apparel accessory stores clothing fashion retail boutiques", icon: "store" },
-                { name: "Real Estate", keywords: "real estate realtors agents brokers residential property sales", icon: "building" },
-                { name: "Commercial Real Estate", keywords: "commercial real estate cre office retail industrial property brokers", icon: "building" },
-                { name: "Mortgage Companies", keywords: "mortgage companies lenders loan officers home loans financing", icon: "bank" },
-                { name: "Insurance Agents and Brokers", keywords: "insurance agents brokers commercial personal coverage policies", icon: "shield" },
-                { name: "Home Inspection", keywords: "home inspection inspectors residential property inspection", icon: "home" },
-                { name: "HVAC Contractors", keywords: "hvac contractors heating ventilation air conditioning cooling", icon: "hvac" },
-                { name: "Janitorial Services", keywords: "janitorial services commercial cleaning sanitation office cleaning", icon: "sparkle" },
-                { name: "Barber Shops", keywords: "barber shops barbers grooming hair care local shops", icon: "sparkle" },
-                { name: "Photography", keywords: "photography photographers studios commercial event real estate photos", icon: "sparkle" },
-                { name: "Plumbing", keywords: "plumbing plumbers pipefitting drains water heaters contractors", icon: "bolt" },
-                { name: "Roofing", keywords: "roofing roofers roof repair replacement commercial residential", icon: "roof" },
-                { name: "Golf Course", keywords: "golf course country clubs golf facilities turf maintenance", icon: "tree" },
-                { name: "Education Services", keywords: "education services schools tutoring training academies learning", icon: "briefcase" },
-                { name: "Sign Boards", keywords: "sign boards signage signs banners outdoor advertising fabrication", icon: "blueprint" },
-                { name: "Health Services", keywords: "health services healthcare clinics medical providers wellness", icon: "medical" },
-                { name: "Legal Services", keywords: "legal services law firms attorneys lawyers corporate counsel", icon: "briefcase" },
-                { name: "Architects", keywords: "architects architecture design firms building plans commercial", icon: "blueprint" },
-                { name: "Interior Designers", keywords: "interior designers interior design decorators residential commercial spaces", icon: "blueprint" },
-                { name: "Pet Stores", keywords: "pet stores pet supplies grooming animal retail shops", icon: "store" },
-                { name: "Gift Stores", keywords: "gift stores gift shops specialty retail novelty souvenirs", icon: "store" },
-                { name: "Lawn Services", keywords: "lawn services landscaping lawn care mowing turf groundskeeping", icon: "tree" },
-                { name: "Jewelry Stores", keywords: "jewelry stores jewelers fine jewelry watches retail", icon: "sparkle" },
-                { name: "Wine & Distilled Beverages", keywords: "wine distilled beverages spirits liquor winery distributors", icon: "store" },
-                { name: "Glass and Glazing", keywords: "glass glazing windows storefront commercial glass contractors", icon: "blueprint" },
-                { name: "Floor Laying & Floor Work", keywords: "floor laying floor work flooring tile hardwood carpet contractors", icon: "gear" },
-                { name: "CPA - Certified Public Accountant", keywords: "cpa certified public accountant accounting tax audit bookkeeping", icon: "bank" },
+            // PHOTO PRESETS BY THEME
+            const PHOTOS = {
+                realEstate: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
+                commercialBuilding: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80",
+                construction: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80",
+                agriculture: "https://images.unsplash.com/photo-1500937359354-96cb0698b664?auto=format&fit=crop&w=1400&q=80",
+                energy: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1400&q=80",
+                retail: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80",
+                hospitality: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=80",
+                automotive: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80",
+                finance: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80",
+                interior: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=80",
+                healthcare: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1400&q=80",
+                legalOffice: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1400&q=80",
+                logistics: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80",
+                techOffice: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
+                services: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80"
+            };
 
-                // Additional High-Value B2B Industries (7)
-                { name: "Property Management", keywords: "property management property managers apartments multifamily landlords", icon: "property" },
-                { name: "Auto Repair & Body Shops", keywords: "auto repair body shops collision centers mechanics car service", icon: "truck" },
-                { name: "Pest Control", keywords: "pest control exterminators termite rodents sanitation property", icon: "shield" },
-                { name: "Freight, Trucking & Logistics", keywords: "freight trucking logistics shipping supply chain transport", icon: "truck" },
-                { name: "Dental Practices", keywords: "dental practices dentists orthodontists dental clinics oral care", icon: "medical" },
-                { name: "IT Services / Managed IT (MSP)", keywords: "it services managed it msp cybersecurity cloud network support", icon: "tech" },
-                { name: "Marketing & Advertising Agencies", keywords: "marketing advertising agencies digital seo branding media", icon: "chart" }
+            // 2. MASTER LIST OF 42 B2B INDUSTRIES (With industry-accurate popup data!)
+            const DATABASES = [
+                {
+                    name: "Agriculture Crops",
+                    keywords: "agriculture crops farming crop production agribusiness growers",
+                    icon: "tree",
+                    titleHtml: "Agriculture Crops<br>Database",
+                    subtitle: "Reach crop producers and agribusiness operations across the U.S.",
+                    bullets: [
+                        "Crop Farms & Grain Growers",
+                        "Produce & Specialty Crop Producers",
+                        "Agribusiness & Farm Operators",
+                        "Agricultural Supply Decision-Makers"
+                    ],
+                    image: PHOTOS.agriculture,
+                    contacts: "120,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Agriculture Livestock",
+                    keywords: "agriculture livestock cattle ranching dairy poultry farms",
+                    icon: "tree",
+                    titleHtml: "Agriculture Livestock<br>Database",
+                    subtitle: "Connect with livestock, dairy, and ranching businesses across the U.S.",
+                    bullets: [
+                        "Cattle Ranches & Feedlots",
+                        "Dairy & Poultry Operations",
+                        "Livestock Breeders & Producers",
+                        "Ranch & Farm Managers"
+                    ],
+                    image: PHOTOS.agriculture,
+                    contacts: "95,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Oil & Gas Extraction",
+                    keywords: "oil gas extraction drilling petroleum energy exploration",
+                    icon: "factory",
+                    titleHtml: "Oil &amp; Gas Extraction<br>Database",
+                    subtitle: "Reach exploration, drilling, and energy operators across the U.S.",
+                    bullets: [
+                        "Crude Petroleum & Natural Gas Producers",
+                        "Drilling & Field Operations Firms",
+                        "Energy & Exploration Companies",
+                        "Operations & Procurement Leaders"
+                    ],
+                    image: PHOTOS.energy,
+                    contacts: "65,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Construction - General Contractors",
+                    keywords: "construction general contractors builders commercial residential projects",
+                    icon: "helmet",
+                    titleHtml: "General Contractors<br>Database",
+                    subtitle: "Connect with licensed general contractors across the U.S.",
+                    bullets: [
+                        "Commercial General Contractors",
+                        "Residential Custom Builders",
+                        "Design-Build Construction Firms",
+                        "Estimators & Project Owners"
+                    ],
+                    image: PHOTOS.construction,
+                    contacts: "240,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Construction - Special Trade Contractors",
+                    keywords: "construction special trade contractors subcontractors masonry concrete trades",
+                    icon: "helmet",
+                    titleHtml: "Special Trade Contractors<br>Database",
+                    subtitle: "Reach specialty trade subcontractors across the U.S.",
+                    bullets: [
+                        "Masonry, Concrete & Structural Trades",
+                        "Drywall, Painting & Framing Contractors",
+                        "Specialty Excavation & Site Trades",
+                        "Trade Business Owners & Foremen"
+                    ],
+                    image: PHOTOS.construction,
+                    contacts: "310,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Building Materials and Hardware",
+                    keywords: "building materials hardware lumber supplies supply stores contractors",
+                    icon: "store",
+                    titleHtml: "Building Materials &amp; Hardware<br>Database",
+                    subtitle: "Reach building supply dealers and hardware retailers across the U.S.",
+                    bullets: [
+                        "Lumber & Building Material Yards",
+                        "Hardware Stores & Supply Centers",
+                        "Construction Material Distributors",
+                        "Store & Purchasing Managers"
+                    ],
+                    image: PHOTOS.retail,
+                    contacts: "85,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Used and New Car Dealers",
+                    keywords: "used new car dealers auto dealerships vehicle sales automotive",
+                    icon: "truck",
+                    titleHtml: "Car Dealerships<br>Database",
+                    subtitle: "Connect with new and used auto dealerships across the U.S.",
+                    bullets: [
+                        "Franchise New Car Dealerships",
+                        "Independent Used Auto Dealers",
+                        "Fleet & Commercial Vehicle Dealers",
+                        "General Managers & Dealer Principals"
+                    ],
+                    image: PHOTOS.automotive,
+                    contacts: "110,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Hotels and Restaurants",
+                    keywords: "hotels restaurants hospitality lodging dining catering food service",
+                    icon: "store",
+                    titleHtml: "Hotels &amp; Restaurants<br>Database",
+                    subtitle: "Reach hospitality and foodservice establishments across the U.S.",
+                    bullets: [
+                        "Independent & Chain Restaurants",
+                        "Hotels, Motels & Lodging Groups",
+                        "Cafes, Bars & Catering Services",
+                        "Owners, GMs & F&B Buyers"
+                    ],
+                    image: PHOTOS.hospitality,
+                    contacts: "450,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Apparel & Accessory Stores",
+                    keywords: "apparel accessory stores clothing fashion retail boutiques",
+                    icon: "store",
+                    titleHtml: "Apparel &amp; Accessory Stores<br>Database",
+                    subtitle: "Reach clothing and accessory retailers across the U.S.",
+                    bullets: [
+                        "Apparel Boutiques & Clothing Stores",
+                        "Footwear & Accessory Retailers",
+                        "Specialty Fashion Chains",
+                        "Retail Owners & Merchandising Buyers"
+                    ],
+                    image: PHOTOS.retail,
+                    contacts: "145,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Real Estate",
+                    keywords: "real estate realtors agents brokers residential property sales",
+                    icon: "building",
+                    titleHtml: "Real Estate<br>Database",
+                    subtitle: "Reach real estate professionals across the U.S.",
+                    bullets: [
+                        "Real Estate Agents & Brokers",
+                        "Realtors & Listing Specialists",
+                        "Real Estate Brokerages & Firms",
+                        "Buyer & Seller Representatives"
+                    ],
+                    image: PHOTOS.realEstate,
+                    contacts: "200,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Commercial Real Estate",
+                    keywords: "commercial real estate cre office retail industrial property brokers",
+                    icon: "building",
+                    titleHtml: "Commercial Real Estate<br>Database",
+                    subtitle: "Connect with commercial real estate professionals across the U.S.",
+                    bullets: [
+                        "CRE Brokers & Leasing Agents",
+                        "Commercial Investment & Advisory Firms",
+                        "Retail, Office & Industrial Specialists",
+                        "Managing Partners & Deal Teams"
+                    ],
+                    image: PHOTOS.commercialBuilding,
+                    contacts: "90,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Mortgage Companies",
+                    keywords: "mortgage companies lenders loan officers home loans financing",
+                    icon: "bank",
+                    titleHtml: "Mortgage Companies<br>Database",
+                    subtitle: "Reach mortgage lenders and loan origination firms across the U.S.",
+                    bullets: [
+                        "Mortgage Bankers & Direct Lenders",
+                        "Mortgage Brokerage Firms",
+                        "Loan Officers & Branch Managers",
+                        "Refinance & Purchase Lending Teams"
+                    ],
+                    image: PHOTOS.finance,
+                    contacts: "105,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Insurance Agents and Brokers",
+                    keywords: "insurance agents brokers commercial personal coverage policies",
+                    icon: "shield",
+                    titleHtml: "Insurance Agents &amp; Brokers<br>Database",
+                    subtitle: "Connect with independent agencies and brokers across the U.S.",
+                    bullets: [
+                        "Commercial & P&C Insurance Brokers",
+                        "Independent Insurance Agencies",
+                        "Life, Health & Benefits Advisors",
+                        "Agency Principals & Producers"
+                    ],
+                    image: PHOTOS.finance,
+                    contacts: "180,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Home Inspection",
+                    keywords: "home inspection inspectors residential property inspection",
+                    icon: "home",
+                    titleHtml: "Home Inspection<br>Database",
+                    subtitle: "Reach licensed home inspection businesses across the U.S.",
+                    bullets: [
+                        "Residential Home Inspectors",
+                        "Multi-Inspector Inspection Firms",
+                        "Pre-Purchase & Radon Specialists",
+                        "Inspection Business Owners"
+                    ],
+                    image: PHOTOS.realEstate,
+                    contacts: "45,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "HVAC Contractors",
+                    keywords: "hvac contractors heating ventilation air conditioning cooling",
+                    icon: "hvac",
+                    titleHtml: "HVAC Contractors<br>Database",
+                    subtitle: "Connect with heating and air conditioning contractors across the U.S.",
+                    bullets: [
+                        "Residential HVAC Service Contractors",
+                        "Commercial Heating & Cooling Firms",
+                        "HVAC Installation & Maintenance Pros",
+                        "Service Managers & Owners"
+                    ],
+                    image: PHOTOS.construction,
+                    contacts: "135,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Janitorial Services",
+                    keywords: "janitorial services commercial cleaning sanitation office cleaning",
+                    icon: "sparkle",
+                    titleHtml: "Janitorial Services<br>Database",
+                    subtitle: "Reach commercial cleaning and janitorial providers across the U.S.",
+                    bullets: [
+                        "Commercial Janitorial & Office Cleaning",
+                        "Facility Sanitation & Deep Cleaning",
+                        "Post-Construction Cleaning Firms",
+                        "Operations Directors & Owners"
+                    ],
+                    image: PHOTOS.services,
+                    contacts: "160,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Barber Shops",
+                    keywords: "barber shops barbers grooming hair care local shops",
+                    icon: "sparkle",
+                    titleHtml: "Barber Shops<br>Database",
+                    subtitle: "Reach local barber shops and grooming studios across the U.S.",
+                    bullets: [
+                        "Traditional & Modern Barber Shops",
+                        "Men's Grooming Lounges",
+                        "Multi-Chair Barbershop Studios",
+                        "Shop Owners & Master Barbers"
+                    ],
+                    image: PHOTOS.services,
+                    contacts: "75,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Photography",
+                    keywords: "photography photographers studios commercial event real estate photos",
+                    icon: "sparkle",
+                    titleHtml: "Photography<br>Database",
+                    subtitle: "Connect with photographers and photo studios across the U.S.",
+                    bullets: [
+                        "Commercial & Product Photographers",
+                        "Real Estate & Architectural Shooters",
+                        "Event, Portrait & Wedding Studios",
+                        "Studio Owners & Creative Leads"
+                    ],
+                    image: PHOTOS.services,
+                    contacts: "95,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Plumbing",
+                    keywords: "plumbing plumbers pipefitting drains water heaters contractors",
+                    icon: "bolt",
+                    titleHtml: "Plumbing Contractors<br>Database",
+                    subtitle: "Reach licensed plumbing contractors across the U.S.",
+                    bullets: [
+                        "Residential Plumbing & Drain Pros",
+                        "Commercial & Mechanical Plumbers",
+                        "Water Heater & Pipe Repair Firms",
+                        "Master Plumbers & Business Owners"
+                    ],
+                    image: PHOTOS.construction,
+                    contacts: "130,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Roofing",
+                    keywords: "roofing roofers roof repair replacement commercial residential",
+                    icon: "roof",
+                    titleHtml: "Roofing Contractors<br>Database",
+                    subtitle: "Connect with residential and commercial roofers across the U.S.",
+                    bullets: [
+                        "Residential Roof Repair & Replacement",
+                        "Commercial Roofing Contractors",
+                        "Storm Damage & Restoration Roofers",
+                        "Roofing Owners & Estimators"
+                    ],
+                    image: PHOTOS.construction,
+                    contacts: "115,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Golf Course",
+                    keywords: "golf course country clubs golf facilities turf maintenance",
+                    icon: "tree",
+                    titleHtml: "Golf Courses<br>Database",
+                    subtitle: "Reach golf courses, country clubs, and turf managers across the U.S.",
+                    bullets: [
+                        "Public & Municipal Golf Courses",
+                        "Private Country Clubs & Resorts",
+                        "Golf Superintendents & Turf Teams",
+                        "Club Managers & Pro Shop Buyers"
+                    ],
+                    image: PHOTOS.agriculture,
+                    contacts: "25,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Education Services",
+                    keywords: "education services schools tutoring training academies learning",
+                    icon: "briefcase",
+                    titleHtml: "Education Services<br>Database",
+                    subtitle: "Reach schools, training centers, and education providers across the U.S.",
+                    bullets: [
+                        "Private Schools & Learning Academies",
+                        "Tutoring & Test Prep Centers",
+                        "Vocational & Corporate Training Firms",
+                        "Directors, Principals & Administrators"
+                    ],
+                    image: PHOTOS.services,
+                    contacts: "155,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Sign Boards",
+                    keywords: "sign boards signage signs banners outdoor advertising fabrication",
+                    icon: "blueprint",
+                    titleHtml: "Sign Boards &amp; Signage<br>Database",
+                    subtitle: "Connect with sign makers and signage fabricators across the U.S.",
+                    bullets: [
+                        "Custom Sign & Banner Fabricators",
+                        "Commercial & Storefront Signage Firms",
+                        "Digital & Outdoor Display Makers",
+                        "Sign Shop Owners & Estimators"
+                    ],
+                    image: PHOTOS.commercialBuilding,
+                    contacts: "42,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Health Services",
+                    keywords: "health services healthcare clinics medical providers wellness",
+                    icon: "medical",
+                    titleHtml: "Health Services<br>Database",
+                    subtitle: "Reach medical clinics and healthcare providers across the U.S.",
+                    bullets: [
+                        "Outpatient & Specialty Medical Clinics",
+                        "Urgent Care & Wellness Centers",
+                        "Physicians & Healthcare Practitioners",
+                        "Practice Managers & Clinic Directors"
+                    ],
+                    image: PHOTOS.healthcare,
+                    contacts: "380,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Legal Services",
+                    keywords: "legal services law firms attorneys lawyers corporate counsel",
+                    icon: "briefcase",
+                    titleHtml: "Legal Services<br>Database",
+                    subtitle: "Connect with law firms and legal practices across the U.S.",
+                    bullets: [
+                        "Law Firms & Solo Legal Practices",
+                        "Corporate, Litigation & Family Attorneys",
+                        "Real Estate, Injury & Business Lawyers",
+                        "Managing Partners & Firm Administrators"
+                    ],
+                    image: PHOTOS.legalOffice,
+                    contacts: "215,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Architects",
+                    keywords: "architects architecture design firms building plans commercial",
+                    icon: "blueprint",
+                    titleHtml: "Architects<br>Database",
+                    subtitle: "Reach architecture firms and licensed architects across the U.S.",
+                    bullets: [
+                        "Commercial & Residential Architecture Firms",
+                        "Licensed Architects & Project Principals",
+                        "Architectural Design & Planning Studios",
+                        "Studio Partners & Specifiers"
+                    ],
+                    image: PHOTOS.interior,
+                    contacts: "68,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Interior Designers",
+                    keywords: "interior designers interior design decorators residential commercial spaces",
+                    icon: "blueprint",
+                    titleHtml: "Interior Designers<br>Database",
+                    subtitle: "Connect with interior design studios and decorators across the U.S.",
+                    bullets: [
+                        "Residential Interior Designers",
+                        "Commercial & Hospitality Design Firms",
+                        "Space Planners & Staging Decorators",
+                        "Principal Designers & Studio Buyers"
+                    ],
+                    image: PHOTOS.interior,
+                    contacts: "82,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Pet Stores",
+                    keywords: "pet stores pet supplies grooming animal retail shops",
+                    icon: "store",
+                    titleHtml: "Pet Stores<br>Database",
+                    subtitle: "Reach pet supply shops and grooming retailers across the U.S.",
+                    bullets: [
+                        "Independent Pet Supply Stores",
+                        "Pet Grooming & Retail Shops",
+                        "Specialty Food & Accessory Retailers",
+                        "Store Owners & Purchasing Buyers"
+                    ],
+                    image: PHOTOS.retail,
+                    contacts: "48,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Gift Stores",
+                    keywords: "gift stores gift shops specialty retail novelty souvenirs",
+                    icon: "store",
+                    titleHtml: "Gift Stores<br>Database",
+                    subtitle: "Connect with gift shops and specialty retailers across the U.S.",
+                    bullets: [
+                        "Gift Shops & Specialty Boutiques",
+                        "Souvenir, Novelty & Seasonal Stores",
+                        "Home & Curated Gift Retailers",
+                        "Shop Owners & Retail Buyers"
+                    ],
+                    image: PHOTOS.retail,
+                    contacts: "62,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Lawn Services",
+                    keywords: "lawn services landscaping lawn care mowing turf groundskeeping",
+                    icon: "tree",
+                    titleHtml: "Lawn Services<br>Database",
+                    subtitle: "Reach lawn care and landscaping businesses across the U.S.",
+                    bullets: [
+                        "Lawn Maintenance & Mowing Services",
+                        "Landscape Design & Installation Firms",
+                        "Commercial Groundskeeping Providers",
+                        "Owners & Operations Managers"
+                    ],
+                    image: PHOTOS.agriculture,
+                    contacts: "175,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Jewelry Stores",
+                    keywords: "jewelry stores jewelers fine jewelry watches retail",
+                    icon: "sparkle",
+                    titleHtml: "Jewelry Stores<br>Database",
+                    subtitle: "Reach fine jewelers and watch retailers across the U.S.",
+                    bullets: [
+                        "Independent & Fine Jewelry Stores",
+                        "Custom Jewelers & Repair Shops",
+                        "Watch & Luxury Accessory Retailers",
+                        "Store Owners & Buyers"
+                    ],
+                    image: PHOTOS.retail,
+                    contacts: "40,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Wine & Distilled Beverages",
+                    keywords: "wine distilled beverages spirits liquor winery distributors",
+                    icon: "store",
+                    titleHtml: "Wine &amp; Distilled Beverages<br>Database",
+                    subtitle: "Connect with wineries, distilleries, and beverage businesses across the U.S.",
+                    bullets: [
+                        "Wineries, Vineyards & Tasting Rooms",
+                        "Craft Distilleries & Spirits Producers",
+                        "Wine & Beverage Distributors",
+                        "Founders, Winemakers & Buyers"
+                    ],
+                    image: PHOTOS.hospitality,
+                    contacts: "38,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Glass and Glazing",
+                    keywords: "glass glazing windows storefront commercial glass contractors",
+                    icon: "blueprint",
+                    titleHtml: "Glass &amp; Glazing<br>Database",
+                    subtitle: "Reach glass and glazing contractors across the U.S.",
+                    bullets: [
+                        "Commercial Storefront & Curtain Wall Glaziers",
+                        "Architectural & Custom Glass Installers",
+                        "Window & Glass Repair Contractors",
+                        "Glazing Contractors & Estimators"
+                    ],
+                    image: PHOTOS.commercialBuilding,
+                    contacts: "34,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Floor Laying & Floor Work",
+                    keywords: "floor laying floor work flooring tile hardwood carpet contractors",
+                    icon: "gear",
+                    titleHtml: "Floor Laying &amp; Floor Work<br>Database",
+                    subtitle: "Connect with flooring contractors and installers across the U.S.",
+                    bullets: [
+                        "Hardwood, Tile & Laminate Installers",
+                        "Commercial & Resilient Flooring Firms",
+                        "Carpet & Floor Refinishing Contractors",
+                        "Flooring Owners & Project Leads"
+                    ],
+                    image: PHOTOS.interior,
+                    contacts: "78,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "CPA - Certified Public Accountant",
+                    keywords: "cpa certified public accountant accounting tax audit bookkeeping",
+                    icon: "bank",
+                    titleHtml: "CPA Firms<br>Database",
+                    subtitle: "Reach CPAs and accounting practices across the U.S.",
+                    bullets: [
+                        "Certified Public Accounting Firms",
+                        "Tax, Audit & Advisory Practices",
+                        "Bookkeeping & Fractional CFO Firms",
+                        "Managing Partners & CPAs"
+                    ],
+                    image: PHOTOS.finance,
+                    contacts: "125,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Property Management",
+                    keywords: "property management property managers apartments multifamily landlords",
+                    icon: "property",
+                    titleHtml: "Property Management<br>Database",
+                    subtitle: "Reach residential and commercial property managers across the U.S.",
+                    bullets: [
+                        "Residential & Multifamily Property Managers",
+                        "Commercial Building Management Firms",
+                        "HOA & Community Association Managers",
+                        "Portfolio Directors & Owners"
+                    ],
+                    image: PHOTOS.realEstate,
+                    contacts: "110,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Auto Repair & Body Shops",
+                    keywords: "auto repair body shops collision centers mechanics car service",
+                    icon: "truck",
+                    titleHtml: "Auto Repair &amp; Body Shops<br>Database",
+                    subtitle: "Connect with automotive repair and collision shops across the U.S.",
+                    bullets: [
+                        "Independent Auto Repair & Mechanic Shops",
+                        "Collision & Auto Body Repair Centers",
+                        "Tire, Brake & Maintenance Garages",
+                        "Shop Owners & Service Managers"
+                    ],
+                    image: PHOTOS.automotive,
+                    contacts: "195,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Pest Control",
+                    keywords: "pest control exterminators termite rodents sanitation property",
+                    icon: "shield",
+                    titleHtml: "Pest Control<br>Database",
+                    subtitle: "Reach pest control and extermination companies across the U.S.",
+                    bullets: [
+                        "Residential & Commercial Pest Control",
+                        "Termite, Rodent & Wildlife Specialists",
+                        "Multi-Branch Pest Service Providers",
+                        "Owners & Operations Managers"
+                    ],
+                    image: PHOTOS.services,
+                    contacts: "44,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Freight, Trucking & Logistics",
+                    keywords: "freight trucking logistics shipping supply chain transport",
+                    icon: "truck",
+                    titleHtml: "Freight, Trucking &amp; Logistics<br>Database",
+                    subtitle: "Connect with trucking carriers and logistics firms across the U.S.",
+                    bullets: [
+                        "Trucking Fleets & Freight Carriers",
+                        "3PL & Supply Chain Logistics Firms",
+                        "Warehousing & Distribution Operators",
+                        "Fleet Owners & Logistics Directors"
+                    ],
+                    image: PHOTOS.logistics,
+                    contacts: "165,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Dental Practices",
+                    keywords: "dental practices dentists orthodontists dental clinics oral care",
+                    icon: "medical",
+                    titleHtml: "Dental Practices<br>Database",
+                    subtitle: "Reach dental clinics, dentists, and oral specialists across the U.S.",
+                    bullets: [
+                        "General & Family Dental Practices",
+                        "Orthodontic, Oral Surgery & Cosmetic Clinics",
+                        "Multi-Location Dental Groups (DSOs)",
+                        "Dentists & Practice Administrators"
+                    ],
+                    image: PHOTOS.healthcare,
+                    contacts: "150,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "IT Services / Managed IT (MSP)",
+                    keywords: "it services managed it msp cybersecurity cloud network support",
+                    icon: "tech",
+                    titleHtml: "IT Services &amp; MSP<br>Database",
+                    subtitle: "Connect with managed IT providers and tech support firms across the U.S.",
+                    bullets: [
+                        "Managed Service Providers (MSPs)",
+                        "Cybersecurity & Cloud Support Firms",
+                        "IT Consulting & Network Integrators",
+                        "CTOs, Founders & Service Directors"
+                    ],
+                    image: PHOTOS.techOffice,
+                    contacts: "118,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                },
+                {
+                    name: "Marketing & Advertising Agencies",
+                    keywords: "marketing advertising agencies digital seo branding media",
+                    icon: "chart",
+                    titleHtml: "Marketing &amp; Advertising<br>Database",
+                    subtitle: "Reach marketing, branding, and ad agencies across the U.S.",
+                    bullets: [
+                        "Digital Marketing & SEO Agencies",
+                        "Full-Service Advertising & Creative Shops",
+                        "Branding, PR & Media Buying Firms",
+                        "Agency Founders & Account Leaders"
+                    ],
+                    image: PHOTOS.techOffice,
+                    contacts: "132,000+",
+                    coverage: "USA",
+                    updated: "Monthly"
+                }
             ];
+
+            // Build fast lookup map by industry name
+            const DB_BY_NAME = {};
+            DATABASES.forEach(function (db) {
+                DB_BY_NAME[db.name.trim().toLowerCase()] = db;
+            });
 
             // 3. RENDER CARDS INTO GRID
             const gridEl = document.getElementById("databaseGrid");
@@ -1090,19 +1767,53 @@
                 }).join("");
             }
 
-            // 4. REAL ESTATE SAMPLE POPUP CONTROLS
-            const popupBackdrop = document.getElementById("realEstatePopup");
-            const popupClose = document.getElementById("rePopupClose");
-            const popupBack = document.getElementById("rePopupBack");
+            // 4. POPUP MODAL CONTROLS FOR ALL 42 INDUSTRIES
+            const popupBackdrop = document.getElementById("industryPopup");
+            const popupClose = document.getElementById("dbPopupClose");
+            const popupBack = document.getElementById("dbPopupBack");
+            const popupTitle = document.getElementById("dbPopupTitle");
+            const popupSubtitle = document.getElementById("dbPopupSubtitle");
+            const popupBullets = document.getElementById("dbPopupBullets");
+            const popupImage = document.getElementById("dbPopupImage");
+            const popupContacts = document.getElementById("dbPopupContacts");
+            const popupCoverage = document.getElementById("dbPopupCoverage");
+            const popupUpdated = document.getElementById("dbPopupUpdated");
 
-            function openRealEstatePopup() {
-                if (!popupBackdrop) return;
+            function openIndustryPopup(industryName) {
+                const key = (industryName || "").trim().toLowerCase();
+                const db = DB_BY_NAME[key];
+                if (!db || !popupBackdrop) return;
+
+                if (popupTitle) {
+                    popupTitle.innerHTML = db.titleHtml || `${db.name}<br>Database`;
+                }
+                if (popupSubtitle) {
+                    popupSubtitle.textContent = db.subtitle || `Reach ${db.name.toLowerCase()} professionals across the U.S.`;
+                }
+                if (popupBullets) {
+                    const bullets = Array.isArray(db.bullets) ? db.bullets : [];
+                    popupBullets.innerHTML = bullets.map(function (item) {
+                        return `
+                            <li>
+                                <span class="db-popup-check" aria-hidden="true">✓</span>
+                                <span>${item}</span>
+                            </li>
+                        `;
+                    }).join("");
+                }
+                if (popupImage && db.image) {
+                    popupImage.style.backgroundImage = `url('${db.image}')`;
+                }
+                if (popupContacts) popupContacts.textContent = db.contacts || "100,000+";
+                if (popupCoverage) popupCoverage.textContent = db.coverage || "USA";
+                if (popupUpdated) popupUpdated.textContent = db.updated || "Updated";
+
                 popupBackdrop.classList.add("is-open");
                 popupBackdrop.setAttribute("aria-hidden", "false");
                 document.body.style.overflow = "hidden";
             }
 
-            function closeRealEstatePopup() {
+            function closeIndustryPopup() {
                 if (!popupBackdrop) return;
                 popupBackdrop.classList.remove("is-open");
                 popupBackdrop.setAttribute("aria-hidden", "true");
@@ -1114,29 +1825,27 @@
                     const card = event.target.closest(".db-card");
                     if (!card) return;
 
-                    const industryName = (card.dataset.industry || "").trim().toLowerCase();
-                    if (industryName === "real estate") {
-                        const link = event.target.closest(".db-card-link");
-                        if (link) {
-                            event.preventDefault();
-                        }
-                        openRealEstatePopup();
+                    const link = event.target.closest(".db-card-link");
+                    if (link) {
+                        event.preventDefault();
                     }
+
+                    openIndustryPopup(card.dataset.industry);
                 });
             }
 
-            popupClose?.addEventListener("click", closeRealEstatePopup);
-            popupBack?.addEventListener("click", closeRealEstatePopup);
+            popupClose?.addEventListener("click", closeIndustryPopup);
+            popupBack?.addEventListener("click", closeIndustryPopup);
 
             popupBackdrop?.addEventListener("click", function (event) {
                 if (event.target === popupBackdrop) {
-                    closeRealEstatePopup();
+                    closeIndustryPopup();
                 }
             });
 
             document.addEventListener("keydown", function (event) {
                 if (event.key === "Escape" && popupBackdrop?.classList.contains("is-open")) {
-                    closeRealEstatePopup();
+                    closeIndustryPopup();
                 }
             });
 
