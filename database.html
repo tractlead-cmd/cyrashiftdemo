@@ -404,13 +404,6 @@
             cursor: not-allowed;
         }
 
-        .db-rotation-status {
-            text-align: center;
-            margin-top: 10px;
-            color: #7c7c7c;
-            font-size: 11px;
-        }
-
         /* =========================================
            INDUSTRY POPUP MODAL (ALL 42 INDUSTRIES)
         ========================================= */
@@ -943,9 +936,6 @@
             <!-- LEFT / RIGHT ARROWS & PAGE NUMBERS BELOW COUNT -->
             <nav class="db-pagination" id="databasePagination" aria-label="Database pages"></nav>
 
-            <div class="db-rotation-status" id="rotationStatus">
-                Auto-rotating 9 featured databases every 30s • Use ← / → arrow keys or page buttons to browse
-            </div>
 
         </section>
 
@@ -2018,7 +2008,6 @@
             const cards = Array.from(document.querySelectorAll("#databaseGrid .db-card"));
             const countEl = document.getElementById("databaseCount");
             const paginationEl = document.getElementById("databasePagination");
-            const rotationStatusEl = document.getElementById("rotationStatus");
             const noResultsEl = document.getElementById("noResults");
             const yearEl = document.getElementById("current-year");
 
@@ -2180,15 +2169,6 @@
                     }
                 });
 
-                if (rotationStatusEl) {
-                    if (query) {
-                        rotationStatusEl.textContent = "Showing search results • Use ← / → arrow keys or page buttons to navigate";
-                    } else if (currentPage === 1) {
-                        rotationStatusEl.textContent = "Featured 9 databases shuffle randomly every 30s • Use ← / → arrow keys or page buttons to browse";
-                    } else {
-                        rotationStatusEl.textContent = `Viewing Page ${currentPage} of 5 • Press ← or → arrow keys to move left or right`;
-                    }
-                }
             }
 
             // Rotate the 9 featured databases every 30 seconds
