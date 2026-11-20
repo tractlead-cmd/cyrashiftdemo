@@ -2027,92 +2027,272 @@
                 }
             });
 
-            // 5. SEARCH, PAGINATION & RANDOM 15-SECOND INDUSTRY ROTATION
-            const searchInput = document.getElementById("databaseSearch");
-            const searchButton = document.getElementById("databaseSearchButton");
-            const paginationEl = document.getElementById("databasePagination");
-            const noResultsEl = document.getElementById("noResults");
-            const yearEl = document.getElementById("current-year");
-            const ITEMS_PER_PAGE = 9;
-            const ROTATE_INTERVAL_MS = 15000;
 
-            let currentPage = 1;
-            let isHoveringGrid = false;
-            let activeList = DATABASES.slice();
+// 5. SEARCH, PAGINATION & RANDOM 15-SECOND INDUSTRY ROTATION
 
-            if (yearEl) {
-                yearEl.textContent = new Date().getFullYear();
-            }
+const searchInput = document.getElementById("databaseSearch");
+const searchButton = document.getElementById("databaseSearchButton");
+const paginationEl = document.getElementById("databasePagination");
+const noResultsEl = document.getElementById("noResults");
+const yearEl = document.getElementById("current-year");
 
-            function renderCardsList(list, animate) {
-                if (!gridEl) return;
-                if (animate) {
-                    gridEl.classList.remove("is-rotating");
-                    void gridEl.offsetWidth;
-                    gridEl.classList.add("is-rotating");
-                }
-                gridEl.innerHTML = list.map(function (db) {
-                    return `
-                        <article class="db-card" data-industry="${db.name}" data-search="${db.keywords}">
-                            ${ICONS[db.icon] || ICONS.building}
-                            <div class="db-card-content">
-                                <h3>${db.name}</h3>
-                                <p>Business Contacts</p>
-                                <a href="index.html#contact" class="db-card-link">View Details →</a>
-                            </div>
-                        </article>
-                    `;
-                }).join("");
-            }
+const ITEMS_PER_PAGE = 9;
+const ROTATE_INTERVAL_MS = 15000;
 
-            function renderPagination(totalItems, totalPages) {
-                if (!paginationEl) return;
-                if (totalItems <= ITEMS_PER_PAGE) {
-                    paginationEl.innerHTML = "";
-                    return;
-                }
+let currentPage = 1;
+let activeList = DATABASES.slice();
 
-                let html = `<button type="button" class="db-page-btn db-arrow-btn" aria-label="Previous page" data-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""}>←</button>`;
+if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+}
 
-                for (let p = 1; p <= totalPages; p++) {
-                    html += `<button type="button" class="db-page-btn ${p === currentPage ? "is-active" : ""}" data-page="${p}">${p}</button>`;
-                }
+// RENDER DATABASE CARDS
 
-                html += `<button type="button" class="db-page-btn db-arrow-btn" aria-label="Next page" data-page="${currentPage + 1}" ${currentPage === totalPages ? "disabled" : ""}>→</button>`;
-                paginationEl.innerHTML = html;
-            }
+function renderCardsList(list, animate) {
+    if (!gridEl) return;
 
-            function renderCurrentView(animate) {
-                const totalItems = activeList.length;
-                const totalPages = Math.max(1, Math.ceil(totalItems / ITEMS_PER_PAGE));
+    if (animate) {
+        gridEl.classList.remove("is-rotating");
+        void gridEl.offsetWidth;
+        gridEl.classList.add("is-rotating");
+    }
 
-                if (currentPage > totalPages) currentPage = totalPages;
-                if (currentPage < 1) currentPage = 1;
+    gridEl.innerHTML = list.map(function (db) {
+        return `
+            <article class="db-card"
+                data-industry="${db.name}"
+                data-search="${db.keywords}">
 
-                const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
-                const endIdx = Math.min(startIdx + ITEMS_PER_PAGE, totalItems);
-                const pageSlice = activeList.slice(startIdx, endIdx);
+                ${ICONS[db.icon] || ICONS.building}
 
-                renderCardsList(pageSlice, animate);
-                renderPagination(totalItems, totalPages);
+                <div class="db-card-content">
+                    <h3>${db.name}</h3>
+                    <p>Business Contacts</p>
+                    <a href="index.html#contact"
+                       class="db-card-link">
+                        View Details →
+                    </a>
+                </div>
 
-                if (noResultsEl) {
-                    noResultsEl.style.display = totalItems === 0 ? "block" : "none";
-                }
-            }
+            </article>
+        `;
+    }).join("");
+}
 
-            function applySearchFilter() {
-                const query = (searchInput?.value || "").trim().toLowerCase();
-                currentPage = 1;
-                if (!query) {
-                    activeList = DATABASES.slice();
-                } else {
-                    activeList = DATABASES.filter(function (db) {
-                        const haystack = `${db.name} ${db.keywords} ${db.subtitle || ""}`.toLowerCase();
-                        return haystack.includes(query);
-                    });
-                }
-                renderCurrentView(false);
+// PAGINATION
+
+function renderPagination(totalItems, totalPages) {
+    if (!paginationEl) return;
+
+    if (totalItems <= ITEMS_PER_PAGE) {
+        paginationEl.innerHTML = "";
+        return;
+    }
+
+    let html = `
+        <button type="button"
+            class="db-page-btn db-arrow-btn"
+            aria-label="Previous page"
+            data-page="${currentPage - 1}"
+            ${currentPage === 1 ? "disabled" : ""}>
+            ←
+        </button>
+    `;
+
+    for (let p = 1; p <= totalPages; p++) {
+        html += `
+            <button type="button"
+                class="db-page-btn ${p === currentPage ? "is-active" : ""}"
+                data-page="${p}">
+                ${p}
+            </button>
+        `;
+    }
+
+    html += `
+        <button type="button"
+            class="db-page-btn db-arrow-btn"
+            aria-label="Next page"
+            data-page="${currentPage + 1}"
+            ${currentPage === totalPages ? "disabled" : ""}>
+            →
+        </button>
+    `;
+
+    paginationEl.innerHTML = html;
+}
+
+// RENDER CURRENT PAGE
+
+function renderCurrentView(animate) {
+
+    const totalItems = activeList.length;
+
+    const totalPages = Math.max(
+        1,
+        Math.ceil(totalItems / ITEMS_PER_PAGE)
+    );
+
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
+
+    const pageSlice = activeList.slice(
+        startIdx,
+        startIdx + ITEMS_PER_PAGE
+    );
+
+    renderCardsList(pageSlice, animate);
+
+    renderPagination(totalItems, totalPages);
+
+    if (noResultsEl) {
+        noResultsEl.style.display =
+            totalItems === 0 ? "block" : "none";
+    }
+}
+
+// SEARCH
+
+function applySearchFilter() {
+
+    const query = (searchInput?.value || "")
+        .trim()
+        .toLowerCase();
+
+    currentPage = 1;
+
+    if (!query) {
+        activeList = DATABASES.slice();
+    } else {
+        activeList = DATABASES.filter(function (db) {
+
+            const haystack = `
+                ${db.name}
+                ${db.keywords}
+                ${db.subtitle || ""}
+            `.toLowerCase();
+
+            return haystack.includes(query);
+        });
+    }
+
+    renderCurrentView(false);
+}
+
+// RANDOM SHUFFLE
+
+function shuffleArray(arr) {
+
+    const copy = arr.slice();
+
+    for (let i = copy.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+
+    return copy;
+}
+
+// AUTOMATIC INDUSTRY ROTATION
+
+function rotateRandomIndustries() {
+
+    const query = (searchInput?.value || "").trim();
+
+    const isPopupOpen =
+        popupBackdrop?.classList.contains("is-open");
+
+    // Do not interrupt an active search or open popup.
+    // Mouse position does not affect rotation.
+
+    if (query || isPopupOpen) {
+        return;
+    }
+
+    let shuffledList = shuffleArray(DATABASES);
+
+    // Avoid repeating the exact same first-page arrangement.
+
+    const currentVisible = activeList
+        .slice(0, ITEMS_PER_PAGE)
+        .map(db => db.slug)
+        .join("|");
+
+    let attempts = 0;
+
+    while (
+        shuffledList
+            .slice(0, ITEMS_PER_PAGE)
+            .map(db => db.slug)
+            .join("|") === currentVisible &&
+        attempts < 20
+    ) {
+        shuffledList = shuffleArray(DATABASES);
+        attempts++;
+    }
+
+    activeList = shuffledList;
+
+    currentPage = 1;
+
+    renderCurrentView(true);
+}
+
+// START AUTOMATIC ROTATION
+
+setInterval(
+    rotateRandomIndustries,
+    ROTATE_INTERVAL_MS
+);
+
+// PAGINATION CLICK
+
+paginationEl?.addEventListener("click", function (event) {
+
+    const btn = event.target.closest(".db-page-btn");
+
+    if (!btn || btn.disabled) return;
+
+    const targetPage = parseInt(btn.dataset.page, 10);
+
+    if (!isNaN(targetPage)) {
+
+        currentPage = targetPage;
+
+        renderCurrentView(true);
+
+        document.querySelector(".db-available-section")
+            ?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+    }
+});
+
+// SEARCH EVENTS
+
+searchInput?.addEventListener("input", applySearchFilter);
+
+searchButton?.addEventListener("click", applySearchFilter);
+
+searchInput?.addEventListener("keydown", function (event) {
+
+    if (event.key === "Enter") {
+
+        event.preventDefault();
+
+        applySearchFilter();
+    }
+});
+
+// INITIAL DISPLAY
+
+renderCurrentView(false);
+
             }
 
             function shuffleArray(arr) {
