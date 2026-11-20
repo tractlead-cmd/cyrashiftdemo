@@ -906,11 +906,11 @@
 
                     <div class="db-popup-actions">
                         <a href="index.html#contact" class="db-popup-btn-primary">Request a Quote →</a>
-                        <a href="sample-business-database.xlsx" download class="db-popup-btn-secondary">Download Sample (Excel) ⤓</a>
+                        <a href="./samples/real-estate-sample.xlsx" id="dbPopupSample" download class="db-popup-btn-secondary">Download Sample (Excel) ⤓</a>
                     </div>
                 </div>
 
-                <div class="db-popup-right" id="dbPopupImage" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80');"></div>
+                <div class="db-popup-right" id="dbPopupImage" style="background-image: url('./dataimages/real-estate.jpg');"></div>
                 <div class="db-popup-diagonal" aria-hidden="true"></div>
             </div>
 
@@ -1007,29 +1007,14 @@
                 factory: `<svg class="db-card-icon" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M6 54V28l16 8V28l16 8V10h12v26h8v18H6z"/><rect x="14" y="42" width="6" height="6" fill="#171717"/><rect x="26" y="42" width="6" height="6" fill="#171717"/><rect x="38" y="42" width="6" height="6" fill="#171717"/></svg>`
             };
 
-            // PHOTO PRESETS BY THEME
-            const PHOTOS = {
-                realEstate: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
-                commercialBuilding: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80",
-                construction: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80",
-                agriculture: "https://images.unsplash.com/photo-1500937359354-96cb0698b664?auto=format&fit=crop&w=1400&q=80",
-                energy: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1400&q=80",
-                retail: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80",
-                hospitality: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=80",
-                automotive: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80",
-                finance: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80",
-                interior: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=80",
-                healthcare: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1400&q=80",
-                legalOffice: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1400&q=80",
-                logistics: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80",
-                techOffice: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
-                services: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80"
-            };
+            const FALLBACK_SAMPLE = "./samples/sample-business-database.xlsx";
+            const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80";
 
-            // 2. MASTER LIST OF 42 B2B INDUSTRIES (With industry-accurate popup data!)
+            // 2. MASTER LIST OF 42 B2B INDUSTRIES (All wired to ./samples/ and ./dataimages/)
             const DATABASES = [
                 {
                     name: "Agriculture Crops",
+                    slug: "agriculture-crops",
                     keywords: "agriculture crops farming crop production agribusiness growers",
                     icon: "tree",
                     titleHtml: "Agriculture Crops<br>Database",
@@ -1040,13 +1025,15 @@
                         "Agribusiness & Farm Operators",
                         "Agricultural Supply Decision-Makers"
                     ],
-                    image: PHOTOS.agriculture,
+                    image: "./dataimages/agriculture-crops.jpg",
+                    sample: "./samples/agriculture-crops-sample.xlsx",
                     contacts: "120,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Agriculture Livestock",
+                    slug: "agriculture-livestock",
                     keywords: "agriculture livestock cattle ranching dairy poultry farms",
                     icon: "tree",
                     titleHtml: "Agriculture Livestock<br>Database",
@@ -1057,13 +1044,15 @@
                         "Livestock Breeders & Producers",
                         "Ranch & Farm Managers"
                     ],
-                    image: PHOTOS.agriculture,
+                    image: "./dataimages/agriculture-livestock.jpg",
+                    sample: "./samples/agriculture-livestock-sample.xlsx",
                     contacts: "95,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Oil & Gas Extraction",
+                    slug: "oil-and-gas-extraction",
                     keywords: "oil gas extraction drilling petroleum energy exploration",
                     icon: "factory",
                     titleHtml: "Oil &amp; Gas Extraction<br>Database",
@@ -1074,13 +1063,15 @@
                         "Energy & Exploration Companies",
                         "Operations & Procurement Leaders"
                     ],
-                    image: PHOTOS.energy,
+                    image: "./dataimages/oil-and-gas-extraction.jpg",
+                    sample: "./samples/oil-and-gas-extraction-sample.xlsx",
                     contacts: "65,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Construction - General Contractors",
+                    slug: "construction-general-contractors",
                     keywords: "construction general contractors builders commercial residential projects",
                     icon: "helmet",
                     titleHtml: "General Contractors<br>Database",
@@ -1091,13 +1082,15 @@
                         "Design-Build Construction Firms",
                         "Estimators & Project Owners"
                     ],
-                    image: PHOTOS.construction,
+                    image: "./dataimages/construction-general-contractors.jpg",
+                    sample: "./samples/construction-general-contractors-sample.xlsx",
                     contacts: "240,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Construction - Special Trade Contractors",
+                    slug: "construction-special-trade-contractors",
                     keywords: "construction special trade contractors subcontractors masonry concrete trades",
                     icon: "helmet",
                     titleHtml: "Special Trade Contractors<br>Database",
@@ -1108,13 +1101,15 @@
                         "Specialty Excavation & Site Trades",
                         "Trade Business Owners & Foremen"
                     ],
-                    image: PHOTOS.construction,
+                    image: "./dataimages/construction-special-trade-contractors.jpg",
+                    sample: "./samples/construction-special-trade-contractors-sample.xlsx",
                     contacts: "310,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Building Materials and Hardware",
+                    slug: "building-materials-and-hardware",
                     keywords: "building materials hardware lumber supplies supply stores contractors",
                     icon: "store",
                     titleHtml: "Building Materials &amp; Hardware<br>Database",
@@ -1125,13 +1120,15 @@
                         "Construction Material Distributors",
                         "Store & Purchasing Managers"
                     ],
-                    image: PHOTOS.retail,
+                    image: "./dataimages/building-materials-and-hardware.jpg",
+                    sample: "./samples/building-materials-and-hardware-sample.xlsx",
                     contacts: "85,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Used and New Car Dealers",
+                    slug: "used-and-new-car-dealers",
                     keywords: "used new car dealers auto dealerships vehicle sales automotive",
                     icon: "truck",
                     titleHtml: "Car Dealerships<br>Database",
@@ -1142,13 +1139,15 @@
                         "Fleet & Commercial Vehicle Dealers",
                         "General Managers & Dealer Principals"
                     ],
-                    image: PHOTOS.automotive,
+                    image: "./dataimages/used-and-new-car-dealers.jpg",
+                    sample: "./samples/used-and-new-car-dealers-sample.xlsx",
                     contacts: "110,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Hotels and Restaurants",
+                    slug: "hotels-and-restaurants",
                     keywords: "hotels restaurants hospitality lodging dining catering food service",
                     icon: "store",
                     titleHtml: "Hotels &amp; Restaurants<br>Database",
@@ -1159,13 +1158,15 @@
                         "Cafes, Bars & Catering Services",
                         "Owners, GMs & F&B Buyers"
                     ],
-                    image: PHOTOS.hospitality,
+                    image: "./dataimages/hotels-and-restaurants.jpg",
+                    sample: "./samples/hotels-and-restaurants-sample.xlsx",
                     contacts: "450,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Apparel & Accessory Stores",
+                    slug: "apparel-and-accessory-stores",
                     keywords: "apparel accessory stores clothing fashion retail boutiques",
                     icon: "store",
                     titleHtml: "Apparel &amp; Accessory Stores<br>Database",
@@ -1176,13 +1177,15 @@
                         "Specialty Fashion Chains",
                         "Retail Owners & Merchandising Buyers"
                     ],
-                    image: PHOTOS.retail,
+                    image: "./dataimages/apparel-and-accessory-stores.jpg",
+                    sample: "./samples/apparel-and-accessory-stores-sample.xlsx",
                     contacts: "145,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Real Estate",
+                    slug: "real-estate",
                     keywords: "real estate realtors agents brokers residential property sales",
                     icon: "building",
                     titleHtml: "Real Estate<br>Database",
@@ -1193,13 +1196,15 @@
                         "Real Estate Brokerages & Firms",
                         "Buyer & Seller Representatives"
                     ],
-                    image: PHOTOS.realEstate,
+                    image: "./dataimages/real-estate.jpg",
+                    sample: "./samples/real-estate-sample.xlsx",
                     contacts: "200,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Commercial Real Estate",
+                    slug: "commercial-real-estate",
                     keywords: "commercial real estate cre office retail industrial property brokers",
                     icon: "building",
                     titleHtml: "Commercial Real Estate<br>Database",
@@ -1210,13 +1215,15 @@
                         "Retail, Office & Industrial Specialists",
                         "Managing Partners & Deal Teams"
                     ],
-                    image: PHOTOS.commercialBuilding,
+                    image: "./dataimages/commercial-real-estate.jpg",
+                    sample: "./samples/commercial-real-estate-sample.xlsx",
                     contacts: "90,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Mortgage Companies",
+                    slug: "mortgage-companies",
                     keywords: "mortgage companies lenders loan officers home loans financing",
                     icon: "bank",
                     titleHtml: "Mortgage Companies<br>Database",
@@ -1227,13 +1234,15 @@
                         "Loan Officers & Branch Managers",
                         "Refinance & Purchase Lending Teams"
                     ],
-                    image: PHOTOS.finance,
+                    image: "./dataimages/mortgage-companies.jpg",
+                    sample: "./samples/mortgage-companies-sample.xlsx",
                     contacts: "105,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Insurance Agents and Brokers",
+                    slug: "insurance-agents-and-brokers",
                     keywords: "insurance agents brokers commercial personal coverage policies",
                     icon: "shield",
                     titleHtml: "Insurance Agents &amp; Brokers<br>Database",
@@ -1244,13 +1253,15 @@
                         "Life, Health & Benefits Advisors",
                         "Agency Principals & Producers"
                     ],
-                    image: PHOTOS.finance,
+                    image: "./dataimages/insurance-agents-and-brokers.jpg",
+                    sample: "./samples/insurance-agents-and-brokers-sample.xlsx",
                     contacts: "180,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Home Inspection",
+                    slug: "home-inspection",
                     keywords: "home inspection inspectors residential property inspection",
                     icon: "home",
                     titleHtml: "Home Inspection<br>Database",
@@ -1261,13 +1272,15 @@
                         "Pre-Purchase & Radon Specialists",
                         "Inspection Business Owners"
                     ],
-                    image: PHOTOS.realEstate,
+                    image: "./dataimages/home-inspection.jpg",
+                    sample: "./samples/home-inspection-sample.xlsx",
                     contacts: "45,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "HVAC Contractors",
+                    slug: "hvac-contractors",
                     keywords: "hvac contractors heating ventilation air conditioning cooling",
                     icon: "hvac",
                     titleHtml: "HVAC Contractors<br>Database",
@@ -1278,13 +1291,15 @@
                         "HVAC Installation & Maintenance Pros",
                         "Service Managers & Owners"
                     ],
-                    image: PHOTOS.construction,
+                    image: "./dataimages/hvac-contractors.jpg",
+                    sample: "./samples/hvac-contractors-sample.xlsx",
                     contacts: "135,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Janitorial Services",
+                    slug: "janitorial-services",
                     keywords: "janitorial services commercial cleaning sanitation office cleaning",
                     icon: "sparkle",
                     titleHtml: "Janitorial Services<br>Database",
@@ -1295,13 +1310,15 @@
                         "Post-Construction Cleaning Firms",
                         "Operations Directors & Owners"
                     ],
-                    image: PHOTOS.services,
+                    image: "./dataimages/janitorial-services.jpg",
+                    sample: "./samples/janitorial-services-sample.xlsx",
                     contacts: "160,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Barber Shops",
+                    slug: "barber-shops",
                     keywords: "barber shops barbers grooming hair care local shops",
                     icon: "sparkle",
                     titleHtml: "Barber Shops<br>Database",
@@ -1312,13 +1329,15 @@
                         "Multi-Chair Barbershop Studios",
                         "Shop Owners & Master Barbers"
                     ],
-                    image: PHOTOS.services,
+                    image: "./dataimages/barber-shops.jpg",
+                    sample: "./samples/barber-shops-sample.xlsx",
                     contacts: "75,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Photography",
+                    slug: "photography",
                     keywords: "photography photographers studios commercial event real estate photos",
                     icon: "sparkle",
                     titleHtml: "Photography<br>Database",
@@ -1329,13 +1348,15 @@
                         "Event, Portrait & Wedding Studios",
                         "Studio Owners & Creative Leads"
                     ],
-                    image: PHOTOS.services,
+                    image: "./dataimages/photography.jpg",
+                    sample: "./samples/photography-sample.xlsx",
                     contacts: "95,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Plumbing",
+                    slug: "plumbing",
                     keywords: "plumbing plumbers pipefitting drains water heaters contractors",
                     icon: "bolt",
                     titleHtml: "Plumbing Contractors<br>Database",
@@ -1346,13 +1367,15 @@
                         "Water Heater & Pipe Repair Firms",
                         "Master Plumbers & Business Owners"
                     ],
-                    image: PHOTOS.construction,
+                    image: "./dataimages/plumbing.jpg",
+                    sample: "./samples/plumbing-sample.xlsx",
                     contacts: "130,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Roofing",
+                    slug: "roofing",
                     keywords: "roofing roofers roof repair replacement commercial residential",
                     icon: "roof",
                     titleHtml: "Roofing Contractors<br>Database",
@@ -1363,13 +1386,15 @@
                         "Storm Damage & Restoration Roofers",
                         "Roofing Owners & Estimators"
                     ],
-                    image: PHOTOS.construction,
+                    image: "./dataimages/roofing.jpg",
+                    sample: "./samples/roofing-sample.xlsx",
                     contacts: "115,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Golf Course",
+                    slug: "golf-course",
                     keywords: "golf course country clubs golf facilities turf maintenance",
                     icon: "tree",
                     titleHtml: "Golf Courses<br>Database",
@@ -1380,13 +1405,15 @@
                         "Golf Superintendents & Turf Teams",
                         "Club Managers & Pro Shop Buyers"
                     ],
-                    image: PHOTOS.agriculture,
+                    image: "./dataimages/golf-course.jpg",
+                    sample: "./samples/golf-course-sample.xlsx",
                     contacts: "25,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Education Services",
+                    slug: "education-services",
                     keywords: "education services schools tutoring training academies learning",
                     icon: "briefcase",
                     titleHtml: "Education Services<br>Database",
@@ -1397,13 +1424,15 @@
                         "Vocational & Corporate Training Firms",
                         "Directors, Principals & Administrators"
                     ],
-                    image: PHOTOS.services,
+                    image: "./dataimages/education-services.jpg",
+                    sample: "./samples/education-services-sample.xlsx",
                     contacts: "155,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Sign Boards",
+                    slug: "sign-boards",
                     keywords: "sign boards signage signs banners outdoor advertising fabrication",
                     icon: "blueprint",
                     titleHtml: "Sign Boards &amp; Signage<br>Database",
@@ -1414,13 +1443,15 @@
                         "Digital & Outdoor Display Makers",
                         "Sign Shop Owners & Estimators"
                     ],
-                    image: PHOTOS.commercialBuilding,
+                    image: "./dataimages/sign-boards.jpg",
+                    sample: "./samples/sign-boards-sample.xlsx",
                     contacts: "42,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Health Services",
+                    slug: "health-services",
                     keywords: "health services healthcare clinics medical providers wellness",
                     icon: "medical",
                     titleHtml: "Health Services<br>Database",
@@ -1431,13 +1462,15 @@
                         "Physicians & Healthcare Practitioners",
                         "Practice Managers & Clinic Directors"
                     ],
-                    image: PHOTOS.healthcare,
+                    image: "./dataimages/health-services.jpg",
+                    sample: "./samples/health-services-sample.xlsx",
                     contacts: "380,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Legal Services",
+                    slug: "legal-services",
                     keywords: "legal services law firms attorneys lawyers corporate counsel",
                     icon: "briefcase",
                     titleHtml: "Legal Services<br>Database",
@@ -1448,13 +1481,15 @@
                         "Real Estate, Injury & Business Lawyers",
                         "Managing Partners & Firm Administrators"
                     ],
-                    image: PHOTOS.legalOffice,
+                    image: "./dataimages/legal-services.jpg",
+                    sample: "./samples/legal-services-sample.xlsx",
                     contacts: "215,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Architects",
+                    slug: "architects",
                     keywords: "architects architecture design firms building plans commercial",
                     icon: "blueprint",
                     titleHtml: "Architects<br>Database",
@@ -1465,13 +1500,15 @@
                         "Architectural Design & Planning Studios",
                         "Studio Partners & Specifiers"
                     ],
-                    image: PHOTOS.interior,
+                    image: "./dataimages/architects.jpg",
+                    sample: "./samples/architects-sample.xlsx",
                     contacts: "68,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Interior Designers",
+                    slug: "interior-designers",
                     keywords: "interior designers interior design decorators residential commercial spaces",
                     icon: "blueprint",
                     titleHtml: "Interior Designers<br>Database",
@@ -1482,13 +1519,15 @@
                         "Space Planners & Staging Decorators",
                         "Principal Designers & Studio Buyers"
                     ],
-                    image: PHOTOS.interior,
+                    image: "./dataimages/interior-designers.jpg",
+                    sample: "./samples/interior-designers-sample.xlsx",
                     contacts: "82,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Pet Stores",
+                    slug: "pet-stores",
                     keywords: "pet stores pet supplies grooming animal retail shops",
                     icon: "store",
                     titleHtml: "Pet Stores<br>Database",
@@ -1499,13 +1538,15 @@
                         "Specialty Food & Accessory Retailers",
                         "Store Owners & Purchasing Buyers"
                     ],
-                    image: PHOTOS.retail,
+                    image: "./dataimages/pet-stores.jpg",
+                    sample: "./samples/pet-stores-sample.xlsx",
                     contacts: "48,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Gift Stores",
+                    slug: "gift-stores",
                     keywords: "gift stores gift shops specialty retail novelty souvenirs",
                     icon: "store",
                     titleHtml: "Gift Stores<br>Database",
@@ -1516,13 +1557,15 @@
                         "Home & Curated Gift Retailers",
                         "Shop Owners & Retail Buyers"
                     ],
-                    image: PHOTOS.retail,
+                    image: "./dataimages/gift-stores.jpg",
+                    sample: "./samples/gift-stores-sample.xlsx",
                     contacts: "62,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Lawn Services",
+                    slug: "lawn-services",
                     keywords: "lawn services landscaping lawn care mowing turf groundskeeping",
                     icon: "tree",
                     titleHtml: "Lawn Services<br>Database",
@@ -1533,13 +1576,15 @@
                         "Commercial Groundskeeping Providers",
                         "Owners & Operations Managers"
                     ],
-                    image: PHOTOS.agriculture,
+                    image: "./dataimages/lawn-services.jpg",
+                    sample: "./samples/lawn-services-sample.xlsx",
                     contacts: "175,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Jewelry Stores",
+                    slug: "jewelry-stores",
                     keywords: "jewelry stores jewelers fine jewelry watches retail",
                     icon: "sparkle",
                     titleHtml: "Jewelry Stores<br>Database",
@@ -1550,13 +1595,15 @@
                         "Watch & Luxury Accessory Retailers",
                         "Store Owners & Buyers"
                     ],
-                    image: PHOTOS.retail,
+                    image: "./dataimages/jewelry-stores.jpg",
+                    sample: "./samples/jewelry-stores-sample.xlsx",
                     contacts: "40,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Wine & Distilled Beverages",
+                    slug: "wine-and-distilled-beverages",
                     keywords: "wine distilled beverages spirits liquor winery distributors",
                     icon: "store",
                     titleHtml: "Wine &amp; Distilled Beverages<br>Database",
@@ -1567,13 +1614,15 @@
                         "Wine & Beverage Distributors",
                         "Founders, Winemakers & Buyers"
                     ],
-                    image: PHOTOS.hospitality,
+                    image: "./dataimages/wine-and-distilled-beverages.jpg",
+                    sample: "./samples/wine-and-distilled-beverages-sample.xlsx",
                     contacts: "38,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Glass and Glazing",
+                    slug: "glass-and-glazing",
                     keywords: "glass glazing windows storefront commercial glass contractors",
                     icon: "blueprint",
                     titleHtml: "Glass &amp; Glazing<br>Database",
@@ -1584,13 +1633,15 @@
                         "Window & Glass Repair Contractors",
                         "Glazing Contractors & Estimators"
                     ],
-                    image: PHOTOS.commercialBuilding,
+                    image: "./dataimages/glass-and-glazing.jpg",
+                    sample: "./samples/glass-and-glazing-sample.xlsx",
                     contacts: "34,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Floor Laying & Floor Work",
+                    slug: "floor-laying-and-floor-work",
                     keywords: "floor laying floor work flooring tile hardwood carpet contractors",
                     icon: "gear",
                     titleHtml: "Floor Laying &amp; Floor Work<br>Database",
@@ -1601,13 +1652,15 @@
                         "Carpet & Floor Refinishing Contractors",
                         "Flooring Owners & Project Leads"
                     ],
-                    image: PHOTOS.interior,
+                    image: "./dataimages/floor-laying-and-floor-work.jpg",
+                    sample: "./samples/floor-laying-and-floor-work-sample.xlsx",
                     contacts: "78,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "CPA - Certified Public Accountant",
+                    slug: "cpa-certified-public-accountant",
                     keywords: "cpa certified public accountant accounting tax audit bookkeeping",
                     icon: "bank",
                     titleHtml: "CPA Firms<br>Database",
@@ -1618,13 +1671,15 @@
                         "Bookkeeping & Fractional CFO Firms",
                         "Managing Partners & CPAs"
                     ],
-                    image: PHOTOS.finance,
+                    image: "./dataimages/cpa-certified-public-accountant.jpg",
+                    sample: "./samples/cpa-certified-public-accountant-sample.xlsx",
                     contacts: "125,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Property Management",
+                    slug: "property-management",
                     keywords: "property management property managers apartments multifamily landlords",
                     icon: "property",
                     titleHtml: "Property Management<br>Database",
@@ -1635,13 +1690,15 @@
                         "HOA & Community Association Managers",
                         "Portfolio Directors & Owners"
                     ],
-                    image: PHOTOS.realEstate,
+                    image: "./dataimages/property-management.jpg",
+                    sample: "./samples/property-management-sample.xlsx",
                     contacts: "110,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Auto Repair & Body Shops",
+                    slug: "auto-repair-and-body-shops",
                     keywords: "auto repair body shops collision centers mechanics car service",
                     icon: "truck",
                     titleHtml: "Auto Repair &amp; Body Shops<br>Database",
@@ -1652,13 +1709,15 @@
                         "Tire, Brake & Maintenance Garages",
                         "Shop Owners & Service Managers"
                     ],
-                    image: PHOTOS.automotive,
+                    image: "./dataimages/auto-repair-and-body-shops.jpg",
+                    sample: "./samples/auto-repair-and-body-shops-sample.xlsx",
                     contacts: "195,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Pest Control",
+                    slug: "pest-control",
                     keywords: "pest control exterminators termite rodents sanitation property",
                     icon: "shield",
                     titleHtml: "Pest Control<br>Database",
@@ -1669,13 +1728,15 @@
                         "Multi-Branch Pest Service Providers",
                         "Owners & Operations Managers"
                     ],
-                    image: PHOTOS.services,
+                    image: "./dataimages/pest-control.jpg",
+                    sample: "./samples/pest-control-sample.xlsx",
                     contacts: "44,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Freight, Trucking & Logistics",
+                    slug: "freight-trucking-and-logistics",
                     keywords: "freight trucking logistics shipping supply chain transport",
                     icon: "truck",
                     titleHtml: "Freight, Trucking &amp; Logistics<br>Database",
@@ -1686,13 +1747,15 @@
                         "Warehousing & Distribution Operators",
                         "Fleet Owners & Logistics Directors"
                     ],
-                    image: PHOTOS.logistics,
+                    image: "./dataimages/freight-trucking-and-logistics.jpg",
+                    sample: "./samples/freight-trucking-and-logistics-sample.xlsx",
                     contacts: "165,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Dental Practices",
+                    slug: "dental-practices",
                     keywords: "dental practices dentists orthodontists dental clinics oral care",
                     icon: "medical",
                     titleHtml: "Dental Practices<br>Database",
@@ -1703,13 +1766,15 @@
                         "Multi-Location Dental Groups (DSOs)",
                         "Dentists & Practice Administrators"
                     ],
-                    image: PHOTOS.healthcare,
+                    image: "./dataimages/dental-practices.jpg",
+                    sample: "./samples/dental-practices-sample.xlsx",
                     contacts: "150,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "IT Services / Managed IT (MSP)",
+                    slug: "it-services-managed-it-msp",
                     keywords: "it services managed it msp cybersecurity cloud network support",
                     icon: "tech",
                     titleHtml: "IT Services &amp; MSP<br>Database",
@@ -1720,13 +1785,15 @@
                         "IT Consulting & Network Integrators",
                         "CTOs, Founders & Service Directors"
                     ],
-                    image: PHOTOS.techOffice,
+                    image: "./dataimages/it-services-managed-it-msp.jpg",
+                    sample: "./samples/it-services-managed-it-msp-sample.xlsx",
                     contacts: "118,000+",
                     coverage: "USA",
                     updated: "Monthly"
                 },
                 {
                     name: "Marketing & Advertising Agencies",
+                    slug: "marketing-and-advertising-agencies",
                     keywords: "marketing advertising agencies digital seo branding media",
                     icon: "chart",
                     titleHtml: "Marketing &amp; Advertising<br>Database",
@@ -1737,7 +1804,8 @@
                         "Branding, PR & Media Buying Firms",
                         "Agency Founders & Account Leaders"
                     ],
-                    image: PHOTOS.techOffice,
+                    image: "./dataimages/marketing-and-advertising-agencies.jpg",
+                    sample: "./samples/marketing-and-advertising-agencies-sample.xlsx",
                     contacts: "132,000+",
                     coverage: "USA",
                     updated: "Monthly"
@@ -1767,7 +1835,7 @@
                 }).join("");
             }
 
-            // 4. POPUP MODAL CONTROLS FOR ALL 42 INDUSTRIES
+            // 4. POPUP MODAL CONTROLS FOR ALL 42 INDUSTRIES (.jpg + .png + fallback support)
             const popupBackdrop = document.getElementById("industryPopup");
             const popupClose = document.getElementById("dbPopupClose");
             const popupBack = document.getElementById("dbPopupBack");
@@ -1775,9 +1843,42 @@
             const popupSubtitle = document.getElementById("dbPopupSubtitle");
             const popupBullets = document.getElementById("dbPopupBullets");
             const popupImage = document.getElementById("dbPopupImage");
+            const popupSample = document.getElementById("dbPopupSample");
             const popupContacts = document.getElementById("dbPopupContacts");
             const popupCoverage = document.getElementById("dbPopupCoverage");
             const popupUpdated = document.getElementById("dbPopupUpdated");
+
+            function applyPopupImage(db) {
+                if (!popupImage) return;
+                const slug = db.slug || "";
+                const candidates = [];
+
+                if (db.image) candidates.push(db.image);
+                if (slug) {
+                    candidates.push(`./dataimages/${slug}.jpg`);
+                    candidates.push(`./dataimages/${slug}.png`);
+                }
+                candidates.push(FALLBACK_IMAGE);
+
+                // Deduplicate while preserving order
+                const queue = Array.from(new Set(candidates));
+                let index = 0;
+
+                function tryNext() {
+                    if (index >= queue.length) return;
+                    const src = queue[index++];
+                    const tester = new Image();
+                    tester.onload = function () {
+                        popupImage.style.backgroundImage = `url('${src}')`;
+                    };
+                    tester.onerror = function () {
+                        tryNext();
+                    };
+                    tester.src = src;
+                }
+
+                tryNext();
+            }
 
             function openIndustryPopup(industryName) {
                 const key = (industryName || "").trim().toLowerCase();
@@ -1801,9 +1902,15 @@
                         `;
                     }).join("");
                 }
-                if (popupImage && db.image) {
-                    popupImage.style.backgroundImage = `url('${db.image}')`;
+
+                applyPopupImage(db);
+
+                if (popupSample) {
+                    const samplePath = db.sample || (db.slug ? `./samples/${db.slug}-sample.xlsx` : FALLBACK_SAMPLE);
+                    popupSample.href = samplePath;
+                    popupSample.setAttribute("download", "");
                 }
+
                 if (popupContacts) popupContacts.textContent = db.contacts || "100,000+";
                 if (popupCoverage) popupCoverage.textContent = db.coverage || "USA";
                 if (popupUpdated) popupUpdated.textContent = db.updated || "Updated";
