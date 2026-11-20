@@ -252,6 +252,7 @@
             border-radius: 12px;
             background: linear-gradient(135deg,#191919,#111);
             box-shadow: 0 5px 18px rgba(0,0,0,0.22);
+            cursor: pointer;
             transition:
                 transform 0.3s ease,
                 border-color 0.3s ease,
@@ -353,6 +354,293 @@
             margin-top: 22px;
             color: #858585;
             font-size: 12px;
+        }
+
+        /* =========================================
+           INDUSTRY POPUP MODAL (REAL ESTATE SAMPLE)
+        ========================================= */
+
+        .db-popup-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.84);
+            backdrop-filter: blur(6px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .db-popup-backdrop.is-open {
+            display: flex;
+        }
+
+        .db-popup-dialog {
+            position: relative;
+            width: min(100%, 1060px);
+            background: #070707;
+            border: 1px solid rgba(239, 184, 46, 0.35);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 75px rgba(0, 0, 0, 0.85);
+            color: #ffffff;
+        }
+
+        .db-popup-close {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            z-index: 25;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(239, 184, 46, 0.45);
+            background: rgba(10, 10, 10, 0.85);
+            color: #f6c43b;
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s ease, color 0.25s ease;
+        }
+
+        .db-popup-close:hover {
+            background: #f6c43b;
+            color: #111111;
+        }
+
+        .db-popup-hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.06fr 0.94fr;
+            min-height: 435px;
+            overflow: hidden;
+        }
+
+        .db-popup-left {
+            position: relative;
+            z-index: 6;
+            padding: 32px 26px 26px 40px;
+            background: linear-gradient(90deg, #070707 0%, #090909 76%, rgba(9, 9, 9, 0.92) 100%);
+        }
+
+        .db-popup-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            padding: 0;
+            margin-bottom: 14px;
+            color: #d4d4d4;
+            font-family: inherit;
+            font-size: 13px;
+            cursor: pointer;
+            transition: color 0.25s ease;
+        }
+
+        .db-popup-back:hover {
+            color: #f6c43b;
+        }
+
+        .db-popup-title {
+            margin: 0 0 10px;
+            font-size: clamp(32px, 4.1vw, 44px);
+            line-height: 1.06;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.6px;
+        }
+
+        .db-popup-subtitle {
+            margin: 0 0 18px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #f5c12e;
+            line-height: 1.4;
+        }
+
+        .db-popup-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .db-popup-bullets li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #f5f5f5;
+            line-height: 1.35;
+        }
+
+        .db-popup-check {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffe17a, #e8a900);
+            color: #111111;
+            font-size: 13px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .db-popup-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .db-popup-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #ffe17a, #e8a900);
+            color: #111111;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .db-popup-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(232, 169, 0, 0.35);
+        }
+
+        .db-popup-btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: rgba(16, 16, 16, 0.88);
+            color: #f5c12e;
+            border: 1.5px solid #e8a900;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .db-popup-btn-secondary:hover {
+            background: rgba(232, 169, 0, 0.14);
+            transform: translateY(-2px);
+        }
+
+        .db-popup-right {
+            background-size: cover;
+            background-position: center;
+            min-height: 100%;
+        }
+
+        .db-popup-diagonal {
+            position: absolute;
+            top: -12%;
+            bottom: -12%;
+            left: 48%;
+            width: 78px;
+            background: linear-gradient(180deg, #ffe17a, #d89b00);
+            transform: skewX(-18deg);
+            z-index: 5;
+            box-shadow: 0 0 24px rgba(232, 169, 0, 0.35);
+            pointer-events: none;
+        }
+
+        .db-popup-diagonal::after {
+            content: "";
+            position: absolute;
+            inset: 0 0 0 9px;
+            background: #090909;
+        }
+
+        .db-popup-stats {
+            margin: 12px 18px 18px;
+            padding: 14px 24px;
+            border: 1px solid rgba(232, 169, 0, 0.45);
+            border-radius: 10px;
+            background: linear-gradient(90deg, #0d0d0d, #161208, #0d0d0d);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 16px;
+        }
+
+        .db-popup-stat {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .db-popup-stat-icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .db-popup-stat strong {
+            display: block;
+            font-size: 18px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .db-popup-stat span {
+            display: block;
+            font-size: 13px;
+            color: #d0d0d0;
+            line-height: 1.25;
+        }
+
+        .db-popup-stat-divider {
+            width: 1px;
+            height: 36px;
+            background: rgba(232, 169, 0, 0.3);
+        }
+
+        @media (max-width: 820px) {
+            .db-popup-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .db-popup-diagonal {
+                display: none;
+            }
+
+            .db-popup-right {
+                min-height: 210px;
+            }
+
+            .db-popup-left {
+                padding: 26px 20px 20px;
+            }
+
+            .db-popup-stats {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 14px 18px;
+            }
+
+            .db-popup-stat-divider {
+                display: none;
+            }
         }
 
         /* RESPONSIVE TABLETS */
@@ -480,7 +768,11 @@
         @media (prefers-reduced-motion: reduce) {
             .db-card,
             .db-card::before,
-            .db-card-link {
+            .db-card-link,
+            .db-popup-close,
+            .db-popup-back,
+            .db-popup-btn-primary,
+            .db-popup-btn-secondary {
                 transition: none;
             }
         }
@@ -595,6 +887,77 @@
         </section>
 
     </main>
+
+
+    <!-- SAMPLE POPUP MODAL (REAL ESTATE) -->
+
+    <div class="db-popup-backdrop" id="realEstatePopup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="rePopupTitle">
+        <div class="db-popup-dialog">
+            <button type="button" class="db-popup-close" id="rePopupClose" aria-label="Close popup">&times;</button>
+
+            <div class="db-popup-hero">
+                <div class="db-popup-left">
+                    <button type="button" class="db-popup-back" id="rePopupBack">← Back to Databases</button>
+
+                    <h2 class="db-popup-title" id="rePopupTitle">Real Estate<br>Database</h2>
+                    <p class="db-popup-subtitle">Reach real estate professionals across the U.S.</p>
+
+                    <ul class="db-popup-bullets">
+                        <li>
+                            <span class="db-popup-check" aria-hidden="true">✓</span>
+                            <span>Real Estate Agents &amp; Brokers</span>
+                        </li>
+                        <li>
+                            <span class="db-popup-check" aria-hidden="true">✓</span>
+                            <span>Property Managers</span>
+                        </li>
+                        <li>
+                            <span class="db-popup-check" aria-hidden="true">✓</span>
+                            <span>Real Estate Firms</span>
+                        </li>
+                        <li>
+                            <span class="db-popup-check" aria-hidden="true">✓</span>
+                            <span>Investors &amp; Developers</span>
+                        </li>
+                    </ul>
+
+                    <div class="db-popup-actions">
+                        <a href="index.html#contact" class="db-popup-btn-primary">Request a Quote →</a>
+                        <a href="sample-business-database.xlsx" download class="db-popup-btn-secondary">Download Sample (Excel) ⤓</a>
+                    </div>
+                </div>
+
+                <div class="db-popup-right" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80');"></div>
+                <div class="db-popup-diagonal" aria-hidden="true"></div>
+            </div>
+
+            <div class="db-popup-stats">
+                <div class="db-popup-stat">
+                    <span class="db-popup-stat-icon" aria-hidden="true">🪙</span>
+                    <div>
+                        <strong>200,000+</strong>
+                        <span>Contacts</span>
+                    </div>
+                </div>
+                <div class="db-popup-stat-divider"></div>
+                <div class="db-popup-stat">
+                    <span class="db-popup-stat-icon" aria-hidden="true">📍</span>
+                    <div>
+                        <strong>USA</strong>
+                        <span>Coverage</span>
+                    </div>
+                </div>
+                <div class="db-popup-stat-divider"></div>
+                <div class="db-popup-stat">
+                    <span class="db-popup-stat-icon" aria-hidden="true">📅</span>
+                    <div>
+                        <strong>Updated</strong>
+                        <span>Monthly</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- FOOTER -->
@@ -715,7 +1078,7 @@
             if (gridEl) {
                 gridEl.innerHTML = DATABASES.map(function (db) {
                     return `
-                        <article class="db-card" data-search="${db.keywords}">
+                        <article class="db-card" data-industry="${db.name}" data-search="${db.keywords}">
                             ${ICONS[db.icon] || ICONS.building}
                             <div class="db-card-content">
                                 <h3>${db.name}</h3>
@@ -727,7 +1090,57 @@
                 }).join("");
             }
 
-            // 4. SEARCH & DEFAULT 9-CARD DISPLAY LOGIC
+            // 4. REAL ESTATE SAMPLE POPUP CONTROLS
+            const popupBackdrop = document.getElementById("realEstatePopup");
+            const popupClose = document.getElementById("rePopupClose");
+            const popupBack = document.getElementById("rePopupBack");
+
+            function openRealEstatePopup() {
+                if (!popupBackdrop) return;
+                popupBackdrop.classList.add("is-open");
+                popupBackdrop.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeRealEstatePopup() {
+                if (!popupBackdrop) return;
+                popupBackdrop.classList.remove("is-open");
+                popupBackdrop.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+            }
+
+            if (gridEl) {
+                gridEl.addEventListener("click", function (event) {
+                    const card = event.target.closest(".db-card");
+                    if (!card) return;
+
+                    const industryName = (card.dataset.industry || "").trim().toLowerCase();
+                    if (industryName === "real estate") {
+                        const link = event.target.closest(".db-card-link");
+                        if (link) {
+                            event.preventDefault();
+                        }
+                        openRealEstatePopup();
+                    }
+                });
+            }
+
+            popupClose?.addEventListener("click", closeRealEstatePopup);
+            popupBack?.addEventListener("click", closeRealEstatePopup);
+
+            popupBackdrop?.addEventListener("click", function (event) {
+                if (event.target === popupBackdrop) {
+                    closeRealEstatePopup();
+                }
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" && popupBackdrop?.classList.contains("is-open")) {
+                    closeRealEstatePopup();
+                }
+            });
+
+            // 5. SEARCH & DEFAULT 9-CARD DISPLAY LOGIC
             const searchInput = document.getElementById("databaseSearch");
             const searchButton = document.getElementById("databaseSearchButton");
             const cards = Array.from(document.querySelectorAll("#databaseGrid .db-card"));
