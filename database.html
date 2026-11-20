@@ -554,7 +554,7 @@
                 <input
                     type="search"
                     id="databaseSearch"
-                    placeholder="Search 40+ industries or databases..."
+                    placeholder="Search industries or databases..."
                     aria-label="Search databases"
                     autocomplete="off"
                 >
@@ -578,7 +578,7 @@
                 <span></span>
             </div>
 
-            <!-- Cards are automatically generated from the DATABASES list in <script> -->
+            <!-- Cards are rendered automatically from DATABASES in <script> -->
             <div class="db-grid" id="databaseGrid"></div>
 
             <!-- NO RESULTS MESSAGE -->
@@ -589,7 +589,7 @@
             </div>
 
             <div class="db-count" id="databaseCount">
-                Showing 9 of 40 available databases
+                Showing 9 of 42 available databases
             </div>
 
         </section>
@@ -661,51 +661,53 @@
                 factory: `<svg class="db-card-icon" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M6 54V28l16 8V28l16 8V10h12v26h8v18H6z"/><rect x="14" y="42" width="6" height="6" fill="#171717"/><rect x="26" y="42" width="6" height="6" fill="#171717"/><rect x="38" y="42" width="6" height="6" fill="#171717"/></svg>`
             };
 
-            // 2. MASTER LIST OF 40 B2B INDUSTRIES (Add new lines here anytime!)
+            // 2. MASTER LIST OF 42 B2B INDUSTRIES (Add new lines here anytime!)
             const DATABASES = [
-                // Original 12
-                { name: "Real Estate", keywords: "real estate realtors agents brokers property sales residential commercial", icon: "building" },
-                { name: "Home Inspection", keywords: "home inspection inspectors residential property inspection home inspectors", icon: "home" },
-                { name: "HVAC Companies", keywords: "hvac heating ventilation air conditioning contractors cooling refrigeration mechanical", icon: "hvac" },
-                { name: "Property Management", keywords: "property management property managers apartments multifamily residential commercial landlords", icon: "property" },
-                { name: "Construction", keywords: "construction contractors builders general contractors commercial residential engineering", icon: "helmet" },
-                { name: "Facilities Management", keywords: "facilities management facility managers building maintenance operations commercial maintenance", icon: "gear" },
-                { name: "Plumbing & Electrical", keywords: "plumbing electrical plumbers electricians contractors pipefitting wiring", icon: "bolt" },
-                { name: "Roofing & Exteriors", keywords: "roofing roofers siding gutters windows exterior contractors restoration", icon: "roof" },
-                { name: "Commercial Cleaning", keywords: "commercial cleaning janitorial sanitation maid services office cleaning", icon: "sparkle" },
-                { name: "Landscaping & Lawn Care", keywords: "landscaping lawn care tree service grounds maintenance irrigation hardscaping", icon: "tree" },
-                { name: "Mortgage & Lending", keywords: "mortgage lending loan officers commercial finance real estate loans brokers", icon: "bank" },
-                { name: "Architecture & Design", keywords: "architecture interior design architects drafting urban planning space planning", icon: "blueprint" },
+                // Researched Core List (35)
+                { name: "Agriculture Crops", keywords: "agriculture crops farming crop production agribusiness growers", icon: "tree" },
+                { name: "Agriculture Livestock", keywords: "agriculture livestock cattle ranching dairy poultry farms", icon: "tree" },
+                { name: "Oil & Gas Extraction", keywords: "oil gas extraction drilling petroleum energy exploration", icon: "factory" },
+                { name: "Construction - General Contractors", keywords: "construction general contractors builders commercial residential projects", icon: "helmet" },
+                { name: "Construction - Special Trade Contractors", keywords: "construction special trade contractors subcontractors masonry concrete trades", icon: "helmet" },
+                { name: "Building Materials and Hardware", keywords: "building materials hardware lumber supplies supply stores contractors", icon: "store" },
+                { name: "Used and New Car Dealers", keywords: "used new car dealers auto dealerships vehicle sales automotive", icon: "truck" },
+                { name: "Hotels and Restaurants", keywords: "hotels restaurants hospitality lodging dining catering food service", icon: "store" },
+                { name: "Apparel & Accessory Stores", keywords: "apparel accessory stores clothing fashion retail boutiques", icon: "store" },
+                { name: "Real Estate", keywords: "real estate realtors agents brokers residential property sales", icon: "building" },
+                { name: "Commercial Real Estate", keywords: "commercial real estate cre office retail industrial property brokers", icon: "building" },
+                { name: "Mortgage Companies", keywords: "mortgage companies lenders loan officers home loans financing", icon: "bank" },
+                { name: "Insurance Agents and Brokers", keywords: "insurance agents brokers commercial personal coverage policies", icon: "shield" },
+                { name: "Home Inspection", keywords: "home inspection inspectors residential property inspection", icon: "home" },
+                { name: "HVAC Contractors", keywords: "hvac contractors heating ventilation air conditioning cooling", icon: "hvac" },
+                { name: "Janitorial Services", keywords: "janitorial services commercial cleaning sanitation office cleaning", icon: "sparkle" },
+                { name: "Barber Shops", keywords: "barber shops barbers grooming hair care local shops", icon: "sparkle" },
+                { name: "Photography", keywords: "photography photographers studios commercial event real estate photos", icon: "sparkle" },
+                { name: "Plumbing", keywords: "plumbing plumbers pipefitting drains water heaters contractors", icon: "bolt" },
+                { name: "Roofing", keywords: "roofing roofers roof repair replacement commercial residential", icon: "roof" },
+                { name: "Golf Course", keywords: "golf course country clubs golf facilities turf maintenance", icon: "tree" },
+                { name: "Education Services", keywords: "education services schools tutoring training academies learning", icon: "briefcase" },
+                { name: "Sign Boards", keywords: "sign boards signage signs banners outdoor advertising fabrication", icon: "blueprint" },
+                { name: "Health Services", keywords: "health services healthcare clinics medical providers wellness", icon: "medical" },
+                { name: "Legal Services", keywords: "legal services law firms attorneys lawyers corporate counsel", icon: "briefcase" },
+                { name: "Architects", keywords: "architects architecture design firms building plans commercial", icon: "blueprint" },
+                { name: "Interior Designers", keywords: "interior designers interior design decorators residential commercial spaces", icon: "blueprint" },
+                { name: "Pet Stores", keywords: "pet stores pet supplies grooming animal retail shops", icon: "store" },
+                { name: "Gift Stores", keywords: "gift stores gift shops specialty retail novelty souvenirs", icon: "store" },
+                { name: "Lawn Services", keywords: "lawn services landscaping lawn care mowing turf groundskeeping", icon: "tree" },
+                { name: "Jewelry Stores", keywords: "jewelry stores jewelers fine jewelry watches retail", icon: "sparkle" },
+                { name: "Wine & Distilled Beverages", keywords: "wine distilled beverages spirits liquor winery distributors", icon: "store" },
+                { name: "Glass and Glazing", keywords: "glass glazing windows storefront commercial glass contractors", icon: "blueprint" },
+                { name: "Floor Laying & Floor Work", keywords: "floor laying floor work flooring tile hardwood carpet contractors", icon: "gear" },
+                { name: "CPA - Certified Public Accountant", keywords: "cpa certified public accountant accounting tax audit bookkeeping", icon: "bank" },
 
-                // 28 Additional High-Demand B2B Industries
-                { name: "Solar & Renewable Energy", keywords: "solar energy panels clean energy installers green power battery storage", icon: "bolt" },
-                { name: "Law Firms & Legal Services", keywords: "lawyers attorneys legal firms corporate law litigation paralegals", icon: "briefcase" },
-                { name: "Accounting & CPA Firms", keywords: "accountants cpa bookkeeping tax preparation auditing financial advisory", icon: "bank" },
-                { name: "Insurance Agencies", keywords: "insurance brokers commercial insurance life health property casualty", icon: "shield" },
-                { name: "Logistics & Freight", keywords: "logistics trucking freight shipping supply chain warehousing 3pl", icon: "truck" },
-                { name: "Manufacturing & Industrial", keywords: "manufacturing factories industrial production machinery fabrication plants", icon: "factory" },
-                { name: "Dental Practices", keywords: "dentists dental clinics orthodontists oral surgery healthcare", icon: "medical" },
-                { name: "Medical Clinics & Healthcare", keywords: "doctors physicians clinics healthcare hospitals urgent care", icon: "medical" },
-                { name: "Software & SaaS Companies", keywords: "software saas technology startups cloud platforms app development", icon: "tech" },
-                { name: "IT Managed Services (MSP)", keywords: "it support msp cybersecurity network administration cloud computing", icon: "tech" },
-                { name: "Marketing & Ad Agencies", keywords: "marketing advertising digital agencies seo branding media buying", icon: "chart" },
-                { name: "E-Commerce & Retail Brands", keywords: "ecommerce online stores retail brands consumer goods dtc", icon: "store" },
-                { name: "Restaurants & Hospitality", keywords: "restaurants hotels catering food service hospitality cafes bars", icon: "store" },
-                { name: "Auto Dealerships & Repair", keywords: "automotive car dealers auto repair mechanics collision centers fleet", icon: "truck" },
-                { name: "Pest Control Services", keywords: "pest control exterminators termite wildlife removal commercial pest", icon: "shield" },
-                { name: "Security & Alarm Systems", keywords: "security guards surveillance alarms access control safety systems", icon: "shield" },
-                { name: "Staffing & Recruiting", keywords: "staffing agencies recruiters headhunters hr talent acquisition", icon: "briefcase" },
-                { name: "Financial Advisors & Wealth", keywords: "wealth management financial planners investment advisors asset management", icon: "chart" },
-                { name: "Wholesale & Distribution", keywords: "wholesalers distributors bulk suppliers import export supply", icon: "truck" },
-                { name: "Agriculture & Farming", keywords: "agriculture farming agribusiness crop production livestock equipment", icon: "tree" },
-                { name: "Oil, Gas & Energy", keywords: "oil gas energy drilling petroleum refineries utilities", icon: "factory" },
-                { name: "Telecommunications", keywords: "telecom wireless fiber internet network providers communications", icon: "tech" },
-                { name: "Education & Training", keywords: "schools universities training centers edtech corporate learning", icon: "briefcase" },
-                { name: "Fitness, Gyms & Wellness", keywords: "gyms fitness centers spas wellness studios personal training", icon: "sparkle" },
-                { name: "Printing & Packaging", keywords: "printing packaging labels commercial print boxes signage", icon: "factory" },
-                { name: "Civil & Structural Engineering", keywords: "civil engineering structural engineers surveying infrastructure", icon: "blueprint" },
-                { name: "Waste Management & Recycling", keywords: "waste management recycling dumpster rental sanitation disposal", icon: "gear" },
-                { name: "Nonprofits & Associations", keywords: "nonprofits charities foundations trade associations ngos", icon: "property" }
+                // Additional High-Value B2B Industries (7)
+                { name: "Property Management", keywords: "property management property managers apartments multifamily landlords", icon: "property" },
+                { name: "Auto Repair & Body Shops", keywords: "auto repair body shops collision centers mechanics car service", icon: "truck" },
+                { name: "Pest Control", keywords: "pest control exterminators termite rodents sanitation property", icon: "shield" },
+                { name: "Freight, Trucking & Logistics", keywords: "freight trucking logistics shipping supply chain transport", icon: "truck" },
+                { name: "Dental Practices", keywords: "dental practices dentists orthodontists dental clinics oral care", icon: "medical" },
+                { name: "IT Services / Managed IT (MSP)", keywords: "it services managed it msp cybersecurity cloud network support", icon: "tech" },
+                { name: "Marketing & Advertising Agencies", keywords: "marketing advertising agencies digital seo branding media", icon: "chart" }
             ];
 
             // 3. RENDER CARDS INTO GRID
@@ -751,7 +753,7 @@
                     const isMatch = !query || searchable.includes(query);
                     if (isMatch) matchedCount++;
 
-                    // Cap at 9 cards when search is empty; show all matches when searching
+                    // Cap at DEFAULT_VISIBLE cards when search is empty; show all matches when searching
                     const shouldShow = isMatch && (query ? true : visibleCount < DEFAULT_VISIBLE);
                     if (shouldShow) visibleCount++;
 
