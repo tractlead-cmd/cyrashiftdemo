@@ -375,6 +375,14 @@
             cursor: not-allowed;
         }
 
+        .db-arrow-btn {
+            font-size: 16px;
+            font-weight: 800;
+            padding: 0 14px;
+            color: #f6c43b;
+            border-color: rgba(239, 188, 47, 0.38);
+        }
+
         .db-grid.is-rotating .db-card {
             animation: dbCardFadeIn 0.45s ease;
         }
@@ -943,10 +951,6 @@
             <!-- PAGINATION -->
 
             <nav class="db-pagination" id="databasePagination" aria-label="Database pages"></nav>
-
-            <div class="db-count" id="databaseCount">
-                Showing 1–9 of 42 available databases
-            </div>
 
         </section>
 
@@ -2023,18 +2027,16 @@
                 }
             });
 
-            // 5. SEARCH, PAGINATION & RANDOM 20-SECOND INDUSTRY ROTATION
+            // 5. SEARCH, PAGINATION & RANDOM 15-SECOND INDUSTRY ROTATION
             const searchInput = document.getElementById("databaseSearch");
             const searchButton = document.getElementById("databaseSearchButton");
             const paginationEl = document.getElementById("databasePagination");
-            const countEl = document.getElementById("databaseCount");
             const noResultsEl = document.getElementById("noResults");
             const yearEl = document.getElementById("current-year");
             const ITEMS_PER_PAGE = 9;
-            const ROTATE_INTERVAL_MS = 20000;
+            const ROTATE_INTERVAL_MS = 15000;
 
             let currentPage = 1;
-            let userInteractedWithPages = false;
             let isHoveringGrid = false;
             let activeList = DATABASES.slice();
 
@@ -2070,18 +2072,17 @@
                     return;
                 }
 
-                let html = `<button type="button" class="db-page-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""}>← Prev</button>`;
+                let html = `<button type="button" class="db-page-btn db-arrow-btn" aria-label="Previous page" data-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""}>←</button>`;
 
                 for (let p = 1; p <= totalPages; p++) {
                     html += `<button type="button" class="db-page-btn ${p === currentPage ? "is-active" : ""}" data-page="${p}">${p}</button>`;
                 }
 
-                html += `<button type="button" class="db-page-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? "disabled" : ""}>Next →</button>`;
+                html += `<button type="button" class="db-page-btn db-arrow-btn" aria-label="Next page" data-page="${currentPage + 1}" ${currentPage === totalPages ? "disabled" : ""}>→</button>`;
                 paginationEl.innerHTML = html;
             }
 
             function renderCurrentView(animate) {
-                const query = (searchInput?.value || "").trim().toLowerCase();
                 const totalItems = activeList.length;
                 const totalPages = Math.max(1, Math.ceil(totalItems / ITEMS_PER_PAGE));
 
@@ -2098,23 +2099,12 @@
                 if (noResultsEl) {
                     noResultsEl.style.display = totalItems === 0 ? "block" : "none";
                 }
-
-                if (countEl) {
-                    if (totalItems === 0) {
-                        countEl.textContent = "Showing 0 databases";
-                    } else if (query) {
-                        countEl.textContent = `Showing ${startIdx + 1}–${endIdx} of ${totalItems} matching database${totalItems === 1 ? "" : "s"}`;
-                    } else {
-                        countEl.textContent = `Showing ${startIdx + 1}–${endIdx} of ${totalItems} available databases (Page ${currentPage} of ${totalPages})`;
-                    }
-                }
             }
 
             function applySearchFilter() {
                 const query = (searchInput?.value || "").trim().toLowerCase();
                 currentPage = 1;
                 if (!query) {
-                    userInteractedWithPages = false;
                     activeList = DATABASES.slice();
                 } else {
                     activeList = DATABASES.filter(function (db) {
@@ -2136,17 +2126,19 @@
                 return copy;
             }
 
-            // Random 20-second rotation when user is viewing default browse mode (not searching, hovering, or modal open)
-            setInterval(function () {
+            function rotateRandomIndustries() {
                 const query = (searchInput?.value || "").trim();
                 const isPopupOpen = popupBackdrop?.classList.contains("is-open");
-                if (query || userInteractedWithPages || isHoveringGrid || isPopupOpen) {
+                if (query || isHoveringGrid || isPopupOpen) {
                     return;
                 }
                 activeList = shuffleArray(DATABASES);
                 currentPage = 1;
                 renderCurrentView(true);
-            }, ROTATE_INTERVAL_MS);
+            }
+
+            // Random 15-second industry rotation
+            setInterval(rotateRandomIndustries, ROTATE_INTERVAL_MS);
 
             gridEl?.addEventListener("mouseenter", function () { isHoveringGrid = true; });
             gridEl?.addEventListener("mouseleave", function () { isHoveringGrid = false; });
@@ -2157,7 +2149,6 @@
                 const targetPage = parseInt(btn.dataset.page, 10);
                 if (!isNaN(targetPage)) {
                     currentPage = targetPage;
-                    userInteractedWithPages = true;
                     renderCurrentView(true);
                     document.querySelector(".db-available-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
