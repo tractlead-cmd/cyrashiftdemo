@@ -1021,7 +1021,7 @@
                     </svg>
                     <div>
                         <strong id="dbPopupUpdated">Updated</strong>
-                        <span>Monthly</span>
+                        <span>Updated Monthly</span>
                     </div>
                 </div>
             </div>
@@ -1998,7 +1998,10 @@
 
                 if (popupContacts) popupContacts.textContent = db.contacts || "100,000+";
                 if (popupCoverage) popupCoverage.textContent = db.coverage || "USA";
-                if (popupUpdated) popupUpdated.textContent = db.updated || "Updated";
+                if (popupUpdated) popupUpdated.textContent = "Updated";
+                if (popupUpdated && popupUpdated.nextElementSibling) {
+                    popupUpdated.nextElementSibling.textContent = db.updated && db.updated !== "Updated" ? db.updated : "Updated Monthly";
+                }
 
                 popupBackdrop.classList.add("is-open");
                 popupBackdrop.setAttribute("aria-hidden", "false");
