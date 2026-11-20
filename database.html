@@ -352,8 +352,56 @@
         .db-count {
             text-align: center;
             margin-top: 22px;
-            color: #858585;
+            color: #9e9e9e;
             font-size: 12px;
+        }
+
+        /* PAGINATION & ARROW CONTROLS BELOW COUNT */
+
+        .db-pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .db-page-btn {
+            min-width: 38px;
+            height: 38px;
+            padding: 0 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(239, 184, 46, 0.28);
+            background: linear-gradient(135deg, #1b1b1b, #111111);
+            color: #f0f0f0;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.25s ease;
+        }
+
+        .db-page-btn:hover:not(:disabled) {
+            border-color: #f6c32f;
+            color: #ffe17a;
+            transform: translateY(-1px);
+        }
+
+        .db-page-btn.is-active {
+            border-color: transparent;
+            background: linear-gradient(135deg, #ffe17a, #e8a900);
+            color: #111111;
+            box-shadow: 0 4px 16px rgba(232, 169, 0, 0.25);
+        }
+
+        .db-page-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
         }
 
         /* =========================================
@@ -772,11 +820,20 @@
             .db-popup-close,
             .db-popup-back,
             .db-popup-btn-primary,
-            .db-popup-btn-secondary {
+            .db-popup-btn-secondary,
+            .db-page-btn {
                 transition: none;
             }
         }
-    </style>
+    
+        /* Ensure SVGs inside the stats bar scale correctly and align */
+        .db-popup-stat-icon {
+            display: block;
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+        }
+</style>
 </head>
 
 <body class="db-page">
@@ -884,6 +941,10 @@
                 Showing 9 of 42 available databases
             </div>
 
+            <!-- LEFT / RIGHT ARROWS & PAGE NUMBERS BELOW COUNT -->
+            <nav class="db-pagination" id="databasePagination" aria-label="Database pages"></nav>
+
+
         </section>
 
     </main>
@@ -915,27 +976,52 @@
             </div>
 
             <div class="db-popup-stats">
+                <!-- Contacts (Stacked Database Records) -->
                 <div class="db-popup-stat">
-                    <span class="db-popup-stat-icon" aria-hidden="true">🪙</span>
+                    <svg class="db-popup-stat-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="3" y="4.5" width="18" height="6" rx="1.6" stroke="#f5c12e" stroke-width="1.8" fill="#1a1405"></rect>
+                        <rect x="3" y="13.5" width="18" height="6" rx="1.6" stroke="#e8a900" stroke-width="1.8" fill="#241b06"></rect>
+                        <path d="M6.8 7.5h6.5" stroke="#ffe17a" stroke-width="1.7" stroke-linecap="round"></path>
+                        <path d="M6.8 16.5h6.5" stroke="#ffe17a" stroke-width="1.7" stroke-linecap="round"></path>
+                        <circle cx="17.2" cy="7.5" r="1.15" fill="#ffe17a"></circle>
+                        <circle cx="17.2" cy="16.5" r="1.15" fill="#ffe17a"></circle>
+                    </svg>
                     <div>
                         <strong id="dbPopupContacts">200,000+</strong>
                         <span>Contacts</span>
                     </div>
                 </div>
                 <div class="db-popup-stat-divider"></div>
+
+                <!-- Coverage (Map Pin) -->
                 <div class="db-popup-stat">
-                    <span class="db-popup-stat-icon" aria-hidden="true">📍</span>
+                    <svg class="db-popup-stat-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 21.5c0 0-6.5-5.7-6.5-11.2a6.5 6.5 0 1 1 13 0c0 5.5-6.5 11.2-6.5 11.2z" stroke="#ffe17a" stroke-width="1.8" stroke-linejoin="round" fill="#261c06"></path>
+                        <circle cx="12" cy="10.2" r="2.2" fill="#f6c43b"></circle>
+                    </svg>
                     <div>
                         <strong id="dbPopupCoverage">USA</strong>
                         <span>Coverage</span>
                     </div>
                 </div>
                 <div class="db-popup-stat-divider"></div>
+
+                <!-- Updated (Calendar) -->
                 <div class="db-popup-stat">
-                    <span class="db-popup-stat-icon" aria-hidden="true">📅</span>
+                    <svg class="db-popup-stat-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="3.5" y="5" width="17" height="15.5" rx="2.2" stroke="#f6c43b" stroke-width="1.8" fill="#1c1506"></rect>
+                        <path d="M3.5 9.8h17" stroke="#f6c43b" stroke-width="1.6"></path>
+                        <path d="M8 3.2v3.2M16 3.2v3.2" stroke="#ffe17a" stroke-width="2" stroke-linecap="round"></path>
+                        <circle cx="8" cy="13.2" r="1" fill="#ffe17a"></circle>
+                        <circle cx="12" cy="13.2" r="1" fill="#ffe17a"></circle>
+                        <circle cx="16" cy="13.2" r="1" fill="#ffe17a"></circle>
+                        <circle cx="8" cy="16.8" r="1" fill="#ffe17a"></circle>
+                        <circle cx="12" cy="16.8" r="1" fill="#ffe17a"></circle>
+                        <circle cx="16" cy="16.8" r="1" fill="#ffe17a"></circle>
+                    </svg>
                     <div>
                         <strong id="dbPopupUpdated">Updated</strong>
-                        <span>Monthly</span>
+                        <span>Updated Monthly</span>
                     </div>
                 </div>
             </div>
@@ -978,7 +1064,7 @@
     </footer>
 
 
-    <!-- DATABASES DATA, POPUP LOGIC & SEARCH -->
+    <!-- DATABASES DATA, POPUP LOGIC, 30s RANDOM ROTATION & PAGINATION -->
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -1818,12 +1904,12 @@
                 DB_BY_NAME[db.name.trim().toLowerCase()] = db;
             });
 
-            // 3. RENDER CARDS INTO GRID
+            // 3. RENDER ALL 42 CARDS INTO GRID
             const gridEl = document.getElementById("databaseGrid");
             if (gridEl) {
-                gridEl.innerHTML = DATABASES.map(function (db) {
+                gridEl.innerHTML = DATABASES.map(function (db, idx) {
                     return `
-                        <article class="db-card" data-industry="${db.name}" data-search="${db.keywords}">
+                        <article class="db-card" data-index="${idx}" data-industry="${db.name}" data-search="${db.keywords}">
                             ${ICONS[db.icon] || ICONS.building}
                             <div class="db-card-content">
                                 <h3>${db.name}</h3>
@@ -1860,7 +1946,6 @@
                 }
                 candidates.push(FALLBACK_IMAGE);
 
-                // Deduplicate while preserving order
                 const queue = Array.from(new Set(candidates));
                 let index = 0;
 
@@ -1913,7 +1998,10 @@
 
                 if (popupContacts) popupContacts.textContent = db.contacts || "100,000+";
                 if (popupCoverage) popupCoverage.textContent = db.coverage || "USA";
-                if (popupUpdated) popupUpdated.textContent = db.updated || "Updated";
+                if (popupUpdated) popupUpdated.textContent = "Updated";
+                if (popupUpdated && popupUpdated.nextElementSibling) {
+                    popupUpdated.nextElementSibling.textContent = db.updated && db.updated !== "Updated" ? db.updated : "Updated Monthly";
+                }
 
                 popupBackdrop.classList.add("is-open");
                 popupBackdrop.setAttribute("aria-hidden", "false");
@@ -1950,55 +2038,211 @@
                 }
             });
 
-            document.addEventListener("keydown", function (event) {
-                if (event.key === "Escape" && popupBackdrop?.classList.contains("is-open")) {
-                    closeIndustryPopup();
-                }
-            });
-
-            // 5. SEARCH & DEFAULT 9-CARD DISPLAY LOGIC
+            // 5. SEARCH, 30-SECOND RANDOM ROTATION & LEFT/RIGHT ARROW PAGINATION
             const searchInput = document.getElementById("databaseSearch");
             const searchButton = document.getElementById("databaseSearchButton");
             const cards = Array.from(document.querySelectorAll("#databaseGrid .db-card"));
             const countEl = document.getElementById("databaseCount");
+            const paginationEl = document.getElementById("databasePagination");
             const noResultsEl = document.getElementById("noResults");
             const yearEl = document.getElementById("current-year");
-            const DEFAULT_VISIBLE = 9;
+
+            const PAGE_SIZE = 9;
+            const ROTATE_INTERVAL_MS = 30000; // 30 seconds
+            const totalIndices = cards.map((_, idx) => idx);
+
+            let currentPage = 1;
+            let activeRandomIndices = pickRandomNine([]);
+            let lastQuery = "";
 
             if (yearEl) {
                 yearEl.textContent = new Date().getFullYear();
             }
 
+            function pickRandomNine(excludeIndices) {
+                const excludeSet = new Set(excludeIndices || []);
+                const pool = totalIndices.filter(idx => !excludeSet.has(idx));
+                const source = pool.length >= PAGE_SIZE ? pool : totalIndices.slice();
+
+                // Fisher-Yates shuffle
+                for (let i = source.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [source[i], source[j]] = [source[j], source[i]];
+                }
+
+                return source.slice(0, PAGE_SIZE);
+            }
+
+            function getMatchingIndices(query) {
+                if (!query) return totalIndices.slice();
+                return cards
+                    .map((card, idx) => {
+                        const searchable = ((card.dataset.search || "") + " " + card.textContent).toLowerCase();
+                        return searchable.includes(query) ? idx : -1;
+                    })
+                    .filter(idx => idx !== -1);
+            }
+
+            function renderPagination(totalPages) {
+                if (!paginationEl) return;
+
+                if (totalPages <= 1) {
+                    paginationEl.innerHTML = "";
+                    return;
+                }
+
+                let html = `
+                    <button type="button" class="db-page-btn" id="dbPrevPage" aria-label="Previous page" ${currentPage <= 1 ? "disabled" : ""}>
+                        ← Prev
+                    </button>
+                `;
+
+                for (let p = 1; p <= totalPages; p++) {
+                    html += `
+                        <button type="button" class="db-page-btn ${p === currentPage ? "is-active" : ""}" data-page="${p}" aria-label="Page ${p}" ${p === currentPage ? 'aria-current="page"' : ""}>
+                            ${p}
+                        </button>
+                    `;
+                }
+
+                html += `
+                    <button type="button" class="db-page-btn" id="dbNextPage" aria-label="Next page" ${currentPage >= totalPages ? "disabled" : ""}>
+                        Next →
+                    </button>
+                `;
+
+                paginationEl.innerHTML = html;
+
+                document.getElementById("dbPrevPage")?.addEventListener("click", function () {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        updateDatabases();
+                    }
+                });
+
+                document.getElementById("dbNextPage")?.addEventListener("click", function () {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        updateDatabases();
+                    }
+                });
+
+                paginationEl.querySelectorAll("button[data-page]").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        const targetPage = parseInt(btn.dataset.page, 10);
+                        if (!Number.isNaN(targetPage) && targetPage !== currentPage) {
+                            currentPage = targetPage;
+                            updateDatabases();
+                        }
+                    });
+                });
+            }
+
             function updateDatabases() {
                 const query = (searchInput?.value || "").trim().toLowerCase();
-                let matchedCount = 0;
-                let visibleCount = 0;
+                if (query !== lastQuery) {
+                    currentPage = 1;
+                    lastQuery = query;
+                }
 
-                cards.forEach(function (card) {
-                    const searchable = (
-                        (card.dataset.search || "") + " " + card.textContent
-                    ).toLowerCase();
-
-                    const isMatch = !query || searchable.includes(query);
-                    if (isMatch) matchedCount++;
-
-                    // Cap at DEFAULT_VISIBLE cards when search is empty; show all matches when searching
-                    const shouldShow = isMatch && (query ? true : visibleCount < DEFAULT_VISIBLE);
-                    if (shouldShow) visibleCount++;
-
-                    card.style.display = shouldShow ? "" : "none";
-                });
+                const matchedIndices = getMatchingIndices(query);
+                const matchedCount = matchedIndices.length;
 
                 if (noResultsEl) {
                     noResultsEl.style.display = matchedCount === 0 ? "block" : "none";
                 }
 
-                if (countEl) {
-                    countEl.textContent = query
-                        ? `Showing ${visibleCount} matching database${visibleCount === 1 ? "" : "s"}`
-                        : `Showing ${visibleCount} of ${cards.length} available databases`;
+                let visibleIndices = [];
+
+                if (matchedCount === 0) {
+                    renderPagination(0);
+                    if (countEl) {
+                        countEl.textContent = `Showing 0 of ${cards.length} available databases`;
+                    }
+                } else if (query) {
+                    // Search mode: paginate matching results (9 per page)
+                    const totalPages = Math.max(1, Math.ceil(matchedCount / PAGE_SIZE));
+                    if (currentPage > totalPages) currentPage = totalPages;
+                    const start = (currentPage - 1) * PAGE_SIZE;
+                    visibleIndices = matchedIndices.slice(start, start + PAGE_SIZE);
+
+                    renderPagination(totalPages);
+                    if (countEl) {
+                        countEl.textContent = `Showing ${visibleIndices.length} of ${matchedCount} matching database${matchedCount === 1 ? "" : "s"} (Page ${currentPage} of ${totalPages})`;
+                    }
+                } else {
+                    // Default browse mode: 5 pages of 9 cards (42 total items)
+                    const totalPages = Math.ceil(cards.length / PAGE_SIZE);
+                    if (currentPage > totalPages) currentPage = totalPages;
+
+                    if (currentPage === 1) {
+                        // Page 1 shows the 9 randomly rotated databases (updated every 30s)
+                        visibleIndices = activeRandomIndices.slice(0, PAGE_SIZE);
+                    } else {
+                        // Pages 2–5 let users step through sequential slices of the 42 databases
+                        const start = (currentPage - 1) * PAGE_SIZE;
+                        visibleIndices = totalIndices.slice(start, start + PAGE_SIZE);
+                    }
+
+                    renderPagination(totalPages);
+                    if (countEl) {
+                        countEl.textContent = `Showing ${visibleIndices.length} of ${cards.length} available databases`;
+                    }
                 }
+
+                const visibleSet = new Set(visibleIndices);
+
+                // Reorder visible cards cleanly into the grid while hiding others
+                visibleIndices.forEach(function (idx) {
+                    const card = cards[idx];
+                    card.style.display = "";
+                    gridEl?.appendChild(card);
+                });
+
+                cards.forEach(function (card, idx) {
+                    if (!visibleSet.has(idx)) {
+                        card.style.display = "none";
+                    }
+                });
+
             }
+
+            // Rotate the 9 featured databases every 30 seconds
+            setInterval(function () {
+                const query = (searchInput?.value || "").trim().toLowerCase();
+                if (!query && currentPage === 1 && !popupBackdrop?.classList.contains("is-open")) {
+                    activeRandomIndices = pickRandomNine(activeRandomIndices);
+                    updateDatabases();
+                }
+            }, ROTATE_INTERVAL_MS);
+
+            // Keyboard left/right arrow navigation & Escape to close popup
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" && popupBackdrop?.classList.contains("is-open")) {
+                    closeIndustryPopup();
+                    return;
+                }
+
+                // Do not hijack arrow keys while typing in search or when modal is open
+                const activeTag = document.activeElement?.tagName?.toLowerCase();
+                if (activeTag === "input" || activeTag === "textarea" || popupBackdrop?.classList.contains("is-open")) {
+                    return;
+                }
+
+                if (event.key === "ArrowLeft") {
+                    const prevBtn = document.getElementById("dbPrevPage");
+                    if (prevBtn && !prevBtn.disabled) {
+                        event.preventDefault();
+                        prevBtn.click();
+                    }
+                } else if (event.key === "ArrowRight") {
+                    const nextBtn = document.getElementById("dbNextPage");
+                    if (nextBtn && !nextBtn.disabled) {
+                        event.preventDefault();
+                        nextBtn.click();
+                    }
+                }
+            });
 
             searchInput?.addEventListener("input", updateDatabases);
             searchButton?.addEventListener("click", updateDatabases);
