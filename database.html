@@ -398,6 +398,80 @@
             }
         }
 
+        /* =========================================
+           4 TRUST BADGES UNDER PAGINATION
+        ========================================= */
+
+        .db-trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 48px;
+        }
+
+        .db-trust-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 18px;
+            border: 1px solid rgba(232, 169, 0, 0.32);
+            border-radius: 12px;
+            background: linear-gradient(135deg, #141310 0%, #0e0e0e 100%);
+        }
+
+        .db-trust-icon {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            color: #deb449;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .db-trust-icon svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .db-trust-text {
+            min-width: 0;
+        }
+
+        .db-trust-text h3 {
+            margin: 0 0 3px;
+            font-size: 14.5px;
+            font-weight: 750;
+            color: #ffffff;
+            line-height: 1.25;
+        }
+
+        .db-trust-text p {
+            margin: 0;
+            font-size: 12.5px;
+            color: #a3a3a3;
+            line-height: 1.35;
+        }
+
+        @media (max-width: 1150px) {
+            .db-trust-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .db-trust-grid {
+                grid-template-columns: 1fr;
+                gap: 11px;
+                margin-top: 36px;
+            }
+
+            .db-trust-card {
+                padding: 16px;
+            }
+        }
+
         /* NO SEARCH RESULTS */
 
         .db-no-results {
@@ -974,6 +1048,62 @@
             <!-- PAGINATION -->
 
             <nav class="db-pagination" id="databasePagination" aria-label="Database pages"></nav>
+
+            <!-- 4 TRUST BADGES UNDER PAGINATION -->
+            <div class="db-trust-grid">
+                <div class="db-trust-card">
+                    <span class="db-trust-icon" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" fill="currentColor">
+                            <path d="M20 3.5l4.2 3.1 5.2-.4 2 4.8 4.8 2-.4 5.2 3.1 4.2-3.1 4.2.4 5.2-4.8 2-2 4.8-5.2-.4L20 40.5l-4.2-3.1-5.2.4-2-4.8-4.8-2 .4-5.2L1.1 22l3.1-4.2-.4-5.2 4.8-2 2-4.8 5.2.4L20 3.5zm-2.3 22.9l10.2-10.2-2.3-2.3-7.9 7.9-3.6-3.6-2.3 2.3 5.9 5.9z"/>
+                        </svg>
+                    </span>
+                    <div class="db-trust-text">
+                        <h3>95%+ Accuracy Guarantee</h3>
+                        <p>Human-verified and updated monthly</p>
+                    </div>
+                </div>
+
+                <div class="db-trust-card">
+                    <span class="db-trust-icon" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" fill="currentColor">
+                            <path d="M29.8 17.4A10 10 0 0 0 10.4 15a8 8 0 0 0 .6 16h18a7 7 0 0 0 .8-13.6zM20 27.5l-5.5-5.5h3.5v-5h4v5h3.5L20 27.5z"/>
+                        </svg>
+                    </span>
+                    <div class="db-trust-text">
+                        <h3>Excel / CSV Formats</h3>
+                        <p>Instantly compatible with your CRM</p>
+                    </div>
+                </div>
+
+                <div class="db-trust-card">
+                    <span class="db-trust-icon" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" fill="currentColor">
+                            <path d="M20 4L7 9.5v10.2c0 8.5 5.5 14.3 13 16.8 7.5-2.5 13-8.3 13-16.8V9.5L20 4zm0 4.2l9 3.8v7.7c0 6.2-3.8 10.6-9 12.7V8.2z"/>
+                        </svg>
+                    </span>
+                    <div class="db-trust-text">
+                        <h3>GDPR &amp; CCPA Compliant</h3>
+                        <p>Privacy-compliant contact sourcing</p>
+                    </div>
+                </div>
+
+                <div class="db-trust-card">
+                    <span class="db-trust-icon" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 12.5l3 3 5-5"/>
+                            <path d="M20 13h13"/>
+                            <path d="M7 21.5l3 3 5-5"/>
+                            <path d="M20 22h13"/>
+                            <path d="M8.5 29.5l5 5M13.5 29.5l-5 5"/>
+                            <path d="M20 32h13"/>
+                        </svg>
+                    </span>
+                    <div class="db-trust-text">
+                        <h3>Custom Targeting</h3>
+                        <p>Build geofenced and niche B2B lists</p>
+                    </div>
+                </div>
+            </div>
 
         </section>
 
